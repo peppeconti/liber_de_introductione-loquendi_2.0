@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_ms.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_ms.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="edition">Philippus Ferrariensis" Liber de Introductione Loquendi: a Digital
+               Edition</title>
+            <author rend="medieval-author">
+               <name> Philippus Ferrariensis, frater O.P.</name>
+            </author>
+            <respStmt>
+               <resp>compiled by</resp>
+               <name>Giuseppe Conti</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <msDesc>
+               <msIdentifier>
+                  <country>Germany</country>
+                  <region>Bayern</region>
+                  <settlement>München</settlement>
+                  <institution>Bayerische Staatsbibliothek</institution>
+                  <repository>Codices latini monacenses</repository>
+                  <idno type="signatur">Clm 16126</idno>
+               </msIdentifier>
+               <msContents>
+                  <summary rend="TOC">
+                     <list>
+                        <item>
+                           <label corresp="#Clm_16126_01r">Introduzione</label>
+                        </item>
+                        <item>
+                           <label corresp="#Clm_16126_01r">Libro I</label>
+                           <list>
+                              <item>
+                                 <label corresp="#Clm_16126_01r">Capitolo I</label>
+                              </item>
+                              <item>
+                                 <label>Capitolo II</label>
+                              </item>
+                              <item>
+                                 <label>Capitolo III</label>
+                              </item>
+                           </list>
+                        </item>
+                        <item><label>Libro II</label></item>
+                        <item><label>Libro III</label></item>
+                        <item><label>Libro IV</label></item>
+                        <item><label>Libro V</label></item>
+                        <item><label>Libro VI</label></item>
+                        <item><label>Libro VII</label></item>
+                        <item><label>Libro VIII</label></item>
+                     </list>
+                  </summary>
+                  <msItem>
+                     <author>Phlippus Ferrariensis, frater O.P.</author>
+                     <title type="full">Philippi fratris ordinis praedicatorum de introductione
+                        loquendi octo libri cum multis historiolis</title>
+                     <title type="short">Liber de introductione loquendi</title>
+                     <textLang>Latino</textLang>
+                     <incipit>Incipit liber de introductione loquendi editus a fratre
+                        Philippo</incipit>
+                     <explicit>Explicit liber iste</explicit>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <objectDesc form="codex">
+                     <supportDesc material="pergament">
+                        <support>Pergamena</support>
+                        <extent>92 fogli</extent>
+                        <foliation>Nella parte destra del margine superiore le pagine sono numerate
+                           con cifre arabe.</foliation>
+                        <collation>
+                           <formula>in ottavo</formula>
+                        </collation>
+                     </supportDesc>
+                     <layoutDesc>
+                        <layout columns="2" writtenLines="35">Due colonne</layout>
+                     </layoutDesc>
+                  </objectDesc>
+               </physDesc>
+               <history>
+                  <origin>
+                     <origPlace>S.l.</origPlace>
+                     <origDate>XIV sec.</origDate>
+                  </origin>
+                  <provenance>
+                     <p>In precedenza ms. 126 del monastero di san Nicola</p>
+                  </provenance>
+               </history>
+            </msDesc>
+            <list xml:id="notes" type="notes">
+               <item xml:id="note-1">Cfr. Gèrard de Frachet O.P., <hi rend="italic">Vitae Fratrum
+                     Ordinis Praedicatorum nec Cronica ordinis an anno MCCIII usque ad MCCLIV</hi>,
+                  ed. Benedikt Maria Reichert, Lovanio 1896, pp. 78-9.</item>
+               <item xml:id="note-2"> Cfr. Gèrard de Frachet O.P., <hi rend="italic">Vitae Fratrum
+                     Ordinis Praedicatorum nec Cronica ordinis an anno MCCIII usque ad MCCLIV</hi>,
+                  ed. Benedikt Maria Reichert, Lovanio 1896, pp. 122-3.</item>
+               <item xml:id="note-3">Cfr. Vincenzo di Beauvais O.P., <hi rend="italic">Speculum
+                     Maior, IV Tomus Speculum Historiale nuncupatus</hi>, presso Balthazar Bellerus,
+                  Douai 1624, p. 379.</item>
+               <item xml:id="note-4">Il riferimento è all'asina dell'indovino Balaam, protagonista
+                  di un episodio narrato nel libro dei <hi rend="italic">Numeri</hi>. Cfr. Biblia
+                  Sacra Vulgata, Liber Numeri 22, 28: <hi rend="italic">Aperuitque Dominus os
+                     asinae, et locuta est: <said rend="double-chevrons">Quid feci tibi? Cur
+                        percutis me ecce iam tertio?</said></hi>.</item>
+               <item xml:id="note-5"> Cfr. <hi rend="italic">De Sancto Regulo Episcopo</hi>, in Jean
+                  Bolland, <hi rend="italic">Acta Sanctorum Martii Tomus III</hi>, presso Michiel
+                  Cnobbaert, Anversa 1675, p. 824. </item>
+               <item xml:id="note-6">Cfr. Jacobus de Voragine, <hi rend="italic">Legenda Aurea</hi>,
+                  ed. Theodor Grässe, Lipsia 1850<hi rend="sup">2</hi>, pp. 59-60.</item>
+            </list>
+            <listApp xml:id="apparatus" type="apparatus">
+               <app corresp="#Clm_16126_01r">
+                  <span type="link">
+                     <link target="https://www.digitale-sammlungen.de/en/view/bsb00049700?page=4,5"
+                     />
+                  </span>
+                  <span type="notes-container">
+                     <note xml:id="app-note-1_01r">Sui margini superiore e inferiore
+                        rispettivamente: <hi rend="italic">Iste liber et monasterii Sancti Nicolai
+                           in quo continetur</hi>; <hi rend="italic">Iste liber et monasterii Sancti
+                           Nicolai ex [...] patet</hi>
+                     </note>
+                     <note xml:id="app-note-2_01r">col. 1, 19; sul margine destro 1 in cifre
+                        arabe</note>
+                     <note xml:id="app-note-3_01r">col. 1, 21; sul margine destro 42 in cifre
+                        arabe</note>
+                     <note xml:id="app-note-4_01r">col. 1, 24; sul margine destro 47 in cifre
+                        arabe</note>
+                     <note xml:id="app-note-5_01r">col. 1, 27; sul margine destro 63 in cifre
+                        arabe</note>
+                  </span>
+               </app>
+               <app corresp="#Clm_16126_01v">
+                  <span type="link">
+                     <link target="https://www.digitale-sammlungen.de/en/view/bsb00049700?page=6,7"
+                     />
+                  </span>
+                  <span type="notes-container">
+                     <note xml:id="app-note-1_01v">col. 1, 17; <hi rend="italic"
+                        >Ex<expan>emplu</expan>m</hi> sul margine sinistro</note>
+                     <note xml:id="app-note-2_01v">col. 2, 1; <hi rend="italic">2
+                        C<expan>apitulum</expan></hi> sul margine sinistro</note>
+                     <note xml:id="app-note-3_01v">col. 2, 14; <hi rend="italic"
+                        >Ex<expan>emplu</expan>m</hi> sul margine destro</note>
+                     <note xml:id="app-note-4_01v">col. 2, 15; <hi rend="italic"
+                        >n<expan>oste</expan>r</hi> sul margine destro</note>
+                  </span>
+               </app>
+            </listApp>
+            <listWit>
+               <witness>Augsburg, Staats- und Stadtbibliothek, 8° 85, ff. 1r-243v</witness>
+               <witness>Bad Windsheim, Stadtbibliothek (Ratsbibliothek), 38</witness>
+               <witness>Basel/Bâle, Universitätsbibliothek (olim Öffentliche Bibliothek der
+                  Universität), A IX 15, ff. 75r-131v</witness>
+               <witness>Bologna, Biblioteca Universitaria, 1552 (lat. 791)</witness>
+               <witness>Città del Vaticano, Biblioteca Apostolica Vaticana, Pal. lat. 960 II, ff.
+                  71ra-120vb</witness>
+               <witness>Klosterneuburg, Bibliothek des Augustiner Chorherrenstiftes, 863, ff.
+                  110v-179r</witness>
+               <witness>München, Bayerische Staatsbibliothek, Clm 16126, ff. 1r-92v</witness>
+               <witness>Praha, Národní Knihovna Ceské Republiky (olim Národní a Univerzitní
+                  Knihovna), III.C.8 (439)</witness>
+               <witness>Wien, Österreichische Nationalbibliothek, 3390</witness>
+            </listWit>
+            <listBibl type="quoted__text">
+               <biblStruct>
+                  <monogr>
+                     <author>Gèrard de Frachet O.P.</author>
+                     <editor>Benedikt Maria Reichert</editor>
+                     <title type="abbr">Vitae Fratrum Ordinis Praedicatorum</title>
+                     <title type="reg">Vitae Fratrum Ordinis Praedicatorum nec Cronica ordinis an
+                        anno MCCIII usque ad MCCLIV</title>
+                     <imprint>
+                        <publisher>Typis E. Charpentier &#x26; J. Schoonjans</publisher>
+                        <pubPlace>Lovanio</pubPlace>
+                        <date>1896</date>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <biblStruct>
+                  <monogr>
+                     <author>Vincenzo di Beauvais O.P.</author>
+                     <title>Speculum Maior, IV Tomus Speculum Historiale nuncupatus</title>
+                     <imprint>
+                        <publisher>Balthazar Bellerus</publisher>
+                        <pubPlace>Douai</pubPlace>
+                        <date>1624</date>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <biblStruct>
+                  <monogr>
+                     <author>Jean Bolland</author>
+                     <title>Acta Sanctorum Martii Tomus III</title>
+                     <imprint>
+                        <publisher>Michiel Cnobbaert,</publisher>
+                        <pubPlace>Anversa</pubPlace>
+                        <date>1675</date>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+               <biblStruct>
+                  <monogr>
+                     <author>Jacobus de Voragine</author>
+                     <editor>Theodor Grässe</editor>
+                     <title>Legenda Aurea</title>
+                     <edition>seconda edizione</edition>
+                     <imprint>
+                        <publisher>Michiel Cnobbaert</publisher>
+                        <pubPlace>Lipsia</pubPlace>
+                        <date>1850</date>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+            </listBibl>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <front> </front>
+      <group>
+         <text type="latin">
+            <body>
+               <pb n="01r" type="latin" xml:id="Clm_16126_01r" next="#Clm_16126_01v"/>
+               <p><emph rend="italic">Incipit liber de introductione loquendi, editus a fratre
+                     Phylippo. </emph><note type="app" n="1" corresp="#app-note-1_01r"/><supplied
+                     rend="bold" reason="TOC">Introduzione</supplied> Quia honorificum est et
+                  meritorium quod frater predicator sciat loqui edificatoria ubicumque et
+                  quandocumque fuerit oportunum, et interdum magni clerici deficiunt in verbis
+                  quando non precogitant, ideo ego frater Phylippus de ordine predicatorum ad mei
+                  introductionem et omnium aliorum quibus hoc opus placuerit, istum librum
+                  compilavi, quem sic intitulo: incipit liber de introductione loquendi, quem librum
+                  divido in octo libros. &#x2E3F; In primo libro <note type="app" n="2"
+                     corresp="#app-note-2_01r"/> ponentur quedam introductoria ad loquendum in
+                  mensa. &#x2E3F; In secundo <note type="app" n="3" corresp="#app-note-3_01r"/>
+                  ponentur ea quae posset frater loqui quando staret ad ignem cum personis. &#x2E3F;
+                  In tertio libro <note type="app" n="4" corresp="#app-note-4_01r"/> ponentur
+                  historie pulcre quas potest frater dicere quando est in itinere cum personis.
+                  &#x2E3F; In quarto libro <note type="app" n="5" corresp="#app-note-5_01r"/>
+                  ponentur que frater potest dicere quando visitat personam infirmam. &#x2E3F; In
+                  quinto libro ponentur ea que potest frater dicere quando visitat personam
+                  tribulatam de morte alicuius. &#x2E3F; In sexto libro ponentur ea que potest
+                  dicere quando visitat personam <cb n="01rb"/> tribulatam quacumque alia
+                  tribulatione. &#x2E3F; In septimo libro ponentur ea que potest dicere quando vult
+                  personam manutenere in amicitiam sui. &#x2E3F; In octavo libro ponentur aliqua
+                  pulcra predicabilia de peccatis et virtutibus. <supplied rend="bold" reason="TOC"
+                     >Libro I - Capitolo I</supplied> &#x2E3F; Primum capitulum primi libri de
+                  consideratione personarum cum quibus frater comedit. Debet frater considerare si
+                  comedit cum personibus quae debent tenere silentium in mensa ut sunt religiosi,
+                  tunc melius est quod taceat, nisi esset prior in mensa. Si vero comedit cum
+                  baronibus, prelatis vel maioribus se etiam tunc taceat nisi insinuetur illi quod
+                  ipse loquatur vel nisi sciat pro certo quod eis placet ut ipse loquatur et tunc
+                  potest loqui. Si vero comedit cum secularibus tunc male stat quod semper tacet.
+                  Item male staret si continue loqueretur. Sed interdum aliquid boni loquatur et si
+                  videbitur sibi expedire potest breviter instruere eos quomodo Christus aliquando
+                  in deserto dedit comedere quinque milibus hominum panes ordeaceos et pisces.</p>
+               <pb n="01v" type="latin" xml:id="Clm_16126_01v" next="#Clm_16126_02r"
+                  prev="#Clm_16126_01r"/>
+               <p>Benedixit et gratias egit et fregit panes ita bene cum manibus, ut dicunt aliqui,
+                  sicut aliqui incidunt cum cutello. Sed in hoc quod benedixit et gratias egit Deo
+                  habemus exemplum quod quilibet christianus, antequam comedat, debet dicere aliquam
+                  oracionem scilicet <emph rend="italic">Pater Noster</emph> et <emph rend="italic"
+                     >Ave Maria</emph> pro benedictione mense et similiter dicere debet pro graciis
+                  et debet semper signare signo crucis cibum et potum, alias posset inminere
+                  periculum. Retulit beatus Gregorius<note type="app" n="1"
+                     corresp="#app-note-1_01v"/> quod quedam monialis, die quadam, ortum ingressa,
+                  videns latucam et oblita benedicione momordit eam, sed protinus arepta a dyabolo
+                  cecidit, cumque vir sanctus Equitius propter hoc veniens, preciperet dyabolo ut
+                  exiret, ille clamabat: <said rend="double-chevrons">Ego quid feci? Sedebam super
+                     latucam, venit ista et momordit me</said>, vix tamen exivit. Ergo periculum est
+                  comedere et bibere et non signare cibum. De signo cruci habes in futuro capitulo
+                  quarto. <cb n="02vb"/><supplied rend="bold" reason="TOC">Libro I - Capitolo
+                     II</supplied> Secundum capitulum primi libri,<note type="app" n="2"
+                     corresp="#app-note-2_01v"/> quomodo dicendum est <emph rend="italic">Ave
+                     Maria</emph> pro benedictione &#x2E3F; mense; quando homo ita simplex esset
+                  quod nesciret dicere <emph rend="italic">Pater Noster</emph>, sicut pueri, nec
+                  aliam benedictionem. Verum audivi quod aliqui religiosi in tanta devotione habeant
+                  istam orationem <emph rend="italic">Ave Maria</emph> quod quando sunt in mensa pro
+                  qualibus vice, quando volunt bibere semper ante dicunt <emph rend="italic">Ave
+                     Maria</emph>. &#x2E3F; Legitur quod miles quidam<note type="app" n="3"
+                     corresp="#app-note-3_01v"/> peccator poenitentia ductus religionem intravit. Et
+                  dum magister eius eum psalmos vellet docere, dixit se nescire <emph rend="italic"
+                     >Pater Noster</emph>.<note type="app" n="4" corresp="#app-note-4_01v"/> Quoniam
+                  cum vellet docere videbatur sibi <emph rend="italic">Pater Noster</emph> nimis
+                  longa oratio et impossibilis ad docendum. Docuit ergo eum <emph rend="italic">Ave
+                     Maria</emph> et istam orationem dixit semper pro officio et pro benedictione
+                  mensae et pro omni oratione quam habebat facere; post mortem ex sepulchro eius
+                  prodiit arbor. Vel secundum quosdam fuit lilium in cuius singulis foliis <emph
+                     rend="italic">Ave Maria</emph> litteris aureis scriptum erat. Inquerentes
+                  fratres unde talis arbor initium haberet invenerunt</p>
+               <pb n="02r" type="latin" xml:id="Clm_16126_02r" next="#Clm_16126_02v"
+                  prev="#Clm_16126_01v"/>
+               <p> ex corde eius per os eius eam prodisse, in quo patet quod vero corde et ore
+                  virginem laudavit. <supplied rend="bold" reason="TOC">Libro I - Capitolo
+                     III</supplied> Tercium capitulum de comparatione comedentium plus vel minus
+                  quam expedit. Supposito quod duo homines equali cibo indigeant omni die scilicet
+                  quantitatem unius librae et in omnibus sunt equales scilicet in calore naturali
+                  digestionis et cetera. Modo si unus comederet omni die unam libram et dimidiam,
+                  ita quod dimidiam comedat plus quam sibi sit necessarium, alius vero solum
+                  dimidium comedat, ita quod dimidium comedit minus quam sibi sit necessarium,
+                  queritur quis cicius infirmabitur et morietur. Ista quaestio facta fuit coram
+                  magistro ordinis scilicet Hamirico ut credo in mensa. Respondeo, salva tamen
+                  meliori ratione medicorum, quod ille qui comedit minus quam sibi necessarium sit,
+                  et ratio huius est quia calor naturalis digerens ex quo non habet sufficientem
+                  cibum in quem agat <cb n="02rb"/> agit ergo in naturam eam paulatim consummendo et
+                  sic cicius infirmabitur et morietur. Si ille qui plus comedit quam expedit, potest
+                  liberari per evacuationem et purgationem ita quod non sic infirmabitur. Si autem
+                  supponatur quod non faciat purgationem tunc bene credo quod suffocabitur ita cito
+                  sicut alius. Sed fiat quaestio qualis plus peccat quantum ad Dominum, ille qui
+                  comedit plus quam sibi sit necessarium, an ille qui minus comedit quam sibi
+                  necessarium est, <supplied rend="italic" reason="integrated">credo quod prima
+                     facie videtur plus peccare qui plus comedit quam sibi necessarium
+                     est</supplied> scilicet peccato gulae, immo ille qui minus comedit quam sibi
+                  necessarium est videtur virtuose agere quando facit propter astinentia et
+                  penitentia. Sed si videt quod ex modico cibo sumpto in tantum debilitatur quod non
+                  potest alia bona facere, tunc credo quod peccat et hoc est quod dyabolus dixit
+                  beato Dominico quando apparuit sibi Dixit ergo: <said rend="double-chevrons-left"
+                     >Ego in refectorio quando fratres comedunt, lucror dupliciter,</said>
+               </p>
+               <pb n="02v" type="latin" xml:id="Clm_16126_02v" next="#Clm_16126_03r"
+                  prev="#Clm_16126_02r"/>
+               <p>
+                  <said rend="double-chevrons-right">primo quia alios facio comedere plus quam
+                     expedit et hoc est peccatum, secundo quia alios facio comedere minus et ex hoc
+                     debilitantur et sunt inepti ad alia bona opera et virtuosa</said>. Hystoria in
+                  Vitas Patrum Predicatorum.<note type="note" n="1" corresp="#note-1"/> Legitur quod
+                  beatus Dominicus invenit semel dyabolum omnes officinas circumeuntem, cumque
+                  quaereret quare hoc faceret, respondit: <said rend="double-chevrons">Propter
+                     lucrum quod inde recipio</said>. Dixit ei: <said rend="double-chevrons">Quid
+                     lucraris in dormitorio?</said>&#x20; <supplied rend="italic"
+                     reason="integrated">Respondit:</supplied>
+                  <said rend="double-chevrons">Ibi facio nimis dormire, tarde surgere, sique ab
+                     officio remanere, et cum possum, carnis stimulationes et illusiones
+                     immitto</said>. Inde traxit eum ad ecclesiam. Dixit: <said
+                     rend="double-chevrons">Quid in tam sacro loco lucraris?</said> Respondit: <said
+                     rend="double-chevrons">Facio tarde venire, cito recedere et se interdum
+                     oblivisci</said>. De refectorio dixit: <said rend="double-chevrons">Quis non
+                     plus, quis non minus</said>. Hinc ad locutorium ductum respondit cachinnans:
+                     <said rend="double-chevrons">Hic locus totus meus est. Huc veniunt risus, huc
+                        <cb n="2vb"/> rumores</said>. Cum ultimo traxisset eum ad capitulum, coepit
+                  fugere et ait: <said rend="double-chevrons">Iste locu mihi infernus est, quiduid
+                     lucror alibi, totum hic perdo, hic monentur, hic confitenrur, verberantur,
+                     absolvuntur. Unde hanc domum super omnes detestor</said>. Ad idem hystoria quod
+                  nimis abstinencia a cibo sit peccatum.<note type="note" n="2" corresp="#note-2"/>
+                  Temptavit dyabolus Parisius magistrum ordinis, scilicet Iordanem, sub specie
+                  sanctitatis veniens ad portam in formae venerandae personae, peciit se ad
+                  magistrum Iordamen deduci. Cum ergo ductus ad eum ait: <said
+                     rend="double-chevrons">Habeo sermones familiares</said>, postulavit fratres
+                  secedere quasi secreto locutur cum eo. Quo facto sic ait: <said
+                     rend="double-chevrons-left">Magister, sanctissimi ordinis tu es caput, quod si
+                     parvum vel grande quid a te exierit contra religionis fervorem relaxacionis
+                     vestigii, cum humana natura prona sit ad declinandum, tu exinde poenam
+                     reportabis a Domino, et in tanto ordine relinques exemplum dissolucionis et
+                     turbacionis materiam; es enim</said></p>
+               <pb n="03r" type="latin" xml:id="Clm_16126_03r" prev="#Clm_16126_02v"/>
+               <p>
+                  <said rend="double-chevrons-right">infirmus, sed non tantum ut non possis
+                        <supplied rend="italic" reason="integrated">carere</supplied> culcitra et a
+                     carnibus abstinere. Quod si cras vel post cras non fiat eadem dispensacio
+                     fratri plus vel aequo infirmo, fiet tunc iudicium, murmur et turbacio orietur.
+                     Unde rogo et consulo, quod sicut actenus fuisti religionis exemplum in aliis,
+                     ita te prebeas in istis</said>. Sic ergo verba sua colorant, licenciatus
+                  recessit, ruminado aliquid ac si diceret psalmos. Credidit homo Dei simplex verbis
+                  euis, abstinuit multis diebus. Unde in tantum debilita illius crevit, quod vix
+                  subsistere valebat. Sed revelatum est ei a Domino, quod qui illa suggesserat
+                  dyabolus erat, qui eius vitae et praedicationibus invidebat. Et sic patet quod
+                  nimia abstinencia est peccatum. <supplied rend="bold" reason="TOC">Libro I -
+                     Capitolo IV</supplied> Quartum capitulum de signo crucis faciendo super cibum
+                  exemplo asini. Dicit frater Vincencius in secundo libro speculi<note type="note"
+                     n="3" corresp="#note-3"/> quod sanctus Regulus, miracula faciendo, venit <cb
+                     n="3rb"/> ad civitatem quae dicitur Silvanectensium, in qua erat quaedam
+                  matrona Calicia nomine, quae beati viri audiens famam, rogavit lamentabiliter ut
+                  unicum filium a dyabolo obsessum liberaret, qui lacrimis compaciens domum eius
+                  ingressus est et increpato dyabolo orationem dominica et symbolum super caput
+                  pueri legere incepit; et mox daemon hac oratione territus in vespertilionem
+                  mutatus egreditur. Et videntibus cunctis venit intrare corpus asini super quem
+                  prae nimio labore itineris equitabat sanctus Regulus praesul quando erat nimis
+                  fatigatus. Sed qui quondam fecit loqui asinam in veteri testamento,<note
+                     type="note" n="4" corresp="#note-4"/> hic sancti Reguli meritis, salutis
+                  vexillum, quod nunquam noverat, componere docuit. Nam pede crucis signum in terra
+                  figuravit et quasi Deum sibi auditorem</p>
+               <pb type="end"/>
+            </body>
+         </text>
+         <text type="translation">
+            <body>
+               <pb n="01r" type="translation" corresp="#Clm_16126_01r"/>
+               <p><emph rend="italic">Ha inizio il libro di introduzione alla conversazione di frate
+                     Filippo.</emph> Sebbene per un frate predicatore sia onorevole e motivo di
+                  merito poter parlare sempre in maniera edificatoria qualora se ne presenti
+                  l'opportunità, anche ai chierici di alto grado, quando non si siano preparati in
+                  precedenza, capita di trovarsi talvolta a corto di parole; per questo motivo io,
+                  frate Filippo dell'Ordine dei Predicatori, per introdurre me, e chiunque altro ne
+                  abbia voglia, a questo tematica, ho compilato questo volume, che ho intitolato
+                  come segue: Introduzione alla conversazione, in otto libri. Il primo libro
+                  introduce alla conversazione in mensa. Il secondo libro tratta di ciò che il frate
+                  può dire quando siede accanto al fuoco con altre persone. Il terzo libro contiene
+                  storie brevi e divertenti che il frate può raccontate ai suoi compagni di viaggio.
+                  Il quarto libro tratta ii ciò che il frate può dire quando fa visita ai malati. Il
+                  quinto libro tratta di ciò che il frate può dire a una persona afflitta per la
+                  morte di qualcun altro. Il sesto libro tratta di ciò che il frate può dire ad una
+                  persona afflitta per qualunque altra ragione. Il settimo libro tratta di ciò che
+                  può dire per mantenere una persona in amicizia. L'ottavo libro contiene diversi
+                  argomenti interessanti sui vizi e le virtù. Il primo capitolo concerne le persone
+                  con le quali il frate conddivide la mensa. Qualora un frate si trovi a mensa con
+                  delle persone che devono osservare il silenzio, quali sono i religiosi, allora è
+                  meglio che taccia, a meno che non sia il primo.</p>
+               <pb n="01v" type="translation" corresp="#Clm_16126_01v"/>
+               <p/>
+               <pb n="02r" type="translation" corresp="#Clm_16126_02r"/>
+               <p/>
+               <pb n="02v" type="translation" corresp="#Clm_16126_02v"/>
+               <p/>
+               <pb n="03r" type="translation" corresp="#Clm_16126_03r"/>
+               <p/>
+               <pb type="end"/>
+            </body>
+         </text>
+      </group>
+      <back>
+         <div>
+            <listBibl>
+               <bibl> </bibl>
+            </listBibl>
+         </div>
+      </back>
+   </text>
+</TEI>
