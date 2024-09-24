@@ -1,16 +1,16 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-datas',
+  selector: "app-datas",
   standalone: true,
   imports: [],
-  templateUrl: './datas.component.html',
-  styleUrl: './datas.component.css'
+  templateUrl: "./datas.component.html",
+  styleUrl: "./datas.component.css",
 })
 export class DatasComponent implements OnInit {
-  data = input.required();
+  data = input.required<Document | undefined>();
 
   ngOnInit() {
-    console.log(this.data());
+      console.log(this.data());
   }
 }

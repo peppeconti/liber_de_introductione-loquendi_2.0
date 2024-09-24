@@ -1,4 +1,4 @@
-import { Component, inject, DestroyRef, OnInit } from "@angular/core";
+import { Component, inject, DestroyRef, OnInit, signal } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, map, throwError } from "rxjs";
 import { DatasComponent } from "./datas/datas.component";
@@ -15,10 +15,10 @@ const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set("Accept", "t
 export class AppComponent implements OnInit {
   httpClient = inject(HttpClient);
   destroyRef = inject(DestroyRef);
-  data!: Document;
+  data = signal<Document | undefined>(undefined);
 
   ngOnInit() {
-    const subscription = this.httpClient
+    /*const subscription = this.httpClient
       .get("assets/data/liber_de_introductione_loquendi.xml", { 
         headers: headers,
         responseType: "text"
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
       .pipe(map((res) => this.parseXML(res)))
       .subscribe({
         next: (resData) => {
-          this.data = resData;
+          this.data.set(resData);
           //console.log(this.data)
         },
         error: (error) => console.log(error.message),
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
         },
       });
 
-    this.destroyRef.onDestroy(() => subscription.unsubscribe());
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());*/
   }
 
   minifyXml(xml: string): string {
