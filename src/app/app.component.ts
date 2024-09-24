@@ -1,36 +1,39 @@
 import { Component, inject, DestroyRef, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, map, throwError } from "rxjs";
+import { DatasComponent } from "./datas/datas.component";
+
+const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set("Accept", "text/xml");
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [],
+  imports: [DatasComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
 })
 export class AppComponent implements OnInit {
   httpClient = inject(HttpClient);
   destroyRef = inject(DestroyRef);
+  data!: Document;
 
   ngOnInit() {
     const subscription = this.httpClient
-      .get("assets/data/liber_de_introductione_loquendi.xml", {
-        headers: new HttpHeaders()
-          .set("Content-Type", "text/xml")
-          .append("Access-Control-Allow-Methods", "GET")
-          .append("Access-Control-Allow-Origin", "*")
-          .append(
-            "Access-Control-Allow-Headers",
-            "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method"
-          ),
-        responseType: "text",
-      })
-      .pipe(map((res) => this.parseXML(this.minifyXml(res))))
+      .get("assets/data/liber_de_introductione_loquendi.xml", { 
+        headers: headers,
+        responseType: "text"
+       })
+      //.pipe(map((res) => this.parseXML(this.minifyXml(res))))
+      .pipe(map((res) => this.parseXML(res)))
       .subscribe({
-        next: (resData) => console.log(resData),
+        next: (resData) => {
+          this.data = resData;
+          //console.log(this.data)
+        },
         error: (error) => console.log(error.message),
-        complete: () => console.log("completed"),
+        complete: () => {
+          console.log("completed")
+        },
       });
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
