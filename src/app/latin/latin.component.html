@@ -1,1 +1,5 @@
-<p>latin works!</p>
+@for (subtext of latinJson()?.childNodes || latinJson; track subtext.name) { 
+    @if (!subtext.isText) {
+        <p>ciao</p>
+    }
+}

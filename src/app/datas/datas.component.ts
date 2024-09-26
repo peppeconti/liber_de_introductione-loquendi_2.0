@@ -31,7 +31,7 @@ export class DatasComponent implements OnInit {
       .subscribe({
         next: (resData) => {
           this.data.set(resData);
-          if (this.data) console.log(this.createPages(this.data()!));
+          if (this.data) this.createPages(this.data()!);
         },
         error: (error) => console.log(error.message),
         complete: () => {
@@ -92,11 +92,11 @@ export class DatasComponent implements OnInit {
       }
     });
 
-    final.forEach(el => el.pageBreak.replaceWith(el.div))
+    final.forEach(el => el.pageBreak.replaceWith(el.div));
 
     //console.log(rr.reduce((a, b) => a + b.outerHTML, ""));
 
-    console.log(final);
-    console.log(input);
+    //console.log(final);
+    //console.log(input);
   }
 }
