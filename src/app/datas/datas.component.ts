@@ -74,13 +74,29 @@ export class DatasComponent implements OnInit {
     const ff = Array.from(pageBreakMarkers);
     const fff = ff.map(pb => {
       return {
+        pageBreak: <Element>pb,
         parent: document.createElement('div'),
         children: nextUntil(<Element>pb, [])
       }
     });
 
+    const final = fff.map(el => {
+      el.children.forEach(child => el.parent.appendChild(child))
+      //el.children.forEach(child => child.parentNode?.removeChild(child))
+      el.pageBreak.getAttributeNames().forEach(attr => {
+        el.parent.setAttribute(attr, el.pageBreak.getAttribute(attr)!)
+      })
+      return { 
+        pageBreak: el.pageBreak,
+        div: el.parent
+      }
+    });
+
+    final.forEach(el => el.pageBreak.replaceWith(el.div))
+
     //console.log(rr.reduce((a, b) => a + b.outerHTML, ""));
 
-    console.log(fff);
+    console.log(final);
+    console.log(input);
   }
 }
