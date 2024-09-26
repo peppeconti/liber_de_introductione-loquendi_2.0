@@ -59,20 +59,28 @@ export class DatasComponent implements OnInit {
   }
 
   createPages(input: Document) {
-    const pageBreakMarkers: NodeList = input?.querySelectorAll("pb");
-    const ff = Array.from(pageBreakMarkers)[0];
-    /*const ff = Array.from(pageBreakMarkers).map(pb => {
-      return (<Element>pb).nodeName}
-    );*/
-
-    console.log(this.nextUntil(<Element>ff, []));
-  }
-
-  nextUntil(start: Element, container: Element[]) {
-    while (start.nextElementSibling!.nodeName !== "pb") {
-      container.push(start.nextElementSibling!);
-      start = start.nextElementSibling!;
+    function nextUntil(start: Element, container: Element[]) {
+      while (
+        start.nextElementSibling! &&
+        start.nextElementSibling!.nodeName !== "pb"
+      ) {
+        container.push(start.nextElementSibling!);
+        start = start.nextElementSibling!;
+      }
+  
+      return container;
     }
-    return container;
+    const pageBreakMarkers: NodeList = input?.querySelectorAll("pb");
+    const ff = Array.from(pageBreakMarkers);
+    const fff = ff.map(pb => {
+      return {
+        parent: document.createElement('div'),
+        children: nextUntil(<Element>pb, [])
+      }
+    });
+
+    //console.log(rr.reduce((a, b) => a + b.outerHTML, ""));
+
+    console.log(fff);
   }
 }
