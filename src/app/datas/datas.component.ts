@@ -60,12 +60,19 @@ export class DatasComponent implements OnInit {
 
   createPages(input: Document) {
     const pageBreakMarkers: NodeList = input?.querySelectorAll("pb");
-    const ff = Array.from(pageBreakMarkers).map((pb) => {
-        return (<Element>pb).nextElementSibling;
-    });
+    const ff = Array.from(pageBreakMarkers)[0];
     /*const ff = Array.from(pageBreakMarkers).map(pb => {
       return (<Element>pb).nodeName}
     );*/
-    console.log(ff);
+
+    console.log(this.nextUntil(<Element>ff, []));
+  }
+
+  nextUntil(start: Element, container: Element[]) {
+    while (start.nextElementSibling!.nodeName !== "pb") {
+      container.push(start.nextElementSibling!);
+      start = start.nextElementSibling!;
+    }
+    return container;
   }
 }
