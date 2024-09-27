@@ -13,7 +13,7 @@ import { LatinTextComponent } from "../latin-text/latin-text.component";
 export class SortingComponent implements OnInit {
   data = input.required<Document | undefined>();
   private httpService = inject(HttpService);
-  latin_text = computed<JsonNode[]>(() => this.getLatinText());
+  latin_text = computed<JsonNode>(() => this.getLatinText());
 
   ngOnInit(): void {
     console.log(this.latin_text());
@@ -22,6 +22,6 @@ export class SortingComponent implements OnInit {
   private getLatinText() {
     const latin_document: Element = this.data()?.querySelector('[type=latin]')!;
     const latin_json = this.httpService.parseNode(latin_document);
-    return [latin_json];
+    return latin_json;
   }
 }

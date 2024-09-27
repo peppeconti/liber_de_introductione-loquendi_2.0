@@ -1,1 +1,8 @@
-<p>latin-text works!</p>
+@for (subtext of latin_text()!.childNodes || latin_text; track subtext.name) {
+@if (!subtext.isText) {
+
+<app-latin-text [latin_text]="subtext" />
+
+} @else {
+    <span>{{subtext.text}}</span>
+} }
