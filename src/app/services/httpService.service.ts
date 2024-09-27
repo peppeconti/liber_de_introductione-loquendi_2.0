@@ -10,7 +10,9 @@ const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set(
 
 const URL = "assets/data/liber_de_introductione_loquendi.xml";
 
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class HttpService {
   private httpClient = inject(HttpClient);
 
@@ -22,7 +24,8 @@ export class HttpService {
       })
       .pipe(
         map((res) => this.minifyXml(res)),
-        map((res) => this.parseXML(res))
+        map((res) => this.parseXML(res)),
+        catchError(() => throwError(() => new Error('Unable to read the XML file')))
       );
   }
 

@@ -19,7 +19,7 @@ export class DatasComponent implements OnInit {
         this.data.set(res);
         //if (this.data) this.createPages(this.data()!);
       },
-      error: (error) => console.log(error.message),
+      error: (err) => console.log(err.message),
       complete: () => {
         console.log("completed");
       },
