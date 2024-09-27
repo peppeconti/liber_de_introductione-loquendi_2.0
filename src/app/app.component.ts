@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { DatasComponent } from "./datas/datas.component";
+import { DatasComponent } from "./data-provider/data-provider.component";
 
 @Component({
   selector: "app-root",

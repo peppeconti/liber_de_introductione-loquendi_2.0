@@ -14,7 +14,7 @@ const URL = "assets/data/liber_de_introductione_loquendi.xml";
 export class HttpService {
   private httpClient = inject(HttpClient);
 
-  httpService() {
+  fetchService() {
     return this.httpClient
       .get(URL, {
         headers: headers,
