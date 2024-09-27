@@ -1,6 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { JsonNode } from "./models";
+import { nextUntil } from "../utils/utils";
 import { catchError, map, throwError } from "rxjs";
 
 const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set(
@@ -53,7 +54,7 @@ export class HttpService {
       return {
         pageBreak: <Element>pb,
         parent: document.createElement('div'),
-        children: this.nextUntil(<Element>pb, [])
+        children: nextUntil(<Element>pb, [])
       }
     });
 
@@ -73,17 +74,6 @@ export class HttpService {
     const tranformedXLM = xml;
 
     return tranformedXLM;
-  }
-
-  private nextUntil(start: Element, container: Element[]) {
-    while (
-      start.nextElementSibling! &&
-      start.nextElementSibling!.nodeName !== "pb"
-    ) {
-      container.push(start.nextElementSibling!);
-      start = start.nextElementSibling!;
-    }
-    return container;
   }
 
   parseNode(node: Node) {

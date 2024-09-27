@@ -1,0 +1,49 @@
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.latin p {
+    line-height: 2rem;
+    margin: 0;
+    text-align: justify;
+    font-size: medium;
+}
+
+.note {
+    text-decoration: none;
+}
+
+.app {
+    color: rgb(197, 0, 0);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.app:hover {
+    opacity: .6;
+}
+
+.app-icon {
+    height: .85rem;
+}
+
+.app-icon img {
+    height: inherit;
+}
+
+@media screen and (max-width: 768px) {
+    .translation-open {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .latin p {
+        line-height: 1.75rem;
+        font-size: small;
+    }
+}
