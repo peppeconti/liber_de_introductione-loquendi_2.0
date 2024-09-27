@@ -23,8 +23,9 @@ export class HttpService {
         responseType: "text",
       })
       .pipe(
-        map((res) => this.minifyXml(res)),
-        map((res) => this.parseXML(res)),
+        map(res => this.minifyXml(res)),
+        map(res => this.parseXML(res)),
+        map(res => this.createPages(res)),
         catchError(() => throwError(() => new Error('Unable to read the XML file')))
       );
   }
@@ -43,6 +44,46 @@ export class HttpService {
     const parser: DOMParser = new DOMParser();
     const xml: Document = parser.parseFromString(res, "application/xml");
     return xml;
+  }
+
+  private createPages(xml: Document) {
+
+    const pageBreakMarkers: NodeList = xml?.querySelectorAll("pb");
+    const elements = Array.from(pageBreakMarkers).map(pb => {
+      return {
+        pageBreak: <Element>pb,
+        parent: document.createElement('div'),
+        children: this.nextUntil(<Element>pb, [])
+      }
+    });
+
+    const toBeReplaced = elements.map(el => {
+      el.children.forEach(child => el.parent.appendChild(child))
+      el.pageBreak.getAttributeNames().forEach(attr => {
+        el.parent.setAttribute(attr, el.pageBreak.getAttribute(attr)!)
+      })
+      return { 
+        pageBreak: el.pageBreak,
+        div: el.parent
+      }
+    });
+
+    toBeReplaced.forEach(el => el.pageBreak.replaceWith(el.div));
+
+    const tranformedXLM = xml;
+
+    return tranformedXLM;
+  }
+
+  private nextUntil(start: Element, container: Element[]) {
+    while (
+      start.nextElementSibling! &&
+      start.nextElementSibling!.nodeName !== "pb"
+    ) {
+      container.push(start.nextElementSibling!);
+      start = start.nextElementSibling!;
+    }
+    return container;
   }
 
   parseNode(node: Node) {

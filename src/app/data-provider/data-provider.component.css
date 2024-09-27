@@ -1,3 +1,4 @@
-.data {
+#main, header, footer {
     text-align: center;
+    padding: 2rem 0;
 } 
