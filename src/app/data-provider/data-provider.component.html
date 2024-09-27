@@ -1,6 +1,9 @@
-@if (data()) {
-    <p>It works!</p>
-} @else {
-    <p>Fra</p>
-}
-
+<div class="data">
+  @if (isFetching() && !hasError()) {
+  <p>Fetching data...</p>
+  } @else if(hasError()) {
+  <p>{{hasError()}}</p>
+  } @else {
+    <p>Data available!</p>
+  }
+</div>

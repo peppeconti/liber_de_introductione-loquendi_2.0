@@ -9,24 +9,24 @@ import { HttpService } from "../services/httpService.service";
   styleUrl: "./data-provider.component.css",
 })
 export class DatasComponent implements OnInit {
+  isFetching = signal<boolean>(false);
+  hasError = signal<string | undefined>(undefined);
   private httpService = inject(HttpService);
   private destroyRef = inject(DestroyRef);
   data = signal<Document | undefined>(undefined);
 
   ngOnInit() {
+    this.isFetching.set(true);
     const subscription = this.httpService.fetchService().subscribe({
-      next: (res) => {
-        this.data.set(res);
-        //if (this.data) this.createPages(this.data()!);
-      },
-      error: (err) => console.log(err.message),
-      complete: () => {
-        console.log("completed");
-      },
+      next: (res) => this.data.set(res),
+      error: (err) => this.hasError.set(err.message),
+      complete: () => this.isFetching.set(false),
     });
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
+
+  //if (this.data) this.createPages(this.data()!);
 
   /*createPages(input: Document) {
     function nextUntil(start: Element, container: Element[]) {
