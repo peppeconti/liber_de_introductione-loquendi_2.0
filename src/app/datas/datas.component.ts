@@ -26,8 +26,8 @@ export class DatasComponent implements OnInit {
         headers: headers,
         responseType: "text",
       })
-      //.pipe(map((res) => this.parseXML(this.minifyXml(res))))
-      .pipe(map((res) => this.parseXML(res)))
+      .pipe(map((res) => this.parseXML(this.minifyXml(res))))
+      //.pipe(map((res) => this.parseXML(res)))
       .subscribe({
         next: (resData) => {
           this.data.set(resData);
@@ -42,7 +42,7 @@ export class DatasComponent implements OnInit {
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
 
-  /*minifyXml(xml: string): string {
+  minifyXml(xml: string): string {
     let minified: string;
     minified = xml
       .split(/(?<=>)\s*(?=<)/)
@@ -50,7 +50,7 @@ export class DatasComponent implements OnInit {
       .split(/\n/)
       .join("");
     return minified;
-  }*/
+  }
 
   parseXML(res: string): Document {
     const parser: DOMParser = new DOMParser();
