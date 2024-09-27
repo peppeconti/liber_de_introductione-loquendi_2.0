@@ -5,7 +5,7 @@
   } @else if(hasError()) {
   <p>{{ hasError() }}</p>
   } @else {
-  <p>Data available!</p>
+  <app-sorting [data]="data()" />
   }
 </main>
 <footer>Footer</footer>

@@ -1,10 +1,11 @@
 import { Component, signal, inject, OnInit, DestroyRef } from "@angular/core";
 import { HttpService } from "../services/httpService.service";
+import { SortingComponent } from "./sorting/sorting.component";
 
 @Component({
   selector: "app-data-provider",
   standalone: true,
-  imports: [],
+  imports: [SortingComponent],
   templateUrl: "./data-provider.component.html",
   styleUrl: "./data-provider.component.css",
 })
