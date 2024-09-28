@@ -4,7 +4,7 @@ import { HttpService } from '../../services/httpService.service';
 import { LatinTextComponent } from "./latin-text/latin-text.component";
 
 @Component({
-  selector: 'app-sorting',
+  selector: 'app-main',
   standalone: true,
   imports: [LatinTextComponent],
   templateUrl: './main.component.html',

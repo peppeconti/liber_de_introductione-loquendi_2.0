@@ -1,4 +1,24 @@
-:host {
-    text-align: center;
-    padding: 2rem 0;
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.75rem 2rem;
+  background-color: #1d1d1d;
+  color: #fff;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.credits h1,
+.credits h2 {
+  text-align: center;
+  font-family: "Eagle Lake", serif;
+  font-weight: 400;
+}
+
+.credits h1 {
+  font-size: 1.5rem;
 }
