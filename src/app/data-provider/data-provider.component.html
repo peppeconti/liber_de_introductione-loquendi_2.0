@@ -1,11 +1,8 @@
-<header>Header</header>
-<main id="main">
-  @if (isFetching() && !hasError()) {
-  <p>Fetching data...</p>
-  } @else if(hasError()) {
-  <p>{{ hasError() }}</p>
-  } @else {
-  <app-sorting [data]="data()" />
-  }
-</main>
-<footer>Footer</footer>
+@if (isFetching() && !hasError()) {
+<p>Fetching data...</p>
+} @else if(hasError()) {
+<p>{{ hasError() }}</p>
+} @else {
+<header [appHeader]></header>
+<app-sorting />
+}

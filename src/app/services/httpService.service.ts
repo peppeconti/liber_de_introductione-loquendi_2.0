@@ -1,4 +1,4 @@
-import { Injectable, inject } from "@angular/core";
+import { Injectable, inject, signal } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { JsonNode } from "./models";
 import { nextUntil } from "../utils/utils";
@@ -15,6 +15,7 @@ const URL = "assets/data/liber_de_introductione_loquendi.xml";
   providedIn: "root",
 })
 export class HttpService {
+  data = signal<Document | undefined>(undefined);
   private httpClient = inject(HttpClient);
 
   fetchService() {
