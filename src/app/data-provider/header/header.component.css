@@ -6,6 +6,12 @@
   color: #fff;
 }
 
+.icon {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+}
+
 .credits {
   display: flex;
   flex-direction: column;
