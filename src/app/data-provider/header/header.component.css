@@ -18,13 +18,12 @@
   gap: 1rem;
 }
 
-.credits h1,
-.credits h2 {
+.author, .title {
   text-align: center;
   font-family: "Eagle Lake", serif;
   font-weight: 400;
 }
 
-.credits h1 {
+.title {
   font-size: 1.5rem;
 }
