@@ -1,7 +1,6 @@
 import { Component, computed, inject } from "@angular/core";
 import { HttpService } from "../../services/httpService.service";
 
-
 @Component({
   selector: "[appHeader]",
   standalone: true,
@@ -11,10 +10,10 @@ import { HttpService } from "../../services/httpService.service";
 })
 export class HeaderComponent {
   private httpService = inject(HttpService);
-  title = computed<string>(() => this.getElement('msItem title[type=short]'));
-  author = computed<string>(() => this.getElement('msItem author'));
+  title = computed<string>(() => this.getInnerText("msItem title[type=short]"));
+  author = computed<string>(() => this.getInnerText("msItem author"));
 
-  private getElement(selector:string) {
+  private getInnerText(selector: string) {
     const element: Element = this.httpService.data()?.querySelector(selector)!;
     return element.innerHTML;
   }
