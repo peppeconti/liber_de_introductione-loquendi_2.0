@@ -1,6 +1,6 @@
 import { Component, input } from "@angular/core";
-import { JsonNode } from "../../../services/models";
-import { isSubset, findAttributeValue } from "../../../utils/utils";
+import { isSubset, findAttributeValue } from "../../../../utils/utils";
+import { JsonNode } from "../../../../services/models";
 
 @Component({
   selector: "app-latin-text",

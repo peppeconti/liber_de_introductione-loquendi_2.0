@@ -1,1 +1,8 @@
-<p>edition works!</p>
+@if (isFetching() && !hasError()) {
+<p>Fetching data...</p>
+} @else if(hasError()) {
+<p>{{ hasError() }}</p>
+} @else {
+<app-header />
+<app-main />
+}

@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
-import { JsonNode } from '../../services/models';
-import { HttpService } from '../../services/httpService.service';
+import { JsonNode } from '../../../services/models';
+import { HttpService } from '../../../services/httpService.service';
 import { LatinTextComponent } from "./latin-text/latin-text.component";
 
 @Component({
