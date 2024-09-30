@@ -1,12 +1,12 @@
 <header class="header">
-  <div class="icon">
-    <fa-icon [icon]="faCoffee"/>
-  </div>
+  <figure class="icon">
+    <fa-icon [icon]="faHouse"/>
+  </figure>
   <div class="credits">
     <h2 class="author">{{ author() }}</h2>
     <h1 class="title">{{ title().toUpperCase() }}</h1>
   </div>
-  <div class="icon">
-    <fa-icon [icon]="faCoffee"/>
-  </div>
+  <figure class="icon" (click)="toggleMenu()">
+    <fa-icon [class.open]="this.open()" [icon]="this.open()? faGears : faGear"/>
+  </figure>
 </header>

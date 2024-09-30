@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 1.25rem 2rem;
+  padding: 1.25rem 4rem;
   background-color: #1d1d1d;
   color: #fff;
 }
@@ -9,7 +9,16 @@
 .icon {
     display: flex;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2.75rem;
+    cursor: pointer;
+}
+
+.icon:hover {
+  opacity: .8;
+}
+
+.open {
+  font-size: 2.25rem;
 }
 
 .credits {
