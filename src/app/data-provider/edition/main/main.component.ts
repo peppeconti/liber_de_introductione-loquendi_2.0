@@ -2,7 +2,6 @@ import { Component, computed, inject, OnInit, input } from "@angular/core";
 import { JsonNode } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-main",
@@ -12,7 +11,6 @@ import { Router } from "@angular/router";
   styleUrl: "./main.component.css",
 })
 export class MainComponent implements OnInit {
-  private router = inject(Router);
   private httpService = inject(HttpService);
   latin_text = computed<JsonNode[] | undefined | null>(() =>
     this.getLatinText()

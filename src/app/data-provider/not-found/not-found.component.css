@@ -1,0 +1,15 @@
+
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+}
+
+.not-found p {
+    text-align: center;
+    font-size: 5rem;
+}

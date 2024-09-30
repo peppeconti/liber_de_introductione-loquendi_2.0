@@ -3,6 +3,10 @@
 } @else if(hasError) {
 <p>{{ hasError }}</p>
 } @else {
-<app-header />
-<app-main [folio]="this.folio()" />
+    @if(isExistingFolio()) {
+        <app-header />
+        <app-main [folio]="this.folio()" />
+    } @else {
+        <app-not-found/>
+    }
 }
