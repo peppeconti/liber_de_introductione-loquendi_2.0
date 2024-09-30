@@ -1,7 +1,7 @@
 import { Component, signal, inject, OnInit, DestroyRef } from "@angular/core";
 import { HttpService } from "../services/httpService.service";
 import { MainComponent } from "./main/main.component";
-import { HeaderComponent } from "./header/header.component";
+import { HeaderComponent } from "./edition/header/header.component";
 
 @Component({
   selector: "app-data-provider",

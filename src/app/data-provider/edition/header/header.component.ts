@@ -1,5 +1,5 @@
 import { Component, computed, inject } from "@angular/core";
-import { HttpService } from "../../services/httpService.service";
+import { HttpService } from "../../../services/httpService.service";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
