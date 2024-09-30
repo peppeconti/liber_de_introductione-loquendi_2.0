@@ -10,7 +10,7 @@ import { JsonNode } from "../../../../services/models";
   styleUrl: "./latin-text.component.css",
 })
 export class LatinTextComponent {
-  latin_text = input.required<JsonNode | undefined>();
+  latin_text = input.required<JsonNode[] | undefined>();
 
    // making imported functions available for the HTML template
    isSubset = isSubset;

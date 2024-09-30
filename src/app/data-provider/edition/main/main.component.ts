@@ -12,7 +12,7 @@ import { LatinTextComponent } from "./latin-text/latin-text.component";
 })
 export class MainComponent implements OnInit {
   private httpService = inject(HttpService);
-  latin_text = computed<JsonNode[]>(() => this.getLatinText());
+  latin_text = computed<Array<JsonNode>>(() => this.getLatinText());
   folio = input.required<string>()
 
   ngOnInit(): void {
