@@ -1,16 +1,16 @@
+.latin p {
+    line-height: 2rem;
+    margin: 0;
+    text-align: justify;
+    font-size: medium;
+}
+
 .italic {
     font-style: italic;
 }
 
 .bold {
     font-weight: 700;
-}
-
-.latin p {
-    line-height: 2rem;
-    margin: 0;
-    text-align: justify;
-    font-size: medium;
 }
 
 .note {

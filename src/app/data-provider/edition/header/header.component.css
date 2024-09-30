@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 1.75rem 2rem;
+  padding: 1.25rem 2rem;
   background-color: #1d1d1d;
   color: #fff;
 }
@@ -15,7 +15,7 @@
 .credits {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: .5rem;
 }
 
 .author, .title {

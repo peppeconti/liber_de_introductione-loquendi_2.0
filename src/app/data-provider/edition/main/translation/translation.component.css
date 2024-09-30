@@ -1,0 +1,10 @@
+.translation p {
+    line-height: 2rem;
+    margin: 0;
+    text-align: justify;
+    font-size: medium;
+}
+
+.italic {
+    font-style: italic;
+}
