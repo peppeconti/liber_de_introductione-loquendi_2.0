@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, input } from "@angular/core";
 import { HeaderComponent } from "./header/header.component";
 import { MainComponent } from "./main/main.component";
 import { HttpService } from "../../services/httpService.service";
@@ -12,6 +12,7 @@ import { HttpService } from "../../services/httpService.service";
 })
 export class EditionComponent {
   private httpService = inject(HttpService);
+  folio = input.required<string>();
 
   get isFetching(): boolean {
     return this.httpService.isFetching();

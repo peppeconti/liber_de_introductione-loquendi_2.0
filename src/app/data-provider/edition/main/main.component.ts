@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, input } from '@angular/core';
 import { JsonNode } from '../../../services/models';
 import { HttpService } from '../../../services/httpService.service';
 import { LatinTextComponent } from "./latin-text/latin-text.component";
@@ -12,15 +12,16 @@ import { LatinTextComponent } from "./latin-text/latin-text.component";
 })
 export class MainComponent implements OnInit {
   private httpService = inject(HttpService);
-  latin_text = computed<JsonNode>(() => this.getLatinText());
+  latin_text = computed<JsonNode[]>(() => this.getLatinText());
+  folio = input.required<string>()
 
   ngOnInit(): void {
     console.log(this.latin_text());
   }
 
   private getLatinText() {
-    const latin_document: Element = this.httpService.data()?.querySelector('[type=latin]')!;
+    const latin_document: Element = this.httpService.data()?.getElementById(this.folio())!;
     const latin_json = this.httpService.parseNode(latin_document);
-    return latin_json;
+    return [latin_json];
   }
 }

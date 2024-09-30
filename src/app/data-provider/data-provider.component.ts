@@ -20,7 +20,7 @@ export class DataProviderComponent implements OnInit {
       error: (err) => this.httpService.hasError.set(err.message),
       complete: () => {
         this.httpService.isFetching.set(false);
-        console.log(this.httpService.data());
+        //console.log(this.httpService.data());
       },
     });
 
