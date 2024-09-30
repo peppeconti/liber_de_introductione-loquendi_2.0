@@ -4,12 +4,17 @@ import { EditionComponent } from './data-provider/edition/edition.component';
 
 export const routes: Routes = [
   {
-    path: 'credits',
-    component: CreditsComponent ,
+    path: '',
+    redirectTo: 'credits',
+    pathMatch: 'prefix',
   },
   {
-    path: ':folio',
-    component: EditionComponent,
+    path: 'credits',
+    component: CreditsComponent
+  },
+  {
+    path: 'edition/:folio',
+    component: EditionComponent
   },
   /*{
     path: '**',
