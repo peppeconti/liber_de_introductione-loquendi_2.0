@@ -1,11 +1,11 @@
 import { Component, signal, inject, OnInit, DestroyRef } from "@angular/core";
 import { HttpService } from "../services/httpService.service";
-import { EditionComponent } from "./edition/edition.component";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-data-provider",
   standalone: true,
-  imports: [EditionComponent],
+  imports: [RouterOutlet],
   templateUrl: "./data-provider.component.html",
   styleUrl: "./data-provider.component.css",
 })
