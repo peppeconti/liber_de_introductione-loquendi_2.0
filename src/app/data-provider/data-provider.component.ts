@@ -9,7 +9,7 @@ import { RouterOutlet } from "@angular/router";
   templateUrl: "./data-provider.component.html",
   styleUrl: "./data-provider.component.css",
 })
-export class DatasComponent implements OnInit {
+export class DataProviderComponent implements OnInit {
   isFetching = signal<boolean>(false);
   hasError = signal<string | undefined>(undefined);
   private httpService = inject(HttpService);
