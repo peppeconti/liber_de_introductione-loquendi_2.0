@@ -1,15 +1,16 @@
 import { Component, computed, inject, input, OnInit } from "@angular/core";
-import { JsonNode } from "../../../services/models";
+import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
 import { TranslationComponent } from "./translation/translation.component";
 import { SettingService } from "../../../services/settingService.service";
 import { SelectComponent } from "./select/select.component";
+import { NavigationComponent } from "./navigation/navigation.component";
 
 @Component({
   selector: "app-main",
   standalone: true,
-  imports: [LatinTextComponent, TranslationComponent, SelectComponent],
+  imports: [LatinTextComponent, TranslationComponent, SelectComponent, NavigationComponent],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
@@ -22,11 +23,18 @@ export class MainComponent implements OnInit {
   translation = computed<JsonNode[] | undefined | null>(() =>
     this.getTranslation(this.httpService.data()!)
   );
-  folios = computed<(string | null)[]>(() => this.getFolios(this.httpService.data()!));
+  folios = computed<(string | null)[]>(() =>
+    this.getFolios(this.httpService.data()!)
+  );
   folio = input.required<string>();
+  navigation = computed<NavInfos>(() =>
+    this.setNavInfo(this.httpService.data()!)
+  );
 
   ngOnInit(): void {
+    console.log(this.folio());
     console.log(this.folios());
+    console.log(this.navigation());
   }
 
   get translationActive() {
@@ -67,5 +75,18 @@ export class MainComponent implements OnInit {
       (<Element>e).getAttribute("id")
     );
     return folios;
+  }
+
+  private setNavInfo(xml: Document): NavInfos {
+    const latin_document: HTMLElement | null | undefined = xml.getElementById(
+      this.folio()
+    );
+    const next: string | null | undefined =
+      latin_document?.getAttribute("next");
+    const prev: string | null | undefined =
+      latin_document?.getAttribute("prev");
+    const active: string | null | undefined =
+      latin_document?.getAttribute("id");
+    return { active, next, prev };
   }
 }

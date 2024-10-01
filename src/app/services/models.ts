@@ -11,3 +11,9 @@ export type Settings = {
   showApparatus: boolean,
   showNotes: boolean
 }
+
+export type NavInfos = {
+  next: string | undefined | null,
+  prev: string | undefined | null,
+  active: string | undefined | null
+}

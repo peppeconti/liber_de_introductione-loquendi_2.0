@@ -1,0 +1,33 @@
+.nav-bottom {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.start {
+    justify-content: flex-start;
+}
+
+.end {
+    justify-content: flex-end;
+}
+
+.angles {
+    cursor: pointer;
+    caret-color: transparent;
+}
+
+.angles:hover {
+    opacity: .8;
+}
+
+fa-icon {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+}

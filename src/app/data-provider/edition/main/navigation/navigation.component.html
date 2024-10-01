@@ -1,0 +1,21 @@
+<nav
+  class="nav-bottom"
+  [class.start]="this.navigation().prev && !this.navigation().next"
+  [class.end]="!this.navigation().prev && this.navigation().next"
+>
+  @if(this.navigation().prev) {
+  <span
+    class="angles"
+    [routerLink]="['/edition', getLink(this.navigation().prev)]"
+  >
+    <fa-icon [icon]="angleLeft" />
+  </span>
+  }
+
+  <span
+    class="angles"
+    [routerLink]="['/edition', getLink(this.navigation().next)]"
+  >
+    <fa-icon [icon]="angleRight" />
+  </span>
+</nav>

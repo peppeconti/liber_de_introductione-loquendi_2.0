@@ -1,6 +1,6 @@
 <main>
   <div class="select">
-    <app-select [folios]="folios()" [folio]="folio()"  />
+    <app-select [folios]="folios()" [folio]="folio()" />
   </div>
   <div class="text" [class.translation-active]="translationActive">
     <app-latin-text [latin_text]="latin_text()" />
@@ -8,4 +8,5 @@
     <app-translation [translation]="translation()" />
     }
   </div>
+  <app-navigation [navigation]="this.navigation()" />
 </main>
