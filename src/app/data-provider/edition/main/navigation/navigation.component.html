@@ -10,12 +10,12 @@
   >
     <fa-icon [icon]="angleLeft" />
   </span>
-  }
-
+  } @if(this.navigation().next) {
   <span
     class="angles"
     [routerLink]="['/edition', getLink(this.navigation().next)]"
   >
     <fa-icon [icon]="angleRight" />
   </span>
+  }
 </nav>
