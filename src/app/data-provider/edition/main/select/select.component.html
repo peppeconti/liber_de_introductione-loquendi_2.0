@@ -19,8 +19,17 @@
    {{folio()}}
   </button>
   <ul class="list dropdown-menu">
-    @for (folio of folios(); track folio) {
-        <li><a class="dropdown-item" [routerLink]="['/edition', folio]" routerLinkActive="current">{{ folio }}</a></li>
-    }
+    <li><a class="dropdown-item" [routerLink]="['/edition', 'Clm_16126_01r']" routerLinkActive="current">Clm_16126_01r</a></li>
+    <li><a class="dropdown-item" [routerLink]="['/edition', 'Clm_16126_01v']" routerLinkActive="current">Clm_16126_01v</a></li>
+    <li><a class="dropdown-item" [routerLink]="['/edition', 'Clm_16126_02r']" routerLinkActive="current">Clm_16126_02r</a></li>
+    <li><a class="dropdown-item" [routerLink]="['/edition', 'Clm_16126_02v']" routerLinkActive="current">Clm_16126_02v</a></li>
+    <li><a class="dropdown-item" [routerLink]="['/edition', 'Clm_16126_03r']" routerLinkActive="current">Clm_16126_03r</a></li>
+   
   </ul>
 </div>
+
+<!--
+ @for (folio of folios(); track folio) {
+        <li><a class="dropdown-item" [routerLink]="['/edition', folio]" routerLinkActive="current">{{ folio }}</a></li>
+    }
+-->

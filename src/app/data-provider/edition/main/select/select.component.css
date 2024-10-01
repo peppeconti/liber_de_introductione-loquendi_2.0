@@ -16,3 +16,7 @@ ul.list {
     overflow-y: auto;
 }
 
+a.current {
+    background-color: aquamarine;
+}
+
