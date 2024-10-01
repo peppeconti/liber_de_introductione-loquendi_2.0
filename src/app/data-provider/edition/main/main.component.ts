@@ -3,6 +3,7 @@ import { JsonNode } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
 import { TranslationComponent } from "./translation/translation.component";
+import { SettingService } from "../../../services/settingService.service";
 
 @Component({
   selector: "app-main",
@@ -12,6 +13,7 @@ import { TranslationComponent } from "./translation/translation.component";
   styleUrl: "./main.component.css",
 })
 export class MainComponent implements OnInit {
+  settingService = inject(SettingService);
   private httpService = inject(HttpService);
   latin_text = computed<JsonNode[] | undefined | null>(() =>
     this.getLatinText(this.httpService.data()!)
