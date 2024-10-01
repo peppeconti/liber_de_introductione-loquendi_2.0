@@ -1,4 +1,4 @@
-<main class="main" [class.translation-open]="translationActive">
+<main class="main" [class.translation-active]="translationActive">
   <app-latin-text [latin_text]="latin_text()" /> 
   @if(translationActive) {
     <app-translation [translation]="translation()" />

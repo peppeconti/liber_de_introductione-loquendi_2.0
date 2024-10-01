@@ -2,7 +2,7 @@
   padding: 2rem 20rem;
 }
 
-.main.translation-open {
+.main.translation-active {
   padding: 2rem 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;

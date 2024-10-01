@@ -12,7 +12,7 @@ import { SettingService } from "../../../services/settingService.service";
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
-export class MainComponent /*implements OnInit*/ {
+export class MainComponent {
   private settingService = inject(SettingService);
   private httpService = inject(HttpService);
   latin_text = computed<JsonNode[] | undefined | null>(() =>
@@ -22,11 +22,6 @@ export class MainComponent /*implements OnInit*/ {
     this.getTranslation(this.httpService.data()!)
   );
   folio = input.required<string>();
-
-  /*ngOnInit(): void {
-    console.log(this.httpService.data());
-    console.log(this.translation());
-  }*/
 
   get translationActive() {
     return this.settingService.getSettings().showTranslation;
