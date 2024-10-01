@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, input } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { JsonNode } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
@@ -12,8 +12,8 @@ import { SettingService } from "../../../services/settingService.service";
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
-export class MainComponent implements OnInit {
-  settingService = inject(SettingService);
+export class MainComponent /*implements OnInit*/ {
+  private settingService = inject(SettingService);
   private httpService = inject(HttpService);
   latin_text = computed<JsonNode[] | undefined | null>(() =>
     this.getLatinText(this.httpService.data()!)
@@ -23,9 +23,13 @@ export class MainComponent implements OnInit {
   );
   folio = input.required<string>();
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     console.log(this.httpService.data());
     console.log(this.translation());
+  }*/
+
+  get translationActive() {
+    return this.settingService.getSettings().showTranslation;
   }
 
   private getLatinText(xml: Document) {
@@ -40,7 +44,7 @@ export class MainComponent implements OnInit {
     }
   }
 
-  getTranslation(xml: Document) {
+  private getTranslation(xml: Document) {
     const translations: Array<any> = Array.from(
       xml.querySelectorAll(`div[type=translation]`)
     );

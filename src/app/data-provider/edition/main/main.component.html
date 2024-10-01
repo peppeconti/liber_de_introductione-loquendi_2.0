@@ -1,6 +1,6 @@
-<main class="main" [class.translation-open]="this.settingService.getSettings().showTranslation">
+<main class="main" [class.translation-open]="translationActive">
   <app-latin-text [latin_text]="latin_text()" /> 
-  @if(this.settingService.getSettings().showTranslation) {
+  @if(translationActive) {
     <app-translation [translation]="translation()" />
   }
 </main>
