@@ -8,15 +8,15 @@
     <h2 class="author">{{ author() }}</h2>
     <h1 class="title">{{ title().toUpperCase() }}</h1>
   </div>
-  <figure
-    class="icon"
-    data-bs-toggle="dropdown"
-    data-bs-auto-close="outside"
-    aria-expanded="false"
-  >
-    <div class="icon-container">
-      <fa-icon class="absolute close" [icon]="faGear" />
-      <fa-icon class="absolute open" [icon]="faGears" />
+  <figure class="icon">
+    <div
+      class="icon-container"
+      data-bs-toggle="dropdown"
+      data-bs-auto-close="outside"
+      aria-expanded="false"
+    >
+      <fa-icon class="close" [icon]="faGear" />
+      <fa-icon class="open" [icon]="faGears" />
     </div>
     <app-dropdown />
   </figure>
