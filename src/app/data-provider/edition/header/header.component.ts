@@ -2,11 +2,12 @@ import { Component, computed, inject, signal } from "@angular/core";
 import { HttpService } from "../../../services/httpService.service";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faGear, faGears, faHouse } from "@fortawesome/free-solid-svg-icons";
+import { DropdownComponent } from "./dropdown/dropdown.component";
 
 @Component({
   selector: "app-header",
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, DropdownComponent],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.css"
 })
@@ -14,7 +15,7 @@ export class HeaderComponent {
   private httpService = inject(HttpService);
   title = computed<string>(() => this.getInnerText("msItem title[type=short]"));
   author = computed<string>(() => this.getInnerText("msItem author"));
-  open = signal<boolean>(false);
+  //open = signal<boolean>(false);
   faHouse = faHouse;
   faGear = faGear;
   faGears = faGears;
@@ -24,7 +25,7 @@ export class HeaderComponent {
     return element.innerHTML;
   }
 
-  toggleMenu() {
+  /*toggleMenu() {
     this.open.update(prev => !prev);
-  }
+  }*/
 }

@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 1.25rem 4rem;
+  padding: 1rem 4rem;
   background-color: #1d1d1d;
   color: #fff;
 }
@@ -9,21 +9,49 @@
 .icon {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 2.75rem;
     cursor: pointer;
+    margin: 0;
+    width: 50px;
+    height: auto;
 }
 
-.icon:hover {
+.icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.icon-container:hover {
   opacity: .8;
 }
 
 .open {
-  font-size: 2.25rem;
+  display: none;
+}
+
+.show .open {
+  display: block;
+}
+
+.show .close {
+  display: none;
+}
+
+.show {
+  font-size: 2.5rem;
 }
 
 .credits {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: .5rem;
 }
 
@@ -31,6 +59,11 @@
   text-align: center;
   font-family: "Eagle Lake", serif;
   font-weight: 400;
+  margin-bottom: 0;
+}
+
+.author {
+  font-size: 1rem;
 }
 
 .title {

@@ -5,6 +5,11 @@ import { NotFoundComponent } from './data-provider/not-found/not-found.component
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'credits',
+    pathMatch: 'full'
+  },
+  {
     path: 'credits',
     component: CreditsComponent
   },

@@ -1,12 +1,23 @@
 <header class="header">
   <figure class="icon">
-    <fa-icon [icon]="faHouse"/>
+    <div class="icon-container">
+      <fa-icon [icon]="faHouse" />
+    </div>
   </figure>
   <div class="credits">
     <h2 class="author">{{ author() }}</h2>
     <h1 class="title">{{ title().toUpperCase() }}</h1>
   </div>
-  <figure class="icon" (click)="toggleMenu()">
-    <fa-icon [class.open]="this.open()" [icon]="this.open()? faGears : faGear"/>
+  <figure
+    class="icon"
+    data-bs-toggle="dropdown"
+    data-bs-auto-close="outside"
+    aria-expanded="false"
+  >
+    <div class="icon-container">
+      <fa-icon class="absolute close" [icon]="faGear" />
+      <fa-icon class="absolute open" [icon]="faGears" />
+    </div>
+    <app-dropdown />
   </figure>
 </header>
