@@ -1,6 +1,6 @@
 <main>
   <div class="select">
-    <app-select />
+    <app-select [folios]="folios()" [folio]="folio()"  />
   </div>
   <div class="text" [class.translation-active]="translationActive">
     <app-latin-text [latin_text]="latin_text()" />

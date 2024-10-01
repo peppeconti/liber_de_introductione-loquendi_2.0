@@ -16,20 +16,11 @@
     data-bs-toggle="dropdown"
     aria-expanded="false"
   >
-    Action
+   {{folio()}}
   </button>
   <ul class="list dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
+    @for (folio of folios(); track folio) {
+        <li><a class="dropdown-item" [routerLink]="['edition', folio]" preserveFragment="false">{{folio}}</a></li>
+    }
   </ul>
 </div>

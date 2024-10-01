@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, input, OnInit } from "@angular/core";
 import { JsonNode } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
@@ -13,7 +13,7 @@ import { SelectComponent } from "./select/select.component";
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   private settingService = inject(SettingService);
   private httpService = inject(HttpService);
   latin_text = computed<JsonNode[] | undefined | null>(() =>
@@ -22,7 +22,12 @@ export class MainComponent {
   translation = computed<JsonNode[] | undefined | null>(() =>
     this.getTranslation(this.httpService.data()!)
   );
+  folios = computed<(string | null)[]>(() => this.getFolios(this.httpService.data()!));
   folio = input.required<string>();
+
+  ngOnInit(): void {
+    console.log(this.folios());
+  }
 
   get translationActive() {
     return this.settingService.getSettings().showTranslation;
@@ -52,5 +57,15 @@ export class MainComponent {
       translation[0]
     );
     return [translationJson];
+  }
+
+  private getFolios(xml: Document) {
+    const pages: HTMLElement[] = Array.from(
+      xml.querySelectorAll(`div[type=latin]`)
+    );
+    const folios: (string | null)[] = pages.map((e) =>
+      (<Element>e).getAttribute("id")
+    );
+    return folios;
   }
 }
