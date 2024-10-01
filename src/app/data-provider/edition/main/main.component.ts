@@ -4,11 +4,12 @@ import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
 import { TranslationComponent } from "./translation/translation.component";
 import { SettingService } from "../../../services/settingService.service";
+import { SelectComponent } from "./select/select.component";
 
 @Component({
   selector: "app-main",
   standalone: true,
-  imports: [LatinTextComponent, TranslationComponent],
+  imports: [LatinTextComponent, TranslationComponent, SelectComponent],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })

@@ -1,8 +1,15 @@
-.main {
+.select {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    padding-top: 4rem;
+}
+
+.text {
   padding: 2rem 20rem;
 }
 
-.main.translation-active {
+.text.translation-active {
   padding: 2rem 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;

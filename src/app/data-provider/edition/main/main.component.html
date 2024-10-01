@@ -1,6 +1,11 @@
-<main class="main" [class.translation-active]="translationActive">
-  <app-latin-text [latin_text]="latin_text()" /> 
-  @if(translationActive) {
+<main>
+  <div class="select">
+    <app-select />
+  </div>
+  <div class="text" [class.translation-active]="translationActive">
+    <app-latin-text [latin_text]="latin_text()" />
+    @if(translationActive) {
     <app-translation [translation]="translation()" />
-  }
+    }
+  </div>
 </main>
