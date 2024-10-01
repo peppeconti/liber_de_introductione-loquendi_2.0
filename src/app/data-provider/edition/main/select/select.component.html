@@ -20,7 +20,7 @@
   </button>
   <ul class="list dropdown-menu">
     @for (folio of folios(); track folio) {
-        <li><a class="dropdown-item" [routerLink]="['edition', folio]" preserveFragment="false">{{folio}}</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/edition', folio]" routerLinkActive="current">{{ folio }}</a></li>
     }
   </ul>
 </div>
