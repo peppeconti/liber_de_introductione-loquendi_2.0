@@ -1,25 +1,22 @@
-@for (subtext of latin_text(); track subtext.tagName) {
-@if (subtext.tagName === 'div' && isSubset([{name: 'type', value: 'latin'}],
-subtext.attributes)) {
+@for (subtext of latin_text(); track subtext.tagName) { @if (subtext.tagName ===
+'div' && isSubset([{name: 'type', value: 'latin'}], subtext.attributes)) {
 <article
   id="{{ findAttributeValue(subtext.attributes, 'id') }}"
   class="{{ findAttributeValue(subtext.attributes, 'type') }}"
 >
   @if (!subtext.isText) {
-  <app-latin-text [latin_text]="subtext.childNodes!" />
-  }
+  <app-latin-text [latin_text]="subtext.childNodes!" />}
 </article>
 } @else if (subtext.tagName === 'p') {
 <p>
-  @if (!subtext.isText) {
-  <app-latin-text [latin_text]="subtext.childNodes!" />
-  }
+  @if (!subtext.isText) {<app-latin-text [latin_text]="subtext.childNodes!" />}
 </p>
 } @else if (subtext.tagName === 'emph' && isSubset([{name: 'rend', value:
 'italic'}], subtext.attributes)) {
 <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-  @if (!subtext.isText) { <app-latin-text [latin_text]="subtext.childNodes!" /> }
-</span>
+  @if (!subtext.isText) {
+  <app-latin-text [latin_text]="subtext.childNodes!" />}</span
+>
 } @else if (subtext.tagName === 'supplied' && isSubset([{name: 'reason', value:
 'TOC'}], subtext.attributes)) {
 <span
@@ -27,7 +24,9 @@ subtext.attributes)) {
     findAttributeValue(subtext.attributes, 'reason')
   }}"
 >
-  @if (!subtext.isText) { [<app-latin-text [latin_text]="subtext.childNodes!" />] }
+  @if (!subtext.isText) { [<app-latin-text
+    [latin_text]="subtext.childNodes!"
+  />] }
 </span>
 } @else if (subtext.tagName === 'supplied' && isSubset([{name: 'reason', value:
 'integrated'}], subtext.attributes)) {
@@ -43,18 +42,23 @@ subtext.attributes)) {
 } @else if (subtext.tagName === 'said' && isSubset([{name: 'rend', value:
 'double-chevrons'}], subtext.attributes)) {
 <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-  @if (!subtext.isText) { «<app-latin-text [latin_text]="subtext.childNodes!" />» }
-</span>
+  @if (!subtext.isText) { «<app-latin-text
+    [latin_text]="subtext.childNodes!"
+  />»}</span
+>
 } @else if (subtext.tagName === 'said' && isSubset([{name: 'rend', value:
 'double-chevrons-left'}], subtext.attributes)) {
 <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-  @if (!subtext.isText) { «<app-latin-text [latin_text]="subtext.childNodes!" /> }
-</span>
+  @if (!subtext.isText) { «<app-latin-text
+    [latin_text]="subtext.childNodes!"
+  />}</span
+>
 } @else if (subtext.tagName === 'said' && isSubset([{name: 'rend', value:
 'double-chevrons-right'}], subtext.attributes)) {
 <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-  @if (!subtext.isText) { <app-latin-text [latin_text]="subtext.childNodes!" />» }
-</span>
+  @if (!subtext.isText) {
+  <app-latin-text [latin_text]="subtext.childNodes!" />»}</span
+>
 } @else {
 <span
   >{{ subtext.text }}@if (!subtext.isText) {
