@@ -1,7 +1,8 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPenNib } from '@fortawesome/free-solid-svg-icons';
 import { JsonNode } from '../../../../services/models';
+import { NoteIdService } from '../../../../services/noteIdService.service';
 
 @Component({
   selector: 'app-note-container',
@@ -12,7 +13,7 @@ import { JsonNode } from '../../../../services/models';
 })
 export class NoteContainerComponent {
   notes = input.required<JsonNode[]>();
-  noteId = input.required<string | undefined>();
+  noteIdService = inject(NoteIdService)
   penNib = faPenNib;
 
   ngOnInit() {

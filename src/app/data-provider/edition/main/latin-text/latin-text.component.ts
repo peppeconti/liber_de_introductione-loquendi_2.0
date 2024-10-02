@@ -3,6 +3,7 @@ import { isSubset, findAttributeValue } from "../../../../utils/utils";
 import { JsonNode } from "../../../../services/models";
 import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";
 import { SettingService } from "../../../../services/settingService.service";
+import { NoteIdService } from "../../../../services/noteIdService.service";
 
 @Component({
   selector: "app-latin-text",
@@ -12,10 +13,9 @@ import { SettingService } from "../../../../services/settingService.service";
   styleUrl: "./latin-text.component.css",
 })
 export class LatinTextComponent{
+  private noteIdService = inject(NoteIdService)
   private settingService = inject(SettingService);
   latin_text = input.required<JsonNode[] | undefined | null>();
-  @Output() onClickNote = new EventEmitter<string>();
-  //onClickNote = output<string | undefined>();
 
    // making imported functions available for the HTML template
    isSubset = isSubset;
@@ -26,7 +26,7 @@ export class LatinTextComponent{
   }
 
   showNote(note_id: string | undefined) {
-    this.onClickNote.emit(note_id);
+    this.noteIdService.setNoteId(note_id)
     //console.log(note_id);
   }
 }

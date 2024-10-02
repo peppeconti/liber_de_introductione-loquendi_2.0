@@ -35,13 +35,11 @@ export class MainComponent implements OnInit {
   folio = input.required<string>();
   navigation = computed<NavInfos>(() => this.setNavInfo(this.data()!));
   notes = computed<JsonNode[]>(() => this.getNotes(this.data()!));
-  noteId = signal<string | undefined>('lallo')
 
   ngOnInit(): void {
     //console.log(this.folio());
     //console.log(this.folios());
     console.log(this.data());
-    console.log(this.noteId())
     //console.log(this.notes());
     //console.log(this.latin_text());
     //console.log(this.translation());
@@ -49,11 +47,6 @@ export class MainComponent implements OnInit {
 
   get translationActive() {
     return this.settingService.getSettings().showTranslation;
-  }
-
-  getNoteId(note_id: string | undefined): void {
-    this.noteId.set(note_id);
-    console.log(note_id);
   }
 
   private getLatinText(xml: Document) {
