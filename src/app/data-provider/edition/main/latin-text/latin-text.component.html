@@ -115,6 +115,7 @@
       >»
     </span>
   </ng-container>
+  <!--NOTES-->
   <ng-container
     *ngSwitchCase="
       subtext.tagName === 'note' &&
@@ -125,6 +126,7 @@
       class="{{ findAttributeValue(subtext.attributes, 'type') }}"
       href="{{ findAttributeValue(subtext.attributes, 'corresp') }}"
       *ngIf="notesActive"
+      (click)="showNote(findAttributeValue(subtext.attributes, 'corresp'))"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasBottom"
       aria-controls="offcanvasBottom"
@@ -132,16 +134,15 @@
       <sup>[{{ findAttributeValue(subtext.attributes, "n") }}]</sup>
     </a>
   </ng-container>
-  <!--<ng-container
-      *ngSwitchCase="subtext.tagName === 'note' && isSubset([{name: 'type', value: 'note'}], subtext.attributes)">
-      <a class="{{ findAttributeValue(subtext.attributes, 'type') }}"
-          href="{{ findAttributeValue(subtext.attributes, 'corresp') }}" *ngIf="this.settings.showNotes"
-          (click)="showNote(findAttributeValue(subtext.attributes, 'corresp'))" data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
-          <sup>[{{findAttributeValue(subtext.attributes, 'n') }}]</sup>
-      </a>
-  </ng-container>
-  <ng-container
+  <!--DEFAULT-->
+  <span *ngSwitchDefault
+    >{{ subtext.text
+    }}<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+    </app-latin-text>
+  </span>
+</ng-container>
+
+<!--<ng-container
       *ngSwitchCase="subtext.tagName === 'note' && isSubset([{name: 'type', value: 'app'}], subtext.attributes)">
       <span data-bs-toggle="modal" data-bs-target="#modalApparatus" class="{{ findAttributeValue(subtext.attributes, 'type') }}" *ngIf="this.settings.showApparatus">
         &#8620; <span class="app-icon">
@@ -149,12 +150,6 @@
           </span>
       </span>
   </ng-container>-->
-  <span *ngSwitchDefault
-    >{{ subtext.text
-    }}<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
-    </app-latin-text>
-  </span>
-</ng-container>
 
 <!--@for (subtext of latin_text(); track subtext.tagName) { @if (subtext.tagName ===
 'div' && isSubset([{name: 'type', value: 'latin'}], subtext.attributes)) {

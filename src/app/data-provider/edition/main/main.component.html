@@ -3,11 +3,11 @@
     <app-select [folios]="folios()" [folio]="folio()" />
   </div>
   <div class="text" [class.translation-active]="translationActive">
-    <app-latin-text [latin_text]="latin_text()" />
+    <app-latin-text (onClickNote)="getNoteId($event)" [latin_text]="latin_text()" />
     @if(translationActive) {
     <app-translation [translation]="translation()" />
     }
   </div>
-  <app-note-container />
+  <app-note-container [noteId]="noteId()" [notes]="notes()" />
   <app-navigation [navigation]="this.navigation()" />
 </main>

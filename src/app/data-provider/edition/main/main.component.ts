@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, OnInit } from "@angular/core";
+import { Component, computed, inject, input, OnInit, signal } from "@angular/core";
 import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
@@ -11,7 +11,13 @@ import { NoteContainerComponent } from "./note-container/note-container.componen
 @Component({
   selector: "app-main",
   standalone: true,
-  imports: [LatinTextComponent, TranslationComponent, SelectComponent, NavigationComponent, NoteContainerComponent],
+  imports: [
+    LatinTextComponent,
+    TranslationComponent,
+    SelectComponent,
+    NavigationComponent,
+    NoteContainerComponent,
+  ],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
@@ -25,18 +31,18 @@ export class MainComponent implements OnInit {
   translation = computed<JsonNode[] | undefined | null>(() =>
     this.getTranslation(this.data()!)
   );
-  folios = computed<(string | null)[]>(() =>
-    this.getFolios(this.data()!)
-  );
+  folios = computed<(string | null)[]>(() => this.getFolios(this.data()!));
   folio = input.required<string>();
-  navigation = computed<NavInfos>(() =>
-    this.setNavInfo(this.data()!)
-  );
+  navigation = computed<NavInfos>(() => this.setNavInfo(this.data()!));
+  notes = computed<JsonNode[]>(() => this.getNotes(this.data()!));
+  noteId = signal<string | undefined>('lallo')
 
   ngOnInit(): void {
     //console.log(this.folio());
     //console.log(this.folios());
     console.log(this.data());
+    console.log(this.noteId())
+    //console.log(this.notes());
     //console.log(this.latin_text());
     //console.log(this.translation());
   }
@@ -45,12 +51,17 @@ export class MainComponent implements OnInit {
     return this.settingService.getSettings().showTranslation;
   }
 
+  getNoteId(note_id: string | undefined): void {
+    this.noteId.set(note_id);
+    console.log(note_id);
+  }
+
   private getLatinText(xml: Document) {
     const latin_document: HTMLElement | null | undefined = xml.getElementById(
       this.folio()
     );
-      const latin_json = this.httpService.parseNode(<Element>latin_document);
-      return [latin_json];
+    const latin_json = this.httpService.parseNode(<Element>latin_document);
+    return [latin_json];
   }
 
   private getTranslation(xml: Document) {
@@ -88,5 +99,15 @@ export class MainComponent implements OnInit {
     const active: string | null | undefined =
       latin_document?.getAttribute("id");
     return { active, next, prev };
+  }
+
+  getNotes(xml: Document): JsonNode[] {
+    const noteList: NodeListOf<Element> =
+      xml.querySelectorAll(`list[type=notes]`);
+    const notes = noteList[0].childNodes;
+    const notesJson: JsonNode[] = Array.from(notes).map((e) =>
+      this.httpService.parseNode(e)
+    );
+    return notesJson;
   }
 }
