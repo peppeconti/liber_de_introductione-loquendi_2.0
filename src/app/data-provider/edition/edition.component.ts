@@ -10,15 +10,11 @@ import { NotFoundComponent } from "../not-found/not-found.component";
   templateUrl: "./edition.component.html",
   styleUrl: "./edition.component.css",
 })
-export class EditionComponent implements OnInit {
+export class EditionComponent {
   @Input({required: true}) data: Document | undefined;
   folio = input.required<string>();
-  /*isExistingFolio = computed(() => {
+  isExistingFolio = computed(() => {
     const folio: HTMLElement | null | undefined = this.data?.getElementById(this.folio());
     return folio ? true : false;
-  })*/
-
-  ngOnInit(): void {
-    console.log(this.data);
-  }
+  })
 }
