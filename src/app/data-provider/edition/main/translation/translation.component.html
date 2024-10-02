@@ -1,26 +1,25 @@
-@for (subtext of translation(); track subtext.tagName) { @if (subtext.tagName
-=== 'div' && isSubset([{name: 'type', value: 'translation'}],
-subtext.attributes)) {
-<article class="{{ findAttributeValue(subtext.attributes, 'type') }}">
-  @if (!subtext.isText) {
-  <app-translation [translation]="subtext.childNodes!" />
-  }
-</article>
-} @else if (subtext.tagName === 'p') {
-<p>
-  @if (!subtext.isText) {
-  <app-translation [translation]="subtext.childNodes!" />
-  }
-</p>
-} @else if (subtext.tagName === 'emph' && isSubset([{name: 'rend', value:
-'italic'}], subtext.attributes)) {
-<span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-  @if (!subtext.isText) {
-  <app-translation [translation]="subtext.childNodes!" /> }
-</span>
-} @else {
-<span
-  >{{ subtext.text }}@if (!subtext.isText) {
-  <app-translation [translation]="subtext.childNodes!" />}</span
->
-}}
+<ng-container *ngFor="let subtext of this.translation()" [ngSwitch]="true">
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'div' && isSubset([{name: 'type', value: 'translation'}], subtext.attributes)">
+      <article class="{{ findAttributeValue(subtext.attributes, 'type') }}">
+          <app-translation *ngIf="!subtext.isText" [translation]="subtext.childNodes">
+          </app-translation>
+      </article>
+  </ng-container>
+  <ng-container *ngSwitchCase="subtext.tagName === 'p'">
+      <p>
+          <app-translation *ngIf="!subtext.isText" [translation]="subtext.childNodes">
+          </app-translation>
+      </p>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'emph' && isSubset([{name: 'rend', value: 'italic'}], subtext.attributes)">
+      <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
+          <app-translation *ngIf="!subtext.isText" [translation]="subtext.childNodes">
+          </app-translation>
+      </span>
+  </ng-container>
+  <span *ngSwitchDefault>{{subtext.text}}<app-translation *ngIf="!subtext.isText" [translation]="subtext.childNodes">
+      </app-translation>
+  </span>
+</ng-container>

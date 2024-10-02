@@ -3,12 +3,10 @@
     <app-select [folios]="folios()" [folio]="folio()" />
   </div>
   <div class="text" [class.translation-active]="translationActive">
-    @if(translationActive) {
-    <!--<app-translation [translation]="translation()" />
-    <app-latin [latin_text]="latin_text()" />-->
-    }
     <app-latin-text [latin_text]="latin_text()" />
+    @if(translationActive) {
     <app-translation [translation]="translation()" />
+    }
   </div>
   <app-navigation [navigation]="this.navigation()" />
 </main>

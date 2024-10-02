@@ -1,26 +1,3 @@
-@for (subtext of latin_text(); track subtext.tagName) { @if (subtext.tagName ===
-'div' && isSubset([{name: 'type', value: 'latin'}], subtext.attributes)) {
-<article
-  id="{{ findAttributeValue(subtext.attributes, 'id') }}"
-  class="{{ findAttributeValue(subtext.attributes, 'type') }}"
->
-  @if (!subtext.isText) {
-  <app-latin-text [latin_text]="subtext.childNodes!" />
-  }
-</article>
-} @else if (subtext.tagName === 'p') {
-<p>
-  @if (!subtext.isText) {
-  <app-latin-text [latin_text]="subtext.childNodes!" />
-  }
-</p>
-} @else {
-<span
-  >{{ subtext.text }}@if (!subtext.isText) {
-  <app-latin-text [latin_text]="subtext.childNodes!" />}</span
->
-}}
-
 <!--@for (subtext of latin_text(); track subtext.tagName) { @if (subtext.tagName ===
 'div' && isSubset([{name: 'type', value: 'latin'}], subtext.attributes)) {
 <article
@@ -88,3 +65,80 @@
   <app-latin-text [latin_text]="subtext.childNodes!" />}</span
 >
 }}-->
+
+<ng-container *ngFor="let subtext of latin_text()" [ngSwitch]="true">
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'div' && isSubset([{name: 'type', value: 'latin'}], subtext.attributes)">
+      <article id="{{ findAttributeValue(subtext.attributes, 'xml:id') }}"
+          class="{{ findAttributeValue(subtext.attributes, 'type') }}">
+          <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text>
+      </article>
+  </ng-container>
+  <ng-container *ngSwitchCase="subtext.tagName === 'p'">
+      <p>
+          <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text>
+      </p>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'emph' && isSubset([{name: 'rend', value: 'italic'}], subtext.attributes)">
+      <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
+          <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text>
+      </span>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'supplied' && isSubset([{name: 'reason', value: 'TOC'}], subtext.attributes)">
+      <span
+          class="{{ findAttributeValue(subtext.attributes, 'rend') }} {{ findAttributeValue(subtext.attributes, 'reason') }}">
+          [<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text>]</span>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'supplied' && isSubset([{name: 'reason', value: 'integrated'}], subtext.attributes)">
+      <span
+          class="{{ findAttributeValue(subtext.attributes, 'rend') }} {{ findAttributeValue(subtext.attributes, 'reason') }}">
+          &#8249;&#160;<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text>&#160;&#8250;</span>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'said' && isSubset([{name: 'rend', value: 'double-chevrons'}], subtext.attributes)">
+      <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
+          «<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text>»</span>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'said' && isSubset([{name: 'rend', value: 'double-chevrons-left'}], subtext.attributes)">
+      <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
+          «<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text></span>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'said' && isSubset([{name: 'rend', value: 'double-chevrons-rigth'}], subtext.attributes)">
+      <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
+          <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+          </app-latin-text>»
+      </span>
+  </ng-container>
+  <!--<ng-container
+      *ngSwitchCase="subtext.tagName === 'note' && isSubset([{name: 'type', value: 'note'}], subtext.attributes)">
+      <a class="{{ findAttributeValue(subtext.attributes, 'type') }}"
+          href="{{ findAttributeValue(subtext.attributes, 'corresp') }}" *ngIf="this.settings.showNotes"
+          (click)="showNote(findAttributeValue(subtext.attributes, 'corresp'))" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+          <sup>[{{findAttributeValue(subtext.attributes, 'n') }}]</sup>
+      </a>
+  </ng-container>
+  <ng-container
+      *ngSwitchCase="subtext.tagName === 'note' && isSubset([{name: 'type', value: 'app'}], subtext.attributes)">
+      <span data-bs-toggle="modal" data-bs-target="#modalApparatus" class="{{ findAttributeValue(subtext.attributes, 'type') }}" *ngIf="this.settings.showApparatus">
+        &#8620; <span class="app-icon">
+              <img src="../../../assets/img/app-icon.svg" alt="link to apparatus">
+          </span>
+      </span>
+  </ng-container>-->
+  <span *ngSwitchDefault>{{subtext.text}}<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+      </app-latin-text>
+  </span>
+</ng-container>
