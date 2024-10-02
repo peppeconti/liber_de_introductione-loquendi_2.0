@@ -1,5 +1,4 @@
-import { Component, computed, inject, signal } from "@angular/core";
-import { HttpService } from "../../../services/httpService.service";
+import { Component, computed, input } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faGear, faGears, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { DropdownComponent } from "./dropdown/dropdown.component";
@@ -12,7 +11,7 @@ import { DropdownComponent } from "./dropdown/dropdown.component";
   styleUrl: "./header.component.css"
 })
 export class HeaderComponent {
-  private httpService = inject(HttpService);
+  data = input<Document | undefined>(undefined);
   title = computed<string>(() => this.getInnerText("msItem title[type=short]"));
   author = computed<string>(() => this.getInnerText("msItem author"));
   //open = signal<boolean>(false);
@@ -21,7 +20,7 @@ export class HeaderComponent {
   faGears = faGears;
 
   private getInnerText(selector: string) {
-    const element: Element = this.httpService.data()?.querySelector(selector)!;
+    const element: Element = this.data()?.querySelector(selector)!;
     return element.innerHTML;
   }
 

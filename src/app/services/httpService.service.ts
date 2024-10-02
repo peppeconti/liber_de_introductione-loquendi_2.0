@@ -15,9 +15,6 @@ const URL = "assets/data/liber_de_introductione_loquendi.xml";
   providedIn: "root",
 })
 export class HttpService {
-  data = signal<Document | undefined>(undefined);
-  isFetching = signal<boolean>(false);
-  hasError = signal<string | undefined>(undefined);
   private httpClient = inject(HttpClient);
 
   fetchService() {

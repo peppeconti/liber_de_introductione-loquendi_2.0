@@ -1,12 +1,3 @@
-@if (isFetching && !hasError) {
-<p>Fetching data...</p>
-} @else if(hasError) {
-<p>{{ hasError }}</p>
-} @else {
-    @if(isExistingFolio()) {
-        <app-header />
-        <app-main [folio]="this.folio()" />
-    } @else {
-        <app-not-found/>
-    }
-}
+
+<app-header [data]="this.data" />
+<app-main [data]="this.data" [folio]="this.folio()" />

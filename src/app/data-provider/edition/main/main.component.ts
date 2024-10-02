@@ -17,24 +17,27 @@ import { NavigationComponent } from "./navigation/navigation.component";
 export class MainComponent implements OnInit {
   private settingService = inject(SettingService);
   private httpService = inject(HttpService);
+  data = input<Document | undefined>(undefined);
   latin_text = computed<JsonNode[] | undefined | null>(() =>
-    this.getLatinText(this.httpService.data()!)
+    this.getLatinText(this.data()!)
   );
   translation = computed<JsonNode[] | undefined | null>(() =>
-    this.getTranslation(this.httpService.data()!)
+    this.getTranslation(this.data()!)
   );
   folios = computed<(string | null)[]>(() =>
-    this.getFolios(this.httpService.data()!)
+    this.getFolios(this.data()!)
   );
   folio = input.required<string>();
   navigation = computed<NavInfos>(() =>
-    this.setNavInfo(this.httpService.data()!)
+    this.setNavInfo(this.data()!)
   );
 
   ngOnInit(): void {
-    console.log(this.folio());
-    console.log(this.folios());
-    console.log(this.navigation());
+    //console.log(this.folio());
+    //console.log(this.folios());
+    console.log(this.data());
+    //console.log(this.latin_text());
+    //console.log(this.translation());
   }
 
   get translationActive() {
@@ -45,12 +48,8 @@ export class MainComponent implements OnInit {
     const latin_document: HTMLElement | null | undefined = xml.getElementById(
       this.folio()
     );
-    if (latin_document) {
       const latin_json = this.httpService.parseNode(<Element>latin_document);
       return [latin_json];
-    } else {
-      return undefined;
-    }
   }
 
   private getTranslation(xml: Document) {

@@ -1,7 +1,6 @@
-import { Component, inject, input, computed } from "@angular/core";
+import { Component, inject, input, Input, computed, OnDestroy, OnInit } from "@angular/core";
 import { HeaderComponent } from "./header/header.component";
 import { MainComponent } from "./main/main.component";
-import { HttpService } from "../../services/httpService.service";
 import { NotFoundComponent } from "../not-found/not-found.component";
 
 @Component({
@@ -11,19 +10,15 @@ import { NotFoundComponent } from "../not-found/not-found.component";
   templateUrl: "./edition.component.html",
   styleUrl: "./edition.component.css",
 })
-export class EditionComponent {
-  private httpService = inject(HttpService);
+export class EditionComponent implements OnInit {
+  @Input({required: true}) data: Document | undefined;
   folio = input.required<string>();
-  isExistingFolio = computed(() => {
-    const folio: HTMLElement | null | undefined = this.httpService.data()?.getElementById(this.folio());
+  /*isExistingFolio = computed(() => {
+    const folio: HTMLElement | null | undefined = this.data?.getElementById(this.folio());
     return folio ? true : false;
-  })
+  })*/
 
-  get isFetching(): boolean {
-    return this.httpService.isFetching();
-  }
-
-  get hasError(): string | undefined {
-    return this.httpService.hasError();
+  ngOnInit(): void {
+    console.log(this.data);
   }
 }

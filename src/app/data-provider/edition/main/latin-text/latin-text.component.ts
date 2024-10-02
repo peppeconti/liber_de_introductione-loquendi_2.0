@@ -9,7 +9,7 @@ import { JsonNode } from "../../../../services/models";
   templateUrl: "./latin-text.component.html",
   styleUrl: "./latin-text.component.css",
 })
-export class LatinTextComponent {
+export class LatinTextComponent{
   latin_text = input.required<JsonNode[] | undefined | null>();
 
    // making imported functions available for the HTML template
