@@ -12,8 +12,8 @@
 
 ul.list {
     width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
+    max-height: 50px;
+    overflow-y: scroll;
 }
 
 a.current {
