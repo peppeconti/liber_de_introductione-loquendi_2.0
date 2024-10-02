@@ -6,11 +6,12 @@ import { TranslationComponent } from "./translation/translation.component";
 import { SettingService } from "../../../services/settingService.service";
 import { SelectComponent } from "./select/select.component";
 import { NavigationComponent } from "./navigation/navigation.component";
+import { NoteContainerComponent } from "./note-container/note-container.component";
 
 @Component({
   selector: "app-main",
   standalone: true,
-  imports: [LatinTextComponent, TranslationComponent, SelectComponent, NavigationComponent],
+  imports: [LatinTextComponent, TranslationComponent, SelectComponent, NavigationComponent, NoteContainerComponent],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })

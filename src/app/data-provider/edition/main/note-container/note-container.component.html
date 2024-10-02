@@ -1,1 +1,27 @@
-<p>note-container works!</p>
+<div
+  class="offcanvas offcanvas-bottom"
+  tabindex="-1"
+  id="offcanvasBottom"
+  aria-labelledby="offcanvasBottomLabel"
+  data-bs-scroll="true"
+  data-bs-backdrop="true"
+>
+  <div class="offcanvas-header">
+    <div class="d-flex align-items-center">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">
+        Nota
+        <fa-icon class="info-icon" [icon]="penNib"/>
+    </h5>
+    </div>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <hr />
+  <div class="offcanvas-body">
+    <div></div>
+  </div>
+</div>
