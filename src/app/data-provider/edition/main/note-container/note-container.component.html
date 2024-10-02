@@ -9,9 +9,11 @@
   <div class="offcanvas-header">
     <div class="d-flex align-items-center">
       <h5 class="offcanvas-title" id="offcanvasBottomLabel">
-        Nota {{noteIdService.getNoteId()}}
-        <fa-icon class="info-icon" [icon]="penNib"/>
-    </h5>
+        Nota @if(noteId()) {
+        {{ noteId()!.replace("note-", "") }}
+        }
+        <fa-icon class="info-icon" [icon]="penNib" />
+      </h5>
     </div>
     <button
       type="button"
@@ -22,6 +24,8 @@
   </div>
   <hr />
   <div class="offcanvas-body">
-    <div></div>
+    <div>
+      <app-note-text [note]="note()" />
+    </div>
   </div>
 </div>

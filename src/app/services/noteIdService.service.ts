@@ -4,10 +4,11 @@ import { Injectable, signal } from "@angular/core";
   providedIn: "root",
 })
 export class NoteIdService {
-  private noteId = signal<string | undefined>(undefined)
+  private noteId = signal<string | undefined>(undefined);
+  private noteIdReadOnly = this.noteId.asReadonly();
 
   getNoteId() {
-    return this.noteId();
+    return this.noteIdReadOnly();
   }
 
   setNoteId(noteId: string | undefined) {
