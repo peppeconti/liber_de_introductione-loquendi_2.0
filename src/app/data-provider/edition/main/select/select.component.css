@@ -17,6 +17,7 @@ ul.list {
 }
 
 a.current {
-    background-color: aquamarine;
+    background-color:#0D6EFD;
+    color: #fff;
 }
 

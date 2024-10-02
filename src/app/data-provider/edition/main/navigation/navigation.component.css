@@ -4,9 +4,10 @@
     width: 100%;
     bottom: 0;
     left: 0;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     justify-content: space-between;
     z-index: 2;
+    background-color: #fff;
 }
 
 .start {
@@ -27,7 +28,8 @@
 }
 
 fa-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     display: flex;
     align-items: center;
+    color: #1d1d1d;
 }

@@ -1,7 +1,7 @@
 import { Component, input } from "@angular/core";
 import { NavInfos } from "../../../../services/models";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { RouterLink } from "@angular/router";
 
 @Component({
@@ -13,8 +13,8 @@ import { RouterLink } from "@angular/router";
 })
 export class NavigationComponent {
   navigation = input.required<NavInfos>();
-  angleLeft = faAngleLeft;
-  angleRight = faAngleRight;
+  angleLeft = faCircleChevronLeft;
+  angleRight = faCircleChevronRight;
 
   getLink(arg: string | undefined | null): string | undefined {
     if (arg) {

@@ -6,7 +6,7 @@
 }
 
 .text {
-  padding: 2rem 20rem;
+  padding: 2rem 18rem;
 }
 
 .text.translation-active {
@@ -14,4 +14,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 3rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .text {
+    padding: 2rem 8rem;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .text {
+    padding: 2rem 6rem;
+  }
 }

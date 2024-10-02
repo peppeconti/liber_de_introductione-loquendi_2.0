@@ -2,7 +2,7 @@
     line-height: 2rem;
     margin: 0;
     text-align: justify;
-    font-size: medium;
+    font-size: 1rem;
 }
 
 .italic {
@@ -35,13 +35,14 @@
     height: inherit;
 }
 
-/*@media screen and (max-width: 768px) {
-    .translation-open {
-        display: none;
+@media screen and (max-width: 820px) {
+    .latin p {
+        font-size: .8rem;
+        line-height: 1.75rem;
     }
 }
 
-@media screen and (max-width: 450px) {
+/*@media screen and (max-width: 450px) {
     .latin p {
         line-height: 1.75rem;
         font-size: small;
