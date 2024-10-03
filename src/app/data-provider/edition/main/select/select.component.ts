@@ -1,6 +1,6 @@
 import { Component, input} from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { ScrollDirective } from "../../../../scroll.directive";
+import { ScrollDirective } from "./scroll.directive";
 
 @Component({
   selector: "app-select",
