@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit, input, DestroyRef } from "@angular/core";
+import { Component, inject, signal, OnInit, DestroyRef } from "@angular/core";
 import { HttpService } from "../services/httpService.service";
 import { RouterOutlet } from "@angular/router";
 import { EditionComponent } from "./edition/edition.component";

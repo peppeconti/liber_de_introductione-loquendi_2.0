@@ -15,11 +15,10 @@
     class="button dropdown-toggle"
     data-bs-toggle="dropdown"
     aria-expanded="false"
-    (click)="fff()"
   >
     {{ this.folio()!.replaceAll('_', ' ') }}
   </button>
-  <ul #el class="list dropdown-menu">
+  <ul #el class="list dropdown-menu" appScroll="show" [folio]="folio()">
     @for (folio of this.folios(); track folio) {
     <li [id]="'item_' + folio">
       <a
