@@ -10,8 +10,7 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger); 
-
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: "app-select",
@@ -28,19 +27,22 @@ export class SelectComponent implements AfterViewChecked, AfterViewInit {
 
   ngAfterViewInit() {
     this.list = this.ul?.nativeElement;
-    console.log("after");
-    const items = Array.from(this.list!.children);
-    const itemsToElements = items.map((e) => <Element>e);
-    const selected = itemsToElements.find(
-      (e) => e.getAttribute("id") === 'item_' + this.folio()
-    );
-    console.log(selected?.getAttribute('id'));
-    //gsap.to(window, { duration: .5, scrollTo: "item_Clm_16126-03r" });
-    gsap.to(this.list!, { duration: .5, scrollTo: "#item_Clm_16126-03r" });
   }
 
   ngAfterViewChecked(): void {
-    console.log("ciap");
     
+  }
+
+  fff() {
+    const items = Array.from(this.list!.children);
+    const itemsToElements = items.map((e) => <HTMLElement>e);
+    const selected = itemsToElements.find(
+      (e) => e.getAttribute("id") === "item_" + this.folio()
+    );
+    console.log(selected?.getAttribute("id"));
+    console.log(selected?.offsetTop);
+    this.list?.scroll({
+      top: selected?.offsetTop
+    })
   }
 }
