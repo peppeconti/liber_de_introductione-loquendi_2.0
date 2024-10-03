@@ -1,5 +1,7 @@
 .button {
-    width: 400px;
+    width: 33vw;
+    min-width: 275px;
+    max-width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
