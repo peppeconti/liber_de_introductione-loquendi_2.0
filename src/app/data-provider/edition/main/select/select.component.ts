@@ -1,4 +1,11 @@
-import { Component, ElementRef, input, OnChanges, SimpleChanges, ViewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
@@ -9,7 +16,6 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   styleUrl: "./select.component.css",
 })
 export class SelectComponent implements OnChanges {
-  
   folios = input.required<(string | null)[]>();
   folio = input.required<string>();
   @ViewChild("el") ul: ElementRef | undefined;
@@ -28,15 +34,16 @@ export class SelectComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     //throw new Error("Method not implemented.");
-    console.log('ciap')
-    if(this.ul?.nativeElement) {
+    console.log("ciap");
+    if (this.ul?.nativeElement) {
       const scrollDiv = Array.from(this.ul!.nativeElement.children);
       const selected = scrollDiv.find(
         (e) => (<Element>e).getAttribute("id") === this.folio()
       );
-      console.log((<HTMLElement>selected).getAttribute('id'))
-      console.log((<HTMLElement>selected));
-      console.log(this.ul?.nativeElement.scrollTop);
+      console.log((<HTMLElement>selected).getAttribute("id"));
+      (<HTMLElement>selected).scrollIntoView();
+      this.ul?.nativeElement.scroll(0, 0);
+      //console.log(this.ul?.nativeElement.scrollTop)
     }
   }
 }
