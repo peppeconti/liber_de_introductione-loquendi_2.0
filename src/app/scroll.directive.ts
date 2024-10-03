@@ -14,7 +14,6 @@ import {
 export class ScrollDirective implements OnInit {
   appScroll = input.required<string>();
   folio = input.required<string>();
-  action = input.required<(arg: Element | undefined, folio: string) => void>();
   elementRef = inject(ElementRef);
   private destroyRef = inject(DestroyRef);
 
@@ -39,7 +38,7 @@ export class ScrollDirective implements OnInit {
           if (prevClassState !== currentClassState) {
             prevClassState = currentClassState;
             if (currentClassState) {
-              this.action()((<Element>list), this.folio());
+              this.scrollInside(list, this.folio())
             }
           }
         }
@@ -53,6 +52,19 @@ export class ScrollDirective implements OnInit {
     this.destroyRef.onDestroy(() => {
       console.log("disconnection");
       observer.disconnect();
+    });
+  }
+
+  scrollInside(list: Element | undefined, id: string | undefined) {
+    const items = Array.from(list!.children);
+    const itemsToElements = items.map((e) => <HTMLElement>e);
+    const selected = itemsToElements.find(
+      (e) => e.getAttribute("id") === "item_" + id!
+    );
+    //console.log(selected?.getAttribute("id"));
+    //console.log(selected?.offsetTop);
+    (<HTMLElement>list).scroll({
+      top: selected?.offsetTop,
     });
   }
 }
