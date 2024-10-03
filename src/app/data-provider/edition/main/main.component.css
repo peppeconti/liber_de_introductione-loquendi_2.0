@@ -16,7 +16,7 @@
   grid-gap: 3rem;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1300px) {
   .text {
     padding: 2rem 8rem;
   }
