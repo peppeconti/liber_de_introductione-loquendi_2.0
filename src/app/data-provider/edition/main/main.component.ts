@@ -39,7 +39,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     //console.log(this.folio());
     //console.log(this.folios());
-    console.log(this.data());
+    //console.log(this.data());
     //console.log(this.notes());
     //console.log(this.latin_text());
     //console.log(this.translation());
