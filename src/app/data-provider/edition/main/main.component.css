@@ -10,10 +10,10 @@
 }
 
 .text.translation-active {
-  padding: 2rem 4rem;
+  padding: 2rem 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 3rem;
+  grid-gap: 2rem;
 }
 
 @media screen and (max-width: 1300px) {
