@@ -19,4 +19,17 @@ export class SelectComponent {
   folio = input.required<string>();
   @ViewChild("el") ul: ElementRef | undefined;
   list: Element | undefined = undefined;
+
+  scrollInside(list: Element | undefined) {
+    const items = Array.from(list!.children);
+    const itemsToElements = items.map((e) => <HTMLElement>e);
+    const selected = itemsToElements.find(
+      (e) => e.getAttribute("id") === "item_" + this.folio()
+    );
+    //console.log(selected?.getAttribute("id"));
+    //console.log(selected?.offsetTop);
+    (<HTMLElement>list).scroll({
+      top: selected?.offsetTop,
+    });
+  }
 }
