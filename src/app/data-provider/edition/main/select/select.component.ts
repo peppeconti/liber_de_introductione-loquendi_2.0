@@ -37,8 +37,6 @@ export class SelectComponent implements AfterViewChecked, AfterViewInit {
     console.log(selected?.getAttribute('id'));
     //gsap.to(window, { duration: .5, scrollTo: "item_Clm_16126-03r" });
     gsap.to(this.list!, { duration: .5, scrollTo: "#item_Clm_16126-03r" });
-
-    
   }
 
   ngAfterViewChecked(): void {
