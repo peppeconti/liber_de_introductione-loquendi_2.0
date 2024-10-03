@@ -18,7 +18,7 @@
   >
     {{ this.folio()!.replaceAll('_', ' ') }}
   </button>
-  <ul #el class="list dropdown-menu" appScroll="show" [action]="this.scrollInside!">
+  <ul #el class="list dropdown-menu" appScroll="show" [folio]="this.folio()" [action]="this.scrollInside!">
     @for (folio of this.folios(); track folio) {
     <li [id]="'item_' + folio">
       <a

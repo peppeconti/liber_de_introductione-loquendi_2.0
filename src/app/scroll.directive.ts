@@ -13,7 +13,8 @@ import {
 })
 export class ScrollDirective implements OnInit {
   appScroll = input.required<string>();
-  action = input.required<(arg: Element | undefined) => void>();
+  folio = input.required<string>();
+  action = input.required<(arg: Element | undefined, folio: string) => void>();
   elementRef = inject(ElementRef);
   private destroyRef = inject(DestroyRef);
 
@@ -38,7 +39,7 @@ export class ScrollDirective implements OnInit {
           if (prevClassState !== currentClassState) {
             prevClassState = currentClassState;
             if (currentClassState) {
-              this.action()((<Element>list));
+              this.action()((<Element>list), this.folio());
             }
           }
         }

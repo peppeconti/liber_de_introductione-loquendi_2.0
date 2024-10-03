@@ -1,9 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  input,
-  ViewChild,
-} from "@angular/core";
+import { Component, ElementRef, input, signal, ViewChild } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { ScrollDirective } from "../../../../scroll.directive";
 
@@ -20,11 +15,15 @@ export class SelectComponent {
   @ViewChild("el") ul: ElementRef | undefined;
   list: Element | undefined = undefined;
 
-  scrollInside(list: Element | undefined) {
+  ngOnInit() {
+    console.log(this.folio());
+  }
+
+  scrollInside(list: Element | undefined, id: string | undefined) {
     const items = Array.from(list!.children);
     const itemsToElements = items.map((e) => <HTMLElement>e);
     const selected = itemsToElements.find(
-      (e) => e.getAttribute("id") === "item_" + this.folio()
+      (e) => e.getAttribute("id") === "item_" + id!
     );
     //console.log(selected?.getAttribute("id"));
     //console.log(selected?.offsetTop);
