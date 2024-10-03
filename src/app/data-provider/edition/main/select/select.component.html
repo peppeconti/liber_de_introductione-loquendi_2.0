@@ -20,7 +20,7 @@
   </button>
   <ul #el class="list dropdown-menu">
     @for (folio of this.folios(); track folio) {
-    <li [id]="folio">
+    <li [id]="'item_' + folio">
       <a
         class="dropdown-item"
         [routerLink]="['/edition', folio]"
