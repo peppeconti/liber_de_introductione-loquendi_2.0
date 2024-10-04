@@ -1,6 +1,6 @@
 .button {
     width: 33vw;
-    min-width: 275px;
+    min-width: 225px;
     max-width: 400px;
     display: flex;
     justify-content: space-between;
@@ -10,6 +10,7 @@
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #1d1d1d;
+    font-size: calc(14px + (16 - 14) * ((100vw - 360px) / (1600 - 360)));
 }
 
 ul.list {
