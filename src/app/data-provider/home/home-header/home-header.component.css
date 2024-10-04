@@ -1,8 +1,10 @@
 .home-header {
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
   padding: 0 4rem;
-  height: 10vh;
+  height: 25vh;
+  padding-top: 1.5rem;
 }
 
 .nav {
