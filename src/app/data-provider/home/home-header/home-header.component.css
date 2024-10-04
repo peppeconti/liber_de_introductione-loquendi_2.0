@@ -2,15 +2,13 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: 0 4rem;
-  height: 25vh;
-  padding-top: 1.5rem;
+  padding: 2rem 4rem;
+  flex-grow: 1;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   height: 100%;
   gap: 2.5rem;
 }
