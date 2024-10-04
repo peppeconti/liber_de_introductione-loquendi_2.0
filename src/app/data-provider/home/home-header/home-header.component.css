@@ -3,7 +3,7 @@
   justify-content: flex-end;
   align-items: flex-start;
   padding: 2rem 4rem;
-  flex-grow: 1;
+  grid-area: header;
 }
 
 .nav {
