@@ -1,0 +1,6 @@
+.home-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2vw;
+    color: #fff;
+}
