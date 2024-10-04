@@ -1,4 +1,4 @@
-import { Component, inject, input, Input, computed, OnDestroy, OnInit } from "@angular/core";
+import { Component, input, Input, computed } from "@angular/core";
 import { HeaderComponent } from "./header/header.component";
 import { MainComponent } from "./main/main.component";
 import { NotFoundComponent } from "../not-found/not-found.component";
