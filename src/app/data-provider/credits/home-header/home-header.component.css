@@ -1,6 +1,27 @@
 .home-header {
-    display: flex;
-    justify-content: flex-end;
-    padding: 2vw;
-    color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2vw 2.5rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.item a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Eagle Lake", serif;
+  font-weight: 400;
+}
+
+.item a:hover {
+    opacity: .8;
+}
+
+li.item {
+  font-size: 1.25rem;
+  list-style: none;
 }

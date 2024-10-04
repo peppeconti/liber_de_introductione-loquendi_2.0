@@ -1,4 +1,10 @@
 .home {
-    height: 100vh;
-    background-color: #1d1d1d;
+  height: 100vh;
+  background: linear-gradient(
+    104.44deg,
+    #1d1d1d 32.81%,
+    rgba(33, 33, 33, 0.850899) 99.97%,
+    rgba(33, 33, 33, 0.643775) 99.97%,
+    rgba(33, 33, 33, 0) 100%
+  );
 }
