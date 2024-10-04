@@ -32,3 +32,9 @@ fa-icon {
     align-items: center;
     color: #1d1d1d;
 }
+
+@media screen and (max-width: 768px) {
+    .nav-bottom {
+        background-color: #fff;
+    }
+  }
