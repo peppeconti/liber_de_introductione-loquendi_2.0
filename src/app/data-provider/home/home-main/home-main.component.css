@@ -1,0 +1,21 @@
+.home-main {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.title {
+    color: #fff;
+}
+
+.break-line {
+    display: block;
+    height: 1px;
+    width: 500px;
+    background-color: #fff;
+}
+
+h1, h2, .break.line {
+    padding: 2rem;
+    font-family: "Eagle Lake", serif;
+}
