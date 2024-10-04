@@ -3,12 +3,12 @@ import { RouterLink } from '@angular/router';
 import { HomeHeaderComponent } from "./home-header/home-header.component";
 
 @Component({
-  selector: 'app-credits',
+  selector: 'app-home',
   standalone: true,
   imports: [RouterLink, HomeHeaderComponent],
-  templateUrl: './credits.component.html',
-  styleUrl: './credits.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class CreditsComponent {
+export class HomeComponent {
 
 }
