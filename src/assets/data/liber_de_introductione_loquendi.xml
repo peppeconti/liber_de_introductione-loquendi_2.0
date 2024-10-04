@@ -6,8 +6,8 @@
    <teiHeader>
       <fileDesc>
          <titleStmt>
-            <title type="edition">Philippus Ferrariensis" Liber de Introductione Loquendi: a Digital
-               Edition</title>
+            <title type="edition-title">Il Liber de Introductione Loquendi di Filippo da Ferrara</title>
+               <title type="edition-note">A digital edition of the ms. Clm 16126 of the Bayerische Staatsbibliothek following the directives of the Text Encoding Initiative</title>
             <author rend="medieval-author">
                <name> Philippus Ferrariensis, frater O.P.</name>
             </author>
