@@ -23,9 +23,9 @@
 .logo img {
   width: 95%;
   height: auto;
-  -webkit-animation: spin 160s linear infinite;
+  /*-webkit-animation: spin 160s linear infinite;
   -moz-animation: spin 160s linear infinite;
-  animation: spin 160s linear infinite;
+  animation: spin 160s linear infinite;*/
 }
 
 .break-line {
@@ -38,14 +38,14 @@
 h1,
 h2,
 .break.line {
-  padding: 2rem 0;
+  padding: 3rem 0;
   font-family: "Eagle Lake", serif;
   line-height: 4rem;
 }
 
 h2 {
   font-family: "Bilbo", cursive;
-  line-height: 2.5rem;
+  line-height: 2.75rem;
   font-weight: 400;
 }
 
