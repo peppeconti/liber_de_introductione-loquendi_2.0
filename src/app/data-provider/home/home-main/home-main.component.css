@@ -1,21 +1,44 @@
 .home-main {
-    display: flex;
-    height: 100%;
-    align-items: center;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 6rem;
 }
 
 .title {
-    color: #fff;
+  color: #fff;
+  padding-left: 4rem;
+  width: 66%;
 }
+
+.logo {
+    padding-right: 4rem;
+    width: 34%;
+  }
+  
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
 
 .break-line {
-    display: block;
-    height: 1px;
-    width: 500px;
-    background-color: #fff;
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #fff;
 }
 
-h1, h2, .break.line {
-    padding: 2rem;
-    font-family: "Eagle Lake", serif;
+h1,
+h2,
+.break.line {
+  padding: 2rem 0;
+  font-family: "Eagle Lake", serif;
+  line-height: 4rem;
+}
+
+h2 {
+  font-family: "Bilbo", cursive;
+  line-height: 2.5rem;
+  font-weight: 400;
 }
