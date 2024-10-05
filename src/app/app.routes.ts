@@ -13,7 +13,6 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    //outlet: 'primary',
     children: [
       {
         path: 'codice',
@@ -22,19 +21,16 @@ export const routes: Routes = [
       {
         path: 'biblio',
         component: BiblioComponent,
-        //outlet: 'secondary'
       },
       {
         path: 'credits',
         component: BiblioComponent,
-        //outlet: 'secondary'
       },
     ]
   },
   {
     path: 'edition/:folio',
-    component: EditionComponent,
-    //outlet: 'primary'
+    component: EditionComponent
   },
   {
     path: '**',
