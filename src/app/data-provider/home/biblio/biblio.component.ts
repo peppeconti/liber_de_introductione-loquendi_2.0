@@ -17,8 +17,4 @@ export class BiblioComponent implements OnInit {
   ngOnInit() {
     console.log(this.primary_biblio)
   }
-
-  get primary() {
-    return this.primary_biblio;
-  } 
 }

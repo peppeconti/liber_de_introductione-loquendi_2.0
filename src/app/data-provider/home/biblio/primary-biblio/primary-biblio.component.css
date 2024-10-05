@@ -1,3 +1,13 @@
-p {
-    color: #fff;
+.bibl-item {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.author {
+  font-weight: bold;
+  text-transform:uppercase;
+}
+
+.editor {
+    font-style: italic;
 }
