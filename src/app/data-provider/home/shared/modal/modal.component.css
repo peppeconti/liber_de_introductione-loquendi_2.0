@@ -36,7 +36,7 @@
 }
 
 .modal-nav ul li {
-    background-color: rgb(157, 157, 157);
+    background-color: rgb(227, 227, 227);
     text-align: center;
     padding: 1rem;
     list-style: none;
@@ -45,10 +45,14 @@
 
 .modal-nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #1d1d1d;
     font-size: 1.5rem;
 }
 
 .modal-nav ul li.current {
     background-color: #2e2e2e;
+}
+
+.modal-nav ul li.current a {
+    color: #fff;
 }
