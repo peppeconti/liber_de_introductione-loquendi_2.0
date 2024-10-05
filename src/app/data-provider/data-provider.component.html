@@ -3,5 +3,5 @@
 } @else if(hasError()) {
 <p>{{ hasError() }}</p>
 } @else {
-    <router-outlet (activate)="onActivate($event)"/>
+    <router-outlet (activate)="onActivate($event, $event)"/>
  }

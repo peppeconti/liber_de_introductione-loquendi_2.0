@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalComponent } from "../shared/modal/modal.component";
+import { JsonNode } from '../../../services/models';
 
 @Component({
   selector: 'app-codex',
@@ -9,5 +10,9 @@ import { ModalComponent } from "../shared/modal/modal.component";
   styleUrl: './codex.component.css'
 })
 export class CodexComponent {
+  @Input({ required: true }) witnesses: JsonNode[] | undefined | null;
 
+  ngOnInit() {
+    console.log(this.witnesses)
+  }
 }
