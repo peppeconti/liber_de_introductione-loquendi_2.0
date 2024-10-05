@@ -21,7 +21,7 @@
     height: 95%;
     width: 95%;
     max-width: 800px;
-    background-color: #1d1d1d;
+    background-color: #2e2e2e;
     border: none;
     display: flex;
     flex-direction: column;
@@ -50,5 +50,5 @@
 }
 
 .modal-nav ul li.current {
-    background-color: #1d1d1d;
+    background-color: #2e2e2e;
 }
