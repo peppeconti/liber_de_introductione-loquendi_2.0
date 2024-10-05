@@ -1,12 +1,12 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { HomeHeaderComponent } from "./home-header/home-header.component";
 import { HomeMainComponent } from "./home-main/home-main.component";
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HomeHeaderComponent, HomeMainComponent, RouterLink],
+  imports: [HomeHeaderComponent, HomeMainComponent, RouterLink, RouterOutlet],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   //encapsulation: ViewEncapsulation.None
