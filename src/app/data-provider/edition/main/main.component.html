@@ -2,10 +2,11 @@
   <div class="select-wrapper">
     <app-select [folios]="folios()" [folio]="folio()" />
   </div>
+  <p class="page-number" [class.translation-active]="translationActive">{{translation().page}}</p>
   <div class="text" [class.translation-active]="translationActive">
     <app-latin-text [latin_text]="latin_text()" />
     @if(translationActive) {
-    <app-translation [translation]="translation()" />
+    <app-translation [translation]="translation().json" />
     }
   </div>
   <app-note-container [notes]="notes()" />

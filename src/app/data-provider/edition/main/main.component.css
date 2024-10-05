@@ -9,6 +9,17 @@
   padding: 2rem 20vw;
 }
 
+.page-number {
+  padding: 0 20vw;
+  margin: 0;
+  margin-bottom: -1rem;
+  font-size: calc(12px + (16 - 12) * ((100vw - 360px) / (1600 - 360)));
+}
+
+.page-number.translation-active {
+  padding: 0 5rem;
+}
+
 .text.translation-active {
   padding: 2rem 5rem;
   display: grid;
@@ -17,20 +28,30 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .text {
+  .text  {
     padding: 2rem 15vw;
+  }
+
+  .page-number {
+    padding: 0 15vw;
   }
 }
 
 @media screen and (max-width: 820px) {
-  .text {
+  .text  {
     padding: 2rem 10vw;
+  }
+  .page-number {
+    padding: 0 10vw;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .text {
+  .text  {
     padding: 1rem 5vw;
+  }
+  .page-number {
+    padding: 0 5vw;
   }
   .select-wrapper {
     padding: 1.5rem;

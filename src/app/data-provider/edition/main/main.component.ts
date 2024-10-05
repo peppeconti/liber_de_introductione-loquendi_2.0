@@ -28,9 +28,10 @@ export class MainComponent implements OnInit {
   latin_text = computed<JsonNode[] | undefined | null>(() =>
     this.getLatinText(this.data()!)
   );
-  translation = computed<JsonNode[] | undefined | null>(() =>
-    this.getTranslation(this.data()!)
-  );
+  translation = computed<{
+    page: string;
+    json: JsonNode[] | undefined | null;
+  }>(() => this.getTranslation(this.data()!));
   folios = computed<(string | null)[]>(() => this.getFolios(this.data()!));
   folio = input.required<string>();
   navigation = computed<NavInfos>(() => this.setNavInfo(this.data()!));
@@ -68,7 +69,12 @@ export class MainComponent implements OnInit {
     const translationJson: JsonNode = this.httpService.parseNode(
       translation[0]
     );
-    return [translationJson];
+    const totalPages = translations.length;
+    const page = translations.indexOf(translation[0])+1;
+    return {
+      page: `${page}/${totalPages}`,
+      json: [translationJson],
+    };
   }
 
   private getFolios(xml: Document) {
