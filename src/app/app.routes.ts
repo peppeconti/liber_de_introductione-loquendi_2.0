@@ -11,7 +11,10 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      
+    ]
   },
   {
     path: 'edition/:folio',
