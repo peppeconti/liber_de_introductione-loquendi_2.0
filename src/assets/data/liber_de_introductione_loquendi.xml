@@ -188,7 +188,8 @@
                <biblStruct>
                   <monogr>
                      <author>Vincenzo di Beauvais O.P.</author>
-                     <title>Speculum Maior, IV Tomus Speculum Historiale nuncupatus</title>
+                     <title type="abbr">Speculum Maior - IV Tomus</title>
+                     <title type="reg">Speculum Maior, IV Tomus Speculum Historiale nuncupatus</title>
                      <imprint>
                         <publisher>Balthazar Bellerus</publisher>
                         <pubPlace>Douai</pubPlace>
@@ -199,7 +200,7 @@
                <biblStruct>
                   <monogr>
                      <author>Jean Bolland</author>
-                     <title>Acta Sanctorum Martii Tomus III</title>
+                     <title>Acta Sanctorum Martii - III Tomus</title>
                      <imprint>
                         <publisher>Michiel Cnobbaert</publisher>
                         <pubPlace>Anversa</pubPlace>

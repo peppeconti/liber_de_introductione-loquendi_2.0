@@ -12,23 +12,85 @@
       ><app-primary-biblio
         *ngIf="!subtext.isText"
         [primary_biblio]="subtext.childNodes"
-      />:
+      />&nbsp;
     </span>
   </ng-container>
   <ng-container *ngSwitchCase="subtext.tagName === 'editor'">
     <span class="editor"
-      >edidit
+      >(edidit
       <app-primary-biblio
+        *ngIf="!subtext.isText"
+        [primary_biblio]="subtext.childNodes"
+      />):
+    </span>
+  </ng-container>
+  <ng-container
+    *ngSwitchCase="
+      subtext.tagName === 'title' &&
+      isSubset([{ name: 'type', value: 'abbr' }], subtext.attributes)
+    "
+  >
+    <span class="title"
+      ><app-primary-biblio
         *ngIf="!subtext.isText"
         [primary_biblio]="subtext.childNodes"
       />,
     </span>
   </ng-container>
-  <span *ngSwitchDefault>
-    @if(subtext.text) {
-    {{ subtext.text }}
-    }
-    <app-primary-biblio
+  <!--TITLE WITH NO ATTRIBUTES-->
+  <ng-container
+    *ngSwitchCase="subtext.tagName === 'title' && !subtext.attributes?.length"
+  >
+    <span class="title"
+      ><app-primary-biblio
+        *ngIf="!subtext.isText"
+        [primary_biblio]="subtext.childNodes"
+      />,
+    </span>
+  </ng-container>
+  <ng-container *ngSwitchCase="subtext.tagName === 'edition'">
+    <span class="edition"
+      >&#8249;&#160;<app-primary-biblio
+        *ngIf="!subtext.isText"
+        [primary_biblio]="subtext.childNodes"
+      />&#160;&#8250;
+    </span>
+  </ng-container>
+  <!--NO RENDER-->
+  <ng-container
+    *ngSwitchCase="
+      subtext.tagName === 'title' &&
+      isSubset([{ name: 'type', value: 'reg' }], subtext.attributes)
+    "
+  />
+  <!--NO RENDER-->
+  <ng-container *ngSwitchCase="subtext.tagName === 'publisher'">
+    <span class="publisher"
+      ><app-primary-biblio
+        *ngIf="!subtext.isText"
+        [primary_biblio]="subtext.childNodes"
+      />,
+    </span>
+  </ng-container>
+  <ng-container *ngSwitchCase="subtext.tagName === 'pubPlace'">
+    <span class="place"
+      ><app-primary-biblio
+        *ngIf="!subtext.isText"
+        [primary_biblio]="subtext.childNodes"
+      />&nbsp;</span
+    >
+  </ng-container>
+  <ng-container *ngSwitchCase="subtext.tagName === 'date'">
+    <span class="date"
+      ><app-primary-biblio
+        *ngIf="!subtext.isText"
+        [primary_biblio]="subtext.childNodes"
+      />
+    </span>
+  </ng-container>
+  <span *ngSwitchDefault
+    >{{ subtext.text
+    }}<app-primary-biblio
       *ngIf="!subtext.isText"
       [primary_biblio]="subtext.childNodes"
     />

@@ -4,18 +4,3 @@
     <app-primary-biblio [primary_biblio]="this.primary_biblio" />
   </div>
 </app-modal>
-
-<!--
- <ng-container *ngFor="let subtext of this.translation()" [ngSwitch]="true">
-      <ng-container
-          *ngSwitchCase="subtext.tagName === 'div'>
-          <article class="">
-              <app-translation *ngIf="!subtext.isText" [translation]="subtext.childNodes">
-              </app-translation>
-          </article>
-      </ng-container>
-      <span *ngSwitchDefault>{{subtext.text}}<app-translation *ngIf="!subtext.isText" [translation]="subtext.childNodes">
-          </app-translation>
-      </span>
-    </ng-container>
--->

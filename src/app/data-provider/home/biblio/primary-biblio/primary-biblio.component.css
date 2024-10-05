@@ -8,6 +8,6 @@
   text-transform:uppercase;
 }
 
-.editor {
+.title, .edition {
     font-style: italic;
 }

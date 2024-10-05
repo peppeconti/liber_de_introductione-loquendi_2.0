@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from "@angular/common";
+import { isSubset } from "../../../../utils/utils";
 
 @Component({
   selector: "app-primary-biblio",
@@ -9,10 +10,8 @@ import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from "@angular/c
   templateUrl: "./primary-biblio.component.html",
   styleUrl: "./primary-biblio.component.css",
 })
-export class PrimaryBiblioComponent implements OnInit {
+export class PrimaryBiblioComponent {
   @Input({ required: true }) primary_biblio: JsonNode[] | undefined | null;
 
-  ngOnInit(): void {
-    console.log(this.primary_biblio);
-  }
+  isSubset = isSubset;
 }
