@@ -1,10 +1,11 @@
 <div class="modal">
     <nav class="modal-nav">
         <ul>
-            <li>Il codice</li>
-            <li>Bibliografia</li>
-            <li>Crediti</li>
+            <li routerLinkActive="current"><a routerLink="/home/codice">Il codice</a></li>
+            <li routerLinkActive="current"><a routerLink="/home/biblio">Bibliografia</a></li>
+            <li routerLinkActive="current"><a routerLink="/home/credits">Crediti</a></li>
         </ul>
     </nav>
     <ng-content/>
 </div>
+<div class="backdrop" routerLink="../"></div>
