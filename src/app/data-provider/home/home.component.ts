@@ -6,6 +6,7 @@ import { HttpService } from "../../services/httpService.service";
 import { JsonNode } from "../../services/models";
 import { BiblioComponent } from "./biblio/biblio.component";
 import { CodexComponent } from "./codex/codex.component";
+import { CreditsComponent } from "./credits/credits.component";
 
 @Component({
   selector: "app-home",
@@ -41,7 +42,7 @@ export class HomeComponent {
     return witnesses_json.childNodes;
   }
 
-  onActivate(biblio: BiblioComponent, codex: CodexComponent) {
+  onActivate(biblio: BiblioComponent, codex: CodexComponent, credits: CreditsComponent) {
     biblio.primary_biblio = this.primary_biblio();
     codex.witnesses = this.witnesses();
   }
