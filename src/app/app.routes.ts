@@ -17,11 +17,11 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'codice',
+        path: 'codex',
         component: CodexComponent,
       },
       {
-        path: 'biblio',
+        path: 'bibliografy',
         component: BiblioComponent,
       },
       {
