@@ -6,6 +6,7 @@ import {
   ActivatedRouteSnapshot,
   ResolveFn,
   RouterState,
+  RouterStateSnapshot,
 } from "@angular/router";
 
 @Component({
@@ -32,7 +33,11 @@ export class EditionComponent {
   routerState: RouterState
 ) => activatedRoute.paramMap.get("folio")?.replace("_", "");*/
 
+
 export const resolveTitle: ResolveFn<string> = (
   activatedRoute: ActivatedRouteSnapshot,
-  routerState: RouterState
-) => 'Edition - ' + activatedRoute.paramMap.get('folio');
+  routerState: RouterStateSnapshot
+ ) => {
+  const folio = activatedRoute.paramMap.get('folio') || '';
+  return 'Edition - ' + folio.replaceAll('_', ' ');
+}

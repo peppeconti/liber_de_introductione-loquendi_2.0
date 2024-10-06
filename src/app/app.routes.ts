@@ -37,7 +37,7 @@ export const routes: Routes = [
   {
     path: 'edition/:folio',
     component: EditionComponent,
-    title: resolveTitle,
+    title: resolveTitle
   },
   {
     path: '**',
