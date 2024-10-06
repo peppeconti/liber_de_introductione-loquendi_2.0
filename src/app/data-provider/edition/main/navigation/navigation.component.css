@@ -1,29 +1,20 @@
-.nav-bottom {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    padding: 2rem 1.5rem;
-    justify-content: space-between;
-    z-index: 1;
-}
-
-.start {
-    justify-content: flex-start;
-}
-
-.end {
-    justify-content: flex-end;
-}
-
 .angles {
     cursor: pointer;
     caret-color: transparent;
+    position: fixed;
+    bottom: 2rem
 }
 
 .angles:hover {
     opacity: .8;
+}
+
+.left {
+    left: 1.5rem;
+}
+
+.right {
+    right: 1.5rem;
 }
 
 fa-icon {
@@ -32,9 +23,3 @@ fa-icon {
     align-items: center;
     color: #1d1d1d;
 }
-
-/*@media screen and (max-width: 768px) {
-    .nav-bottom {
-        background-color: #fff;
-    }
-  }*/
