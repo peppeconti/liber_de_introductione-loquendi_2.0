@@ -40,7 +40,7 @@
     background-color: rgb(227, 227, 227);
     text-align: center;
     list-style: none;
-    flex: 1;
+    flex-grow: 1;
 }
 
 .modal-nav ul li a {
@@ -57,5 +57,11 @@
 }
 
 .modal-nav ul li.current a {
+    color: #fff;
+}
+
+.text {
+    padding: 1rem;
+    margin: 1rem 0;
     color: #fff;
 }

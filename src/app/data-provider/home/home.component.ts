@@ -22,6 +22,9 @@ export class HomeComponent {
   primary_biblio = computed<JsonNode[] | undefined | null>(() =>
     this.getPrimaryBiblio(this.data!)
   );
+  secondary_biblio = computed<JsonNode[] | undefined | null>(() =>
+    this.getSecondaryBiblio(this.data!)
+  );
   witnesses = computed<JsonNode[] | undefined | null>(() => this.getWitnesses(this.data!))
 
   ngOnInit() {
@@ -35,6 +38,13 @@ export class HomeComponent {
     return biblio_json.childNodes;
   }
 
+  getSecondaryBiblio(xml: Document) {
+    const biblio: Element | null | undefined =
+      xml.querySelector("[type=secondary]");
+    const biblio_json = this.httpService.parseNode(<Element>biblio);
+    return biblio_json.childNodes;
+  }
+
   getWitnesses(xml: Document) {
     const witnesses: Element | null | undefined =
       xml.querySelector("listWit");
@@ -44,6 +54,7 @@ export class HomeComponent {
 
   onActivate(biblio: BiblioComponent, codex: CodexComponent, credits: CreditsComponent) {
     biblio.primary_biblio = this.primary_biblio();
+    biblio.secondary_biblio = this.secondary_biblio();
     codex.witnesses = this.witnesses();
   }
 }

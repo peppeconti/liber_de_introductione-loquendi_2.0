@@ -1,8 +1,4 @@
-.text {
-    padding: 1rem;
-    color: #fff;
-}
-.primary-bibl {
+.primary-bibl, .secondary-bibl {
     margin-bottom: 1rem;
     border-bottom: 2px solid #fff;
     padding-bottom: 5px;

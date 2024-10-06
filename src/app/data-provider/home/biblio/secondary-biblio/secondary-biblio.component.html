@@ -1,0 +1,45 @@
+<h3>Monografie</h3>
+<ul>
+  <ng-container
+    *ngTemplateOutlet="
+      recursive;
+      context: { items: this.monographies() }
+    "
+  ></ng-container>
+</ul>
+<h3>Articoli</h3>
+<ul>
+  <ng-container
+    *ngTemplateOutlet="recursive; context: { items: this.articles() }"
+  ></ng-container>
+</ul>
+
+<!-- recursive template -->
+
+<ng-template #recursive let-items="items">
+  <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
+    <ng-container *ngSwitchCase="subtext.tagName === 'bibl'">
+      <li>
+        @if (!subtext.isText) {
+        <ng-container
+          *ngTemplateOutlet="
+            recursive;
+            context: { items: subtext.childNodes }
+          "
+        ></ng-container>
+        }
+      </li>
+    </ng-container>
+    <span *ngSwitchDefault
+      >{{ subtext.text }}
+      @if (!subtext.isText) {
+      <ng-container
+        *ngTemplateOutlet="
+          recursive;
+          context: { items: subtext.childNodes }
+        "
+      ></ng-container>
+      }
+    </span>
+  </ng-container>
+</ng-template>
