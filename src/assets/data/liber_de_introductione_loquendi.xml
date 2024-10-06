@@ -502,8 +502,21 @@
       </group>
       <back>
          <div>
-            <listBibl>
-               <bibl> </bibl>
+            <listBibl type="secondary">
+               <bibl type="article">
+                  <author>Amadori, Saverio</author>
+                  <title level="aeticle">Una nuova fonte sacchettiana: Il Liber de introductione loquendi di Filippino da Ferrara O.P.</title>
+                  <title level="review">Lettere italiane:48, pp. 420-436</title>.
+                  <publisher>Olschki</publisher>
+                  <date>1996</date>. 
+               </bibl>
+               <bibl type="article">
+                  <author>Ziegler, Joseph</author>
+                  <title level="article">Medicine and the Body at the Table in Fourteenth-Century Italy: Book one of Philip of Ferrara's Liber de introductione loquendi</title>
+                  <title level="essays_collection">Between Text and Patient. The Medical Enterprise in Medieval and Early Modern Europe, pp. 121-136</title>.
+                  <publisher></publisher>
+                  <date>2011</date>. 
+               </bibl>
             </listBibl>
          </div>
       </back>
