@@ -18,7 +18,6 @@ export class secondaryBiblioComponent implements OnInit {
   isSubset = isSubset;
 
   ngOnInit(): void {
-    console.log(this.articles());
-    console.log(this.secondary_biblio?.filter(e => e.attributes![0].value === 'monography'));
+   
   }
 }
