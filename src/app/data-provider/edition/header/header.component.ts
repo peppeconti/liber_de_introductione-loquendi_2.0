@@ -1,6 +1,6 @@
 import { Component, computed, input } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faGear, faGears, faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faGears } from "@fortawesome/free-solid-svg-icons";
 import { DropdownComponent } from "./dropdown/dropdown.component";
 import { RouterLink } from "@angular/router";
 
@@ -15,8 +15,6 @@ export class HeaderComponent {
   data = input<Document | undefined>(undefined);
   title = computed<string>(() => this.getInnerText("msItem title[type=short]"));
   author = computed<string>(() => this.getInnerText("msItem author"));
-  //open = signal<boolean>(false);
-  faHouse = faHouse;
   faGear = faGear;
   faGears = faGears;
 
@@ -24,8 +22,4 @@ export class HeaderComponent {
     const element: Element = this.data()?.querySelector(selector)!;
     return element.innerHTML;
   }
-
-  /*toggleMenu() {
-    this.open.update(prev => !prev);
-  }*/
 }

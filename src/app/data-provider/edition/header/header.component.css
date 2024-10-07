@@ -66,6 +66,10 @@ fa-icon {
   font-size: calc(12px + (32 - 12) * ((100vw - 360px) / (2000 - 360)));
 }
 
+.logo {
+  width: 100%;
+}
+
 @media screen and (max-width: 400px) {
   .header {
     padding: 2vw;
