@@ -1,8 +1,8 @@
 .select-wrapper {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    padding-top: 4rem;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  padding-top: 4rem;
 }
 
 .text {
@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .text  {
+  .text {
     padding: 2rem 15vw;
   }
 
@@ -38,7 +38,7 @@
 }
 
 @media screen and (max-width: 820px) {
-  .text  {
+  .text {
     padding: 2rem 10vw;
   }
   .page-number {
@@ -47,12 +47,36 @@
 }
 
 @media screen and (max-width: 768px) {
-  .text  {
-    padding: 1rem 5vw;
+  .select-wrapper {
+    padding: 1.5rem;
+    padding-top: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .text {
+    padding: 2rem 5vw;
   }
   .page-number {
     padding: 0 5vw;
   }
+
+  .page-number.translation-active {
+    padding: 0 5vw;
+  }
+
+  div.text.translation-active {
+    padding: 2rem 5vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+  }
+
+  div.text.translation-active app-latin-text{
+    display: none;
+
+  }
+
   .select-wrapper {
     padding: 1.5rem;
     padding-top: 2.5rem;
