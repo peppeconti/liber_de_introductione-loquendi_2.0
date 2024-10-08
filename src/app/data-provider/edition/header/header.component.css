@@ -67,7 +67,9 @@ fa-icon {
 }
 
 .logo {
-  width: 100%;
+  width: calc(50% + (100 - 50) * ((100vw - 360px) / (2000 - 360)));
+  min-width: 22px;
+  max-width: 44px;
 }
 
 @media screen and (max-width: 400px) {
