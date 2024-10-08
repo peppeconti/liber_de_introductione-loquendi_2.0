@@ -1,18 +1,19 @@
-<h3>Monografie</h3>
-<ul>
-  <ng-container
-    *ngTemplateOutlet="
-      recursive;
-      context: { items: this.monographies() }
-    "
-  ></ng-container>
-</ul>
-<h3>Articoli</h3>
-<ul>
-  <ng-container
-    *ngTemplateOutlet="recursive; context: { items: this.articles() }"
-  ></ng-container>
-</ul>
+<div>
+  <h3>Monografie</h3>
+  <ul>
+    <ng-container
+      *ngTemplateOutlet="recursive; context: { items: this.monographies() }"
+    ></ng-container>
+  </ul>
+</div>
+<div>
+  <h3>Articoli</h3>
+  <ul>
+    <ng-container
+      *ngTemplateOutlet="recursive; context: { items: this.articles() }"
+    ></ng-container>
+  </ul>
+</div>
 
 <!-- recursive template -->
 
@@ -22,10 +23,7 @@
       <li>
         @if (!subtext.isText) {
         <ng-container
-          *ngTemplateOutlet="
-            recursive;
-            context: { items: subtext.childNodes }
-          "
+          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
         ></ng-container>
         }
       </li>
@@ -34,10 +32,7 @@
       >{{ subtext.text }}
       @if (!subtext.isText) {
       <ng-container
-        *ngTemplateOutlet="
-          recursive;
-          context: { items: subtext.childNodes }
-        "
+        *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
       ></ng-container>
       }
     </span>

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './data-provider/home/home.component';
-import { EditionComponent, resolveTitle} from './data-provider/edition/edition.component';
+import { EditionComponent, resolveTitle } from './data-provider/edition/edition.component';
 import { NotFoundComponent } from './data-provider/not-found/not-found.component';
 import { childrenRoutes } from './data-provider/home/children.routes';
 
