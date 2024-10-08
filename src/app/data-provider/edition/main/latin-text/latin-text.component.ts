@@ -25,6 +25,10 @@ export class LatinTextComponent{
     return this.settingService.getSettings().showNotes;
   }
 
+  get apparatusActive() {
+    return this.settingService.getSettings().showApparatus;
+  }
+
   showNote(note_id: string | undefined) {
     this.noteIdService.setNoteId(note_id)
     //console.log(note_id);

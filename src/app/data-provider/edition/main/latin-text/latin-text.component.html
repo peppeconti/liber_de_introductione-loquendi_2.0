@@ -134,6 +134,14 @@
       <sup>[{{ findAttributeValue(subtext.attributes, "n") }}]</sup>
     </a>
   </ng-container>
+  <ng-container
+  *ngSwitchCase="subtext.tagName === 'note' && isSubset([{name: 'type', value: 'app'}], subtext.attributes)">
+  <span class="{{ findAttributeValue(subtext.attributes, 'type') }}" *ngIf="apparatusActive">
+    &#8620; <span class="app-icon">
+          <img src="../../../../../assets/images/app-icon.svg" alt="link to apparatus">
+      </span>
+  </span>
+</ng-container>
   <!--DEFAULT-->
   <span *ngSwitchDefault
     >{{ subtext.text
