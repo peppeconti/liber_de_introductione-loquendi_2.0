@@ -13,6 +13,7 @@ import { RouterLink } from "@angular/router";
 })
 export class NavigationComponent {
   navigation = input.required<NavInfos>();
+  pages = input.required<string>();
   angleLeft = faCircleChevronLeft;
   angleRight = faCircleChevronRight;
 

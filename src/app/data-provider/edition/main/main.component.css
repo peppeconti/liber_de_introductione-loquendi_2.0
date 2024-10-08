@@ -55,10 +55,11 @@
 
 @media screen and (max-width: 767px) {
   .text {
-    padding: 2rem 5vw;
+    padding: 1rem 5vw;
+    padding-bottom: 6.5rem;
   }
   .page-number {
-    padding: 0 5vw;
+    display: none;
   }
 
   .page-number.translation-active {
