@@ -62,12 +62,8 @@
     display: none;
   }
 
-  .page-number.translation-active {
-    padding: 0 5vw;
-  }
-
   div.text.translation-active {
-    padding: 2rem 5vw;
+    padding: 1rem 5vw;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0;

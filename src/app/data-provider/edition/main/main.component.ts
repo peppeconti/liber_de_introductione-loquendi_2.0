@@ -36,14 +36,10 @@ export class MainComponent implements OnInit {
   folio = input.required<string>();
   navigation = computed<NavInfos>(() => this.setNavInfo(this.data()!));
   notes = computed<JsonNode[]>(() => this.getNotes(this.data()!));
+  apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data()!));
 
   ngOnInit(): void {
-    //console.log(this.folio());
-    //console.log(this.folios());
-    //console.log(this.data());
-    //console.log(this.notes());
-    //console.log(this.latin_text());
-    //console.log(this.translation());
+    console.log(this.apparatus());
   }
 
   get translationActive() {
@@ -70,7 +66,7 @@ export class MainComponent implements OnInit {
       translation[0]
     );
     const totalPages = translations.length;
-    const page = translations.indexOf(translation[0])+1;
+    const page = translations.indexOf(translation[0]) + 1;
     return {
       page: `${page}/${totalPages}`,
       json: [translationJson],
@@ -100,7 +96,7 @@ export class MainComponent implements OnInit {
     return { active, next, prev };
   }
 
-  getNotes(xml: Document): JsonNode[] {
+  private getNotes(xml: Document): JsonNode[] {
     const noteList: NodeListOf<Element> =
       xml.querySelectorAll(`list[type=notes]`);
     const notes = noteList[0].childNodes;
@@ -108,5 +104,16 @@ export class MainComponent implements OnInit {
       this.httpService.parseNode(e)
     );
     return notesJson;
+  }
+
+  private getApparatus(xml: Document): JsonNode[] {
+    const apparatusList: NodeListOf<Element> = xml.querySelectorAll(
+      `listApp[type=apparatus]`
+    );
+    const apparatus = apparatusList[0].childNodes;
+    const apparatusJson: Array<JsonNode> = Array.from(apparatus).map((e) =>
+      this.httpService.parseNode(e)
+    );
+    return apparatusJson;
   }
 }
