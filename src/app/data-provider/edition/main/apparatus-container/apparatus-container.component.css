@@ -1,0 +1,16 @@
+#carouselApparatusControls {
+  height: 25rem;
+  overflow-y: auto;
+}
+
+#modalApparatus .modal-content {
+  border-radius: 0 !important;
+}
+
+button {
+  position: static;
+}
+
+.flexy {
+  display: flex;
+}

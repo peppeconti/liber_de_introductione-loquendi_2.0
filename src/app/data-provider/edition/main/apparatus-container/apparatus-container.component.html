@@ -1,0 +1,57 @@
+<div
+  class="modal fade"
+  id="modalApparatus"
+  tabindex="-1"
+  aria-labelledby="modalApparatusLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="modalApparatusLabel">
+          Apparato critico
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="flexy">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselApparatusControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <div class="modal-body">
+          <div
+            id="carouselApparatusControls"
+            class="carousel slide"
+            data-bs-interval="false"
+          >
+            <div class="carousel-inner">
+              <!--<app-apparatus-text
+                [apparatus]="apparatus"
+                [folio]="folio"
+              ></app-apparatus-text>-->
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselApparatusControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

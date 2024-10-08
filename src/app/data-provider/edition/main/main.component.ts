@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, OnInit } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
@@ -7,6 +7,7 @@ import { SettingService } from "../../../services/settingService.service";
 import { SelectComponent } from "./select/select.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { NoteContainerComponent } from "./note-container/note-container.component";
+import { ApparatusContainerComponent } from "./apparatus-container/apparatus-container.component";
 
 @Component({
   selector: "app-main",
@@ -17,11 +18,12 @@ import { NoteContainerComponent } from "./note-container/note-container.componen
     SelectComponent,
     NavigationComponent,
     NoteContainerComponent,
+    ApparatusContainerComponent,
   ],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
-export class MainComponent implements OnInit {
+export class MainComponent{
   private settingService = inject(SettingService);
   private httpService = inject(HttpService);
   data = input<Document | undefined>(undefined);
@@ -37,10 +39,6 @@ export class MainComponent implements OnInit {
   navigation = computed<NavInfos>(() => this.setNavInfo(this.data()!));
   notes = computed<JsonNode[]>(() => this.getNotes(this.data()!));
   apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data()!));
-
-  ngOnInit(): void {
-    console.log(this.apparatus());
-  }
 
   get translationActive() {
     return this.settingService.getSettings().showTranslation;

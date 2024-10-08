@@ -9,6 +9,7 @@
     <app-translation [translation]="translation().json" />
     }
   </div>
+  <app-apparatus-container [apparatus]="apparatus()" [folio]="folio()"></app-apparatus-container>
   <app-note-container [notes]="notes()" />
   <app-navigation [navigation]="this.navigation()" [pages]="translation().page" />
 </main>
