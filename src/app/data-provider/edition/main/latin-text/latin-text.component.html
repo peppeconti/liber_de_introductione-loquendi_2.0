@@ -136,7 +136,7 @@
   </ng-container>
   <ng-container
   *ngSwitchCase="subtext.tagName === 'note' && isSubset([{name: 'type', value: 'app'}], subtext.attributes)">
-  <span data-bs-toggle="modal" data-bs-target="#modalApparatus" class="{{ findAttributeValue(subtext.attributes, 'type') }}" *ngIf="apparatusActive">
+  <span data-bs-toggle="modal" data-bs-target="#modalApparatus" attr.data-app="{{ findAttributeValue(subtext.attributes, 'corresp') }}" class="{{ findAttributeValue(subtext.attributes, 'type') }}" *ngIf="apparatusActive">
     &#8620; <span class="app-icon">
           <img src="../../../../../assets/images/app-icon.svg" alt="link to apparatus">
       </span>

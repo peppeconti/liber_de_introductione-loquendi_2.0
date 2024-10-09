@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, input, Output, output } from "@angular/core";
+import { Component, inject, input } from "@angular/core";
 import { isSubset, findAttributeValue } from "../../../../utils/utils";
 import { JsonNode } from "../../../../services/models";
 import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";

@@ -118,7 +118,7 @@
             </list>
             <listApp xml:id="apparatus" type="apparatus">
                <app corresp="#Clm_16126_01r">
-                  <span type="link">
+                  <span type="link" corresp="Clm_16126_01r">
                      <link target="https://www.digitale-sammlungen.de/en/view/bsb00049700?page=4,5"
                      />
                   </span>
@@ -139,7 +139,7 @@
                   </span>
                </app>
                <app corresp="#Clm_16126_01v">
-                  <span type="link">
+                  <span type="link" corresp="Clm_16126_01v">
                      <link target="https://www.digitale-sammlungen.de/en/view/bsb00049700?page=6,7"
                      />
                   </span>
