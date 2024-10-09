@@ -1,8 +1,14 @@
-import { Component, input } from "@angular/core";
+import {
+  Component,
+  input,
+} from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 import { ApparatusTextComponent } from "./apparatus-text/apparatus-text.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-apparatus-container",
@@ -12,6 +18,8 @@ import { faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons"
   styleUrl: "./apparatus-container.component.css",
 })
 export class ApparatusContainerComponent {
+  items = <Element[] | undefined>undefined;
+
   apparatus = input.required<JsonNode[] | undefined | null>();
   folio = input.required<string>();
   angleLeft = faChevronLeft;

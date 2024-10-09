@@ -3,7 +3,7 @@ import { isSubset, findAttributeValue } from "../../../../utils/utils";
 import { JsonNode } from "../../../../services/models";
 import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";
 import { SettingService } from "../../../../services/settingService.service";
-import { NoteIdService } from "../../../../services/noteIdService.service";
+import { DataService } from "../../../../services/dataService.service";
 
 @Component({
   selector: "app-latin-text",
@@ -13,7 +13,7 @@ import { NoteIdService } from "../../../../services/noteIdService.service";
   styleUrl: "./latin-text.component.css",
 })
 export class LatinTextComponent{
-  private noteIdService = inject(NoteIdService)
+  private noteIdService = inject(DataService);
   private settingService = inject(SettingService);
   latin_text = input.required<JsonNode[] | undefined | null>();
 
@@ -30,6 +30,6 @@ export class LatinTextComponent{
   }
 
   showNote(note_id: string | undefined) {
-    this.noteIdService.setNoteId(note_id)
+    this.noteIdService.setNoteId(note_id);
   }
 }

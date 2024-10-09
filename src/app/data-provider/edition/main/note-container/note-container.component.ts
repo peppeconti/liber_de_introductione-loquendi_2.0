@@ -2,7 +2,7 @@ import { Component, computed, inject, input } from '@angular/core';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPenNib } from '@fortawesome/free-solid-svg-icons';
 import { JsonNode } from '../../../../services/models';
-import { NoteIdService } from '../../../../services/noteIdService.service';
+import { DataService } from '../../../../services/dataService.service';
 import { NoteTextComponent } from "./note-text/note-text.component";
 
 @Component({
@@ -13,7 +13,7 @@ import { NoteTextComponent } from "./note-text/note-text.component";
   styleUrl: './note-container.component.css'
 })
 export class NoteContainerComponent {
-  noteIdService = inject(NoteIdService);
+  noteIdService = inject(DataService);
   notes = input.required<JsonNode[]>();
   note = computed<JsonNode[] | undefined | null>(() => this.notes().filter(note => note.attributes![0].value === this.noteId()));
   noteId = computed<string | undefined>(() => this.noteIdService.getNoteId()?.replace('#', ''));

@@ -1,6 +1,7 @@
 <ng-container *ngFor="let subtext of apparatus()" [ngSwitch]="true">
   <ng-container *ngSwitchCase="subtext.tagName === 'app'">
     <div
+      appCarousel
       class="carousel-item"
       [class.active]="
         findAttributeValue(subtext.attributes, 'corresp')!.includes(
