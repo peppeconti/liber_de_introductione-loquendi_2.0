@@ -7,9 +7,16 @@
 >
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
+      <!--HEADER-->
       <div class="modal-header">
         <h1 class="modal-title fs-5 fw-bold" id="modalApparatusLabel">
-          Apparato critico
+          <span class="app-icon">
+            <img
+              src="../../../../../assets/images/app-icon.svg"
+              alt="apparatus"
+            />
+          </span>
+          &nbsp;&nbsp;Apparato critico
         </h1>
         <button
           type="button"
@@ -18,7 +25,7 @@
           aria-label="Close"
         ></button>
       </div>
-
+      <!--BODY-->
       <div class="modal-body">
         <div
           id="carouselApparatusControls"
@@ -33,16 +40,15 @@
           </div>
         </div>
       </div>
-
-      <div class="buttons">
+      <!--FOOTER-->
+      <div class="modal-footer buttons">
         <button
           class="carousel-control-prev"
           type="button"
           data-bs-target="#carouselApparatusControls"
           data-bs-slide="prev"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <fa-icon [icon]="angleLeft" />
         </button>
         <button
           class="carousel-control-next"
@@ -50,8 +56,7 @@
           data-bs-target="#carouselApparatusControls"
           data-bs-slide="next"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <fa-icon [icon]="angleRight" />
         </button>
       </div>
     </div>

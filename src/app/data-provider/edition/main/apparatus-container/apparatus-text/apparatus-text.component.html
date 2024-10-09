@@ -19,7 +19,9 @@
     "
   >
     <h2>
-      {{ findAttributeValue(subtext.attributes, "corresp")?.replaceAll('_', ' ') }}
+      {{
+        findAttributeValue(subtext.attributes, "corresp")?.replaceAll("_", " ")
+      }}
       <app-apparatus-text [apparatus]="subtext.childNodes">
       </app-apparatus-text>
     </h2>
@@ -29,8 +31,9 @@
       class="BSB_link"
       [href]="findAttributeValue(subtext.attributes, 'target')"
       target="_blank"
-      >GO TO THE CODEX</a
-    >
+      [title]="'Bayerische Staatsbibliothek'"
+      ><fa-icon [icon]="link"
+    /></a>
   </ng-container>
   <ng-container *ngSwitchCase="subtext.tagName === 'note'">
     <p

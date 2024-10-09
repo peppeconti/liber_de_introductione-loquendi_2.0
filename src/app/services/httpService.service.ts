@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { JsonNode } from "./models";
 import { nextUntil } from "../utils/utils";
