@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   computed,
   inject,
@@ -22,7 +21,7 @@ import { DataService } from "../../../../services/dataService.service";
   templateUrl: "./apparatus-container.component.html",
   styleUrl: "./apparatus-container.component.css",
 })
-export class ApparatusContainerComponent implements OnInit, AfterViewInit {
+export class ApparatusContainerComponent implements OnInit {
   dataService = inject(DataService);
   noteId = computed<string | undefined>(() => this.dataService.getAppNoteId()?.replace('#', ''));
   items = <Element[] | undefined>undefined;
@@ -32,10 +31,6 @@ export class ApparatusContainerComponent implements OnInit, AfterViewInit {
   angleRight = faChevronRight;
 
   ngOnInit(): void {
-    console.log(this.noteId())
-  }
-
-  ngAfterViewInit(): void {
-    console.log(this.noteId())
+    //console.log(this.noteId())
   }
 }

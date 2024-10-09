@@ -19,7 +19,7 @@ export class NoteContainerComponent {
   noteId = computed<string | undefined>(() => this.noteIdService.getNoteId()?.replace('#', ''));
   penNib = faPenNib;
 
-  /*ngOnInit() {
-    console.log(this.notes());
-  }*/
+  ngOnInit() {
+    //console.log(this.noteId());
+  }
 }

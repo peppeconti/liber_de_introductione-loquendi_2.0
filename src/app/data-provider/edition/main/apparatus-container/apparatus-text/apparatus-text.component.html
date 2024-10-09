@@ -12,7 +12,7 @@
         findAttributeValue(subtext.attributes, 'corresp')?.replace('#', '')
       }}"
     >
-      <app-apparatus-text [apparatus]="subtext.childNodes">
+      <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
       </app-apparatus-text>
     </div>
   </ng-container>
@@ -25,7 +25,7 @@
       {{
         findAttributeValue(subtext.attributes, "corresp")?.replaceAll("_", " ")
       }}
-      <app-apparatus-text [apparatus]="subtext.childNodes">
+      <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
       </app-apparatus-text>
     </h2>
   </ng-container>
@@ -40,17 +40,17 @@
   </ng-container>
   <ng-container *ngSwitchCase="subtext.tagName === 'note'">
     <p
-      appNote
+      appNote [noteId]="noteId()"
       class="app-note"
       id="{{ findAttributeValue(subtext.attributes, 'xml:id') }}"
     >
-      <app-apparatus-text [apparatus]="subtext.childNodes">
+      <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
       </app-apparatus-text>
     </p>
   </ng-container>
   <span class="{{ subtext.tagName }}" *ngSwitchDefault
     >{{ subtext.text
-    }}<app-apparatus-text [apparatus]="subtext.childNodes">
+    }}<app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()" [noteId]="this.noteId()">
     </app-apparatus-text>
   </span>
 </ng-container>

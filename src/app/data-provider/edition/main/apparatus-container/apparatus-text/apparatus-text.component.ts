@@ -19,6 +19,7 @@ import { appNoteDirective } from "./app-note.directive";
 })
 export class ApparatusTextComponent {
   apparatus = input.required<JsonNode[] | undefined | null>();
+  noteId = input.required<string | undefined>()
   folio = input<string>();
   link = faExternalLink;
   // making imported functions available for the HTML template
