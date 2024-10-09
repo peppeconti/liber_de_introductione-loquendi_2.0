@@ -10,7 +10,12 @@
 button {
   position: static;
 }
-
-.flexy {
+.modal-body {
+  background-color: lightgray;
+}
+.buttons {
   display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: grey;
 }
