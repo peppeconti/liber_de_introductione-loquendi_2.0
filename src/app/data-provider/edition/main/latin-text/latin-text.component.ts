@@ -31,6 +31,5 @@ export class LatinTextComponent{
 
   showNote(note_id: string | undefined) {
     this.noteIdService.setNoteId(note_id)
-    //console.log(note_id);
   }
 }
