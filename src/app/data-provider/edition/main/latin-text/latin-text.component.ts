@@ -12,18 +12,18 @@ import { DataService } from "../../../../services/dataService.service";
   templateUrl: "./latin-text.component.html",
   styleUrl: "./latin-text.component.css",
 })
-export class LatinTextComponent{
-  private noteIdService = inject(DataService);
+export class LatinTextComponent {
+  private dataService = inject(DataService);
   private settingService = inject(SettingService);
   private renderer = inject(Renderer2);
   folio = input.required<string | undefined>();
   latin_text = input.required<JsonNode[] | undefined | null>();
 
-   // making imported functions available for the HTML template
-   isSubset = isSubset;
-   findAttributeValue = findAttributeValue;
+  // making imported functions available for the HTML template
+  isSubset = isSubset;
+  findAttributeValue = findAttributeValue;
 
-   get notesActive() {
+  get notesActive() {
     return this.settingService.getSettings().showNotes;
   }
 
@@ -32,16 +32,12 @@ export class LatinTextComponent{
   }
 
   showNote(note_id: string | undefined) {
-    this.noteIdService.setNoteId(note_id);
+    this.dataService.setNoteId(note_id);
   }
 
-  onClickApp() {
-    this.noteIdService.getCarouselItems().forEach(e => {
-      this.renderer.removeClass(e.nativeElement, 'active');
-      if (e.nativeElement.id === this.folio()) {
-        this.renderer.addClass(e.nativeElement, 'active');
-      }
-    })
-    //console.log(this.folio())
+  onClickApp(id: string | undefined) {
+   this.dataService.setCarouselItems(this.folio()!, this.renderer);
+   this.dataService.setAppNoteId(id);
+   //console.log(this.dataService.getAppNoteId())
   }
 }

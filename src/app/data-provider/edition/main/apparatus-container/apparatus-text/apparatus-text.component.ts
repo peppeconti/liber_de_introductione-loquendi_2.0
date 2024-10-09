@@ -8,11 +8,12 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { JsonNode } from "../../../../../services/models";
 import { CarouselDirective } from "./carousel.directive";
+import { appNoteDirective } from "./app-note.directive";
 
 @Component({
   selector: "app-apparatus-text",
   standalone: true,
-  imports: [NgSwitch, NgSwitchCase, CommonModule, FontAwesomeModule, CarouselDirective],
+  imports: [NgSwitch, NgSwitchCase, CommonModule, FontAwesomeModule, CarouselDirective, appNoteDirective],
   templateUrl: "./apparatus-text.component.html",
   styleUrl: "./apparatus-text.component.css",
 })

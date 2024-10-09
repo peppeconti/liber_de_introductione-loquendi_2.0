@@ -145,7 +145,7 @@
     "
   >
     <span
-      (click)="onClickApp()"
+      (click)="onClickApp(findAttributeValue(subtext.attributes, 'corresp')!)"
       data-bs-toggle="modal"
       data-bs-target="#modalApparatus"
       attr.data-app="{{ findAttributeValue(subtext.attributes, 'corresp') }}"

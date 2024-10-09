@@ -1,4 +1,4 @@
-import { ElementRef, Injectable, signal } from "@angular/core";
+import { ElementRef, Injectable, Renderer2, signal } from "@angular/core";
 
 @Injectable({
   providedIn: "root",
@@ -6,8 +6,10 @@ import { ElementRef, Injectable, signal } from "@angular/core";
 export class DataService {
   private carouselItems = signal<ElementRef[]>([]);
   private noteId = signal<string | undefined>(undefined);
+  private appNoteId = signal<string | undefined>(undefined);
+  private carouselItemReadOnly = this.carouselItems.asReadonly()
   private noteIdReadOnly = this.noteId.asReadonly();
-  private carouselItemReadOnly = this.carouselItems.asReadonly();
+  private appNoteIdReadOnly = this.appNoteId.asReadonly();
 
   getNoteId() {
     return this.noteIdReadOnly();
@@ -17,8 +19,21 @@ export class DataService {
     this.noteId.set(noteId);
   }
 
-  getCarouselItems() {
-    return this.carouselItemReadOnly();
+  getAppNoteId() {
+    return this.appNoteIdReadOnly();
+  }
+
+  setAppNoteId(noteId: string | undefined) {
+    this.appNoteId.set(noteId);
+  }
+
+  setCarouselItems(id: string, renderer: Renderer2) {
+    this.carouselItemReadOnly().forEach((e) => {
+      renderer.removeClass(e.nativeElement, "active");
+      if (e.nativeElement.id === id) {
+        renderer.addClass(e.nativeElement, "active");
+      }
+    });
   }
 
   addCarouselItem(item: ElementRef) {
