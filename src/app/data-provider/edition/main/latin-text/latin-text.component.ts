@@ -1,4 +1,4 @@
-import { Component, inject, input } from "@angular/core";
+import { Component, inject, input, Renderer2 } from "@angular/core";
 import { isSubset, findAttributeValue } from "../../../../utils/utils";
 import { JsonNode } from "../../../../services/models";
 import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";
@@ -15,6 +15,8 @@ import { DataService } from "../../../../services/dataService.service";
 export class LatinTextComponent{
   private noteIdService = inject(DataService);
   private settingService = inject(SettingService);
+  private renderer = inject(Renderer2);
+  folio = input.required<string | undefined>();
   latin_text = input.required<JsonNode[] | undefined | null>();
 
    // making imported functions available for the HTML template
@@ -31,5 +33,15 @@ export class LatinTextComponent{
 
   showNote(note_id: string | undefined) {
     this.noteIdService.setNoteId(note_id);
+  }
+
+  onClickApp() {
+    this.noteIdService.getCarouselItems().forEach(e => {
+      this.renderer.removeClass(e.nativeElement, 'active');
+      if (e.nativeElement.id === this.folio()) {
+        this.renderer.addClass(e.nativeElement, 'active');
+      }
+    })
+    //console.log(this.folio())
   }
 }

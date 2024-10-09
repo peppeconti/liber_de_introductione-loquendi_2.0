@@ -7,6 +7,7 @@ export class DataService {
   private carouselItems = signal<ElementRef[]>([]);
   private noteId = signal<string | undefined>(undefined);
   private noteIdReadOnly = this.noteId.asReadonly();
+  private carouselItemReadOnly = this.carouselItems.asReadonly();
 
   getNoteId() {
     return this.noteIdReadOnly();
@@ -17,7 +18,7 @@ export class DataService {
   }
 
   getCarouselItems() {
-    return this.carouselItems();
+    return this.carouselItemReadOnly();
   }
 
   addCarouselItem(item: ElementRef) {

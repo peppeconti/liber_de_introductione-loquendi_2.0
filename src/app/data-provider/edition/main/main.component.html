@@ -4,7 +4,7 @@
   </div>
   <p class="page-number" [class.translation-active]="translationActive">{{translation().page}}</p>
   <div class="text" [class.translation-active]="translationActive">
-    <app-latin-text [latin_text]="latin_text()" />
+    <app-latin-text [latin_text]="latin_text()" [folio]="folio()" />
     @if(translationActive) {
     <app-translation [translation]="translation().json" />
     }

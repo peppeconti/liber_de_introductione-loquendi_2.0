@@ -9,13 +9,13 @@
       id="{{ findAttributeValue(subtext.attributes, 'id') }}"
       class="{{ findAttributeValue(subtext.attributes, 'type') }}"
     >
-      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes" [folio]="this.folio()">
       </app-latin-text>
     </article>
   </ng-container>
   <ng-container *ngSwitchCase="subtext.tagName === 'p'">
     <p>
-      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes" [folio]="this.folio()">
       </app-latin-text>
     </p>
   </ng-container>
@@ -26,7 +26,7 @@
     "
   >
     <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes" [folio]="this.folio()">
       </app-latin-text>
     </span>
   </ng-container>
@@ -44,6 +44,7 @@
       [<app-latin-text
         *ngIf="!subtext.isText"
         [latin_text]="subtext.childNodes"
+        [folio]="this.folio()"
       >
       </app-latin-text
       >]</span
@@ -63,6 +64,7 @@
       &#8249;&#160;<app-latin-text
         *ngIf="!subtext.isText"
         [latin_text]="subtext.childNodes"
+        [folio]="this.folio()"
       >
       </app-latin-text
       >&#160;&#8250;</span
@@ -78,6 +80,7 @@
       «<app-latin-text
         *ngIf="!subtext.isText"
         [latin_text]="subtext.childNodes"
+        [folio]="this.folio()"
       >
       </app-latin-text
       >»</span
@@ -96,6 +99,7 @@
       «<app-latin-text
         *ngIf="!subtext.isText"
         [latin_text]="subtext.childNodes"
+        [folio]="this.folio()"
       >
       </app-latin-text
     ></span>
@@ -110,7 +114,7 @@
     "
   >
     <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+      <app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes" [folio]="this.folio()">
       </app-latin-text
       >»
     </span>
@@ -141,6 +145,7 @@
     "
   >
     <span
+      (click)="onClickApp()"
       data-bs-toggle="modal"
       data-bs-target="#modalApparatus"
       attr.data-app="{{ findAttributeValue(subtext.attributes, 'corresp') }}"
@@ -159,7 +164,7 @@
   <!--DEFAULT-->
   <span *ngSwitchDefault
     >{{ subtext.text
-    }}<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes">
+    }}<app-latin-text *ngIf="!subtext.isText" [latin_text]="subtext.childNodes" [folio]="this.folio()">
     </app-latin-text>
   </span>
 </ng-container>
