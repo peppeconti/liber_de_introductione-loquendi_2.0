@@ -1,4 +1,36 @@
-import {
+import { Directive, ElementRef, inject, input, OnChanges } from "@angular/core";
+
+@Directive({
+  selector: "[appScroll]",
+  standalone: true,
+})
+export class ScrollDirective implements OnChanges {
+  elementRef = inject(ElementRef);
+  noteId = input.required<string | undefined>();
+
+  constructor() {
+    console.log('works!')
+  }
+
+  ngOnChanges() {
+    const item: HTMLElement = this.elementRef.nativeElement;
+    const list =
+      item.parentNode!;
+    console.log(this.noteId());
+    console.log(item.id);
+    //console.log(list);
+    if (this.noteId() && item.id === "item_" + this.noteId()) {
+      console.log("idem id");
+      (<HTMLElement>list).scroll({
+        top: item.offsetTop,
+      });
+    }
+  }
+}
+
+
+
+/*import {
   DestroyRef,
   Directive,
   ElementRef,
@@ -20,7 +52,7 @@ export class ScrollDirective implements OnInit {
   /*constructor() {
     console.log("directive works");
     console.log(this.elementRef.nativeElement);
-  }*/
+  }
 
   ngOnInit(): void {
     const list = this.elementRef.nativeElement;
@@ -66,5 +98,6 @@ export class ScrollDirective implements OnInit {
     (<HTMLElement>list).scroll({
       top: selected?.offsetTop,
     });
+    //console.log(list?.scrollHeight);
   }
-}
+}*/

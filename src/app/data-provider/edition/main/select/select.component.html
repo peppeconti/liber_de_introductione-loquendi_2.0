@@ -9,7 +9,7 @@
   </button>
   <ul #el class="list dropdown-menu" appScroll="show" [folio]="this.folio()">
     @for (folio of this.folios(); track folio) {
-    <li [id]="'item_' + folio">
+    <li appScroll [noteId]="this.folio()" [id]="'item_' + folio">
       <a
         class="dropdown-item"
         [routerLink]="['/edition', folio]"
