@@ -1,70 +1,48 @@
-<ng-container *ngFor="let subtext of apparatus()" [ngSwitch]="true">
-  <ng-container *ngSwitchCase="subtext.tagName === 'app'">
-    <div
-      appCarousel
-      class="carousel-item"
-      [class.active]="
-        findAttributeValue(subtext.attributes, 'corresp')!.includes(
-          this.folio()!
-        )
-      "
-      id="{{
-        findAttributeValue(subtext.attributes, 'corresp')?.replace('#', '')
-      }}"
-    >
-      <app-apparatus-text
-        [apparatus]="subtext.childNodes"
-        [noteId]="this.noteId()"
-      >
-      </app-apparatus-text>
-    </div>
-  </ng-container>
-  <ng-container
-    *ngSwitchCase="
-      isSubset([{ name: 'type', value: 'link' }], subtext.attributes)
-    "
+@for(subtext of this.apparatus(); track subtext.tagName) { @switch (true) {
+@case (subtext.tagName === 'app') {
+<div
+  appCarousel
+  class="carousel-item"
+  [class.active]="
+    findAttributeValue(subtext.attributes, 'corresp')!.includes(this.folio()!)
+  "
+  id="{{ findAttributeValue(subtext.attributes, 'corresp')?.replace('#', '') }}"
+>
+  <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
+  </app-apparatus-text>
+</div>
+
+} @case(isSubset([{ name: 'type', value: 'link' }], subtext.attributes)) {
+<h2>
+  {{ findAttributeValue(subtext.attributes, "corresp")?.replaceAll("_", " ") }}
+  <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
+  </app-apparatus-text>
+</h2>
+} @case(subtext.tagName === 'link') {
+<a
+  class="BSB_link"
+  [href]="findAttributeValue(subtext.attributes, 'target')"
+  target="_blank"
+  [title]="'Bayerische Staatsbibliothek'"
+  ><fa-icon [icon]="link"
+/></a>
+} @case(subtext.tagName === 'note') {
+<p
+  appNote
+  [noteId]="noteId()"
+  class="app-note"
+  id="{{ findAttributeValue(subtext.attributes, 'xml:id') }}"
+>
+  <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
+  </app-apparatus-text>
+</p>
+} @default {
+<span class="{{ subtext.tagName }}"
+  >{{ subtext.text
+  }}<app-apparatus-text
+    [apparatus]="subtext.childNodes"
+    [noteId]="this.noteId()"
   >
-    <h2>
-      {{
-        findAttributeValue(subtext.attributes, "corresp")?.replaceAll("_", " ")
-      }}
-      <app-apparatus-text
-        [apparatus]="subtext.childNodes"
-        [noteId]="this.noteId()"
-      >
-      </app-apparatus-text>
-    </h2>
-  </ng-container>
-  <ng-container *ngSwitchCase="subtext.tagName === 'link'">
-    <a
-      class="BSB_link"
-      [href]="findAttributeValue(subtext.attributes, 'target')"
-      target="_blank"
-      [title]="'Bayerische Staatsbibliothek'"
-      ><fa-icon [icon]="link"
-    /></a>
-  </ng-container>
-  <ng-container *ngSwitchCase="subtext.tagName === 'note'">
-    <p
-      appNote
-      [noteId]="noteId()"
-      class="app-note"
-      id="{{ findAttributeValue(subtext.attributes, 'xml:id') }}"
-    >
-      <app-apparatus-text
-        [apparatus]="subtext.childNodes"
-        [noteId]="this.noteId()"
-      >
-      </app-apparatus-text>
-    </p>
-  </ng-container>
-  <span class="{{ subtext.tagName }}" *ngSwitchDefault
-    >{{ subtext.text
-    }}<app-apparatus-text
-      [apparatus]="subtext.childNodes"
-      [noteId]="this.noteId()"
-      [noteId]="this.noteId()"
-    >
-    </app-apparatus-text>
-  </span>
-</ng-container>
+  </app-apparatus-text>
+</span>
+} } }
