@@ -13,11 +13,12 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { DataService } from "../../../../services/dataService.service";
+import { ScrollDirective } from "./scroll.directive";
 
 @Component({
   selector: "app-apparatus-container",
   standalone: true,
-  imports: [ApparatusTextComponent, FontAwesomeModule],
+  imports: [ApparatusTextComponent, FontAwesomeModule, ScrollDirective],
   templateUrl: "./apparatus-container.component.html",
   styleUrl: "./apparatus-container.component.css",
 })

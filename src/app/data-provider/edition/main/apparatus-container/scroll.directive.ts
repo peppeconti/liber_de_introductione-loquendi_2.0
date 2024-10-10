@@ -4,7 +4,8 @@ import {
   ElementRef,
   inject,
   input,
-  OnInit
+  OnInit,
+  Renderer2
 } from "@angular/core";
 
 @Directive({
@@ -13,7 +14,8 @@ import {
 })
 export class ScrollDirective implements OnInit {
   appScroll = input.required<string>();
-  folio = input.required<string>();
+  noteId = input.required<string | undefined>();
+  renderer = inject(Renderer2);
   elementRef = inject(ElementRef);
   private destroyRef = inject(DestroyRef);
 
@@ -23,11 +25,12 @@ export class ScrollDirective implements OnInit {
   }*/
 
   ngOnInit(): void {
-    const list = this.elementRef.nativeElement;
+    const modal = this.elementRef.nativeElement;
+    const list = modal.querySelector('#carouselApparatusControls');
 
     const config = { attributes: true };
 
-    let prevClassState = list.classList.contains(this.appScroll());
+    let prevClassState = modal.classList.contains(this.appScroll());
 
     const callback = (mutations: any) => {
       for (const mutation of mutations) {
@@ -38,7 +41,8 @@ export class ScrollDirective implements OnInit {
           if (prevClassState !== currentClassState) {
             prevClassState = currentClassState;
             if (currentClassState) {
-              this.scrollInside(list, this.folio())
+              this.scrollInside(list, this.noteId())
+              console.log('show')
             }
           }
         }
@@ -47,7 +51,7 @@ export class ScrollDirective implements OnInit {
 
     const observer = new MutationObserver(callback);
 
-    observer.observe(list, config);
+    observer.observe(modal, config);
 
     this.destroyRef.onDestroy(() => {
       console.log("disconnection");
@@ -56,14 +60,14 @@ export class ScrollDirective implements OnInit {
   }
 
   scrollInside(list: Element | undefined, id: string | undefined) {
-    const items = Array.from(list!.children);
+    const items = Array.from(document.querySelectorAll('.app-note'));
     const itemsToElements = items.map((e) => <HTMLElement>e);
     const selected = itemsToElements.find(
-      (e) => e.getAttribute("id") === "item_" + id!
+      (e) => e.getAttribute("id") === id!
     );
     (<HTMLElement>list).scroll({
       top: selected?.offsetTop,
     });
-    console.log(selected?.clientHeight);
+    //console.log(selected?.clientHeight);
   }
 }
