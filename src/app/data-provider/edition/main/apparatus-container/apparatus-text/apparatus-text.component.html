@@ -1,5 +1,5 @@
-@for(subtext of this.apparatus(); track subtext.id) { @switch (true) {
-@case (subtext.tagName === 'app') {
+@for(subtext of this.apparatus(); track subtext.id) { @switch (true) { @case
+(subtext.tagName === 'app') {
 <div
   appCarousel
   class="carousel-item"
@@ -8,15 +8,23 @@
   "
   id="{{ findAttributeValue(subtext.attributes, 'corresp')?.replace('#', '') }}"
 >
-  <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
-  </app-apparatus-text>
+  @if(!subtext.isText) {
+  <app-apparatus-text
+    [apparatus]="subtext.childNodes"
+    [noteId]="this.noteId()"
+  />
+  }
 </div>
 
 } @case(isSubset([{ name: 'type', value: 'link' }], subtext.attributes)) {
 <h2>
   {{ findAttributeValue(subtext.attributes, "corresp")?.replaceAll("_", " ") }}
-  <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
-  </app-apparatus-text>
+  @if(!subtext.isText) {
+  <app-apparatus-text
+    [apparatus]="subtext.childNodes"
+    [noteId]="this.noteId()"
+  />
+  }
 </h2>
 } @case(subtext.tagName === 'link') {
 <a
@@ -33,16 +41,21 @@
   class="app-note"
   id="{{ findAttributeValue(subtext.attributes, 'xml:id') }}"
 >
-  <app-apparatus-text [apparatus]="subtext.childNodes" [noteId]="this.noteId()">
-  </app-apparatus-text>
+  @if(!subtext.isText) {
+  <app-apparatus-text
+    [apparatus]="subtext.childNodes"
+    [noteId]="this.noteId()"
+  />
+  }
 </p>
 } @default {
 <span class="{{ subtext.tagName }}"
-  >{{ subtext.text
-  }}<app-apparatus-text
+  >{{ subtext.text }}
+  @if(!subtext.isText) {
+  <app-apparatus-text
     [apparatus]="subtext.childNodes"
     [noteId]="this.noteId()"
-  >
-  </app-apparatus-text>
+  />
+  }
 </span>
 } } }
