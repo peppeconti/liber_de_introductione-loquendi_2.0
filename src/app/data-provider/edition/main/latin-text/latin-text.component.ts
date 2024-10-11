@@ -1,14 +1,13 @@
 import { Component, inject, input, Renderer2 } from "@angular/core";
 import { isSubset, findAttributeValue } from "../../../../utils/utils";
 import { JsonNode } from "../../../../services/models";
-import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";
 import { SettingService } from "../../../../services/settingService.service";
 import { DataService } from "../../../../services/dataService.service";
 
 @Component({
   selector: "app-latin-text",
   standalone: true,
-  imports: [NgSwitch, NgSwitchCase, CommonModule],
+  imports: [],
   templateUrl: "./latin-text.component.html",
   styleUrl: "./latin-text.component.css",
 })
