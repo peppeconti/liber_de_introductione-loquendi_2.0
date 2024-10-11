@@ -28,34 +28,33 @@ subtext.attributes))) {
   class="{{ findAttributeValue(subtext.attributes, 'rend') }} {{
     findAttributeValue(subtext.attributes, 'reason')
   }}"
-  >@if(!subtext.isText){[<app-latin-text
+  >@if(!subtext.isText){ [<app-latin-text
     [latin_text]="subtext.childNodes"
     [folio]="this.folio()"
-  />]}</span
+  />] }</span
 >} @case((subtext.tagName === 'supplied' && isSubset([{ name: 'reason', value:
 'integrated' }], subtext.attributes))) {
 <span
   class="{{ findAttributeValue(subtext.attributes, 'rend') }} {{
     findAttributeValue(subtext.attributes, 'reason')
   }}"
-  >@if(!subtext.isText){&#8249;&#160;<app-latin-text
+  >@if(!subtext.isText){ &#8249;&#160;<app-latin-text
     [latin_text]="subtext.childNodes"
     [folio]="this.folio()"
-  />&#160;&#8250;}</span
+  />&#160;&#8250; }</span
 >} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
-'double-chevrons' }], subtext.attributes))) {«<app-latin-text
+'double-chevrons' }], subtext.attributes))) { «<app-latin-text
   [latin_text]="subtext.childNodes"
   [folio]="this.folio()"
-/>»} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
-'double-chevrons-left' }], subtext.attributes))) {«<app-latin-text
+/>» } @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
+'double-chevrons-left' }], subtext.attributes))) { «<app-latin-text
   [latin_text]="subtext.childNodes"
   [folio]="this.folio()"
 />} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
-'double-chevrons-right' }], subtext.attributes))) {<app-latin-text
-  [latin_text]="subtext.childNodes"
-  [folio]="this.folio()"
-/>»} @case((subtext.tagName === 'note' && isSubset([{ name: 'type', value:
-'note' }], subtext.attributes))) { @if(notesActive) {
+'double-chevrons-right' }], subtext.attributes))) {
+<app-latin-text [latin_text]="subtext.childNodes" [folio]="this.folio()" />» }
+@case((subtext.tagName === 'note' && isSubset([{ name: 'type', value: 'note' }],
+subtext.attributes))) { @if(notesActive) {
 <a
   class="{{ findAttributeValue(subtext.attributes, 'type') }}"
   href="{{ findAttributeValue(subtext.attributes, 'corresp') }}"
