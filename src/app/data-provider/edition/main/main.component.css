@@ -23,6 +23,7 @@
 
 .text.translation-active {
   padding: 2rem 5rem;
+  padding-bottom: 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
@@ -67,6 +68,7 @@
 
   div.text.translation-active {
     padding: 1rem 5vw;
+    padding-bottom: 6.5rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0;
