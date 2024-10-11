@@ -48,14 +48,16 @@
   />
   }
 </p>
-} @default {
-<span class="{{ subtext.tagName }}"
-  >{{ subtext.text }}
-  @if(!subtext.isText) {
-  <app-apparatus-text
+} @case(subtext.tagName === 'expan') {<span class="expan"
+  >@if(!subtext.isText) {&#8249;<app-apparatus-text
     [apparatus]="subtext.childNodes"
     [noteId]="this.noteId()"
-  />
-  }
-</span>
+  />&#8250;}</span
+>
+} @default {<span class="{{ subtext.tagName }}"
+  >{{ subtext.text }}@if(!subtext.isText) {<app-apparatus-text
+    [apparatus]="subtext.childNodes"
+    [noteId]="this.noteId()"
+  />}</span
+>
 } } }

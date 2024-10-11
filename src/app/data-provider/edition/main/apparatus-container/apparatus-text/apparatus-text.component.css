@@ -1,9 +1,12 @@
 .BSB_link {
-    padding: 0 1rem;
-    color: #1d1d1d;
-    text-decoration: none;
+  padding: 0 1rem;
+  color: #1d1d1d;
+  text-decoration: none;
 }
 
 .highlighted {
-    background-color: rgb(255, 255, 167);
+  background-color: rgb(255, 255, 167);
+}
+.expan {
+  font-size: .9rem;
 }
