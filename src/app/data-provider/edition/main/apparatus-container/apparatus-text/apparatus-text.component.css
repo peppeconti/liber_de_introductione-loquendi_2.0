@@ -4,9 +4,13 @@
   text-decoration: none;
 }
 
+.BSB_link:hover {
+  opacity: 0.8;
+}
+
 .highlighted {
   background-color: rgb(255, 255, 167);
 }
 .expan {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
