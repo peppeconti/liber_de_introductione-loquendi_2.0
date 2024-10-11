@@ -85,7 +85,8 @@ export class HttpService {
       attributes: null,
       tagName: null,
       childNodes: null,
-      isText: false
+      isText: false,
+      id: Date.now().toString()
     };
     nodeObj.tagName = (<Element>node).tagName;
     nodeObj.attributes = [];
