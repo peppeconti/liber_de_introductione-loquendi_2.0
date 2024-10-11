@@ -19,7 +19,7 @@
               alt="apparatus"
             />
           </span>
-          &nbsp;&nbsp;Apparato critico
+          &nbsp;&nbsp;Apparato critico {{activeItem().id}}
         </h1>
         <button
           type="button"
@@ -31,6 +31,7 @@
       <!--BODY-->
       <div class="modal-body">
         <div
+          #car
           #list
           id="carouselApparatusControls"
           class="carousel slide multiple"
@@ -56,6 +57,7 @@
         >
           <fa-icon [icon]="angleLeft" />
         </button>
+        <p>{{activeItem().index}}/2</p>
         <button
           class="carousel-control-next"
           type="button"

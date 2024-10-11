@@ -37,6 +37,10 @@ export class LatinTextComponent {
   onClickApp(id: string | undefined) {
    this.dataService.setCarouselItems(this.folio()!, this.renderer);
    this.dataService.setAppNoteId(id);
+   const active = this.dataService.getCarouselItems().find(e => e.nativeElement.id === this.folio());
+   const activeIndex = this.dataService.getCarouselItems().indexOf(active!) + 1;
+   const indexToString = activeIndex.toString();
+   this.dataService.setActiveItem({index: indexToString, id: this.folio()!.replace('_', ' ')})
    //console.log(this.dataService.getAppNoteId())
   }
 }

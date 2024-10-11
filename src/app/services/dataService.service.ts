@@ -10,6 +10,7 @@ export class DataService {
   private carouselItemsReadOnly = this.carouselItems.asReadonly()
   private noteIdReadOnly = this.noteId.asReadonly();
   private appNoteIdReadOnly = this.appNoteId.asReadonly();
+  private activeItem = signal<{ index: string; id: string }>({ index: '', id: '' })
 
   getNoteId() {
     return this.noteIdReadOnly();
@@ -29,6 +30,14 @@ export class DataService {
 
   getCarouselItems () {
     return this.carouselItemsReadOnly();
+  }
+
+  getActiveItem () {
+    return this.activeItem();
+  }
+
+  setActiveItem (value: {index: string; id: string}) {
+    this.activeItem.set(value);
   }
 
   setCarouselItems(id: string, renderer: Renderer2) {
