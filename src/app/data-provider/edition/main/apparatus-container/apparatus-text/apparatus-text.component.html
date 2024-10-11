@@ -1,4 +1,4 @@
-@for(subtext of this.apparatus(); track subtext.tagName) { @switch (true) {
+@for(subtext of this.apparatus(); track subtext.childNodes) { @switch (true) {
 @case (subtext.tagName === 'app') {
 <div
   appCarousel
