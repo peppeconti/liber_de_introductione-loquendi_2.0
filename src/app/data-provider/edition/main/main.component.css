@@ -7,6 +7,7 @@
 
 .text {
   padding: 2rem 20vw;
+  padding-bottom: 4rem;
 }
 
 .page-number {
@@ -30,6 +31,7 @@
 @media screen and (max-width: 1024px) {
   .text {
     padding: 2rem 15vw;
+    padding-bottom: 4rem;
   }
 
   .page-number {
@@ -40,6 +42,7 @@
 @media screen and (max-width: 820px) {
   .text {
     padding: 2rem 10vw;
+    padding-bottom: 4rem;
   }
   .page-number {
     padding: 0 10vw;
