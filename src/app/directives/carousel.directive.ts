@@ -2,10 +2,10 @@ import {
   Directive,
   ElementRef,
   inject,
-  OnDestroy,
   OnInit,
 } from "@angular/core";
-import { DataService } from "../../../../../services/dataService.service";
+import { DataService } from "../services/dataService.service";
+
 
 @Directive({
   selector: "[appCarousel]",

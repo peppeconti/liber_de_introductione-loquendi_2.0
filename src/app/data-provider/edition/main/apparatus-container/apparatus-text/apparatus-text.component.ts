@@ -6,8 +6,8 @@ import { findAttributeValue, isSubset } from "../../../../../utils/utils";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { JsonNode } from "../../../../../services/models";
-import { CarouselDirective } from "./carousel.directive";
-import { appNoteDirective } from "./app-note.directive";
+import { CarouselDirective } from "../../../../../directives/carousel.directive";
+import { appNoteDirective } from "../../../../../directives/app-note.directive";
 
 @Component({
   selector: "app-apparatus-text",
