@@ -38,11 +38,52 @@ subtext.attributes))) {
   class="{{ findAttributeValue(subtext.attributes, 'rend') }} {{
     findAttributeValue(subtext.attributes, 'reason')
   }}"
-  >@if(!subtext.isText){ &#8249;&#160;<app-latin-text
+  >@if(!subtext.isText){&#8249;&#160;<app-latin-text
     [latin_text]="subtext.childNodes"
     [folio]="this.folio()"
   />&#160;&#8250;}</span
->} @default {<span
+>} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
+'double-chevrons' }], subtext.attributes))) {«<app-latin-text
+  [latin_text]="subtext.childNodes"
+  [folio]="this.folio()"
+/>»} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
+'double-chevrons-left' }], subtext.attributes))) {«<app-latin-text
+  [latin_text]="subtext.childNodes"
+  [folio]="this.folio()"
+/>} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
+'double-chevrons-right' }], subtext.attributes))) {<app-latin-text
+  [latin_text]="subtext.childNodes"
+  [folio]="this.folio()"
+/>»} @case((subtext.tagName === 'note' && isSubset([{ name: 'type', value:
+'note' }], subtext.attributes))) { @if(notesActive) {
+<a
+  class="{{ findAttributeValue(subtext.attributes, 'type') }}"
+  href="{{ findAttributeValue(subtext.attributes, 'corresp') }}"
+  (click)="showNote(findAttributeValue(subtext.attributes, 'corresp'))"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasBottom"
+  aria-controls="offcanvasBottom"
+>
+  <sup>[{{ findAttributeValue(subtext.attributes, "n") }}]</sup>
+</a>
+}} @case(( subtext.tagName === 'note' && isSubset([{ name: 'type', value: 'app'
+}], subtext.attributes))) { @if(apparatusActive) {
+<span
+  (click)="onClickApp(findAttributeValue(subtext.attributes, 'corresp')!)"
+  data-bs-toggle="modal"
+  data-bs-target="#modalApparatus"
+  attr.data-app="{{ findAttributeValue(subtext.attributes, 'corresp') }}"
+  class="{{ findAttributeValue(subtext.attributes, 'type') }}"
+>
+  &#8620;
+  <span class="app-icon">
+    <img
+      src="../../../../../assets/images/app-icon.svg"
+      alt="link to apparatus"
+    />
+  </span>
+</span>
+} } @default {<span
   >{{ subtext.text }}@if(!subtext.isText) {<app-latin-text
     [latin_text]="subtext.childNodes"
     [folio]="this.folio()"
