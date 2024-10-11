@@ -27,24 +27,19 @@ export class ScrollDirective {
   selector = input<string | undefined>();
   private destroyRef = inject(DestroyRef);
 
-  ngAfterContentInit() {
-    console.log(this.items());
-  }
-
   constructor() {
     effect(() => {
       const container = this.elementRef.nativeElement;
       // Setting list
       const list = this.list() ? this.list()!.nativeElement : container;
+      // Setting items
+      const items: HTMLElement[] = this.items().length
+        ? this.items().map((e) => e.nativeElement)
+        : Array.from(
+            this.component()?.nativeElement.querySelectorAll(this.selector())
+          );
 
-      console.log(container);
-      console.log(list);
-      console.log(this.items());
-      console.log(
-        this.component()?.nativeElement.querySelectorAll(this.selector())
-      );
       // Observer
-      //console.log(list);
       const config = { attributes: true };
       let prevClassState = container.classList.contains(this.appScroll());
 
@@ -57,7 +52,7 @@ export class ScrollDirective {
             if (prevClassState !== currentClassState) {
               prevClassState = currentClassState;
               if (currentClassState) {
-                this.scrollInside(list, this.id());
+                this.scrollInside(list, items, this.id());
               }
             }
           }
@@ -75,17 +70,14 @@ export class ScrollDirective {
     });
   }
 
-  scrollInside(list: Element | undefined, id: string | undefined) {
-    // Setting items
-    const items = this.items().length
-      ? this.items().map((e) => e.nativeElement)
-      : Array.from(
-          this.component()?.nativeElement.querySelectorAll(this.selector())
-        );
-    const selected = items.find((e) => e.getAttribute("id") === id!);
+  scrollInside(
+    list: Element | undefined,
+    listItems: (HTMLElement | undefined)[],
+    id: string | undefined
+  ) {
+    const selected = listItems.find((e) => e!.getAttribute("id") === id!);
     list!.scroll({
       top: selected?.offsetTop,
     });
-    //console.log(selected?.clientHeight);
   }
 }

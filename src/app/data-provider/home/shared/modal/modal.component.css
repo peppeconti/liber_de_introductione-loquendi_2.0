@@ -65,3 +65,11 @@
     margin: 1rem 0;
     color: #fff;
 }
+
+/*transition: transform .3s ease-out;
+    transition-behavior: normal;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+    transition-property: transform;
+    transform: translate(0, -50px);*/
