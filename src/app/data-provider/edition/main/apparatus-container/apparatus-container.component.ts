@@ -14,7 +14,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { DataService } from "../../../../services/dataService.service";
-import { ScrollDirective } from "./scroll.directive";
+import { ScrollDirective } from "../../../../directives/scroll.directive";
 
 @Component({
   selector: "app-apparatus-container",

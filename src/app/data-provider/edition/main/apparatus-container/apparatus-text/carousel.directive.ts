@@ -18,6 +18,6 @@ export class CarouselDirective implements OnInit {
   ngOnInit(): void {
     const item = this.elementRef;
     this.carouselItemService.addCarouselItem(item);
-    console.log(this.carouselItemService.getCarouselItems());
+    //console.log(this.carouselItemService.getCarouselItems());
   }
 }

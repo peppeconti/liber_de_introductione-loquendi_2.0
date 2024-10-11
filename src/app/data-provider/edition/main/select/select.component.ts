@@ -1,11 +1,11 @@
 import { Component, input} from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { ScrollDirective } from "./scroll.directive";
+import { ScrollDirective } from "../../../../directives/scroll.directive";
 
 @Component({
   selector: "app-select",
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ScrollDirective],
+  imports: [RouterLink, RouterLinkActive, ScrollDirective ],
   templateUrl: "./select.component.html",
   styleUrl: "./select.component.css",
 })

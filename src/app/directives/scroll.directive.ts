@@ -15,20 +15,34 @@ import {
 })
 export class ScrollDirective {
   appScroll = input.required<string>();
-  id = input.required<string>();
+  id = input.required<string | undefined>();
   elementRef = inject(ElementRef);
   list = contentChild<ElementRef>("list");
   items = contentChildren("item", {
     read: ElementRef,
-    descendants: true
   });
+  component = contentChild("component", {
+    read: ElementRef,
+  });
+  selector = input<string | undefined>();
   private destroyRef = inject(DestroyRef);
+
+  ngAfterContentInit() {
+    console.log(this.items());
+  }
 
   constructor() {
     effect(() => {
       const container = this.elementRef.nativeElement;
       // Setting list
       const list = this.list() ? this.list()!.nativeElement : container;
+
+      console.log(container);
+      console.log(list);
+      console.log(this.items());
+      console.log(
+        this.component()?.nativeElement.querySelectorAll(this.selector())
+      );
       // Observer
       //console.log(list);
       const config = { attributes: true };
@@ -62,9 +76,14 @@ export class ScrollDirective {
   }
 
   scrollInside(list: Element | undefined, id: string | undefined) {
-    const items = this.items().map((e) => e.nativeElement);
+    // Setting items
+    const items = this.items().length
+      ? this.items().map((e) => e.nativeElement)
+      : Array.from(
+          this.component()?.nativeElement.querySelectorAll(this.selector())
+        );
     const selected = items.find((e) => e.getAttribute("id") === id!);
-    (list!).scroll({
+    list!.scroll({
       top: selected?.offsetTop,
     });
     //console.log(selected?.clientHeight);

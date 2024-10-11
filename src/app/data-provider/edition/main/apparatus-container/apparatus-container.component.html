@@ -6,6 +6,7 @@
   aria-hidden="true"
   appScroll="show"
   [id]="this.noteId()"
+  selector="p.app-note"
 >
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -37,6 +38,7 @@
         >
           <div #carousel class="carousel-inner">
             <app-apparatus-text
+              #component
               [apparatus]="apparatus()"
               [folio]="folio()"
               [noteId]="this.noteId()"
