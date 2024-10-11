@@ -3,6 +3,7 @@ import {
   computed,
   inject,
   input,
+  OnDestroy,
   OnInit,
 } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
@@ -22,7 +23,7 @@ import { ScrollDirective } from "./scroll.directive";
   templateUrl: "./apparatus-container.component.html",
   styleUrl: "./apparatus-container.component.css",
 })
-export class ApparatusContainerComponent implements OnInit {
+export class ApparatusContainerComponent implements OnInit, OnDestroy {
   dataService = inject(DataService);
   noteId = computed<string | undefined>(() => this.dataService.getAppNoteId()?.replace('#', ''));
   items = <Element[] | undefined>undefined;
@@ -33,5 +34,10 @@ export class ApparatusContainerComponent implements OnInit {
 
   ngOnInit(): void {
     //console.log(this.noteId())
+  }
+
+  ngOnDestroy(): void {
+    console.log('carouselItems cleared!');
+    this.dataService.clearCarouselItems();
   }
 }

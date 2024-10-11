@@ -20,12 +20,12 @@ export class ScrollDirective {
   list = contentChild<ElementRef>("list");
   items = contentChildren("item", {
     read: ElementRef,
+    descendants: true
   });
   private destroyRef = inject(DestroyRef);
 
   constructor() {
     effect(() => {
-      console.log(this.items());
       const container = this.elementRef.nativeElement;
       // Setting list
       const list = this.list() ? this.list()!.nativeElement : container;

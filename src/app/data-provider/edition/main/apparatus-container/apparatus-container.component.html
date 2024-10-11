@@ -5,7 +5,7 @@
   aria-labelledby="modalApparatusLabel"
   aria-hidden="true"
   appScroll="show"
-  [noteId]="this.noteId()"
+  [id]="this.noteId()"
 >
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -30,6 +30,7 @@
       <!--BODY-->
       <div class="modal-body">
         <div
+          #list
           id="carouselApparatusControls"
           class="carousel slide multiple"
           data-bs-interval="false"

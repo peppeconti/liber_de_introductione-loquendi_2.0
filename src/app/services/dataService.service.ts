@@ -7,7 +7,7 @@ export class DataService {
   private carouselItems = signal<ElementRef[]>([]);
   private noteId = signal<string | undefined>(undefined);
   private appNoteId = signal<string | undefined>(undefined);
-  private carouselItemReadOnly = this.carouselItems.asReadonly()
+  private carouselItemsReadOnly = this.carouselItems.asReadonly()
   private noteIdReadOnly = this.noteId.asReadonly();
   private appNoteIdReadOnly = this.appNoteId.asReadonly();
 
@@ -27,8 +27,12 @@ export class DataService {
     this.appNoteId.set(noteId);
   }
 
+  getCarouselItems () {
+    return this.carouselItemsReadOnly();
+  }
+
   setCarouselItems(id: string, renderer: Renderer2) {
-    this.carouselItemReadOnly().forEach((e) => {
+    this.carouselItemsReadOnly().forEach((e) => {
       renderer.removeClass(e.nativeElement, "active");
       if (e.nativeElement.id === id) {
         renderer.addClass(e.nativeElement, "active");
@@ -38,5 +42,9 @@ export class DataService {
 
   addCarouselItem(item: ElementRef) {
     this.carouselItems.update((prev) => [...prev, item]);
+  }
+
+  clearCarouselItems() {
+    this.carouselItems.set([]);
   }
 }

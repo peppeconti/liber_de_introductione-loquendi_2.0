@@ -1,4 +1,10 @@
-import { Directive, ElementRef, inject, OnInit } from "@angular/core";
+import {
+  Directive,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+} from "@angular/core";
 import { DataService } from "../../../../../services/dataService.service";
 
 @Directive({
@@ -12,6 +18,6 @@ export class CarouselDirective implements OnInit {
   ngOnInit(): void {
     const item = this.elementRef;
     this.carouselItemService.addCarouselItem(item);
-    //console.log(this.carouselItemService.getCarouselItems());
+    console.log(this.carouselItemService.getCarouselItems());
   }
 }
