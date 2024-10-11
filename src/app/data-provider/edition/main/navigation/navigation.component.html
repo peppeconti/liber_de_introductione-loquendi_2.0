@@ -1,16 +1,16 @@
 @if(this.navigation().prev) {
-<span
+<a
   class="angles left"
   [routerLink]="['/edition', getLink(this.navigation().prev)]"
 >
   <fa-icon [icon]="angleLeft" />
-</span>
+</a>
 } @if(this.navigation().next) {
-<span
+<a
   class="angles right"
   [routerLink]="['/edition', getLink(this.navigation().next)]"
 >
   <fa-icon [icon]="angleRight" />
-</span>
+</a>
 }
 <span class="margin"><p>{{ pages() }}</p></span>
