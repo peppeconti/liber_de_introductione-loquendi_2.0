@@ -38,7 +38,7 @@ export class ScrollDirective {
         : Array.from(
             this.component()?.nativeElement.querySelectorAll(this.selector())
           );
-
+      console.log(list);
       // Observer
       const config = { attributes: true };
       let prevClassState = container.classList.contains(this.appScroll());
