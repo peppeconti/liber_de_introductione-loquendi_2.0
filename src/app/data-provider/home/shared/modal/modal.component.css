@@ -1,75 +1,74 @@
 .backdrop {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow-y: hidden;
-    backdrop-filter: blur(.08rem);
-    background-color: rgba(134, 134, 134, 0.3);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  backdrop-filter: blur(0.08rem);
+  background-color: rgba(134, 134, 134, 0.3);
 }
 
 .modal {
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 95%;
-    width: 95%;
-    max-width: 800px;
-    background-color: #2e2e2e;
-    border: none;
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 95%;
+  width: 95%;
+  max-width: 800px;
+  background-color: #2e2e2e;
+  border: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-nav ul {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
 }
 
 .modal-nav ul li {
-    background-color: rgb(227, 227, 227);
-    text-align: center;
-    list-style: none;
-    flex-grow: 1;
+  background-color: rgb(227, 227, 227);
+  text-align: center;
+  list-style: none;
+  flex-grow: 1;
 }
 
 .modal-nav ul li a {
-    text-decoration: none;
-    padding: 1rem;
-    color: #1d1d1d;
-    font-size: 1.5rem;
-    display: block;
-    height: 100%;
+  text-decoration: none;
+  padding: 1rem;
+  color: #1d1d1d;
+  font-size: 1.5rem;
+  display: block;
+  height: 100%;
 }
 
 .modal-nav ul li.current {
-    background-color: #2e2e2e;
+  background-color: #2e2e2e;
 }
 
 .modal-nav ul li.current a {
-    color: #fff;
+  color: #fff;
 }
 
 .text {
-    padding: 1rem;
-    margin: 1rem 0;
-    color: #fff;
+  padding: 1rem;
+  margin: 1rem 0;
+  color: #fff;
 }
 
-/*transition: transform .3s ease-out;
-    transition-behavior: normal;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out;
-    transition-delay: 0s;
-    transition-property: transform;
-    transform: translate(0, -50px);*/
+@media screen and (max-width: 500px) {
+  .modal-nav ul li a {
+    font-size: 1.25rem;
+    padding: .75rem;
+  }
+}
