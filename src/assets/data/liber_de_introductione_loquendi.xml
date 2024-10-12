@@ -181,7 +181,7 @@
                      <imprint>
                         <publisher>Typis E. Charpentier &#x26; J. Schoonjans</publisher>
                         <pubPlace>Lovanio</pubPlace>
-                        <date>1896</date>
+                        <date>1896</date>.
                      </imprint>
                   </monogr>
                </biblStruct>
@@ -193,7 +193,7 @@
                      <imprint>
                         <publisher>Balthazar Bellerus</publisher>
                         <pubPlace>Douai</pubPlace>
-                        <date>1624</date>
+                        <date>1624</date>.
                      </imprint>
                   </monogr>
                </biblStruct>
@@ -204,7 +204,7 @@
                      <imprint>
                         <publisher>Michiel Cnobbaert</publisher>
                         <pubPlace>Anversa</pubPlace>
-                        <date>1675</date>
+                        <date>1675</date>.
                      </imprint>
                   </monogr>
                </biblStruct>
@@ -217,7 +217,7 @@
                      <imprint>
                         <publisher>Michiel Cnobbaert</publisher>
                         <pubPlace>Lipsia</pubPlace>
-                        <date>1850</date>
+                        <date>1850</date>.
                      </imprint>
                   </monogr>
                </biblStruct>
@@ -509,22 +509,15 @@
                   <title level="review">Lettere italiane:48, pp. 420-436</title>
                   <publisher>Olschki</publisher>
                   <pubPlace>Firenze</pubPlace>
-                  <date>1996</date>. 
+                  <date>1996</date>.
                </bibl>
                <bibl type="article">
                   <author>Ziegler, Joseph</author>
                   <title level="article">Medicine and the Body at the Table in Fourteenth-Century Italy: Book one of Philip of Ferrara's Liber de introductione loquendi</title>
-                  <title level="essays_collection">Between Text and Patient. The Medical Enterprise in Medieval and Early Modern Europe, pp. 121-136</title>.
+                  <title level="essays_collection">Between Text and Patient. The Medical Enterprise in Medieval and Early Modern Europe, pp. 121-136</title>
                   <publisher>SISMEL - Edizioni del Galluzzo</publisher>
                   <pubPlace>Firenze</pubPlace>
-                  <date>2011</date>. 
-               </bibl>
-                <bibl type="monography">
-                  <author>Benini, Arnaldo</author>
-                  <title>Neurobiologia della volontà</title>
-                  <publisher>Raffaello Cortina Editore</publisher>
-                  <pubPlace>Milano</pubPlace>
-                  <date>2022</date>. 
+                  <date>2011</date>.
                </bibl>
             </listBibl>
          </div>
