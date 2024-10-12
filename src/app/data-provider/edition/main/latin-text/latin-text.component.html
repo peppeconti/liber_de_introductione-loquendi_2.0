@@ -43,18 +43,25 @@ subtext.attributes))) {
     [folio]="this.folio()"
   />&#160;&#8250; }</span
 >} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
-'double-chevrons' }], subtext.attributes))) { «<app-latin-text
-  [latin_text]="subtext.childNodes"
-  [folio]="this.folio()"
-/>» } @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
-'double-chevrons-left' }], subtext.attributes))) { «<app-latin-text
-  [latin_text]="subtext.childNodes"
-  [folio]="this.folio()"
-/>} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
+'double-chevrons' }], subtext.attributes))) {<span class="double-chevrons"
+  >@if(!subtext.isText) {«<app-latin-text
+    [latin_text]="subtext.childNodes"
+    [folio]="this.folio()"
+  />»}</span
+>} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
+'double-chevrons-left' }], subtext.attributes))) {
+<span class="double-chevrons-left">
+  @if(!subtext.isText) { «<app-latin-text
+    [latin_text]="subtext.childNodes"
+    [folio]="this.folio()"
+  />}</span
+>} @case((subtext.tagName === 'said' && isSubset([{ name: 'rend', value:
 'double-chevrons-right' }], subtext.attributes))) {
-<app-latin-text [latin_text]="subtext.childNodes" [folio]="this.folio()" />» }
-@case((subtext.tagName === 'note' && isSubset([{ name: 'type', value: 'note' }],
-subtext.attributes))) { @if(notesActive) {
+<span class="double-chevrons-right">
+  @if(!subtext.isText) {
+  <app-latin-text [latin_text]="subtext.childNodes" [folio]="this.folio()" />» } </span
+>} @case((subtext.tagName === 'note' && isSubset([{ name: 'type', value: 'note'
+}], subtext.attributes))) { @if(notesActive) {
 <a
   class="{{ findAttributeValue(subtext.attributes, 'type') }}"
   href="{{ findAttributeValue(subtext.attributes, 'corresp') }}"
@@ -80,13 +87,10 @@ subtext.attributes))) { @if(notesActive) {
       src="../../../../../assets/images/app-icon.svg"
       alt="link to apparatus"
     />
-  </span>
-</span>
-} } @default {<span
-  >{{ subtext.text }}@if(!subtext.isText) {<app-latin-text
+  </span> </span
+>}}@default {<span
+  >{{ subtext.text }}@if(!subtext.isText){<app-latin-text
     [latin_text]="subtext.childNodes"
     [folio]="this.folio()"
-  />
-  }</span
->
-} } }
+  />}</span
+>}}}

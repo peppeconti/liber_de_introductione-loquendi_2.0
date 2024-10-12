@@ -49,24 +49,15 @@ h2 {
   font-weight: 400;
 }
 
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+h1, h2 {
+  font-size: calc(22px + (36 - 22) * ((100vw - 360px) / (1600 - 360)));
 }
 
 @media screen and (max-width: 1050px) {
+  .title {
+    padding: 0 15vw;
+    width: 100%;
+  }
   .logo {
     display: none;
   }
@@ -74,6 +65,36 @@ h2 {
   h1,
   h2 {
     text-align: center;
-    padding: 5rem 0;
+    padding: 5vh 0;
   }
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    padding: 0 7.5vw;
+    width: 100%;
+  }
+  .logo {
+    display: none;
+  }
+
+  h1,
+  h2 {
+    text-align: center;
+    padding: 2.5vh 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  h1,
+  h2 {
+    padding: 1.5rem 0;
+    line-height: 2.5rem;
+  }
+
+  .title {
+    padding: 0 5.5vw;
+    width: 100%;
+  }
+ 
 }
