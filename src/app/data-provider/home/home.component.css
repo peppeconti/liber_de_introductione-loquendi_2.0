@@ -17,6 +17,7 @@
   min-height: 600px;
   min-width: 360px;
   position: relative;
+  overflow: hidden;
 }
 
 app-home-header {
