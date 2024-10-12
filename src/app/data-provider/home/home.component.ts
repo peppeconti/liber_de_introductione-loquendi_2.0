@@ -25,10 +25,9 @@ export class HomeComponent {
   secondary_biblio = computed<JsonNode[] | undefined | null>(() =>
     this.getSecondaryBiblio(this.data!)
   );
-  witnesses = computed<JsonNode[] | undefined | null>(() => this.getWitnesses(this.data!))
+  witnesses = computed<JsonNode[] | undefined | null>(() => this.getWitnesses(this.data!));
 
   ngOnInit() {
-    console.log(this.data);
   }
 
   getPrimaryBiblio(xml: Document) {

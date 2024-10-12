@@ -65,3 +65,15 @@ h2 {
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 1050px) {
+  .logo {
+    display: none;
+  }
+
+  h1,
+  h2 {
+    text-align: center;
+    padding: 5rem 0;
+  }
+}

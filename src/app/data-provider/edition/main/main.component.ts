@@ -40,6 +40,10 @@ export class MainComponent{
   notes = computed<JsonNode[]>(() => this.getNotes(this.data()!));
   apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data()!));
 
+  ngOnInit () {
+    console.log(this.latin_text());
+  }
+
   get translationActive() {
     return this.settingService.getSettings().showTranslation;
   }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { JsonNode } from "./models";
 import { nextUntil } from "../utils/utils";
 import { catchError, map, throwError } from "rxjs";
+import { UUID } from "angular2-uuid";
 
 const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set(
   "Accept",
@@ -86,7 +87,7 @@ export class HttpService {
       tagName: null,
       childNodes: null,
       isText: false,
-      id: Date.now().toString()
+      id: UUID.UUID(),
     };
     nodeObj.tagName = (<Element>node).tagName;
     nodeObj.attributes = [];
