@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { ModalComponent } from "../shared/modal/modal.component";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-credits',
+  selector: "app-credits",
   standalone: true,
-  imports: [ModalComponent],
-  templateUrl: './credits.component.html',
-  styleUrl: './credits.component.css'
+  imports: [],
+  templateUrl: "./credits.component.html",
+  styleUrl: "./credits.component.css",
 })
-export class CreditsComponent {
-
+export class CreditsComponent implements OnInit {
+  @Input({required: true}) modal_router: any | undefined;
+  ngOnInit() {
+    this.modal_router.show();
+  }
 }

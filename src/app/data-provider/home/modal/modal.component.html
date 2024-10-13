@@ -1,0 +1,19 @@
+<div
+  class="modal fade"
+  id="modal-home"
+  tabindex="-1"
+  aria-labelledby="modal-home"
+  aria-hidden="true"
+  (hide.bs.modal)="toHome()"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+       <app-modal-header/>
+      </div>
+      <div class="modal-body">
+        <ng-content />
+      </div>
+    </div>
+  </div>
+</div>
