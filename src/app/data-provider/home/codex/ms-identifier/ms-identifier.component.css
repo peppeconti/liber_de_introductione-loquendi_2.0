@@ -1,0 +1,18 @@
+td {
+    padding: 1rem;
+}
+
+td.left {
+    border-right: 1px solid #fff;
+    width: 15%;
+    text-align: right;
+    align-items: flex-start;
+    padding-right: 2rem;
+    font-weight: bold;
+}
+
+td.right {
+    width: 85%;
+    text-align: left;
+    padding-left: 5rem;
+}

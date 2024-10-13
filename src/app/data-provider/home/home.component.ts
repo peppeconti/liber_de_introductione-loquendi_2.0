@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getSecondaryBiblio(this.data!)
   );
   witnesses = computed<JsonNode[] | undefined | null>(() => this.getWitnesses(this.data!));
+  msIdentidier = computed<JsonNode[] | undefined | null>(() => this.getMsIdentifier(this.data!));
   modal_router = signal<any | undefined>(undefined)
  
   ngOnInit() {
@@ -52,6 +53,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     return biblio_json.childNodes;
   }
 
+  getMsIdentifier(xml: Document) {
+    const msIdentifier: Element | null | undefined =
+      xml.querySelector("msIdentifier");
+    const msIdentifier_json = this.httpService.parseNode(<Element>msIdentifier);
+    const nodes = msIdentifier_json.childNodes;
+    const filtered = nodes?.filter(e => e.textContent !== '');
+    return filtered;
+  }
+
   getWitnesses(xml: Document) {
     const witnesses: Element | null | undefined =
       xml.querySelector("listWit");
@@ -63,6 +73,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     biblio.primary_biblio = this.primary_biblio();
     biblio.secondary_biblio = this.secondary_biblio();
     codex.witnesses = this.witnesses();
+    codex.msIdentifier = this.msIdentidier();
     biblio.modal_router = this.modal_router();
     codex.modal_router = this.modal_router();
     credits.modal_router = this.modal_router();

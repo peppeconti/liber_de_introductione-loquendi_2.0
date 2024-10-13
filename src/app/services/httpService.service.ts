@@ -88,8 +88,10 @@ export class HttpService {
       childNodes: null,
       isText: false,
       id: UUID.UUID(),
+      textContent: ''
     };
     nodeObj.tagName = (<Element>node).tagName;
+    nodeObj.textContent = (<Element>node).textContent;
     nodeObj.attributes = [];
     if ((<Element>node).attributes && (<Element>node).attributes.length > 0) {
       for (let i = 0; i < (<Element>node).attributes.length; i++) {

@@ -5,6 +5,7 @@ export type JsonNode = {
   attributes: Array<{ name: string; value: string }> | null;
   childNodes: Array<JsonNode> | null;
   id: string;
+  textContent: string | null;
 };
 
 export type Settings = {

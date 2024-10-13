@@ -1,2 +1,9 @@
+@if(this.msIdentifier?.length) {
+<h2 class="identifier">Collocazione</h2>
+<table>
+  <app-ms-identifier [msIdentifier]="this.msIdentifier" />
+</table>
+}
+
 <h2 class="witnesses">Testimoni</h2>
 <app-witnesses [witnesses]="this.witnesses" />

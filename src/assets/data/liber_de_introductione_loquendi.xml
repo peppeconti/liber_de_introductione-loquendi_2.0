@@ -22,12 +22,13 @@
          <sourceDesc>
             <msDesc>
                <msIdentifier>
-                  <country>Germany</country>
-                  <region>Bayern</region>
-                  <settlement>München</settlement>
-                  <institution>Bayerische Staatsbibliothek</institution>
-                  <repository>Codices latini monacenses</repository>
-                  <idno type="signatur">Clm 16126</idno>
+                  <country rend="nazione">Germany</country>
+                  <region rend="regione">Bayern</region>
+                  <settlement rend="città">München</settlement>
+                  <institution rend="istituzione">Bayerische Staatsbibliothek</institution>
+                  <msName></msName>
+                  <repository rend="fondo">Codices latini monacenses</repository>
+                  <idno rend="segnatura">Clm 16126</idno>
                </msIdentifier>
                <msContents>
                   <summary rend="TOC">
