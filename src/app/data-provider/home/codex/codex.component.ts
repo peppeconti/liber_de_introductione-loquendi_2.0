@@ -14,6 +14,6 @@ export class CodexComponent {
   @Input({ required: true }) witnesses: JsonNode[] | undefined | null;
 
   ngOnInit() {
-    console.log(this.witnesses)
+    //console.log(this.witnesses)
   }
 }
