@@ -77,13 +77,13 @@
                         <support rend="supporto">Pergamena</support>
                         <extent rend="estensione">92 fogli</extent>
                         <foliation rend="foliazione">Nella parte destra del margine superiore le pagine sono numerate
-                           con cifre arabe.</foliation>
+                           con cifre arabe</foliation>
                         <collation>
                            <formula rend="fascicolazione">quaternioni</formula>
                         </collation>
                      </supportDesc>
                      <layoutDesc>
-                        <layout rend="disposizione" columns="2" writtenLines="35">Colonne (2); righe (35)</layout>
+                        <layout rend="disposizione" columns="2" writtenLines="35">Due colonne di trentacique righe ciascuna</layout>
                      </layoutDesc>
                   </objectDesc>
                </physDesc>
