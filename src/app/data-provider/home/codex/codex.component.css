@@ -1,11 +1,18 @@
-.witnesses, .identifier {
+.witnesses {
     margin-bottom: 1rem;
-    border-bottom: 2px solid #fff;
-    padding-bottom: 5px;
+    font-size: 1.5rem;
+    padding: 0 1rem;
 }
 
 table {
-    width: 100%;
     padding: 1rem;
     margin-bottom: 2rem;
+    width: 100%;
+    border: 2px solid #fff;
+
+}
+
+.tableHead {
+    font-size: 1.5rem;
+    padding: 0 1rem;
 }

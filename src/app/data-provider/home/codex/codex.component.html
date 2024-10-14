@@ -1,7 +1,17 @@
 @if(this.msIdentifier?.length) {
-<h2 class="identifier">Collocazione</h2>
+<h2 class="tableHead">Informazioni generali</h2>
 <table>
-  <app-ms-identifier [msIdentifier]="this.msIdentifier" />
+  <app-ms-infos [tableData]="this.msItem" />
+</table>
+} @if(this.msIdentifier?.length) {
+<h2 class="tableHead">Collocazione</h2>
+<table>
+  <app-ms-infos [tableData]="this.msIdentifier" />
+</table>
+} @if(this.msDesc?.length) {
+<h2 class="tableHead">Descrizione</h2>
+<table>
+  <app-ms-infos [tableData]="this.msDesc" />
 </table>
 }
 

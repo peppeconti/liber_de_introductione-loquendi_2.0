@@ -1,0 +1,27 @@
+@for(subtext of tableData; track subtext.id) { @switch (true) { @case
+(tagNames.includes(subtext.tagName!)) {
+<tr>
+  <td class="left">
+    @if(findAttributeValue(subtext.attributes, "rend")){
+    {{ findAttributeValue(subtext.attributes, "rend")?.toUpperCase() }}
+    } @else {
+    {{ subtext.tagName!.toUpperCase() }}
+    }
+  </td>
+  <td class="right">
+    @if(!subtext.isText) {
+    <app-ms-infos [tableData]="subtext.childNodes" />
+    }
+  </td>
+</tr>
+} @case (subtext.tagName === "emph") {
+<span [class]="findAttributeValue(subtext.attributes, 'rend')">
+  @if(!subtext.isText) {
+  <app-ms-infos [tableData]="subtext.childNodes" />
+  }
+</span>
+} @default {<span
+  >{{ subtext.text }}@if(!subtext.isText) {
+  <app-ms-infos [tableData]="subtext.childNodes" /> }</span
+>
+} } }

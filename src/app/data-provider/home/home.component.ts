@@ -1,4 +1,12 @@
-import { Component, computed, inject, Input, OnDestroy, OnInit, signal } from "@angular/core";
+import {
+  Component,
+  computed,
+  inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  signal,
+} from "@angular/core";
 import { HomeHeaderComponent } from "./home-header/home-header.component";
 import { HomeMainComponent } from "./home-main/home-main.component";
 import { RouterLink, RouterOutlet } from "@angular/router";
@@ -14,7 +22,13 @@ declare const bootstrap: any;
 @Component({
   selector: "app-home",
   standalone: true,
-  imports: [HomeHeaderComponent, HomeMainComponent, RouterLink, RouterOutlet, ModalComponent],
+  imports: [
+    HomeHeaderComponent,
+    HomeMainComponent,
+    RouterLink,
+    RouterOutlet,
+    ModalComponent,
+  ],
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css",
   //encapsulation: ViewEncapsulation.None
@@ -28,13 +42,43 @@ export class HomeComponent implements OnInit, OnDestroy {
   secondary_biblio = computed<JsonNode[] | undefined | null>(() =>
     this.getSecondaryBiblio(this.data!)
   );
-  witnesses = computed<JsonNode[] | undefined | null>(() => this.getWitnesses(this.data!));
-  msIdentidier = computed<JsonNode[] | undefined | null>(() => this.getMsIdentifier(this.data!));
-  modal_router = signal<any | undefined>(undefined)
- 
+  witnesses = computed<JsonNode[] | undefined | null>(() =>
+    this.getWitnesses(this.data!)
+  );
+  msIdentidier = computed<JsonNode[] | undefined | null>(() =>
+    this.getMsInfos(this.data!, "msIdentifier")
+  );
+  msItem = computed<JsonNode[] | undefined | null>(() =>
+    this.getMsInfos(this.data!, "msItem")
+  );
+  msDesc = computed<JsonNode[] | undefined | null>(() =>
+    this.getMsInfos(this.data!, "objectDesc")
+  );
+  modal_router = signal<any | undefined>(undefined);
+  tagNames: string[] = [
+    "country",
+    "region",
+    "settlement",
+    "idno",
+    "msName",
+    "repository",
+    "institution",
+    "author",
+    "title",
+    "textLang",
+    "incipit",
+    "explicit",
+    "locus",
+    "support",
+    "extent",
+    "foliation",
+    "layout",
+    "formula",
+  ];
+
   ngOnInit() {
-    const modal_router = new bootstrap.Modal('#modal-home', {
-      keyboard: false
+    const modal_router = new bootstrap.Modal("#modal-home", {
+      keyboard: false,
     });
     this.modal_router.set(modal_router);
   }
@@ -53,27 +97,44 @@ export class HomeComponent implements OnInit, OnDestroy {
     return biblio_json.childNodes;
   }
 
-  getMsIdentifier(xml: Document) {
+  getMsInfos(xml: Document, selector: string) {
     const msIdentifier: Element | null | undefined =
-      xml.querySelector("msIdentifier");
+      xml.querySelector(selector);
     const msIdentifier_json = this.httpService.parseNode(<Element>msIdentifier);
     const nodes = msIdentifier_json.childNodes;
-    const filtered = nodes?.filter(e => e.textContent !== '');
-    return filtered;
+    return  this.getPlainArray(nodes!);
+  }
+
+  getPlainArray(array: JsonNode[] | undefined, result: JsonNode[] = []): JsonNode[] {
+    for (let node of array!) {
+      if (node.childNodes) {
+        if(this.tagNames.includes(node.tagName!)) {
+          result.push(node);
+        }
+        this.getPlainArray(node.childNodes, result)
+      }
+    }
+
+    return result.filter(e => e.textContent !== '');
   }
 
   getWitnesses(xml: Document) {
-    const witnesses: Element | null | undefined =
-      xml.querySelector("listWit");
+    const witnesses: Element | null | undefined = xml.querySelector("listWit");
     const witnesses_json = this.httpService.parseNode(<Element>witnesses);
     return witnesses_json.childNodes;
   }
 
-  onActivate(biblio: BiblioComponent, codex: CodexComponent, credits: CreditsComponent) {
+  onActivate(
+    biblio: BiblioComponent,
+    codex: CodexComponent,
+    credits: CreditsComponent
+  ) {
     biblio.primary_biblio = this.primary_biblio();
     biblio.secondary_biblio = this.secondary_biblio();
     codex.witnesses = this.witnesses();
     codex.msIdentifier = this.msIdentidier();
+    codex.msItem = this.msItem();
+    codex.msDesc = this.msDesc();
     biblio.modal_router = this.modal_router();
     codex.modal_router = this.modal_router();
     credits.modal_router = this.modal_router();

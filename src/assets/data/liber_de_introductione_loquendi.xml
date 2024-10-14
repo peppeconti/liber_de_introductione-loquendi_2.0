@@ -60,29 +60,30 @@
                      </list>
                   </summary>
                   <msItem>
-                     <author>Philippus Ferrariensis, frater O.P.</author>
-                     <title type="full">Philippi fratris ordinis praedicatorum de introductione
+                     <locus></locus>
+                     <author rend="autore">Philippus Ferrariensis, frater O.P.</author>
+                     <title type="full" rend="titolo completo">Philippi fratris ordinis praedicatorum de introductione
                         loquendi octo libri cum multis historiolis</title>
-                     <title type="short">Liber de introductione loquendi</title>
-                     <textLang>Latino</textLang>
-                     <incipit>Incipit liber de introductione loquendi editus a fratre
-                        Philippo</incipit>
-                     <explicit>Explicit liber iste</explicit>
+                     <title type="short" rend="titolo abbreviato">Liber de introductione loquendi</title>
+                     <textLang rend="lingua">Latino</textLang>
+                     <incipit><emph rend="italic">Incipit liber de introductione loquendi editus a fratre
+                        Philippo</emph></incipit>
+                     <explicit><emph rend="italic">Explicit liber iste</emph></explicit>
                   </msItem>
                </msContents>
                <physDesc>
                   <objectDesc form="codex">
                      <supportDesc material="pergament">
-                        <support>Pergamena</support>
-                        <extent>92 fogli</extent>
-                        <foliation>Nella parte destra del margine superiore le pagine sono numerate
+                        <support rend="supporto">Pergamena</support>
+                        <extent rend="estensione">92 fogli</extent>
+                        <foliation rend="foliazione">Nella parte destra del margine superiore le pagine sono numerate
                            con cifre arabe.</foliation>
                         <collation>
-                           <formula>in ottavo</formula>
+                           <formula rend="fascicolazione">quaternioni</formula>
                         </collation>
                      </supportDesc>
                      <layoutDesc>
-                        <layout columns="2" writtenLines="35">Due colonne</layout>
+                        <layout rend="disposizione" columns="2" writtenLines="35">Colonne (2); righe (35)</layout>
                      </layoutDesc>
                   </objectDesc>
                </physDesc>

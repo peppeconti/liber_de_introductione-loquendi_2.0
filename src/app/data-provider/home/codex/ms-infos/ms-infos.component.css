@@ -1,0 +1,15 @@
+td {
+    padding: 1rem;
+}
+
+td.left {
+    border-right: 2px solid #fff;
+}
+
+td.right {
+    width: 100%;
+}
+
+.italic {
+    font-style: italic;
+}
