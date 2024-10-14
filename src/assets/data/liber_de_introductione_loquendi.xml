@@ -26,7 +26,7 @@
                   <region rend="regione">Bayern</region>
                   <settlement rend="città">München</settlement>
                   <institution rend="istituzione">Bayerische Staatsbibliothek</institution>
-                  <msName></msName>
+                  <msName rend="nome"></msName>
                   <repository rend="fondo">Codices latini monacenses</repository>
                   <idno rend="segnatura">Clm 16126</idno>
                </msIdentifier>
