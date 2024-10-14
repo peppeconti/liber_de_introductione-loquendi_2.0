@@ -10,7 +10,28 @@ export class DataService {
   private carouselItemsReadOnly = this.carouselItems.asReadonly()
   private noteIdReadOnly = this.noteId.asReadonly();
   private appNoteIdReadOnly = this.appNoteId.asReadonly();
-  private activeItem = signal<{ index: string; id: string }>({ index: '', id: '' })
+  private activeItem = signal<{ index: string; id: string }>({ index: '', id: '' });
+  private tagNames = signal<string[]>([
+    "country",
+    "region",
+    "settlement",
+    "idno",
+    "msName",
+    "repository",
+    "institution",
+    "author",
+    "title",
+    "textLang",
+    "incipit",
+    "explicit",
+    "locus",
+    "support",
+    "extent",
+    "foliation",
+    "layout",
+    "formula",
+  ]);
+  private tagNamesAsReadOnly = this.tagNames.asReadonly();
 
   getNoteId() {
     return this.noteIdReadOnly();
@@ -55,5 +76,9 @@ export class DataService {
 
   clearCarouselItems() {
     this.carouselItems.set([]);
+  }
+
+  getTagNames() {
+    return this.tagNamesAsReadOnly();
   }
 }

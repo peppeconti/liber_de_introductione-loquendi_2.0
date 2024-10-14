@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, inject, Input, OnInit } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 import { isSubset, findAttributeValue } from "../../../../utils/utils";
+import { DataService } from "../../../../services/dataService.service";
 
 @Component({
   selector: "app-ms-infos",
@@ -11,36 +12,14 @@ import { isSubset, findAttributeValue } from "../../../../utils/utils";
 })
 export class MsInfosComponent implements OnInit {
   @Input({ required: true }) tableData: JsonNode[] | undefined | null;
-  tagNames: string[] = [
-    "country",
-    "region",
-    "settlement",
-    "idno",
-    "msName",
-    "repository",
-    "institution",
-    "author",
-    "title",
-    "textLang",
-    "incipit",
-    "explicit",
-    "locus",
-    "support",
-    "extent",
-    "foliation",
-    "layout",
-    "formula",
-  ];
+  private dataService = inject(DataService);
 
   isSubset = isSubset;
   findAttributeValue = findAttributeValue;
 
-  ngOnInit() {
-    //console.log(this.tableData);
-    //console.log(this.getPlainArray(this.tableData!))
+  get tagNames() {
+    return this.dataService.getTagNames();
   }
 
-  /*get plainTableData () {
-    return this.getPlainArray(this.tableData!)
-  }*/
+  ngOnInit() {}
 }

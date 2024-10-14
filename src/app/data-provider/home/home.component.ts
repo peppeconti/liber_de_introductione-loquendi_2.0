@@ -16,6 +16,7 @@ import { BiblioComponent } from "./biblio/biblio.component";
 import { CodexComponent } from "./codex/codex.component";
 import { CreditsComponent } from "./credits/credits.component";
 import { ModalComponent } from "./modal/modal.component";
+import { DataService } from "../../services/dataService.service";
 
 declare const bootstrap: any;
 
@@ -36,6 +37,7 @@ declare const bootstrap: any;
 export class HomeComponent implements OnInit, OnDestroy {
   @Input({ required: true }) data: Document | undefined;
   private httpService = inject(HttpService);
+  private dataService = inject(DataService);
   primary_biblio = computed<JsonNode[] | undefined | null>(() =>
     this.getPrimaryBiblio(this.data!)
   );
@@ -55,26 +57,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getMsInfos(this.data!, "objectDesc")
   );
   modal_router = signal<any | undefined>(undefined);
-  tagNames: string[] = [
-    "country",
-    "region",
-    "settlement",
-    "idno",
-    "msName",
-    "repository",
-    "institution",
-    "author",
-    "title",
-    "textLang",
-    "incipit",
-    "explicit",
-    "locus",
-    "support",
-    "extent",
-    "foliation",
-    "layout",
-    "formula",
-  ];
 
   ngOnInit() {
     const modal_router = new bootstrap.Modal("#modal-home", {
@@ -108,7 +90,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   getPlainArray(array: JsonNode[] | undefined, result: JsonNode[] = []): JsonNode[] {
     for (let node of array!) {
       if (node.childNodes) {
-        if(this.tagNames.includes(node.tagName!)) {
+        if(this.dataService.getTagNames().includes(node.tagName!)) {
           result.push(node);
         }
         this.getPlainArray(node.childNodes, result)
