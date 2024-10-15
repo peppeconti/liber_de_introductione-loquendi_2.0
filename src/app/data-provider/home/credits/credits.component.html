@@ -1,10 +1,8 @@
 <h2>{{ mainTitle }}</h2>
 <h3>{{ subTitle }}</h3>
-
 <ng-container
   *ngTemplateOutlet="recursive; context: { items: responsability }"
 />
-
 <ng-container
   *ngTemplateOutlet="recursive; context: { items: publication }"
 />
@@ -53,7 +51,7 @@
       >
         @if (!subtext.isText) {<ng-container
           *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
+        />}<fa-icon class="icon" [icon]="link"></fa-icon>
       </a>
     </ng-container>
     <ng-container
@@ -68,7 +66,7 @@
       >
         @if (!subtext.isText) {<ng-container
           *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
+        />}<fa-icon class="icon" [icon]="download"></fa-icon>
       </a>
     </ng-container>
     <span *ngSwitchDefault
