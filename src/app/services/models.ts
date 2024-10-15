@@ -9,13 +9,19 @@ export type JsonNode = {
 };
 
 export type Settings = {
-  showTranslation: boolean,
-  showApparatus: boolean,
-  showNotes: boolean
-}
+  showTranslation: boolean;
+  showApparatus: boolean;
+  showNotes: boolean;
+};
 
 export type NavInfos = {
-  next: string | undefined | null,
-  prev: string | undefined | null,
-  active: string | undefined | null
-}
+  next: string | undefined | null;
+  prev: string | undefined | null;
+  active: string | undefined | null;
+};
+
+export type Credits = {
+  titles: JsonNode[] | undefined | null;
+  responsability: JsonNode[] | undefined | null;
+  publicationStmt: JsonNode[] | undefined | null;
+};

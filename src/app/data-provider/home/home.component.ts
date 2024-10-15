@@ -11,7 +11,7 @@ import { HomeHeaderComponent } from "./home-header/home-header.component";
 import { HomeMainComponent } from "./home-main/home-main.component";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { HttpService } from "../../services/httpService.service";
-import { JsonNode } from "../../services/models";
+import { Credits, JsonNode } from "../../services/models";
 import { BiblioComponent } from "./biblio/biblio.component";
 import { CodexComponent } from "./codex/codex.component";
 import { CreditsComponent } from "./credits/credits.component";
@@ -56,6 +56,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   msDesc = computed<JsonNode[] | undefined | null>(() =>
     this.getMsInfos(this.data!, "objectDesc")
   );
+  credits = computed<Credits>(() => {
+    const credits: Credits = { titles: undefined, responsability: undefined, publicationStmt: undefined };
+    credits.titles = this.getTitles(this.data!);
+    credits.responsability = this.getRespStmt(this.data!);
+    credits.publicationStmt = this.getPublStmt(this.data!);
+    return credits;
+  }
+  );
   modal_router = signal<any | undefined>(undefined);
 
   ngOnInit() {
@@ -65,45 +73,70 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.modal_router.set(modal_router);
   }
 
-  getPrimaryBiblio(xml: Document) {
+  getPrimaryBiblio(xml: Document): JsonNode[] | null {
     const biblio: Element | null | undefined =
       xml.querySelector("[type=primary]");
     const biblio_json = this.httpService.parseNode(<Element>biblio);
     return biblio_json.childNodes;
   }
 
-  getSecondaryBiblio(xml: Document) {
+  getSecondaryBiblio(xml: Document): JsonNode[] | null {
     const biblio: Element | null | undefined =
       xml.querySelector("[type=secondary]");
     const biblio_json = this.httpService.parseNode(<Element>biblio);
     return biblio_json.childNodes;
   }
 
-  getMsInfos(xml: Document, selector: string) {
+  getMsInfos(xml: Document, selector: string): JsonNode[] {
     const msIdentifier: Element | null | undefined =
       xml.querySelector(selector);
     const msIdentifier_json = this.httpService.parseNode(<Element>msIdentifier);
     const nodes = msIdentifier_json.childNodes;
-    return  this.getPlainArray(nodes!);
+    return this.getPlainArray(nodes!);
   }
 
-  getPlainArray(array: JsonNode[] | undefined, result: JsonNode[] = []): JsonNode[] {
+  getPlainArray(
+    array: JsonNode[] | undefined,
+    result: JsonNode[] = []
+  ): JsonNode[] {
     for (let node of array!) {
       if (node.childNodes) {
-        if(this.dataService.getTagNames().includes(node.tagName!)) {
+        if (this.dataService.getTagNames().includes(node.tagName!)) {
           result.push(node);
         }
-        this.getPlainArray(node.childNodes, result)
+        this.getPlainArray(node.childNodes, result);
       }
     }
 
-    return result.filter(e => e.textContent !== '');
+    return result.filter((e) => e.textContent !== "");
   }
 
-  getWitnesses(xml: Document) {
+  getWitnesses(xml: Document): JsonNode[] | null {
     const witnesses: Element | null | undefined = xml.querySelector("listWit");
     const witnesses_json = this.httpService.parseNode(<Element>witnesses);
     return witnesses_json.childNodes;
+  }
+
+  getTitles(xml: Document): JsonNode[] | undefined | null {
+    const titles: Element[] | null | undefined = Array.from(
+      xml.querySelectorAll("titleStmt title")
+    );
+    const titles_json = titles.map((e) => this.httpService.parseNode(e));
+    return titles_json;
+  }
+
+  getRespStmt(xml: Document): JsonNode[] | undefined | null {
+    const resp: Element[] | null | undefined = Array.from(
+      xml.querySelectorAll("respStmt")
+    );
+    const resp_json = resp.map((e) => this.httpService.parseNode(e));
+    return resp_json;
+  }
+
+  getPublStmt(xml: Document): JsonNode[] | undefined | null {
+    const publ: Element[] | null | undefined = Array.from(xml.querySelectorAll("publicationStmt"));
+    const publ_json = publ.map((e) => this.httpService.parseNode(e));
+    return publ_json;
   }
 
   onActivate(
@@ -120,6 +153,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     biblio.modal_router = this.modal_router();
     codex.modal_router = this.modal_router();
     credits.modal_router = this.modal_router();
+    credits.credits = this.credits();
   }
 
   ngOnDestroy() {

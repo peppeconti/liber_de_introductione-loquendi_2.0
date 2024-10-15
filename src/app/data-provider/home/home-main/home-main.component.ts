@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { JsonNode } from '../../../services/models';
+import { isSubset } from '../../../utils/utils';
 
 @Component({
   selector: 'app-home-main',
@@ -8,5 +10,18 @@ import { Component } from '@angular/core';
   styleUrl: './home-main.component.css'
 })
 export class HomeMainComponent {
+  titles = input.required<JsonNode[] | undefined | null>()
 
+  ngOnInit(){
+    console.log(this.mainTitle);
+    console.log(this.subTitle);
+  }
+
+  get mainTitle() {
+    return this.titles()!.find(e => isSubset([{name: 'type', value: 'edition-title'}], e.attributes))?.textContent;
+  }
+
+  get subTitle() {
+    return this.titles()!.find(e => isSubset([{name: 'type', value: 'edition-note'}], e.attributes))?.textContent;
+  }
 }

@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-home-header',
+  selector: "app-home-header",
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './home-header.component.html',
-  styleUrl: './home-header.component.css'
+  templateUrl: "./home-header.component.html",
+  styleUrl: "./home-header.component.css",
 })
-export class HomeHeaderComponent {
-
-}
+export class HomeHeaderComponent {}
