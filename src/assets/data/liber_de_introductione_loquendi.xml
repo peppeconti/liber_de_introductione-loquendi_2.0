@@ -12,12 +12,16 @@
                <name> Philippus Ferrariensis, frater O.P.</name>
             </author>
             <respStmt>
-               <resp>compiled by</resp>
+               <resp>coding by</resp>
+               <name>Giuseppe Conti</name>
+            </respStmt>
+            <respStmt>
+               <resp>edition by</resp>
                <name>Giuseppe Conti</name>
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <p>Publication Information</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lobortis vulputate dui eu vestibulum. Donec at quam libero. Etiam metus justo, cursus et vestibulum vitae, sollicitudin a purus. Suspendisse fermentum non elit a rhoncus. Proin tristique mauris in molestie ultrices. Proin dolor metus, imperdiet at consectetur vestibulum, congue vel justo. Vestibulum eget enim sit amet felis facilisis facilisis. Nullam vitae neque at metus auctor aliquet ut eu magna. Aliquam lacinia tellus eget eleifend vestibulum. Donec rhoncus nibh ut pretium sagittis. Etiam tristique lacus velit, sed varius mi lacinia ut. Proin ullamcorper malesuada ullamcorper. Duis dignissim a ex et tempor. Donec eget dui risus. Nulla ut scelerisque nulla. Etiam eget nisi id neque iaculis sodales vitae et elit.</p>
          </publicationStmt>
          <sourceDesc>
             <msDesc>

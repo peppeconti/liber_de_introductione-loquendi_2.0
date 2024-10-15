@@ -1,18 +1,14 @@
-<ng-container *ngFor="let subtext of witnesses" [ngSwitch]="true">
-    <ng-container *ngSwitchCase="subtext.tagName === 'witness'">
-      <li class="witness">
-        <app-witnesses
-          *ngIf="!subtext.isText"
-          [witnesses]="subtext.childNodes"
-        />
-      </li>
-    </ng-container>
-    <span *ngSwitchDefault
-      >{{ subtext.text
-      }}<app-witnesses
-        *ngIf="!subtext.isText"
-        [witnesses]="subtext.childNodes"
-      />
-    </span>
-  </ng-container>
-  
+@for(subtext of witnesses; track subtext.id) { @switch(true) {
+@case(subtext.tagName === "witness") {
+<li class="witness">
+  @if (!subtext.isText) {
+  <app-witnesses [witnesses]="subtext.childNodes" />
+  }
+</li>
+} @default {
+<span
+  >{{ subtext.text }}@if (!subtext.isText) {
+  <app-witnesses [witnesses]="subtext.childNodes" />
+  }
+</span>
+} } }
