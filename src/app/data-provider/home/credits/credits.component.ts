@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Credits } from "../../../services/models";
-import { isSubset } from "../../../utils/utils";
+import { findAttributeValue, isSubset } from "../../../utils/utils";
+import { NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from "@angular/common";
 
 @Component({
   selector: "app-credits",
   standalone: true,
-  imports: [],
+  imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet],
   templateUrl: "./credits.component.html",
   styleUrl: "./credits.component.css",
 })
@@ -16,6 +17,21 @@ export class CreditsComponent implements OnInit {
   ngOnInit() {
     this.modal_router.show();
     console.log(this.credits)
+  }
+
+  findAttributeValue = findAttributeValue;
+  isSubset = isSubset;
+
+  capitalizeFirstLetter(string: string) {
+    return string.replace(/^./, string[0].toUpperCase())
+  }
+
+  get responsability() {
+    return this.credits.responsability;
+  }
+
+  get publication () {
+    return this.credits.publicationStmt;
   }
 
   get mainTitle() {
