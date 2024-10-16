@@ -12,7 +12,7 @@ h3 {
   content: ", ";
 }
 
-p:not(.names) {
+p:not(.names, .titles) {
   display: flex;
   flex-direction: column;
 }

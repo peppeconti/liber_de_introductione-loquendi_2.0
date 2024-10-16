@@ -1,12 +1,11 @@
-<div class="loader-wrapper"><span class="loader"></span></div>
-
-<!--
 @if (isFetching() && !hasError()) {
-<div class="loader-wrapper"><span class="loader"></span></div>
+<div class="wrapper"><span class="loader"></span></div>
 } @else if(hasError()) {
-<p>{{ hasError() }}</p>
+<div class="wrapper">
+  <span class="error">
+    {{ hasError() }}
+  </span>
+</div>
 } @else {
-    <router-outlet (activate)="onActivate($event, $event)"/>
- }
-
- -->
+<router-outlet (activate)="onActivate($event, $event)" />
+}
