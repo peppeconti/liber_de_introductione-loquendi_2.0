@@ -17,6 +17,18 @@
 </section>
 
 <!-- recursive template -->
+<ng-template #names let-items="items">
+  <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
+    <ng-container *ngSwitchCase="subtext.tagName === 'name'">
+      <span class="name">
+        @if (!subtext.isText) {<ng-container
+          *ngTemplateOutlet="names; context: { items: subtext.childNodes }"
+        />}
+      </span>
+    </ng-container>
+    <span *ngSwitchDefault>{{ subtext.text }}</span></ng-container
+  ></ng-template
+>
 
 <ng-template #recursive let-items="items">
   <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
@@ -25,6 +37,11 @@
         @if (!subtext.isText) {<ng-container
           *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
         />}
+        <p class="names">
+          <ng-container
+            *ngTemplateOutlet="names; context: { items: subtext.childNodes }"
+          />
+        </p>
       </section>
     </ng-container>
     <ng-container *ngSwitchCase="subtext.tagName === 'resp'">
@@ -34,13 +51,6 @@
         }}
       </h3>
     </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'name'">
-      <span>
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
-      </span>
-    </ng-container>
     <ng-container *ngSwitchCase="subtext.tagName === 'section'">
       <section>
         @if (!subtext.isText) {<ng-container
@@ -48,6 +58,7 @@
         />}
       </section>
     </ng-container>
+    <ng-container *ngSwitchCase="subtext.tagName === 'name'" />
     <ng-container *ngSwitchCase="subtext.tagName === 'h3'">
       <h3>
         @if (!subtext.isText) {<ng-container

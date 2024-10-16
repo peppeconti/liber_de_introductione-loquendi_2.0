@@ -4,11 +4,12 @@ import { findAttributeValue, isSubset } from "../../../utils/utils";
 import { NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faDownload, faLink } from "@fortawesome/free-solid-svg-icons";
+import { ListNameDirective } from "../../../directives/list-name.directive";
 
 @Component({
   selector: "app-credits",
   standalone: true,
-  imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, FontAwesomeModule],
+  imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, FontAwesomeModule, ListNameDirective],
   templateUrl: "./credits.component.html",
   styleUrl: "./credits.component.css",
 })
