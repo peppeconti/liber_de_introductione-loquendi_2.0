@@ -21,7 +21,6 @@ export class CreditsComponent implements OnInit {
 
   ngOnInit() {
     this.modal_router.show();
-    console.log(this.credits)
   }
 
   findAttributeValue = findAttributeValue;

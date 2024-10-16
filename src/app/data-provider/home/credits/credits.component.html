@@ -46,9 +46,13 @@
     </ng-container>
     <ng-container *ngSwitchCase="subtext.tagName === 'resp'">
       <h3>
+        @if(findAttributeValue(subtext.attributes, "rend")) {
         {{
           capitalizeFirstLetter(findAttributeValue(subtext.attributes, "rend")!)
         }}
+        } @else { @if (!subtext.isText) {<ng-container
+          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+        />} }
       </h3>
     </ng-container>
     <ng-container *ngSwitchCase="subtext.tagName === 'section'">
@@ -80,6 +84,7 @@
       "
     >
       <a
+        title="go to XML"
         [href]="
           '../../../../assets/data/' +
           findAttributeValue(subtext.attributes, 'source')
@@ -98,6 +103,7 @@
       "
     >
       <a
+        title="download XML"
         [href]="
           '../../../../assets/data/' +
           findAttributeValue(subtext.attributes, 'source')

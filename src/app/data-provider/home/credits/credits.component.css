@@ -1,17 +1,29 @@
 section {
-    margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 h3 {
-    padding-bottom: .5rem;
-    margin-bottom: .5rem;
-    border-bottom: 1px solid #fff;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #fff;
 }
 
 .name ~ .name::before {
-    content: ', '; 
-  }
+  content: ", ";
+}
+
+p:not(.names) {
+  display: flex;
+  flex-direction: column;
+}
 
 .icon {
-    padding: 0 .5rem;
+  color: #fff;
+  display: inline-block;
+  font-size: 2rem;
+  margin-top: .5rem;
+}
+
+.icon:hover {
+  opacity: 0.8;
 }

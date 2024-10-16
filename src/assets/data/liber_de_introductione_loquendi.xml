@@ -12,17 +12,17 @@
                <name> Philippus Ferrariensis, frater O.P.</name>
             </author>
              <respStmt>
-               <resp rend="codifica TEI">TEI XML by</resp>
+               <resp rend="codifica TEI">TEI XML</resp>
                <name>Giuseppe Conti</name>
             </respStmt>
             <respStmt>
-               <resp rend="trascrizione">trascripion by</resp>
+               <resp rend="trascrizione">Trascripion</resp>
                <name>Giuseppe Conti</name>
                <name>Pinco Pallino</name>
                <name>Pippo Baudo</name>
             </respStmt>
             <respStmt>
-               <resp rend="software">software by</resp>
+               <resp rend="software">Software</resp>
                <name>Giuseppe Conti</name>
             </respStmt>
          </titleStmt>
