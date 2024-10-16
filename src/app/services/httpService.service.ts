@@ -10,7 +10,7 @@ const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set(
   "text/xml"
 );
 
-const URL = "assets/data/liber_de_introductione_loquendi.xm";
+const URL = "assets/data/liber_de_introductione_loquendi.xml";
 
 @Injectable({
   providedIn: "root",
