@@ -29,7 +29,7 @@ export class HttpService {
         map((res) => this.parseXML(res)),
         map((res) => this.createPages(res)),
         catchError(() =>
-          throwError(() => new Error("Unable to read the XML file"))
+          throwError(() => new Error("Sorry, we are unable to read the XML file..."))
         )
       );
   }
