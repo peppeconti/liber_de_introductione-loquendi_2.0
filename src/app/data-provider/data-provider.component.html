@@ -1,10 +1,9 @@
 @if (isFetching() && !hasError()) {
 <div class="wrapper"><span class="loader"></span></div>
 } @else if(hasError()) {
+
 <div class="wrapper">
-  <span class="error">
-    {{ hasError() }}
-  </span>
+  <span class="error">{{ this.hasError() }}</span>
 </div>
 } @else {
 <router-outlet (activate)="onActivate($event, $event)" />
