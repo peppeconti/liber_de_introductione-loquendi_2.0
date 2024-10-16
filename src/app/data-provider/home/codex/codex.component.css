@@ -1,18 +1,15 @@
+h2 {
+  font-size: 1.5rem;
+  padding: 0 1rem;
+}
+
 .witnesses {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 table {
-    padding: 1rem;
-    margin-bottom: 2rem;
-    width: 100%;
-    border: 2px solid #fff;
-
-}
-
-.tableHead {
-    font-size: 1.5rem;
-    padding: 0 1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  border: 2px solid #fff;
 }

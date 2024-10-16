@@ -1,29 +1,52 @@
-<h2>{{ mainTitle }}</h2>
-<h3>{{ subTitle }}</h3>
-<ng-container
-  *ngTemplateOutlet="recursive; context: { items: responsability }"
-/>
-<ng-container
-  *ngTemplateOutlet="recursive; context: { items: publication }"
-/>
+<section>
+  <h3>Titolo dell'edizione</h3>
+  <p>
+    <span>{{ mainTitle }}</span
+    >&nbsp;-&nbsp;<span>{{ subTitle }}</span>
+  </p>
+</section>
+<section>
+  <ng-container
+    *ngTemplateOutlet="recursive; context: { items: responsability }"
+  />
+</section>
+<section>
+  <ng-container
+    *ngTemplateOutlet="recursive; context: { items: publication }"
+  />
+</section>
 
 <!-- recursive template -->
 
 <ng-template #recursive let-items="items">
   <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
-    <ng-container *ngSwitchCase="subtext.tagName === 'resp'">
-      <h4>
-        {{
-          capitalizeFirstLetter(findAttributeValue(subtext.attributes, "rend")!)
-        }}
-      </h4>
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'name'">
-      <p>
+    <ng-container *ngSwitchCase="subtext.tagName === 'respStmt'">
+      <section>
         @if (!subtext.isText) {<ng-container
           *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
         />}
-      </p>
+      </section>
+    </ng-container>
+    <ng-container *ngSwitchCase="subtext.tagName === 'resp'">
+      <h3>
+        {{
+          capitalizeFirstLetter(findAttributeValue(subtext.attributes, "rend")!)
+        }}
+      </h3>
+    </ng-container>
+    <ng-container *ngSwitchCase="subtext.tagName === 'name'">
+      <span>
+        @if (!subtext.isText) {<ng-container
+          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+        />}
+      </span>
+    </ng-container>
+    <ng-container *ngSwitchCase="subtext.tagName === 'section'">
+      <section>
+        @if (!subtext.isText) {<ng-container
+          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+        />}
+      </section>
     </ng-container>
     <ng-container *ngSwitchCase="subtext.tagName === 'h3'">
       <h3>
@@ -46,7 +69,10 @@
       "
     >
       <a
-        [href]="'../../../../assets/data/' + findAttributeValue(subtext.attributes, 'source')"
+        [href]="
+          '../../../../assets/data/' +
+          findAttributeValue(subtext.attributes, 'source')
+        "
         target="_blank"
       >
         @if (!subtext.isText) {<ng-container
@@ -61,7 +87,10 @@
       "
     >
       <a
-        [href]="'../../../../assets/data/' + findAttributeValue(subtext.attributes, 'source')"
+        [href]="
+          '../../../../assets/data/' +
+          findAttributeValue(subtext.attributes, 'source')
+        "
         [download]="findAttributeValue(subtext.attributes, 'n')"
       >
         @if (!subtext.isText) {<ng-container
