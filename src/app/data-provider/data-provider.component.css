@@ -39,6 +39,7 @@
 
 .error {
     color: #fff;
+    font-size: calc(24px + (48 - 24) * ((100vw - 360px) / (1600 - 360)));
 }
 
 @keyframes pulsIn {
