@@ -14,3 +14,11 @@
 .expan {
   font-size: 0.9rem;
 }
+
+.link {
+  border-bottom: 1px solid #1d1d1d;
+  padding-bottom: .35rem;
+}
+ .note {
+  margin-bottom: 2rem;
+ }

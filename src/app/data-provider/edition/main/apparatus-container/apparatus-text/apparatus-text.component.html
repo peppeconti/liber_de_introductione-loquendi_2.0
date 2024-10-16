@@ -17,7 +17,7 @@
 </div>
 
 } @case(isSubset([{ name: 'type', value: 'link' }], subtext.attributes)) {
-<h2>
+<h2 class="link">
   {{ findAttributeValue(subtext.attributes, "corresp")?.replaceAll("_", " ") }}
   @if(!subtext.isText) {
   <app-apparatus-text
@@ -35,7 +35,7 @@
   ><fa-icon [icon]="link"
 /></a>
 } @case(subtext.tagName === 'note') {
-<p
+<p class="note"
   appNote
   [noteId]="noteId()"
   class="app-note"
