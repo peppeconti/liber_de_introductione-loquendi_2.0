@@ -41,7 +41,7 @@ export class MainComponent{
   apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data()!));
 
   ngOnInit () {
-    //console.log(this.latin_text());
+    console.log(this.latin_text()![0].textContent);
   }
 
   get translationActive() {
