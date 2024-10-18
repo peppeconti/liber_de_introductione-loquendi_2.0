@@ -25,3 +25,7 @@
     text-align: center;
     font-size: calc(36px + (80 - 36) * ((100vw - 360px) / (1600 - 360)));
 }
+
+.button {
+  padding: 4rem;
+}
