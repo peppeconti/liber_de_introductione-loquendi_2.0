@@ -4,12 +4,24 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  flex-direction: column;
   gap: 2rem;
   height: 100vh;
+  padding: 4rem 0;
+  background-color: #1d1d1d;
 }
 
-.not-found p {
+.not-found div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  width: 95%;
+  color: #fff;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.not-found div p {
     text-align: center;
-    font-size: 5rem;
+    font-size: calc(36px + (80 - 36) * ((100vw - 360px) / (1600 - 360)));
 }
