@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-search',
+  selector: "app-search",
   standalone: true,
-  imports: [],
-  templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  imports: [FormsModule],
+  templateUrl: "./search.component.html",
+  styleUrl: "./search.component.css",
 })
 export class SearchComponent {
+  searchParam = signal<string>("");
+  private router = inject(Router);
 
   onSubmit() {
-    console.log('submit!')
+    this.router.navigate(["/edition", "results"], {
+      replaceUrl: true,
+      queryParams: { s: this.searchParam() },
+    });
   }
-
 }

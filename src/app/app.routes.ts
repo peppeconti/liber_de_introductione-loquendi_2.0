@@ -7,7 +7,7 @@ import {
   MainComponent,
   resolveTitle,
 } from "./data-provider/edition/main/main.component";
-import { ResultsComponent } from "./data-provider/edition/results/results.component";
+import { resolveSearchParam, ResultsComponent } from "./data-provider/edition/results/results.component";
 
 export const routes: Routes = [
   {
@@ -35,6 +35,9 @@ export const routes: Routes = [
         path: "results",
         component: ResultsComponent,
         title: "Search",
+        resolve: {
+          searchParam: resolveSearchParam
+        },
       },
       {
         path: ":folio",
