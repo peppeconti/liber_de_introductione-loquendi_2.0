@@ -4,7 +4,9 @@ import { MainComponent } from "./main/main.component";
 import { NotFoundComponent } from "../not-found/not-found.component";
 import {
   ActivatedRouteSnapshot,
+  OutletContext,
   ResolveFn,
+  RouterOutlet,
   RouterState,
   RouterStateSnapshot,
 } from "@angular/router";
@@ -12,20 +14,12 @@ import {
 @Component({
   selector: "app-edition",
   standalone: true,
-  imports: [HeaderComponent, MainComponent, NotFoundComponent],
+  imports: [HeaderComponent, MainComponent, NotFoundComponent, RouterOutlet],
   templateUrl: "./edition.component.html",
   styleUrl: "./edition.component.css",
 })
 export class EditionComponent {
   @Input({ required: true }) data: Document | undefined;
-  folio = input.required<string>();
-  isExistingFolio = computed(() => {
-    const folio: HTMLElement | null | undefined = this.data?.getElementById(
-      this.folio()
-    );
-    return folio ? true : false;
-  });
-
 }
 
 /*export const resolveTitle: ResolveFn<string> = (

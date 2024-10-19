@@ -1,30 +1,18 @@
 import { Component, computed, inject, input } from "@angular/core";
 import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
-import { LatinTextComponent } from "./latin-text/latin-text.component";
-import { TranslationComponent } from "./translation/translation.component";
 import { SettingService } from "../../../services/settingService.service";
-import { SelectComponent } from "./select/select.component";
-import { NavigationComponent } from "./navigation/navigation.component";
-import { NoteContainerComponent } from "./note-container/note-container.component";
-import { ApparatusContainerComponent } from "./apparatus-container/apparatus-container.component";
+import { TextComponent } from "./text/text.component";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-main",
   standalone: true,
-  imports: [
-    LatinTextComponent,
-    TranslationComponent,
-    SelectComponent,
-    NavigationComponent,
-    NoteContainerComponent,
-    ApparatusContainerComponent,
-  ],
+  imports: [TextComponent, RouterOutlet],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
-export class MainComponent{
-  private settingService = inject(SettingService);
+export class MainComponent {
   private httpService = inject(HttpService);
   data = input<Document | undefined>(undefined);
   latin_text = computed<JsonNode[] | undefined | null>(() =>
@@ -36,16 +24,18 @@ export class MainComponent{
   }>(() => this.getTranslation(this.data()!));
   folios = computed<(string | null)[]>(() => this.getFolios(this.data()!));
   folio = input.required<string>();
+  isExistingFolio = computed(() => {
+    const folio: HTMLElement | null | undefined = this.data()?.getElementById(
+      this.folio()
+    );
+    return folio ? true : false;
+  });
   navigation = computed<NavInfos>(() => this.setNavInfo(this.data()!));
   notes = computed<JsonNode[]>(() => this.getNotes(this.data()!));
   apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data()!));
 
-  ngOnInit () {
+  ngOnInit() {
     console.log(this.latin_text()![0].textContent);
-  }
-
-  get translationActive() {
-    return this.settingService.getSettings().showTranslation;
   }
 
   private getLatinText(xml: Document) {
@@ -117,5 +107,15 @@ export class MainComponent{
       this.httpService.parseNode(e)
     );
     return apparatusJson;
+  }
+
+  onActivate(text: TextComponent) {
+    text.folio = this.folio();
+    text.folios = this.folios();
+    text.latin_text = this.latin_text();
+    text.translation = this.translation();
+    text.navigation = this.navigation();
+    text.notes = this.notes();
+    text.apparatus = this.apparatus();
   }
 }
