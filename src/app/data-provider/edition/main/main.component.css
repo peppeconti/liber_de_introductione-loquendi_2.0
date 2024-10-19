@@ -1,13 +1,27 @@
+main {
+  position: relative;
+}
+
 .select-wrapper {
   display: flex;
   justify-content: center;
   padding: 2rem;
   padding-top: 4rem;
+  position: relative;
 }
 
 .text {
   padding: 2rem 20vw;
   padding-bottom: 4rem;
+}
+
+.search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: red;
 }
 
 .page-number {

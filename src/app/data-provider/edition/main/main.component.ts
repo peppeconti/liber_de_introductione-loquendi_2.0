@@ -15,6 +15,7 @@ import {
   RouterStateSnapshot,
 } from "@angular/router";
 import { NotFoundComponent } from "../../not-found/not-found.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: "app-main",
@@ -26,7 +27,8 @@ import { NotFoundComponent } from "../../not-found/not-found.component";
     NavigationComponent,
     NoteContainerComponent,
     ApparatusContainerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HeaderComponent
 ],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",

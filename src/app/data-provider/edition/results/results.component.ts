@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from "@angular/core";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
-  selector: 'app-results',
+  selector: "app-results",
   standalone: true,
-  imports: [],
-  templateUrl: './results.component.html',
-  styleUrl: './results.component.css'
+  imports: [HeaderComponent],
+  templateUrl: "./results.component.html",
+  styleUrl: "./results.component.css",
 })
 export class ResultsComponent {
-
+  @Input({ required: true }) data: Document | undefined;
 }

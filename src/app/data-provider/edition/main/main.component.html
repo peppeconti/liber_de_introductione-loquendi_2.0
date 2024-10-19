@@ -1,6 +1,8 @@
+@if(isExistingFolio()) {
+<app-header [data]="this.data" />
 <main>
-  @if(isExistingFolio()) {
   <div class="select-wrapper">
+    <div class="search"></div>
     <app-select [folios]="folios()" [folio]="folio()" />
   </div>
   <p class="page-number" [class.translation-active]="translationActive">
@@ -18,7 +20,7 @@
     [navigation]="this.navigation()"
     [pages]="translation().page"
   />
-  } @else {
-    <app-not-found/>
-  }
 </main>
+} @else {
+<app-not-found />
+}
