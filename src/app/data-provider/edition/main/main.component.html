@@ -2,7 +2,9 @@
 <app-header [data]="this.data" />
 <main>
   <div class="select-wrapper">
-    <div class="search"></div>
+    <div class="search" data-bs-toggle="modal" data-bs-target="#modalSearch">
+      button
+    </div>
     <app-select [folios]="folios()" [folio]="folio()" />
   </div>
   <p class="page-number" [class.translation-active]="translationActive">
@@ -20,6 +22,7 @@
     [navigation]="this.navigation()"
     [pages]="translation().page"
   />
+  <app-modal-search />
 </main>
 } @else {
 <app-not-found />

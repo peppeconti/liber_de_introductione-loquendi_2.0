@@ -16,6 +16,7 @@ import {
 } from "@angular/router";
 import { NotFoundComponent } from "../../not-found/not-found.component";
 import { HeaderComponent } from "../header/header.component";
+import { ModalSearchComponent } from "./modal-search/modal-search.component";
 
 @Component({
   selector: "app-main",
@@ -28,7 +29,8 @@ import { HeaderComponent } from "../header/header.component";
     NoteContainerComponent,
     ApparatusContainerComponent,
     NotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    ModalSearchComponent
 ],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
