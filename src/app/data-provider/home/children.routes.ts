@@ -2,7 +2,7 @@ import { BiblioComponent } from "./biblio/biblio.component";
 import { CodexComponent } from "./codex/codex.component";
 import { CreditsComponent } from "./credits/credits.component";
 
-export const homeChildrenRoutes = [
+export const childrenRoutes = [
   {
     path: "codex",
     component: CodexComponent,

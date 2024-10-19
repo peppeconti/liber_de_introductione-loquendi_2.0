@@ -25,7 +25,7 @@ export class HttpService {
         responseType: "text",
       })
       .pipe(
-        map((res) => this.minifyXML(res)),
+        map((res) => this.minifyXml(res)),
         map((res) => this.parseXML(res)),
         map((res) => this.createPages(res)),
         catchError(() =>
@@ -34,7 +34,7 @@ export class HttpService {
       );
   }
 
-  private minifyXML(xml: string): string {
+  private minifyXml(xml: string): string {
     let minified: string;
     minified = xml
       .split(/(?<=>)\s*(?=<)/)

@@ -1,2 +1,6 @@
+@if (isExistingFolio()) {
 <app-header [data]="this.data" />
-<app-main [data]="this.data" />
+<app-main [data]="this.data" [folio]="this.folio()" />
+} @else {
+<app-not-found />
+}

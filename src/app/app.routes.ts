@@ -1,34 +1,29 @@
-import { Routes } from "@angular/router";
-import { HomeComponent } from "./data-provider/home/home.component";
-import {
-  EditionComponent,
-  resolveTitle,
-} from "./data-provider/edition/edition.component";
-import { NotFoundComponent } from "./data-provider/not-found/not-found.component";
-import { homeChildrenRoutes } from "./data-provider/home/children.routes";
-import { TextComponent } from "./data-provider/edition/main/text/text.component";
-import { ResultsComponent } from "./data-provider/edition/main/results/results.component";
+import { Routes } from '@angular/router';
+import { HomeComponent } from './data-provider/home/home.component';
+import { EditionComponent, resolveTitle } from './data-provider/edition/edition.component';
+import { NotFoundComponent } from './data-provider/not-found/not-found.component';
+import { childrenRoutes } from './data-provider/home/children.routes';
 
 export const routes: Routes = [
   {
-    path: "",
-    redirectTo: "home",
-    pathMatch: "full",
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
-    path: "home",
+    path: 'home',
     component: HomeComponent,
-    title: "LIL - Home",
-    children: homeChildrenRoutes,
+    title: 'LIL - Home',
+    children: childrenRoutes
   },
   {
-    path: "edition",
+    path: 'edition/:folio',
     component: EditionComponent,
-    title: "edition",
+    title: resolveTitle
   },
   {
-    path: "**",
+    path: '**',
     component: NotFoundComponent,
-    title: "Error 404",
-  },
+    title: 'Error 404',
+  }
 ];
