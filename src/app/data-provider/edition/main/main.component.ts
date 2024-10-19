@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, Input, input } from "@angular/core";
 import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
@@ -8,6 +8,13 @@ import { SelectComponent } from "./select/select.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { NoteContainerComponent } from "./note-container/note-container.component";
 import { ApparatusContainerComponent } from "./apparatus-container/apparatus-container.component";
+import {
+  ActivatedRouteSnapshot,
+  ResolveFn,
+  RouterState,
+  RouterStateSnapshot,
+} from "@angular/router";
+import { NotFoundComponent } from "../../not-found/not-found.component";
 
 @Component({
   selector: "app-main",
@@ -19,28 +26,35 @@ import { ApparatusContainerComponent } from "./apparatus-container/apparatus-con
     NavigationComponent,
     NoteContainerComponent,
     ApparatusContainerComponent,
-  ],
+    NotFoundComponent
+],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
-export class MainComponent{
+export class MainComponent {
   private settingService = inject(SettingService);
   private httpService = inject(HttpService);
-  data = input<Document | undefined>(undefined);
+  @Input({ required: true }) data: Document | undefined;
   latin_text = computed<JsonNode[] | undefined | null>(() =>
-    this.getLatinText(this.data()!)
+    this.getLatinText(this.data!)
   );
   translation = computed<{
     page: string;
     json: JsonNode[] | undefined | null;
-  }>(() => this.getTranslation(this.data()!));
-  folios = computed<(string | null)[]>(() => this.getFolios(this.data()!));
+  }>(() => this.getTranslation(this.data!));
   folio = input.required<string>();
-  navigation = computed<NavInfos>(() => this.setNavInfo(this.data()!));
-  notes = computed<JsonNode[]>(() => this.getNotes(this.data()!));
-  apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data()!));
+  isExistingFolio = computed(() => {
+    const folio: HTMLElement | null | undefined = this.data?.getElementById(
+      this.folio()
+    );
+    return folio ? true : false;
+  });
+  folios = computed<(string | null)[]>(() => this.getFolios(this.data!));
+  navigation = computed<NavInfos>(() => this.setNavInfo(this.data!));
+  notes = computed<JsonNode[]>(() => this.getNotes(this.data!));
+  apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data!));
 
-  ngOnInit () {
+  ngOnInit() {
     //console.log(this.latin_text());
   }
 
@@ -119,3 +133,11 @@ export class MainComponent{
     return apparatusJson;
   }
 }
+
+export const resolveTitle: ResolveFn<string> = (
+  activatedRoute: ActivatedRouteSnapshot,
+  routerState: RouterStateSnapshot
+) => {
+  const folio = activatedRoute.paramMap.get("folio") || "";
+  return "Edition - " + folio.replaceAll("_", " ");
+};
