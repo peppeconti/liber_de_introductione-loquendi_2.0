@@ -66,6 +66,7 @@ export class ApparatusContainerComponent implements OnDestroy {
   ngOnDestroy(): void {
     console.log("carouselItems cleared!");
     this.dataService.clearCarouselItems();
+    console.log('modal destroyed!')
     this.modal().dispose();
   }
 }

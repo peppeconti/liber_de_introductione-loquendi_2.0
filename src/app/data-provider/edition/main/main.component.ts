@@ -3,10 +3,7 @@ import {
   computed,
   inject,
   Input,
-  input,
-  OnDestroy,
-  OnInit,
-  signal,
+  input
 } from "@angular/core";
 import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
@@ -86,7 +83,6 @@ export class MainComponent {
     const translation: any = translations.filter(
       (e) => e.attributes["corresp"].value === `#${this.folio()}`
     );
-    //console.log(translation[0]);
     const translationJson: JsonNode = this.httpService.parseNode(
       translation[0]
     );
