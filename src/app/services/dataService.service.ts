@@ -1,4 +1,4 @@
-import { ElementRef, Injectable, Renderer2, signal } from "@angular/core";
+import { ElementRef, Injectable, Renderer2, signal, TemplateRef } from "@angular/core";
 
 @Injectable({
   providedIn: "root",

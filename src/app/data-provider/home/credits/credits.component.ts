@@ -19,7 +19,7 @@ export class CreditsComponent implements OnInit {
   link = faLink;
 
   ngOnInit() {
-    this.modal_router.show();
+  this.modal_router.show();
   }
 
   findAttributeValue = findAttributeValue;

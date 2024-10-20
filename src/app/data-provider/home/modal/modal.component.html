@@ -1,17 +1,17 @@
 <div
   class="modal fade"
-  data-bs-keyboard="true"
   id="modal-home"
   tabindex="-1"
-  aria-labelledby="modal-home"
+  aria-labelledby="modalApparatusLabel"
   aria-hidden="true"
-  (hide.bs.modal)="toHome()"
 >
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
+      <!--HEADER-->
       <div class="modal-header">
-       <app-modal-header/>
+        <app-modal-header />
       </div>
+      <!--BODY-->
       <div class="modal-body">
         <ng-content />
       </div>
