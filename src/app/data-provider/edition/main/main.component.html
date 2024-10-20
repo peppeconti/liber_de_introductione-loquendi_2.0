@@ -1,10 +1,12 @@
 @if(isExistingFolio()) {
 <app-header [data]="this.data" />
 <main>
-  <div class="select-wrapper">
-    <div class="search">
-      button
-    </div>
+  <div
+    class="select-wrapper"
+    data-bs-toggle="modal"
+    data-bs-target="#modal-search"
+  >
+    <div class="search">button</div>
     <app-select [folios]="folios()" [folio]="folio()" />
   </div>
   <p class="page-number" [class.translation-active]="translationActive">

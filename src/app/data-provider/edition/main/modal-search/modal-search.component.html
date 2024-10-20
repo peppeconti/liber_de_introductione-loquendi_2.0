@@ -1,9 +1,13 @@
 <div
-  class="modal"
-  id="modalSearch"
+  class="modal fade"
+  id="modal-search"
   tabindex="-1"
   aria-labelledby="modalSearchLabel"
   aria-hidden="true"
+  [appModal]="this.modal()"
+  hash="#search"
+  (hide.bs.modal)="onHide()"
+  (show.bs.modal)="onShow()"
 >
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
