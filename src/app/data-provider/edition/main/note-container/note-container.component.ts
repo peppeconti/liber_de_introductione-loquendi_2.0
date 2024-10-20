@@ -24,9 +24,9 @@ export class NoteContainerComponent implements OnInit {
   offcanvas = signal<any | undefined>(undefined);
 
   ngOnInit() {
-    const offcanvas = new bootstrap.Offcanvas("#offcanvasBottom");
+    const offcanvas = new bootstrap.Offcanvas("#note-offcanvas");
     this.offcanvas.set(offcanvas);
-    console.log(this.offcanvas());
+    //console.log(this.offcanvas());
   }
 
   onHide() {

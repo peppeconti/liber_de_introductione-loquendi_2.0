@@ -43,7 +43,7 @@ export class ApparatusContainerComponent implements OnDestroy {
   ngOnInit() {
     const modal = new bootstrap.Modal("#modal-apparatus");
     this.modal.set(modal);
-    console.log(this.modal());
+    //console.log(this.modal());
   }
 
   onSlide(e: any) {
