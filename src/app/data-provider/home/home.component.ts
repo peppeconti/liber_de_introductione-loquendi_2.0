@@ -57,19 +57,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getMsInfos(this.data!, "objectDesc")
   );
   credits = computed<Credits>(() => {
-    const credits: Credits = { titles: undefined, responsability: undefined, publicationStmt: undefined };
+    const credits: Credits = {
+      titles: undefined,
+      responsability: undefined,
+      publicationStmt: undefined,
+    };
     credits.titles = this.getTitles(this.data!);
     credits.responsability = this.getRespStmt(this.data!);
     credits.publicationStmt = this.getPublStmt(this.data!);
     return credits;
-  }
-  );
+  });
   modal_router = signal<any | undefined>(undefined);
 
   ngOnInit() {
-    const modal_router = new bootstrap.Modal("#modal-home", {
-      keyboard: false,
-    });
+    const modal_router = new bootstrap.Modal("#modal-home");
     this.modal_router.set(modal_router);
   }
 
@@ -134,7 +135,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getPublStmt(xml: Document): JsonNode[] | undefined | null {
-    const publ: Element[] | null | undefined = Array.from(xml.querySelectorAll("publicationStmt"));
+    const publ: Element[] | null | undefined = Array.from(
+      xml.querySelectorAll("publicationStmt")
+    );
     const publ_json = publ.map((e) => this.httpService.parseNode(e));
     return publ_json;
   }
