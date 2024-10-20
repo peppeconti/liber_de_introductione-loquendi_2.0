@@ -5,6 +5,10 @@
   aria-labelledby="offcanvasBottomLabel"
   data-bs-scroll="true"
   data-bs-backdrop="true"
+  (hide.bs.offcanvas)="onHide()"
+  (show.bs.offcanvas)="onShow()"
+  [appModal]="this.offcanvas()"
+  hash="#note"
 >
   <div class="offcanvas-header">
     <div class="d-flex align-items-center">

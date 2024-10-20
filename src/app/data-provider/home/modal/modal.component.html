@@ -5,7 +5,8 @@
   tabindex="-1"
   aria-labelledby="modal-home"
   aria-hidden="true"
-  (hide.bs.modal)="toHome()"
+  (hide.bs.modal)="onHide()"
+  (show.bs.modal)="onShow()"
 >
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
     <div class="modal-content">

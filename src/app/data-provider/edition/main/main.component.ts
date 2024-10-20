@@ -27,8 +27,6 @@ import { NotFoundComponent } from "../../not-found/not-found.component";
 import { HeaderComponent } from "../header/header.component";
 import { ModalSearchComponent } from "./modal-search/modal-search.component";
 
-declare const bootstrap: any;
-
 @Component({
   selector: "app-main",
   standalone: true,
@@ -46,7 +44,7 @@ declare const bootstrap: any;
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
 })
-export class MainComponent implements OnInit, OnDestroy {
+export class MainComponent {
   private settingService = inject(SettingService);
   private httpService = inject(HttpService);
   @Input({ required: true }) data: Document | undefined;
@@ -68,19 +66,6 @@ export class MainComponent implements OnInit, OnDestroy {
   navigation = computed<NavInfos>(() => this.setNavInfo(this.data!));
   notes = computed<JsonNode[]>(() => this.getNotes(this.data!));
   apparatus = computed<JsonNode[]>(() => this.getApparatus(this.data!));
-  modal_router = signal<any | undefined>(undefined);
-
-  ngOnInit() {
-    //const modal_router = new bootstrap.Modal("#modalApparatus", {
-      //keyboard: false,
-    //});
-    //this.modal_router.set(modal_router);
-    //console.log(this.modal_router())
-  }
-
-  ngOnDestroy() {
-    //this.modal_router().dispose();
-  }
 
   get translationActive() {
     return this.settingService.getSettings().showTranslation;

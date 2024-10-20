@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const modal_router = new bootstrap.Modal("#modal-home");
     this.modal_router.set(modal_router);
+    console.log(this.modal_router());
   }
 
   getPrimaryBiblio(xml: Document): JsonNode[] | null {

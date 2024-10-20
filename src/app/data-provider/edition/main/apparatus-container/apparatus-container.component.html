@@ -1,12 +1,18 @@
 <div
   class="modal fade"
-  id="modalApparatus"
+  id="modal-apparatus"
+  data-bs-keyboard="true"
   tabindex="-1"
-  aria-labelledby="modalApparatusLabel"
+  aria-labelledby="modal-apparatus"
   aria-hidden="true"
   appScroll="show"
+  appModal
+  [appModal]="this.modal()"
+  hash="#apparatus"
   [id]="this.noteId()"
   selector="p.app-note"
+  (hide.bs.modal)="onHide()"
+  (show.bs.modal)="onShow()"
 >
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">

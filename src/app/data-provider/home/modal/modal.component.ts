@@ -12,7 +12,12 @@ import { ModalHeaderComponent } from "./modal-header/modal-header.component";
 export class ModalComponent {
   router = inject(Router);
 
-  toHome() {
-    this.router.navigate(["../"]);
+  onHide() {
+    window.location.hash = "";
+    this.router.navigate(["../../"]);
+  }
+
+  onShow() {
+    window.location.hash = "modal";
   }
 }

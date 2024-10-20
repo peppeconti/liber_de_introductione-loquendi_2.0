@@ -4,6 +4,7 @@ import {
   inject,
   input,
   OnDestroy,
+  signal,
 } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 import { ApparatusTextComponent } from "./apparatus-text/apparatus-text.component";
@@ -14,11 +15,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { DataService } from "../../../../services/dataService.service";
 import { ScrollDirective } from "../../../../directives/scroll.directive";
+import { ModalDirective } from "../../../../directives/modal.directive";
+
+declare const bootstrap: any;
 
 @Component({
   selector: "app-apparatus-container",
   standalone: true,
-  imports: [ApparatusTextComponent, FontAwesomeModule, ScrollDirective],
+  imports: [ApparatusTextComponent, FontAwesomeModule, ScrollDirective, ModalDirective],
   templateUrl: "./apparatus-container.component.html",
   styleUrl: "./apparatus-container.component.css",
 })
@@ -34,7 +38,13 @@ export class ApparatusContainerComponent implements OnDestroy {
   activeItem = computed<{ index: string; id: string }>(() =>
     this.dataService.getActiveItem()
   );
-  //items = <Element[] | undefined>undefined;
+  modal = signal<any | undefined>(undefined);
+
+  ngOnInit() {
+    const modal = new bootstrap.Modal("#modal-apparatus");
+    this.modal.set(modal);
+    console.log(this.modal());
+  }
 
   onSlide(e: any) {
     const index = (e.to + 1).toString();
@@ -45,8 +55,17 @@ export class ApparatusContainerComponent implements OnDestroy {
     });
   }
 
+  onHide() {
+    window.location.hash = "";
+  }
+
+  onShow() {
+    window.location.hash = "apparatus";
+  }
+
   ngOnDestroy(): void {
     console.log("carouselItems cleared!");
     this.dataService.clearCarouselItems();
+    this.modal().dispose();
   }
 }
