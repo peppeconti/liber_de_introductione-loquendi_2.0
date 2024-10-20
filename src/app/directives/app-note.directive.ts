@@ -29,6 +29,5 @@ export class appNoteDirective implements OnChanges {
         this.dataService.setAppNoteId(undefined);
       }, 3500);
     }
-    //console.log(this.appNote());
   }
 }
