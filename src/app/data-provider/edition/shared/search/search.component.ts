@@ -14,9 +14,11 @@ export class SearchComponent {
   private router = inject(Router);
 
   onSubmit() {
-    this.router.navigate(["/edition", "results"], {
-      replaceUrl: true,
-      queryParams: { s: this.searchParam() },
-    });
+    if (this.searchParam() !== "") {
+      this.router.navigate(["/edition", "results"], {
+        replaceUrl: true,
+        queryParams: { s: this.searchParam() },
+      });
+    }
   }
 }

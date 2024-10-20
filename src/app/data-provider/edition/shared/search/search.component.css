@@ -1,0 +1,22 @@
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .5rem 0;
+}
+
+.search-bar input {
+    flex: 1;
+    border: 1px solid #565656;
+    border-radius: 5px;
+    padding: 0 .5rem;
+}
+
+.search-bar input:focus {
+    box-shadow: 1px 1px 4px #353535;
+    outline: none;
+}
+
+.search-bar button {
+    cursor: pointer;
+}
