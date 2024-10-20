@@ -14,7 +14,7 @@ export class ResultsComponent {
   searchParam = input.required<string | null>();
 
   ngOnInit() {
-    console.log(this.searchParam());
+    //console.log(this.searchParam());
   }
 }
 

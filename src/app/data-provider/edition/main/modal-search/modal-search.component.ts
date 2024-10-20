@@ -18,7 +18,6 @@ export class ModalSearchComponent {
   ngOnInit() {
     const modal = new bootstrap.Modal("#modal-search");
     this.modal.set(modal);
-    console.log(this.modal());
   }
 
   onHide() {

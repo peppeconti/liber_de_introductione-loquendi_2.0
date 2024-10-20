@@ -31,7 +31,7 @@ export class ModalDirective implements OnInit, OnDestroy {
   };
 
   ngOnDestroy() {
-    console.log("destroyed");
+    console.log(this.hash() + " " + "destroyed");
     this.listener();
   }
 }
