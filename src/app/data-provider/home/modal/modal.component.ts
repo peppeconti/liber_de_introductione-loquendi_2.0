@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
+import { Component, inject } from "@angular/core";
+import { Router, RouterOutlet } from "@angular/router";
 import { ModalHeaderComponent } from "./modal-header/modal-header.component";
 
 @Component({
@@ -10,10 +10,9 @@ import { ModalHeaderComponent } from "./modal-header/modal-header.component";
   styleUrl: "./modal.component.css",
 })
 export class ModalComponent {
+  router = inject(Router);
 
-  //router = inject(Router);
-
-  /*toHome() {
+  toHome() {
     this.router.navigate(["../"]);
-  }*/
+  }
 }
