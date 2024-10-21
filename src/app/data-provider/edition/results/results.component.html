@@ -4,6 +4,13 @@
     <app-search />
   </div>
   <div class="results">
-    <p>{{ s() }}</p>
+    @for (result of this.results(); track result.id) {
+      @for (matsch of result.mergedMatsches; track matsch[0]) {
+        <p>{{result.id}}</p>
+        <p [innerHTML]="result.text.substring(matsch[0], matsch[1]+1)"></p>
+      }
+     }
   </div>
 </main>
+
+<!--<p [innerHTML]="result.text.substring(79,81)"></p>-->

@@ -5,17 +5,30 @@ import {
   Input,
   OnChanges,
   OnInit,
+  signal,
   SimpleChanges,
 } from "@angular/core";
 import { HeaderComponent } from "../header/header.component";
 import { SearchComponent } from "../shared/search/search.component";
-import Fuse from "fuse.js";
+import { hightlight } from "../../../utils/utils";
+import Fuse, { FuseResult } from "fuse.js";
 
 type SearchNode = {
   tagName: string | null;
   type: string | null;
   textContent: string | null;
   id: string | null;
+};
+
+const options = {
+  includeMatches: true,
+  findAllMatches: true,
+  threshold: 1,
+  ignoreLocation: true,
+  ignoreFieldNorm: true,
+  useExtendedSearch: true,
+  keys: ["textContent"],
+  includeScore: true,
 };
 
 @Component({
@@ -29,18 +42,27 @@ export class ResultsComponent implements OnInit, OnChanges {
   @Input({ required: true }) data: Document | undefined;
   s = input<string | null>();
   searchField = computed<SearchNode[]>(() => this.getSearchField(this.data!));
+  results = signal<any[] | undefined>(undefined);
 
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty("s") && changes['s'].currentValue) {
-      const fuse = new Fuse(this.searchField(), {
-        includeMatches: true,
-        keys: ["textContent"],
-      });
-      console.log(fuse.search(this.s()!));
+    if (changes.hasOwnProperty("s") && changes["s"].currentValue) {
+      const text = this.searchField();
+      const search = this.s()?.trim();
+      //const splittedSearch = search?.split(" ");
+      //search = splittedSearch?.map((e) => "'" + e).join(" ");
+      console.log(`'"${search}"`);
+
+      const fuse = new Fuse(text, options);
+      const results = fuse.search(`'"${search}"`);
+      this.results.set(hightlight(results));
+      console.log(this.results());
+      //console.log(hightlight(this.results()!));
     }
   }
+
+  //const lol = text.split(' ').filter((e: string) => e !== '').map((e: string) => e.replaceAll('\n', '')).join(' ');
 
   private getSearchField(xml: Document): SearchNode[] {
     const searchField: NodeList | null | undefined =
@@ -59,7 +81,12 @@ export class ResultsComponent implements OnInit, OnChanges {
         id: "",
       };
       nodeObj.tagName = (<Element>node).tagName;
-      nodeObj.textContent = (<Element>node).textContent;
+      const text = (<Element>node).textContent;
+      nodeObj.textContent = text!
+        .split(" ")
+        .filter((e: string) => e !== "")
+        .map((e: string) => e.replaceAll("\n", ""))
+        .join(" ");
       nodeObj.type = (<Element>node).getAttribute("type");
       nodeObj.id = (<Element>node).getAttribute("id");
       return <SearchNode>nodeObj;
