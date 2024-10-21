@@ -1,2 +1,9 @@
 <app-header [data]="this.data" />
-<p>{{searchParam()}}</p>
+<main>
+  <div class="search-bar">
+    <app-search />
+  </div>
+  <div class="results">
+    <p>{{ s() }}</p>
+  </div>
+</main>
