@@ -8,9 +8,8 @@
   padding-bottom: 4rem;
 }
 
-span.highlight {
-    background-color: rgb(249, 249, 167);
-    color: red;
+.highlight {
+  background-color: rgb(255, 255, 167);
 }
 
 @media screen and (max-width: 1024px) {

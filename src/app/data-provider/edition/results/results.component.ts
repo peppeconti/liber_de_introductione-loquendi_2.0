@@ -7,6 +7,7 @@ import {
   OnInit,
   signal,
   SimpleChanges,
+  ViewEncapsulation,
 } from "@angular/core";
 import { HeaderComponent } from "../header/header.component";
 import { SearchComponent } from "../shared/search/search.component";
@@ -25,7 +26,6 @@ const options = {
   findAllMatches: true,
   threshold: 1,
   ignoreLocation: true,
-  ignoreFieldNorm: true,
   useExtendedSearch: true,
   keys: ["textContent"],
   includeScore: true,
@@ -37,6 +37,7 @@ const options = {
   imports: [HeaderComponent, SearchComponent],
   templateUrl: "./results.component.html",
   styleUrl: "./results.component.css",
+  encapsulation: ViewEncapsulation.None,
 })
 export class ResultsComponent implements OnInit, OnChanges {
   @Input({ required: true }) data: Document | undefined;

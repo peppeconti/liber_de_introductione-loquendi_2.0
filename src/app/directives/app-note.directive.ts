@@ -23,9 +23,9 @@ export class appNoteDirective implements OnChanges {
     const item = this.elementRef.nativeElement;
     if (this.noteId() && item.id === this.noteId())
     {
-      this.renderer.addClass(item, 'highlighted');
+      this.renderer.addClass(item, 'highlight');
       setTimeout(() => {
-        this.renderer.removeClass(item, 'highlighted');
+        this.renderer.removeClass(item, 'highlight');
         this.dataService.setAppNoteId(undefined);
       }, 3500);
     }

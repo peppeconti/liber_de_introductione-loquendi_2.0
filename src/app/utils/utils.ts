@@ -47,9 +47,11 @@ function findAttributeValue(
 // HIGHLIGHT
 
 function hightlight(results: any[]): any[] {
+  // SORTING
   function compareNumbers(a: number[], b: number[]) {
     return a[0] - b[1];
   }
+  // MARGIN ADIACENT MATCHES
   function mergeMatches(
     matches: Array<number[]>,
     // deep copy of nested array
@@ -66,19 +68,36 @@ function hightlight(results: any[]): any[] {
     }
     return copyMatches;
   }
-
+  // ADDING SPAN WITH HIGHLIGHT CLASS
+  function addSpan(
+    text: string,
+    matches: Array<number[]>,
+    accumulator: number = 0
+  ) {
+    matches.forEach((e) => {
+      const match = text.substring(e[0]+accumulator, e[1]+1+accumulator);
+      const hightlightedMatch = `<span class="highlight">${match}</span>`;
+      const previous = text.substring(0, e[0]+accumulator);
+      const last = text.substring(e[1]+1+accumulator, text.length);
+      text = previous + hightlightedMatch + last;
+      accumulator = accumulator + hightlightedMatch.length - match.length;
+    });
+    return text;
+  }
+  // RETURN AN OBJ
   return results.map((e) => {
     const id = e.item.id;
     const text = e.item.textContent;
-    //const matches: Array<number[]> = e.matches[0].indices;
-    //const sortedMatsches: Array<number[]> =
-      //e.matches[0].indices.sort(compareNumbers);
     const mergedMatches: Array<number[]> = mergeMatches(
       e.matches[0].indices.sort(compareNumbers)
     );
-    //console.log(text);
-    return { id, text, matches: mergedMatches };
+    const hightlightedText = addSpan(text, mergedMatches);
+    return { id, text: hightlightedText };
   });
 }
+
+//const matches: Array<number[]> = e.matches[0].indices;
+//const sortedMatsches: Array<number[]> =
+//e.matches[0].indices.sort(compareNumbers);
 
 export { nextUntil, findAttributeValue, isSubset, hightlight };

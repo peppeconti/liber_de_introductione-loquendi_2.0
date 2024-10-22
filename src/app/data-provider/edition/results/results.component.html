@@ -1,14 +1,11 @@
 <app-header [data]="this.data" />
 <main>
   <div class="search-bar">
-    <app-search />
+    <app-search placeholder="make a new search..." />
   </div>
   <div class="results">
     @for (result of this.results(); track result.id) {
-      @for (match of result.matches; track match[0]) {
-        <p>{{result.id}}</p>
-        <p [innerHTML]="result.text.substring(match[0], match[1]+1)"></p>
-      }
+      <p [innerHTML]="result.text"></p>
      }
   </div>
 </main>

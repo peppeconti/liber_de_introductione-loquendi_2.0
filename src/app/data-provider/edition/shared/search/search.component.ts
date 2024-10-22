@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, inject, input, signal } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 
@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
   styleUrl: "./search.component.css",
 })
 export class SearchComponent {
+  placeholder = input<string>();
   searchParam = signal<string>("");
   private router = inject(Router);
 

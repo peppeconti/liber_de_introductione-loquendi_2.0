@@ -1,4 +1,16 @@
 <form class="search-bar" (ngSubmit)="onSubmit()">
-  <input type="text" id="search" name="search" placeholder="enter a search parameter..." [(ngModel)]="searchParam" />
-  <button class="btn btn-primary" [disabled]="!searchParam().length" type="submit">Search</button>
+  <input
+    type="text"
+    id="search"
+    name="search"
+    [placeholder]="this.placeholder() ? this.placeholder() : 'enter a search param...'"
+    [(ngModel)]="searchParam"
+  />
+  <button
+    class="btn btn-primary"
+    [disabled]="!searchParam().length"
+    type="submit"
+  >
+    Search
+  </button>
 </form>
