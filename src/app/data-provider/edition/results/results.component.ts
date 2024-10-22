@@ -55,7 +55,7 @@ export class ResultsComponent implements OnInit, OnChanges {
       console.log(`'"${search}"`);
 
       const fuse = new Fuse(text, options);
-      const results = fuse.search(`'"${search}"`);
+      const results = fuse.search(search!);
       this.results.set(hightlight(results));
       console.log(this.results());
       //console.log(hightlight(this.results()!));
