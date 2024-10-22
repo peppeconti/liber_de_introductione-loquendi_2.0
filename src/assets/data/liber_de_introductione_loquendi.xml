@@ -27,8 +27,10 @@
          <publicationStmt>
           <section>
             <h3>Risorse</h3>
-            <p>liber de introductione loquendi (XML)<anchor source="liber_de_introductione_loquendi.xml" type="link"></anchor></p>
-            <p>liber de introductione loquendi (XML)<anchor source="liber_de_introductione_loquendi.xml" type="download" n="liber_de_introductione_loquendi"></anchor></p>
+            <p>liber de introductione loquendi (XML)</p>
+            <p><anchor source="liber_de_introductione_loquendi.xml" type="link"></anchor></p>
+            <p>liber de introductione loquendi (XML)</p>
+            <p><anchor source="liber_de_introductione_loquendi.xml" type="download" n="liber_de_introductione_loquendi"></anchor></p> 
           </section>
           <section>
             <h3>Nota editoriale</h3>

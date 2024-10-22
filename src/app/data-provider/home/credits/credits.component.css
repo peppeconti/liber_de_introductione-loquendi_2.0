@@ -13,15 +13,19 @@ h3 {
 }
 
 p:not(.names, .titles) {
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+}
+
+a {
+  display: inline-block;
 }
 
 .icon {
+  display: flex;
+  align-items: center;
   color: #fff;
-  display: inline-block;
   font-size: 2rem;
-  margin-top: .5rem;
+  padding: 0.5rem;
 }
 
 .icon:hover {
