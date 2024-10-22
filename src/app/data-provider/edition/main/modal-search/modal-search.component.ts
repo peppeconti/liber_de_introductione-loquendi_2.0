@@ -30,6 +30,6 @@ export class ModalSearchComponent {
 
   ngOnDestroy(): void {
     //console.log("modal-search destroyed!")
-    this.modal().dispose();
+    this.modal().hide();
   }
 }

@@ -4,8 +4,19 @@
     <app-search placeholder="make a new search..." />
   </div>
   <div class="results">
-    @for (result of this.results(); track result.id) {
-      <p [innerHTML]="result.text"></p>
-     }
+    @if(this.results()?.length) { @for (result of this.results(); track
+    result.id) {
+    <div class="result">
+      <p class="link">
+        {{ result.id.replaceAll("_", " ")
+        }}<a [routerLink]="['/edition', result.id]">
+          <fa-icon class="icon" [icon]="link"></fa-icon>
+        </a>
+      </p>
+      <p class="text" [innerHTML]="result.text"></p>
+    </div>
+    } } @else {
+      <p>La ricerca non ha dato risultati.</p>
+    }
   </div>
 </main>
