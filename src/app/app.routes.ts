@@ -2,12 +2,6 @@ import { Routes } from "@angular/router";
 import { HomeComponent } from "./data-provider/home/home.component";
 import { EditionComponent } from "./data-provider/edition/edition.component";
 import { NotFoundComponent } from "./data-provider/not-found/not-found.component";
-
-import {
-  MainComponent,
-  resolveTitle,
-} from "./data-provider/edition/main/main.component";
-import { ResultsComponent } from "./data-provider/edition/results/results.component";
 import { editionChildren, homeChildren } from "./children.routes";
 
 export const routes: Routes = [
