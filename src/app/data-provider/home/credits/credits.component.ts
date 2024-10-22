@@ -4,22 +4,21 @@ import { findAttributeValue, isSubset } from "../../../utils/utils";
 import { NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faDownload, faLink } from "@fortawesome/free-solid-svg-icons";
+import { ModalComponent } from "../shared/modal/modal.component";
 
 @Component({
   selector: "app-credits",
   standalone: true,
-  imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, FontAwesomeModule],
+  imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, FontAwesomeModule, ModalComponent],
   templateUrl: "./credits.component.html",
   styleUrl: "./credits.component.css",
 })
 export class CreditsComponent implements OnInit {
-  @Input({required: true}) modal_router: any | undefined;
   @Input({required: true}) credits!: Credits;
   download = faDownload;
   link = faLink;
 
   ngOnInit() {
-  this.modal_router.show();
   }
 
   findAttributeValue = findAttributeValue;

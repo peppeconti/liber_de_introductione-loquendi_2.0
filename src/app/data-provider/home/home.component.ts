@@ -3,9 +3,7 @@ import {
   computed,
   inject,
   Input,
-  OnDestroy,
-  OnInit,
-  signal,
+  OnInit
 } from "@angular/core";
 import { HomeHeaderComponent } from "./home-header/home-header.component";
 import { HomeMainComponent } from "./home-main/home-main.component";
@@ -15,26 +13,16 @@ import { Credits, JsonNode } from "../../services/models";
 import { BiblioComponent } from "./biblio/biblio.component";
 import { CodexComponent } from "./codex/codex.component";
 import { CreditsComponent } from "./credits/credits.component";
-import { ModalComponent } from "./modal/modal.component";
 import { DataService } from "../../services/dataService.service";
-
-declare const bootstrap: any;
 
 @Component({
   selector: "app-home",
   standalone: true,
-  imports: [
-    HomeHeaderComponent,
-    HomeMainComponent,
-    RouterLink,
-    RouterOutlet,
-    ModalComponent,
-  ],
+  imports: [HomeHeaderComponent, HomeMainComponent, RouterLink, RouterOutlet],
   templateUrl: "./home.component.html",
-  styleUrl: "./home.component.css",
-  //encapsulation: ViewEncapsulation.None
+  styleUrl: "./home.component.css"
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   @Input({ required: true }) data: Document | undefined;
   private httpService = inject(HttpService);
   private dataService = inject(DataService);
@@ -67,13 +55,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     credits.publicationStmt = this.getPublStmt(this.data!);
     return credits;
   });
-  modal_router = signal<any | undefined>(undefined);
 
-  ngOnInit() {
-    const modal_router = new bootstrap.Modal("#modal-home");
-    this.modal_router.set(modal_router);
-    console.log(this.modal_router());
-  }
+  ngOnInit() {}
 
   getPrimaryBiblio(xml: Document): JsonNode[] | null {
     const biblio: Element | null | undefined =
@@ -154,13 +137,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     codex.msIdentifier = this.msIdentidier();
     codex.msItem = this.msItem();
     codex.msDesc = this.msDesc();
-    biblio.modal_router = this.modal_router();
-    codex.modal_router = this.modal_router();
-    credits.modal_router = this.modal_router();
     credits.credits = this.credits();
-  }
-
-  ngOnDestroy() {
-    this.modal_router().dispose();
   }
 }

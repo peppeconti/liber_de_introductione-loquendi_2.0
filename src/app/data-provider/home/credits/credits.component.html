@@ -1,139 +1,164 @@
-<section>
-  <h3>Titolo dell'edizione</h3>
-  <p class="titles">
-    <span>{{ mainTitle }}</span
-    >&nbsp;-&nbsp;<span>{{ subTitle }}</span>
-  </p>
-</section>
-<section>
-  <ng-container
-    *ngTemplateOutlet="recursive; context: { items: responsability }"
-  />
-</section>
-<section>
-  <ng-container
-    *ngTemplateOutlet="recursive; context: { items: publication }"
-  />
-</section>
+<app-modal>
+  <section>
+    <h3>Titolo dell'edizione</h3>
+    <p class="titles">
+      <span>{{ mainTitle }}</span
+      >&nbsp;-&nbsp;<span>{{ subTitle }}</span>
+    </p>
+  </section>
+  <section>
+    <ng-container
+      *ngTemplateOutlet="recursive; context: { items: responsability }"
+    />
+  </section>
+  <section>
+    <ng-container
+      *ngTemplateOutlet="recursive; context: { items: publication }"
+    />
+  </section>
 
-<!-- recursive template -->
-<ng-template #names let-items="items">
-  <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
-    <ng-container *ngSwitchCase="subtext.tagName === 'name'">
-      <span class="name">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="names; context: { items: subtext.childNodes }"
-        />}
-      </span>
-    </ng-container>
-    <span *ngSwitchDefault>{{ subtext.text }}</span></ng-container
-  ></ng-template
->
-
-<ng-template #recursive let-items="items">
-  <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
-    <ng-container *ngSwitchCase="subtext.tagName === 'respStmt'">
-      <section>
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
-        <p class="names">
-          <ng-container
+  <!-- recursive template -->
+  <ng-template #names let-items="items">
+    <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
+      <ng-container *ngSwitchCase="subtext.tagName === 'name'">
+        <span class="name">
+          @if (!subtext.isText) {<ng-container
             *ngTemplateOutlet="names; context: { items: subtext.childNodes }"
-          />
-        </p>
-      </section>
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'resp'">
-      <h3>
-        @if(findAttributeValue(subtext.attributes, "rend")) {
-        {{
-          capitalizeFirstLetter(findAttributeValue(subtext.attributes, "rend")!)
-        }}
-        } @else { @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />} }
-      </h3>
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'section'">
-      <section>
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
-      </section>
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'name'" />
-    <ng-container *ngSwitchCase="subtext.tagName === 'h3'">
-      <h3>
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
-      </h3>
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'p'">
-      <p>
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
-      </p>
-    </ng-container>
-    <ng-container
-      *ngSwitchCase="
-        subtext.tagName === 'anchor' &&
-        isSubset([{ name: 'type', value: 'link' }], subtext.attributes)
-      "
-    >
-      <a
-        title="go to XML"
-        [href]="
-          '../../../../assets/data/' +
-          findAttributeValue(subtext.attributes, 'source')
-        "
-        target="_blank"
-      >
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}<fa-icon class="icon" [icon]="link"></fa-icon>
-      </a>
-    </ng-container>
-    <ng-container
-      *ngSwitchCase="
-        subtext.tagName === 'anchor' &&
-        isSubset([{ name: 'type', value: 'download' }], subtext.attributes)
-      "
-    >
-      <a
-        title="download XML"
-        [href]="
-          '../../../../assets/data/' +
-          findAttributeValue(subtext.attributes, 'source')
-        "
-        [download]="findAttributeValue(subtext.attributes, 'n')"
-      >
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}<fa-icon class="icon" [icon]="download"></fa-icon>
-      </a>
-    </ng-container>
-    <span *ngSwitchDefault
-      >{{ subtext.text }}@if (!subtext.isText) {<ng-container
-        *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-      />}</span
-    ></ng-container
-  ></ng-template
->
+          />}
+        </span>
+      </ng-container>
+      <span *ngSwitchDefault>{{ subtext.text }}</span></ng-container
+    ></ng-template
+  >
 
-<!--<p>
-  <a
-    target="_blank"
-    href="../../../../assets/data/liber_de_introductione_loquendi.xml"
+  <ng-template #recursive let-items="items">
+    <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
+      <ng-container *ngSwitchCase="subtext.tagName === 'respStmt'">
+        <section>
+          @if (!subtext.isText) {<ng-container
+            *ngTemplateOutlet="
+              recursive;
+              context: { items: subtext.childNodes }
+            "
+          />}
+          <p class="names">
+            <ng-container
+              *ngTemplateOutlet="names; context: { items: subtext.childNodes }"
+            />
+          </p>
+        </section>
+      </ng-container>
+      <ng-container *ngSwitchCase="subtext.tagName === 'resp'">
+        <h3>
+          @if(findAttributeValue(subtext.attributes, "rend")) {
+          {{
+            capitalizeFirstLetter(
+              findAttributeValue(subtext.attributes, "rend")!
+            )
+          }}
+          } @else { @if (!subtext.isText) {<ng-container
+            *ngTemplateOutlet="
+              recursive;
+              context: { items: subtext.childNodes }
+            "
+          />} }
+        </h3>
+      </ng-container>
+      <ng-container *ngSwitchCase="subtext.tagName === 'section'">
+        <section>
+          @if (!subtext.isText) {<ng-container
+            *ngTemplateOutlet="
+              recursive;
+              context: { items: subtext.childNodes }
+            "
+          />}
+        </section>
+      </ng-container>
+      <ng-container *ngSwitchCase="subtext.tagName === 'name'" />
+      <ng-container *ngSwitchCase="subtext.tagName === 'h3'">
+        <h3>
+          @if (!subtext.isText) {<ng-container
+            *ngTemplateOutlet="
+              recursive;
+              context: { items: subtext.childNodes }
+            "
+          />}
+        </h3>
+      </ng-container>
+      <ng-container *ngSwitchCase="subtext.tagName === 'p'">
+        <p>
+          @if (!subtext.isText) {<ng-container
+            *ngTemplateOutlet="
+              recursive;
+              context: { items: subtext.childNodes }
+            "
+          />}
+        </p>
+      </ng-container>
+      <ng-container
+        *ngSwitchCase="
+          subtext.tagName === 'anchor' &&
+          isSubset([{ name: 'type', value: 'link' }], subtext.attributes)
+        "
+      >
+        <a
+          title="go to XML"
+          [href]="
+            '../../../../assets/data/' +
+            findAttributeValue(subtext.attributes, 'source')
+          "
+          target="_blank"
+        >
+          @if (!subtext.isText) {<ng-container
+            *ngTemplateOutlet="
+              recursive;
+              context: { items: subtext.childNodes }
+            "
+          />}<fa-icon class="icon" [icon]="link"></fa-icon>
+        </a>
+      </ng-container>
+      <ng-container
+        *ngSwitchCase="
+          subtext.tagName === 'anchor' &&
+          isSubset([{ name: 'type', value: 'download' }], subtext.attributes)
+        "
+      >
+        <a
+          title="download XML"
+          [href]="
+            '../../../../assets/data/' +
+            findAttributeValue(subtext.attributes, 'source')
+          "
+          [download]="findAttributeValue(subtext.attributes, 'n')"
+        >
+          @if (!subtext.isText) {<ng-container
+            *ngTemplateOutlet="
+              recursive;
+              context: { items: subtext.childNodes }
+            "
+          />}<fa-icon class="icon" [icon]="download"></fa-icon>
+        </a>
+      </ng-container>
+      <span *ngSwitchDefault
+        >{{ subtext.text }}@if (!subtext.isText) {<ng-container
+          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+        />}</span
+      ></ng-container
+    ></ng-template
   >
-    Liber de introductione loquendi (show XML)
-  </a>
-  <a
-    download="liber_de_introductione_loquendi"
-    href="../../../../assets/data/liber_de_introductione_loquendi.xml"
-  >
-    Liber de introductione loquendi (download XML)
-  </a>
-</p>-->
+
+  <!--<p>
+    <a
+      target="_blank"
+      href="../../../../assets/data/liber_de_introductione_loquendi.xml"
+    >
+      Liber de introductione loquendi (show XML)
+    </a>
+    <a
+      download="liber_de_introductione_loquendi"
+      href="../../../../assets/data/liber_de_introductione_loquendi.xml"
+    >
+      Liber de introductione loquendi (download XML)
+    </a>
+  </p>-->
+</app-modal>

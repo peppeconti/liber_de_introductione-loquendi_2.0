@@ -1,18 +1,20 @@
-@if(this.msIdentifier?.length) {
-<h2 class="tableHead">Informazioni generali</h2>
-<table>
-  <app-ms-infos [tableData]="this.msItem" />
-</table>
-} @if(this.msIdentifier?.length) {
-<h2 class="tableHead">Collocazione</h2>
-<table>
-  <app-ms-infos [tableData]="this.msIdentifier" />
-</table>
-} @if(this.msDesc?.length) {
-<h2 class="tableHead">Descrizione</h2>
-<table>
-  <app-ms-infos [tableData]="this.msDesc" />
-</table>
-}
-<h2 class="witnesses">Testimoni</h2>
-<app-witnesses [witnesses]="this.witnesses" />
+<app-modal>
+  @if(this.msIdentifier?.length) {
+    <h2 class="tableHead">Informazioni generali</h2>
+    <table>
+      <app-ms-infos [tableData]="this.msItem" />
+    </table>
+    } @if(this.msIdentifier?.length) {
+    <h2 class="tableHead">Collocazione</h2>
+    <table>
+      <app-ms-infos [tableData]="this.msIdentifier" />
+    </table>
+    } @if(this.msDesc?.length) {
+    <h2 class="tableHead">Descrizione</h2>
+    <table>
+      <app-ms-infos [tableData]="this.msDesc" />
+    </table>
+    }
+    <h2 class="witnesses">Testimoni</h2>
+    <app-witnesses [witnesses]="this.witnesses" />
+</app-modal>
