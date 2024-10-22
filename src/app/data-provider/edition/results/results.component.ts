@@ -52,17 +52,14 @@ export class ResultsComponent implements OnInit, OnChanges {
       const search = this.s()?.trim();
       //const splittedSearch = search?.split(" ");
       //search = splittedSearch?.map((e) => "'" + e).join(" ");
-      console.log(`'"${search}"`);
-
+      // `'"${search}"`
+      
       const fuse = new Fuse(text, options);
-      const results = fuse.search(search!);
+      const results = fuse.search(`'"${search}"`);
       this.results.set(hightlight(results));
       console.log(this.results());
-      //console.log(hightlight(this.results()!));
     }
   }
-
-  //const lol = text.split(' ').filter((e: string) => e !== '').map((e: string) => e.replaceAll('\n', '')).join(' ');
 
   private getSearchField(xml: Document): SearchNode[] {
     const searchField: NodeList | null | undefined =

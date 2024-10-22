@@ -44,6 +44,8 @@ function findAttributeValue(
   return val?.value;
 }
 
+// HIGHLIGHT
+
 function hightlight(results: any[]): any[] {
   function compareNumbers(a: number[], b: number[]) {
     return a[0] - b[1];
@@ -51,31 +53,31 @@ function hightlight(results: any[]): any[] {
   function mergeMatches(
     matches: Array<number[]>,
     // deep copy of nested array
-    copy: Array<number[]> = JSON.parse(JSON.stringify(matches))
+    copyMatches: Array<number[]> = JSON.parse(JSON.stringify(matches))
   ): Array<number[]> {
     for (let i = 0; i < matches.length; i++) {
       if (matches[i + 1]) {
         if (matches[i + 1][0] - matches[i][1] <= 4) {
-          copy[i][1] = copy[i + 1][1];
-          copy.splice(i + 1, 1);
-          return mergeMatches(copy);
+          copyMatches[i][1] = copyMatches[i + 1][1];
+          copyMatches.splice(i + 1, 1);
+          return mergeMatches(copyMatches);
         }
       }
     }
-    return copy;
+    return copyMatches;
   }
 
   return results.map((e) => {
     const id = e.item.id;
     const text = e.item.textContent;
-    const matches: Array<number[]> = e.matches[0].indices;
-    const sortedMatsches: Array<number[]> =
-      e.matches[0].indices.sort(compareNumbers);
-    const mergedMatsches: Array<number[]> = mergeMatches(
+    //const matches: Array<number[]> = e.matches[0].indices;
+    //const sortedMatsches: Array<number[]> =
+      //e.matches[0].indices.sort(compareNumbers);
+    const mergedMatches: Array<number[]> = mergeMatches(
       e.matches[0].indices.sort(compareNumbers)
     );
-    console.log(text);
-    return { id, text, mergedMatsches, sortedMatsches };
+    //console.log(text);
+    return { id, text, matches: mergedMatches };
   });
 }
 

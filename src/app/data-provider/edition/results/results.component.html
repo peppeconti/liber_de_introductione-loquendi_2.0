@@ -5,12 +5,10 @@
   </div>
   <div class="results">
     @for (result of this.results(); track result.id) {
-      @for (matsch of result.mergedMatsches; track matsch[0]) {
+      @for (match of result.matches; track match[0]) {
         <p>{{result.id}}</p>
-        <p [innerHTML]="result.text.substring(matsch[0], matsch[1]+1)"></p>
+        <p [innerHTML]="result.text.substring(match[0], match[1]+1)"></p>
       }
      }
   </div>
 </main>
-
-<!--<p [innerHTML]="result.text.substring(79,81)"></p>-->
