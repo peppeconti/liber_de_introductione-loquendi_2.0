@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  inject,
   input,
   Input,
   OnChanges,
@@ -55,10 +56,7 @@ export class ResultsComponent implements OnInit, OnChanges {
     if (changes.hasOwnProperty("s") && changes["s"].currentValue) {
       const text = this.searchField();
       const search = this.s()?.trim();
-      //const splittedSearch = search?.split(" ");
-      //search = splittedSearch?.map((e) => "'" + e).join(" ");
-      // `'"${search}"`
-      
+      // FUSE
       const fuse = new Fuse(text, options);
       const results = fuse.search(`'"${search}"`);
       this.results.set(hightlight(results));
@@ -96,3 +94,7 @@ export class ResultsComponent implements OnInit, OnChanges {
     return result;
   }
 }
+
+//const splittedSearch = search?.split(" ");
+//search = splittedSearch?.map((e) => "'" + e).join(" ");
+// `'"${search}"`

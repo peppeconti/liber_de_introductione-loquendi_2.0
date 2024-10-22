@@ -1,6 +1,7 @@
-import { Component, computed, input } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
+import { Location } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faGear, faGears, faBan } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faGears, faBan, faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { DropdownComponent } from "./dropdown/dropdown.component";
 import { RouterLink } from "@angular/router";
 
@@ -16,9 +17,14 @@ export class HeaderComponent {
   data = input.required<Document | undefined>();
   title = computed<string>(() => this.getInnerText("msItem title[type=short]"));
   author = computed<string>(() => this.getInnerText("msItem author"));
+  location = inject(Location);
   gear = faGear;
   gears = faGears;
-  ban = faBan;
+  back = faArrowCircleLeft;
+
+  goBack() {
+    this.location.back();
+  }
 
   private getInnerText(selector: string) {
     const element: Element = this.data()?.querySelector(selector)!;
