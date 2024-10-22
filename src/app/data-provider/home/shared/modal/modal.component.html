@@ -1,9 +1,15 @@
-<div class="backdrop" routerLink="../"></div>
-<div class="modal-home">
-    <div class="header">
-      <app-modal-header />
+<div class="modal show">
+  <div class="backdrop" routerLink="../"></div>
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <!--HEADER-->
+      <div class="modal-header">
+        <app-modal-header />
+      </div>
+      <!--BODY-->
+      <div class="modal-body">
+        <ng-content />
+      </div>
     </div>
-    <div class="body">
-      <ng-content />
-    </div>
+  </div>
 </div>

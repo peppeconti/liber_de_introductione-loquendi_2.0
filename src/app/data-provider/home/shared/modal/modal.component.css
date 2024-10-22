@@ -1,23 +1,22 @@
-.modal-home {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #2e2e2e;
-  color: #fff;
-  width: 95%;
-  max-width: 1000px;
-  height: 95%;
-  overflow: hidden;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
+.show {
+    display: block!important;
 }
 
-.modal-home .body {
-  padding: 1rem;
-  overflow: auto;
-  flex: 1;
+.modal-dialog {
+    width: 95%;
+    max-width: 800px;
+}
+
+.modal-content {
+    height: 95%;
+    background-color: #2e2e2e;
+    color: #fff;
+}
+
+.modal-header {
+    border: none;
+    padding: 0;
+    display: block;
 }
 
 .backdrop {
