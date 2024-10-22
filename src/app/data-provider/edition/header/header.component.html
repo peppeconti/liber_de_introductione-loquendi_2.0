@@ -1,23 +1,33 @@
 <header class="header">
   <figure class="icon" routerLink="/home">
     <div class="icon-container logo-container">
-      <img class="logo" src="../../../../assets/images/logo.svg" alt="logo link to homepage">
+      <img
+        class="logo"
+        src="../../../../assets/images/logo.svg"
+        alt="logo link to homepage"
+      />
     </div>
   </figure>
   <div class="credits">
     <h2 class="author">{{ author() }}</h2>
     <h1 class="title">{{ title().toUpperCase() }}</h1>
   </div>
-  <figure class="icon">
+  <figure [class.icon]="folio()" [class.search]="!folio()">
+    @if(folio()) {
     <div
       class="icon-container"
       data-bs-toggle="dropdown"
       data-bs-auto-close="outside"
       aria-expanded="false"
     >
-      <fa-icon class="close" [icon]="faGear" />
-      <fa-icon class="open" [icon]="faGears" />
+      <fa-icon class="close" [icon]="gear" />
+      <fa-icon class="open" [icon]="gears" />
     </div>
     <app-dropdown />
+    } @else {
+    <div>
+      <fa-icon class="close" [icon]="ban" />
+    </div>
+    }
   </figure>
 </header>

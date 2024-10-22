@@ -16,15 +16,23 @@ main {
 }
 
 .search {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  cursor: pointer;
+}
+
+.search:hover {
+  opacity: 0.8;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: calc(12px + (24 - 12) * ((100vw - 360px) / (1600 - 360)));
 }
 
 .page-number {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
   padding: 0 20vw;
   margin: 0;
   margin-bottom: -1rem;
@@ -77,6 +85,11 @@ main {
     padding-bottom: 6.5rem;
   }
   .page-number {
+    padding: 1rem 5vw;
+    padding-top: 0;
+    justify-content: end;
+  }
+  .page-number span:not(.search) {
     display: none;
   }
 
@@ -88,9 +101,8 @@ main {
     grid-gap: 0;
   }
 
-  div.text.translation-active app-latin-text{
+  div.text.translation-active app-latin-text {
     display: none;
-
   }
 
   .select-wrapper {

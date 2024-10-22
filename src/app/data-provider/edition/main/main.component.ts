@@ -23,6 +23,8 @@ import {
 import { NotFoundComponent } from "../../not-found/not-found.component";
 import { HeaderComponent } from "../header/header.component";
 import { ModalSearchComponent } from "./modal-search/modal-search.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-main",
@@ -37,6 +39,7 @@ import { ModalSearchComponent } from "./modal-search/modal-search.component";
     NotFoundComponent,
     HeaderComponent,
     ModalSearchComponent,
+    FontAwesomeModule
   ],
   templateUrl: "./main.component.html",
   styleUrl: "./main.component.css",
@@ -44,6 +47,7 @@ import { ModalSearchComponent } from "./modal-search/modal-search.component";
 export class MainComponent {
   private settingService = inject(SettingService);
   private httpService = inject(HttpService);
+  magnifyingGlass = faMagnifyingGlass;
   @Input({ required: true }) data: Document | undefined;
   latin_text = computed<JsonNode[] | undefined | null>(() =>
     this.getLatinText(this.data!)

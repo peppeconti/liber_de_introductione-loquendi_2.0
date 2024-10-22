@@ -1,14 +1,14 @@
 @if(isExistingFolio()) {
-<app-header [data]="this.data" />
+<app-header [folio]="folio()" [data]="this.data" />
 <main>
   <div class="select-wrapper">
-    <div class="search" data-bs-toggle="modal" data-bs-target="#modal-search">
-      button
-    </div>
     <app-select [folios]="folios()" [folio]="folio()" />
   </div>
   <p class="page-number" [class.translation-active]="translationActive">
-    {{ translation().page }}
+    <span> {{ translation().page }} </span>
+    <span class="search" data-bs-toggle="modal" data-bs-target="#modal-search">
+      <fa-icon class="icon" [icon]="magnifyingGlass" />
+    </span>
   </p>
   <div class="text" [class.translation-active]="translationActive">
     <app-latin-text [latin_text]="latin_text()" [folio]="folio()" />
