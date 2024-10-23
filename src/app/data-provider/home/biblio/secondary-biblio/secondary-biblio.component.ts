@@ -1,4 +1,4 @@
-import { Component, computed, Input, OnInit } from "@angular/core";
+import { Component, computed, Input } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 import {
   NgFor,
@@ -24,7 +24,7 @@ import { isSubset } from "../../../../utils/utils";
   templateUrl: "./secondary-biblio.component.html",
   styleUrl: "./secondary-biblio.component.css",
 })
-export class secondaryBiblioComponent implements OnInit {
+export class secondaryBiblioComponent {
   @Input({ required: true }) secondary_biblio: JsonNode[] | undefined | null;
   monographies = computed(() =>
     this.secondary_biblio?.filter(
@@ -36,6 +36,4 @@ export class secondaryBiblioComponent implements OnInit {
   );
 
   isSubset = isSubset;
-
-  ngOnInit(): void {}
 }
