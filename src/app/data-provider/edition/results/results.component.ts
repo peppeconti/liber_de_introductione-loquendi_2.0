@@ -1,22 +1,18 @@
 import {
   Component,
   computed,
-  inject,
   input,
   Input,
   OnChanges,
   OnInit,
   signal,
-  SimpleChanges,
-  ViewEncapsulation,
+  SimpleChanges
 } from "@angular/core";
 import { HeaderComponent } from "../header/header.component";
 import { SearchComponent } from "../shared/search/search.component";
 import { hightlight } from "../../../utils/utils";
 import Fuse from "fuse.js";
-import { RouterLink } from "@angular/router";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
+import { ResultComponent } from "./result/result.component";
 
 type SearchNode = {
   tagName: string | null;
@@ -38,18 +34,15 @@ const options = {
 @Component({
   selector: "app-results",
   standalone: true,
-  imports: [HeaderComponent, SearchComponent, RouterLink, FontAwesomeModule],
+  imports: [HeaderComponent, SearchComponent, ResultComponent],
   templateUrl: "./results.component.html",
-  styleUrl: "./results.component.css",
-  encapsulation: ViewEncapsulation.None,
+  styleUrl: "./results.component.css"
 })
 export class ResultsComponent implements OnInit, OnChanges {
   @Input({ required: true }) data: Document | undefined;
   s = input<string | null>();
   searchField = computed<SearchNode[]>(() => this.getSearchField(this.data!));
   results = signal<any[] | undefined>(undefined);
-  link = faExternalLink;
-
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -1,9 +1,9 @@
 import {
   Component,
   computed,
+  DestroyRef,
   inject,
   input,
-  OnDestroy,
   signal,
 } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
@@ -26,7 +26,7 @@ declare const bootstrap: any;
   templateUrl: "./apparatus-container.component.html",
   styleUrl: "./apparatus-container.component.css",
 })
-export class ApparatusContainerComponent implements OnDestroy {
+export class ApparatusContainerComponent {
   private dataService = inject(DataService);
   noteId = computed<string | undefined>(() =>
     this.dataService.getAppNoteId()?.replace("#", "")
@@ -39,11 +39,17 @@ export class ApparatusContainerComponent implements OnDestroy {
     this.dataService.getActiveItem()
   );
   modal = signal<any | undefined>(undefined);
+  private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
     const modal = new bootstrap.Modal("#modal-apparatus");
     this.modal.set(modal);
-    //console.log(this.modal());
+    this.destroyRef.onDestroy(() => {
+      console.log("carouselItems cleared!");
+      this.dataService.clearCarouselItems();
+      console.log('modal destroyed!')
+      this.modal().dispose();
+    })
   }
 
   onSlide(e: any) {
@@ -61,12 +67,5 @@ export class ApparatusContainerComponent implements OnDestroy {
 
   onShow() {
     window.location.hash = "apparatus";
-  }
-
-  ngOnDestroy(): void {
-    console.log("carouselItems cleared!");
-    this.dataService.clearCarouselItems();
-    console.log('modal destroyed!')
-    this.modal().dispose();
   }
 }

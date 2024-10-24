@@ -1,4 +1,4 @@
-import { FuseResult } from "fuse.js";
+import { UUID } from "angular2-uuid";
 
 type SearchNode = {
   tagName: string | null;
@@ -76,11 +76,12 @@ function hightlight(results: any[]): any[] {
   ) {
     matches.forEach((e) => {
       const match = text.substring(e[0]+accumulator, e[1]+1+accumulator);
-      const hightlightedMatch = `<span class="highlight">${match}</span>`;
+      const hightlightedMatch = `<span id="${UUID.UUID()}" class="highlight">${match}</span>`;
       const previous = text.substring(0, e[0]+accumulator);
       const last = text.substring(e[1]+1+accumulator, text.length);
       text = previous + hightlightedMatch + last;
       accumulator = accumulator + hightlightedMatch.length - match.length;
+      console.log(text)
     });
     return text;
   }

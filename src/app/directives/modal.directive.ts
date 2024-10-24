@@ -1,4 +1,5 @@
 import {
+  DestroyRef,
   Directive,
   inject,
   input,
@@ -11,14 +12,23 @@ import {
   selector: "[appModal]",
   standalone: true,
 })
-export class ModalDirective implements OnInit, OnDestroy {
+export class ModalDirective implements OnInit {
   appModal = input.required<any | undefined>();
   hash = input.required<string>();
-  renderer = inject(Renderer2);
+  private renderer = inject(Renderer2);
+  private destroyRef = inject(DestroyRef);
   listener: any;
 
   ngOnInit() {
-    this.listener = this.renderer.listen(window, "hashchange", this.onHashChange);
+    this.listener = this.renderer.listen(
+      window,
+      "hashchange",
+      this.onHashChange
+    );
+    this.destroyRef.onDestroy(() => {
+      console.log(this.hash() + " " + "destroyed");
+      this.listener();
+    });
   }
 
   onHashChange = () => {
@@ -29,9 +39,4 @@ export class ModalDirective implements OnInit, OnDestroy {
       app_modal.hide();
     }
   };
-
-  ngOnDestroy() {
-    console.log(this.hash() + " " + "destroyed");
-    this.listener();
-  }
 }

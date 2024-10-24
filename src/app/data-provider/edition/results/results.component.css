@@ -8,46 +8,6 @@
   padding-bottom: 4rem;
 }
 
-.result {
-  background-color: rgb(231, 231, 231);
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-.result .link {
-  margin-bottom: .5rem;
-  padding-bottom: .5rem;
-  border-bottom: 1px solid #000;
-  display: flex;
-  align-items: center;
-  font-size: 1.25rem;
-  font-size: calc(16px + (20 - 16) * ((100vw - 360px) / (1600 - 360)));
-}
-
-.result .icon {
-  padding: 0 1rem;
-}
-
-.result .link a {
-  color: #000;
-  text-decoration: none;
-}
-
-.result .link a:hover {
-  opacity: .8;
-}
-
-.result .highlight {
-  background-color: rgb(255, 255, 167);
-  font-weight: bold;
-}
-
-.result p.text {
-  text-align: justify;
-  font-size: calc(12px + (16 - 12) * ((100vw - 360px) / (1600 - 360)));
-  line-height: 1.5rem;
-}
-
 @media screen and (max-width: 1024px) {
   .results,
   .search-bar {

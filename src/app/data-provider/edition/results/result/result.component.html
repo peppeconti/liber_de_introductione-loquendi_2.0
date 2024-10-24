@@ -1,0 +1,9 @@
+<div class="result">
+  <p class="link">
+    {{ id().replaceAll("_", " ")
+    }}<a [routerLink]="['/edition', id()]">
+      <fa-icon class="icon" [icon]="link"></fa-icon>
+    </a>
+  </p>
+  <p class="text" [innerHTML]="sanitizer.bypassSecurityTrustHtml(text())"></p>
+</div>
