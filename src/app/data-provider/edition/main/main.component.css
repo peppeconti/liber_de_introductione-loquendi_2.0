@@ -84,7 +84,7 @@ main {
     padding: 1rem 5vw;
     padding-bottom: 6.5rem;
   }
-  .page-number {
+  .page-number.translation-active, .page-number {
     padding: 1rem 5vw;
     padding-top: 0;
     justify-content: end;
