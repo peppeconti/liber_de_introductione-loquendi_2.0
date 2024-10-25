@@ -78,6 +78,7 @@ subtext.attributes))) {
   (click)="onClickApp(findAttributeValue(subtext.attributes, 'corresp')!)"
   data-bs-toggle="modal"
   data-bs-target="#modal-apparatus"
+  aria-controls="modal-apparatus"
   attr.data-app="{{ findAttributeValue(subtext.attributes, 'corresp') }}"
   class="{{ findAttributeValue(subtext.attributes, 'type') }}"
 >
