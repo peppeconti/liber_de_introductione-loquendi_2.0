@@ -51,7 +51,7 @@ function hightlight(results: any[]): any[] {
   function compareNumbers(a: number[], b: number[]) {
     return a[0] - b[1];
   }
-  // MARGIN ADIACENT MATCHES
+  // MERGING ADIACENT MATCHES
   function mergeMatches(
     matches: Array<number[]>,
     // deep copy of nested array
@@ -80,20 +80,26 @@ function hightlight(results: any[]): any[] {
       const previous = text.substring(0, e[0]+accumulator);
       const last = text.substring(e[1]+1+accumulator, text.length);
       text = previous + hightlightedMatch + last;
+      // UPDATING INDEXES
+      e[0] = e[0] + accumulator;
       accumulator = accumulator + hightlightedMatch.length - match.length;
-      console.log(text)
+      e[1] = e[1] + accumulator;
+      // UPDATED INDEXES
     });
     return text;
   }
-  // RETURN AN OBJ
+  // RETURN AN OBJECT
   return results.map((e) => {
     const id = e.item.id;
     const text = e.item.textContent;
     const mergedMatches: Array<number[]> = mergeMatches(
       e.matches[0].indices.sort(compareNumbers)
     );
+    const matches = mergedMatches;
     const hightlightedText = addSpan(text, mergedMatches);
-    return { id, text: hightlightedText };
+    //console.log(hightlightedText.substring(mergedMatches[i][0], mergedMatches[i][1]+1));
+    matches.forEach((e) => console.log(hightlightedText.substring(e[0], e[1]+1)))
+    return { id, text: hightlightedText, matches };
   });
 }
 
