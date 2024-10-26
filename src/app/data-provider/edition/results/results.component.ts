@@ -49,9 +49,12 @@ export class ResultsComponent implements OnInit, OnChanges {
     if (changes.hasOwnProperty("s") && changes["s"].currentValue) {
       const text = this.searchField();
       const search = this.s()?.trim();
+      const full_search = `'"${search}"`;
+      //
+      const single_search = search?.split(' ').map(e => "'" + e).join(' ');
       // FUSE
       const fuse = new Fuse(text, options);
-      const results = fuse.search(`'"${search}"`);
+      const results = fuse.search(single_search!);
       this.results.set(hightlight(results));
       console.log(this.results());
     }
