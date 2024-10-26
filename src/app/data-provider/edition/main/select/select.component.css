@@ -1,5 +1,5 @@
 .select {
-    font-size: calc(12px + (16 - 12) * ((100vw - 360px) / (1600 - 360)));
+    font-size: calc(15px + (16 - 15) * ((100vw - 360px) / (1600 - 360)));
 }
 
 .button {
@@ -15,6 +15,7 @@
     border: none;
     border-bottom: 2px solid #1d1d1d;
     font-style: italic;
+    color: #000;
 }
 
 ul.list {

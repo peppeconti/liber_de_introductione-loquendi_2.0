@@ -3,7 +3,7 @@
     margin: 0;
     text-align: justify;
     font-size: 1rem;
-    font-size: calc(12px + (16 - 12) * ((100vw - 360px) / (1600 - 360)));
+    font-size: calc(15px + (16 - 15) * ((100vw - 360px) / (1600 - 360)));
 }
 
 .italic {
@@ -12,12 +12,6 @@
 
 @media screen and (max-width: 820px) {
     .translation p {
-        line-height: 1.75rem
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .translation p {
-        line-height: 1.5rem;
+        line-height: 2rem
     }
 }
