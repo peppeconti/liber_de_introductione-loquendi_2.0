@@ -1,4 +1,4 @@
-import { Component, inject, input, ViewEncapsulation } from '@angular/core';
+import { Component, computed, inject, input, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterLink } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
@@ -15,7 +15,6 @@ import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 export class ResultComponent {
   id=input.required<string>();
   text = input.required<string>();
-  sanitizer =  inject(DomSanitizer);
+  //sanitizer =  inject(DomSanitizer);
   link = faExternalLink;
-
 }

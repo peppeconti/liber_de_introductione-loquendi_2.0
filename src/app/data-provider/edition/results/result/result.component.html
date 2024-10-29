@@ -5,5 +5,7 @@
       <fa-icon class="icon" [icon]="link"></fa-icon>
     </a>
   </p>
-  <p class="text" [innerHTML]="sanitizer.bypassSecurityTrustHtml(text())"></p>
+  <p class="text" [innerHTML]="text()"></p>
 </div>
+
+<!--sanitizer.bypassSecurityTrustHtml(text()) -->

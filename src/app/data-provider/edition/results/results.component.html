@@ -5,9 +5,10 @@
   </div>
   <div class="results">
     @if(this.results()?.length) { @for (result of this.results(); track
-    result.id) {
-    <app-result [id]="result.id" [text]="result.text" />
-    } } @else {
+    result.id) { @for (match of result.matches; track match[0]) {<app-result
+      [id]="result.id"
+      [text]="result.text.substring(match[0], match[1] + 1)"
+    />} } } @else {
     <p>La ricerca non ha dato risultati.</p>
     }
   </div>

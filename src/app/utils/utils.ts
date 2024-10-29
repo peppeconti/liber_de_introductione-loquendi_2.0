@@ -1,12 +1,3 @@
-import { UUID } from "angular2-uuid";
-
-/*type SearchNode = {
-  tagName: string | null;
-  type: string | null;
-  textContent: string | null;
-  id: string | null;
-};*/
-
 function nextUntil(start: Element, container: Element[]) {
   while (
     start.nextElementSibling! &&
@@ -54,19 +45,53 @@ function hightlight(results: any[]): any[] {
   // MERGING ADIACENT MATCHES
   function mergeMatches(
     matches: Array<number[]>,
+    distance: number,
     // deep copy of nested array
     copyMatches: Array<number[]> = JSON.parse(JSON.stringify(matches))
   ): Array<number[]> {
     for (let i = 0; i < matches.length; i++) {
       if (matches[i + 1]) {
-        if (matches[i + 1][0] - matches[i][1] <= 4) {
+        if (matches[i + 1][0] - matches[i][1] <= distance) {
           copyMatches[i][1] = copyMatches[i + 1][1];
           copyMatches.splice(i + 1, 1);
-          return mergeMatches(copyMatches);
+          return mergeMatches(copyMatches, distance);
         }
       }
     }
     return copyMatches;
+  }
+  // EXOANDING MATCHES
+  function expandMatches(
+    matches: Array<number[]>,
+    distance: number,
+    text: string
+  ): Array<number[]> {
+    for (let i = 0; i < matches.length; i++) {
+      matches[i][0] - distance < 0
+        ? (matches[i][0] = 0)
+        : (matches[i][0] = matches[i][0] - distance);
+
+      while (text[matches[i][0] - 1] !== " ") {
+        if (matches[i][0] === 0) {
+          break;
+        } else {
+          matches[i][0] = matches[i][0] - 1;
+        }
+      }
+
+      matches[i][1] + distance > text.length
+        ? (matches[i][1] = text.length)
+        : (matches[i][1] = matches[i][1] + distance);
+
+      while (text[matches[i][1] + 1] !== " ") {
+        if (matches[i][1] === text.length) {
+          break;
+        } else {
+          matches[i][1] = matches[i][1] + 1;
+        }
+      }
+    }
+    return matches;
   }
   // ADDING SPAN WITH HIGHLIGHT CLASS
   function addSpan(
@@ -75,10 +100,10 @@ function hightlight(results: any[]): any[] {
     accumulator: number = 0
   ) {
     matches.forEach((e) => {
-      const match = text.substring(e[0]+accumulator, e[1]+1+accumulator);
-      const hightlightedMatch = `<span id="${UUID.UUID()}" class="highlight">${match}</span>`;
-      const previous = text.substring(0, e[0]+accumulator);
-      const last = text.substring(e[1]+1+accumulator, text.length);
+      const match = text.substring(e[0] + accumulator, e[1] + 1 + accumulator);
+      const hightlightedMatch = `<span class="highlight">${match}</span>`;
+      const previous = text.substring(0, e[0] + accumulator);
+      const last = text.substring(e[1] + 1 + accumulator, text.length);
       text = previous + hightlightedMatch + last;
       // UPDATING INDEXES
       e[0] = e[0] + accumulator;
@@ -90,21 +115,26 @@ function hightlight(results: any[]): any[] {
   }
   // RETURN AN OBJECT
   return results.map((e) => {
-    const id = e.item.id;
-    const text = e.item.textContent;
-    const mergedMatches: Array<number[]> = mergeMatches(
+    const id: string = e.item.id;
+    const text: string = e.item.textContent;
+    /*const mergedMatches: Array<number[]> = mergeMatches(
       e.matches[0].indices.sort(compareNumbers)
-    );
-    const matches = mergedMatches;
-    const hightlightedText = addSpan(text, mergedMatches);
+    );*/
+    const matches: Array<number[]> = e.matches[0].indices.sort(compareNumbers);
+    const hightlightedText = addSpan(text, matches);
     //console.log(hightlightedText.substring(mergedMatches[i][0], mergedMatches[i][1]+1));
-    matches.forEach((e) => console.log(hightlightedText.substring(e[0], e[1]+1)))
-    return { id, text: hightlightedText, matches };
+    const mergedMatches: Array<number[]> = mergeMatches(matches, 100);
+    const expandedMatches: Array<number[]> = expandMatches(
+      mergedMatches,
+      100,
+      hightlightedText
+    );
+
+    expandedMatches.forEach((e) =>
+      console.log(hightlightedText.substring(e[0], e[1] + 1))
+    );
+    return { id, text: hightlightedText, matches: expandedMatches };
   });
 }
-
-//const matches: Array<number[]> = e.matches[0].indices;
-//const sortedMatsches: Array<number[]> =
-//e.matches[0].indices.sort(compareNumbers);
 
 export { nextUntil, findAttributeValue, isSubset, hightlight };
