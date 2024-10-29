@@ -1,11 +1,11 @@
 import { UUID } from "angular2-uuid";
 
-type SearchNode = {
+/*type SearchNode = {
   tagName: string | null;
   type: string | null;
   textContent: string | null;
   id: string | null;
-};
+};*/
 
 function nextUntil(start: Element, container: Element[]) {
   while (
