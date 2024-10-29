@@ -71,11 +71,13 @@ function hightlight(results: any[]): any[] {
         ? (matches[i][0] = 0)
         : (matches[i][0] = matches[i][0] - distance);
 
-      while (text[matches[i][0] - 1] !== " ") {
-        if (matches[i][0] === 0) {
-          break;
-        } else {
-          matches[i][0] = matches[i][0] - 1;
+      if (text[matches[i][0] - 1]) {
+        while (!text[matches[i][0] - 1].match(/[\s,;:<>]/g)) {
+          if (matches[i][0] === 0) {
+            break;
+          } else {
+            matches[i][0] = matches[i][0] - 1;
+          }
         }
       }
 
@@ -83,13 +85,15 @@ function hightlight(results: any[]): any[] {
         ? (matches[i][1] = text.length)
         : (matches[i][1] = matches[i][1] + distance);
 
-      while (text[matches[i][1] + 1] !== " ") {
-        if (matches[i][1] === text.length) {
-          break;
-        } else {
-          matches[i][1] = matches[i][1] + 1;
+        if(text[matches[i][1] + 1]) {
+          while (!text[matches[i][1] + 1].match(/[\s,;:<>]/g)) {
+            if (matches[i][1] === text.length) {
+              break;
+            } else {
+              matches[i][1] = matches[i][1] + 1;
+            }
+          }
         }
-      }
     }
     return matches;
   }
