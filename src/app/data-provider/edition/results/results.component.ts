@@ -10,7 +10,7 @@ import {
 } from "@angular/core";
 import { HeaderComponent } from "../header/header.component";
 import { SearchComponent } from "../shared/search/search.component";
-import { hightlight } from "../../../utils/utils";
+import hightlight from "../../../utils/highlight";
 import Fuse from "fuse.js";
 import { ResultComponent } from "./result/result.component";
 
