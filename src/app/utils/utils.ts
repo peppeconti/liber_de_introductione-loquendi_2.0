@@ -85,15 +85,15 @@ function hightlight(results: any[]): any[] {
         ? (matches[i][1] = text.length)
         : (matches[i][1] = matches[i][1] + distance);
 
-        if(text[matches[i][1] + 1]) {
-          while (!text[matches[i][1] + 1].match(/[\s,;:<>]/g)) {
-            if (matches[i][1] === text.length) {
-              break;
-            } else {
-              matches[i][1] = matches[i][1] + 1;
-            }
+      if (text[matches[i][1] + 1]) {
+        while (!text[matches[i][1] + 1].match(/[\s,;:<>]/g)) {
+          if (matches[i][1] === text.length) {
+            break;
+          } else {
+            matches[i][1] = matches[i][1] + 1;
           }
         }
+      }
     }
     return matches;
   }
@@ -121,10 +121,53 @@ function hightlight(results: any[]): any[] {
   return results.map((e) => {
     const id: string = e.item.id;
     const text: string = e.item.textContent;
+    const matches: Array<number[]> = e.matches[0].indices;
+    //const hightlightedText = addSpan(text, matches);
+    //console.log(matches);
+    const arrays = [
+      [0, 15],
+      [2, 15],
+      [5, 25],
+      [24, 34],
+      [27, 31],
+      [45, 46],
+    ];
+
+    const arr: Array<number[]> = [];
+
+    // [0,49]
+    arrays.forEach((match) => {
+      let arr2: number[] = JSON.parse(JSON.stringify(match));
+      arrays.forEach((e, i) => {
+        if (
+          (e[0] > arr2[0] && e[1] <= arr2[1]) ||
+          (e[0] >= arr2[0] && e[1] < arr2[1]) ||
+          (e[0] > arr2[0] && e[1] < arr2[1])
+        ) {
+          arrays.splice(i, 1);
+        }
+        if (e[1] > arr2[1] && e[0] >= arr2[0] && e[0] <= arr2[1]) {
+          arr2[1] = e[1];
+          arrays.splice(i, 1);
+        }
+
+        /*else if (e[0] < arr2[0] && e[1] <= arr2[1] && e[1] >= arr2[0]) {
+          arr2[0] = e[0];
+          //arrays.splice(i, 1);
+        } else if (e[1] > arr2[1] && e[0] >= arr2[0] && e[0] <= arr2[1]) {
+          arr2[1] = e[1];
+          //arrays.splice(i, 1);
+        }*/
+      });
+      arr.push(arr2);
+      console.log(arr);
+    });
+    //console.log(hightlightedText);
     /*const mergedMatches: Array<number[]> = mergeMatches(
       e.matches[0].indices.sort(compareNumbers)
     );*/
-    const matches: Array<number[]> = e.matches[0].indices.sort(compareNumbers);
+
+    /*const matches: Array<number[]> = e.matches[0].indices.sort(compareNumbers);
     const hightlightedText = addSpan(text, matches);
     //console.log(hightlightedText.substring(mergedMatches[i][0], mergedMatches[i][1]+1));
     const mergedMatches: Array<number[]> = mergeMatches(matches, 100);
@@ -136,8 +179,8 @@ function hightlight(results: any[]): any[] {
 
     expandedMatches.forEach((e) =>
       console.log(hightlightedText.substring(e[0], e[1] + 1))
-    );
-    return { id, text: hightlightedText, matches: expandedMatches };
+    );*/
+    return { id, text, matches };
   });
 }
 
