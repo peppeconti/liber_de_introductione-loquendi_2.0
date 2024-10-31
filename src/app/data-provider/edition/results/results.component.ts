@@ -47,6 +47,7 @@ export class ResultsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty("s") && changes["s"].currentValue) {
+      console.log(this.searchField()[0].textContent);
       const text = this.searchField();
       const search = this.s()?.trim();
       const full_search = `'"${search}"`;
@@ -88,7 +89,3 @@ export class ResultsComponent implements OnInit, OnChanges {
     return result;
   }
 }
-
-//const splittedSearch = search?.split(" ");
-//search = splittedSearch?.map((e) => "'" + e).join(" ");
-// `'"${search}"`

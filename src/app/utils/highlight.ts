@@ -1,4 +1,5 @@
 function hightlight(results: any[]): any[] {
+  
   // RETURN AN OBJECT
   return results.map((e) => {
     const id: string = e.item.id;
@@ -98,6 +99,9 @@ function addSpan(
   return text;
 }
 
+export default hightlight;
+
+
 /*function cutOverlappingLeft(array: Array<number[]>): Array<number[]> {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length; j++) {
@@ -153,5 +157,3 @@ function cutOverlappingInside(array: Array<number[]>): Array<number[]> {
   }
   return array;
 }*/
-
-export default hightlight;
