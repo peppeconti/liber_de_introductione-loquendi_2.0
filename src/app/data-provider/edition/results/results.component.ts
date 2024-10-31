@@ -50,13 +50,11 @@ export class ResultsComponent implements OnInit, OnChanges {
       const text = this.searchField();
       const search = this.s()?.trim();
       const full_search = `'"${search}"`;
-      const single_search = search?.split(' ').map(e => "'" + e).join(' ');
       // FUSE
       const fuse = new Fuse(text, options);
-      const results = fuse.search(single_search!);
-      // ELABORATING RESULT OUTPUT
+      const results = fuse.search(full_search!);
+      // SETTING RESULT OUTPUT
       this.results.set(hightlight(results));
-      console.log(results);
     }
   }
 

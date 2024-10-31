@@ -3,19 +3,15 @@ function hightlight(results: any[]): any[] {
   return results.map((e) => {
     const id: string = e.item.id;
     const text: string = e.item.textContent;
-    const matches: Array<number[]> = cutOverlappingInside(
-      cutOverlappingRight(
-        cutOverlappingLeft(e.matches[0].indices)
-      )
-    );
-    //const highlightedText = addSpan(text, matches);
-    //const mergedMatches: Array<number[]> = mergeMatches(matches, 100);
-    /*const expandedMatches: Array<number[]> = expandMatches(
+    const matches: Array<number[]> = e.matches[0].indices.sort(compareNumbers);
+    const highlightedText = addSpan(text, matches);
+    const mergedMatches: Array<number[]> = mergeMatches(matches, 100);
+    const expandedMatches: Array<number[]> = expandMatches(
       mergedMatches,
       100,
       highlightedText
-    );*/
-    return { id, text, matches };
+    );
+    return { id, text: highlightedText, matches: expandedMatches };
   });
 }
 
@@ -45,41 +41,41 @@ function mergeMatches(
 
 // EXPANDING MATCHES
 function expandMatches(
-    matches: Array<number[]>,
-    distance: number,
-    text: string
-  ): Array<number[]> {
-    for (let i = 0; i < matches.length; i++) {
-      matches[i][0] - distance < 0
-        ? (matches[i][0] = 0)
-        : (matches[i][0] = matches[i][0] - distance);
+  matches: Array<number[]>,
+  distance: number,
+  text: string
+): Array<number[]> {
+  for (let i = 0; i < matches.length; i++) {
+    matches[i][0] - distance < 0
+      ? (matches[i][0] = 0)
+      : (matches[i][0] = matches[i][0] - distance);
 
-      if (text[matches[i][0] - 1]) {
-        while (!text[matches[i][0] - 1].match(/[\s,;:<>]/g)) {
-          if (matches[i][0] === 0) {
-            break;
-          } else {
-            matches[i][0] = matches[i][0] - 1;
-          }
-        }
-      }
-
-      matches[i][1] + distance > text.length
-        ? (matches[i][1] = text.length)
-        : (matches[i][1] = matches[i][1] + distance);
-
-      if (text[matches[i][1] + 1]) {
-        while (!text[matches[i][1] + 1].match(/[\s,;:<>]/g)) {
-          if (matches[i][1] === text.length) {
-            break;
-          } else {
-            matches[i][1] = matches[i][1] + 1;
-          }
+    if (text[matches[i][0] - 1]) {
+      while (!text[matches[i][0] - 1].match(/[\s,;:<>]/g)) {
+        if (matches[i][0] === 0) {
+          break;
+        } else {
+          matches[i][0] = matches[i][0] - 1;
         }
       }
     }
-    return matches;
+
+    matches[i][1] + distance > text.length
+      ? (matches[i][1] = text.length)
+      : (matches[i][1] = matches[i][1] + distance);
+
+    if (text[matches[i][1] + 1]) {
+      while (!text[matches[i][1] + 1].match(/[\s,;:<>]/g)) {
+        if (matches[i][1] === text.length) {
+          break;
+        } else {
+          matches[i][1] = matches[i][1] + 1;
+        }
+      }
+    }
   }
+  return matches;
+}
 
 // ADDING SPAN WITH HIGHLIGHT CLASS
 function addSpan(
@@ -102,7 +98,7 @@ function addSpan(
   return text;
 }
 
-function cutOverlappingLeft(array: Array<number[]>): Array<number[]> {
+/*function cutOverlappingLeft(array: Array<number[]>): Array<number[]> {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length; j++) {
       if (
@@ -156,6 +152,6 @@ function cutOverlappingInside(array: Array<number[]>): Array<number[]> {
     }
   }
   return array;
-}
+}*/
 
 export default hightlight;
