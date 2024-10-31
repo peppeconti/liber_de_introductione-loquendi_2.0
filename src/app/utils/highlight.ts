@@ -46,13 +46,14 @@ function expandMatches(
   distance: number,
   text: string
 ): Array<number[]> {
+  const pattern = /[\s,;:]/g;
   for (let i = 0; i < matches.length; i++) {
     matches[i][0] - distance < 0
       ? (matches[i][0] = 0)
       : (matches[i][0] = matches[i][0] - distance);
 
     if (text[matches[i][0] - 1]) {
-      while (text[matches[i][0] - 1] !== ' ') {
+      while (!pattern.test(text[matches[i][0] - 1])) {
         if (matches[i][0] === 0) {
           break;
         } else {
@@ -66,7 +67,7 @@ function expandMatches(
       : (matches[i][1] = matches[i][1] + distance);
 
     if (text[matches[i][1] + 1]) {
-      while (text[matches[i][1] + 1] !== ' ') {
+      while (!pattern.test(text[matches[i][1] + 1])) {
         if (matches[i][1] === text.length) {
           break;
         } else {
