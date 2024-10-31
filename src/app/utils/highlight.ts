@@ -5,19 +5,17 @@ function hightlight(results: any[]): any[] {
     const text: string = e.item.textContent;
     const matches: Array<number[]> = cutOverlappingInside(
       cutOverlappingRight(
-        cutOverlappingLeft(e.matches[0].indices).sort(compareNumbers)
+        cutOverlappingLeft(e.matches[0].indices)
       )
     );
-    const highlightedText = addSpan(text, matches);
-    const mergedMatches: Array<number[]> = mergeMatches(matches, 100);
-    const expandedMatches: Array<number[]> = expandMatches(
+    //const highlightedText = addSpan(text, matches);
+    //const mergedMatches: Array<number[]> = mergeMatches(matches, 100);
+    /*const expandedMatches: Array<number[]> = expandMatches(
       mergedMatches,
       100,
       highlightedText
-    );
-
-
-    return { id, text: highlightedText, matches: expandedMatches };
+    );*/
+    return { id, text, matches };
   });
 }
 
