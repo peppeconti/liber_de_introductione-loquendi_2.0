@@ -52,7 +52,7 @@ function expandMatches(
       : (matches[i][0] = matches[i][0] - distance);
 
     if (text[matches[i][0] - 1]) {
-      while (!text[matches[i][0] - 1].match(/[\s,;:<>]/g)) {
+      while (text[matches[i][0] - 1] !== ' ') {
         if (matches[i][0] === 0) {
           break;
         } else {
@@ -66,7 +66,7 @@ function expandMatches(
       : (matches[i][1] = matches[i][1] + distance);
 
     if (text[matches[i][1] + 1]) {
-      while (!text[matches[i][1] + 1].match(/[\s,;:<>]/g)) {
+      while (text[matches[i][1] + 1] !== ' ') {
         if (matches[i][1] === text.length) {
           break;
         } else {
