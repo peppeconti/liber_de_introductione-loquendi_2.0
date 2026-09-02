@@ -4,7 +4,7 @@ import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-edition",
-  imports: [MainComponent, RouterOutlet],
+  imports: [RouterOutlet],
   templateUrl: "./edition.component.html",
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: "./edition.component.css"
