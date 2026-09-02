@@ -1,0 +1,14 @@
+# Normalizza tutti i file di testo a LF nel repository,
+# indipendentemente dal sistema operativo di chi fa checkout.
+* text=auto eol=lf
+
+# File binari: nessuna conversione dei fine riga.
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
