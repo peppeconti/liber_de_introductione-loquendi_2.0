@@ -25,7 +25,6 @@ type SearchNode = {
 const options = {
   includeMatches: true,
   findAllMatches: true,
-  threshold: 1,
   ignoreLocation: true,
   useExtendedSearch: true,
   keys: ["textContent"],
@@ -51,11 +50,16 @@ export class ResultsComponent implements OnInit, OnChanges {
       console.log(this.searchField()[0].textContent);
       const text = this.searchField();
       const search = this.s()?.trim();
-      const full_search = `'"${search}"`;
-      // FUSE
+      if (!search) {
+        this.results.set([]);
+        return;
+      }
+      // La query viene passata a Fuse così com'è: supporta la sintassi di
+      // "extended search" (' include, = corrispondenza esatta, ! esclude,
+      // ^ / $ prefisso/suffisso, spazio = AND, | = OR), spiegata nel
+      // suggerimento mostrato sotto la barra di ricerca (SearchComponent).
       const fuse = new Fuse(text, options);
-      const results = fuse.search(full_search!);
-      // SETTING RESULT OUTPUT
+      const results = fuse.search(search);
       this.results.set(hightlight(results));
     }
   }
@@ -78,11 +82,10 @@ export class ResultsComponent implements OnInit, OnChanges {
       };
       nodeObj.tagName = (<Element>node).tagName;
       const text = (<Element>node).textContent;
-      nodeObj.textContent = text!
-        .split(" ")
-        .filter((e: string) => e !== "")
-        .map((e: string) => e.replaceAll("\n", ""))
-        .join(" ");
+      // Normalizza qualsiasi sequenza di spazi, tab o a-capo in un singolo
+      // spazio, invece di gestire solo lo spazio semplice come prima
+      // (che poteva lasciare tabulazioni "nascoste" dentro le parole).
+      nodeObj.textContent = text!.replace(/\s+/g, " ").trim();
       nodeObj.type = (<Element>node).getAttribute("type");
       nodeObj.id = (<Element>node).getAttribute("id");
       return <SearchNode>nodeObj;

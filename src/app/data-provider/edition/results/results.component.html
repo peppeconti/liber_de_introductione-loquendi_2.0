@@ -4,12 +4,14 @@
     <app-search placeholder="make a new search..." />
   </div>
   <div class="results">
-    @if(this.results()?.length) { @for (result of this.results(); track
-    result.id) { @for (match of result.matches; track match[0]) {<app-result
-      [id]="result.id"
-      [text]="result.text.substring(match[0], match[1] + 1)"
-    />} } } @else {
-    <p>La ricerca non ha dato risultati.</p>
+    @if (this.results()?.length) {
+      @for (result of this.results(); track result.id) {
+        @for (snippet of result.snippets; track $index) {
+          <app-result [id]="result.id" [text]="snippet" />
+        }
+      }
+    } @else {
+      <p>La ricerca non ha dato risultati.</p>
     }
   </div>
 </main>
