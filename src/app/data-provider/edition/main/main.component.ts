@@ -82,17 +82,23 @@ export class MainComponent {
   }
 
   private getTranslation(xml: Document) {
-    const translations: Array<any> = Array.from(
+    const translations: Element[] = Array.from(
       xml.querySelectorAll(`div[type=translation]`)
     );
-    const translation: any = translations.filter(
-      (e) => e.attributes["corresp"].value === `#${this.folio()}`
-    );
-    const translationJson: JsonNode = this.httpService.parseNode(
-      translation[0]
-    );
     const totalPages = translations.length;
-    const page = translations.indexOf(translation[0]) + 1;
+    const translation = translations.find(
+      (e) => e.getAttribute("corresp") === `#${this.folio()}`
+    );
+    if (!translation) {
+      // No translation encoded yet for this folio: fail gracefully
+      // instead of crashing on translation[0] being undefined.
+      return {
+        page: `-/${totalPages}`,
+        json: [],
+      };
+    }
+    const translationJson: JsonNode = this.httpService.parseNode(translation);
+    const page = translations.indexOf(translation) + 1;
     return {
       page: `${page}/${totalPages}`,
       json: [translationJson],
