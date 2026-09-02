@@ -1,11 +1,10 @@
 import { Component, inject, input, signal, ChangeDetectionStrategy } from "@angular/core";
-import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { SearchHelpComponent } from "../search-help/search-help.component";
 
 @Component({
     selector: "app-search",
-    imports: [FormsModule, SearchHelpComponent],
+    imports: [SearchHelpComponent],
     templateUrl: "./search.component.html",
     changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./search.component.css"
@@ -14,6 +13,10 @@ export class SearchComponent {
   placeholder = input<string>();
   searchParam = signal<string>("");
   private router = inject(Router);
+
+  onInput(event: Event) {
+    this.searchParam.set((event.target as HTMLInputElement).value);
+  }
 
   onSubmit() {
     if (this.searchParam() !== "") {

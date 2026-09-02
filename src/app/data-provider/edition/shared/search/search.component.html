@@ -4,7 +4,8 @@
     id="search"
     name="search"
     [placeholder]="this.placeholder() ? this.placeholder() : 'search...'"
-    [(ngModel)]="searchParam"
+    [value]="searchParam()"
+    (input)="onInput($event)"
   />
   <button
     class="btn btn-primary"
