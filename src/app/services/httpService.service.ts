@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { JsonNode } from "./models";
 import { nextUntil } from "../utils/utils";
 import { catchError, map, throwError } from "rxjs";
-import { UUID } from "angular2-uuid";
 
 const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set(
   "Accept",
@@ -17,6 +16,7 @@ const URL = "assets/data/liber_de_introductione_loquendi.xml";
 })
 export class HttpService {
   private httpClient = inject(HttpClient);
+  private nodeCache = new WeakMap<Node, JsonNode>();
 
   fetchService() {
     return this.httpClient
@@ -80,16 +80,23 @@ export class HttpService {
     return tranformedXLM;
   }
 
-  parseNode(node: Node) {
+  parseNode(node: Node): JsonNode {
+    const cached = this.nodeCache.get(node);
+    if (cached) {
+      return cached;
+    }
+
     const nodeObj: JsonNode = {
       text: null,
       attributes: null,
       tagName: null,
       childNodes: null,
       isText: false,
-      id: UUID.UUID(),
+      id: crypto.randomUUID(),
       textContent: ''
     };
+    this.nodeCache.set(node, nodeObj);
+
     nodeObj.tagName = (<Element>node).tagName;
     nodeObj.textContent = (<Element>node).textContent;
     nodeObj.attributes = [];
@@ -113,6 +120,6 @@ export class HttpService {
         nodeObj.childNodes.push(this.parseNode(node.childNodes[n]));
       }
     }
-    return <JsonNode>nodeObj;
+    return nodeObj;
   }
 }
