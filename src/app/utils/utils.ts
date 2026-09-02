@@ -35,4 +35,14 @@ function findAttributeValue(
   return val?.value;
 }
 
-export { nextUntil, findAttributeValue, isSubset };
+function isWhitespaceOnlyTextNode(node: Node): boolean {
+  // True only for a Text node whose *entire* content is whitespace (spaces,
+  // tabs, newlines) -- i.e. pure XML pretty-printing indentation between
+  // tags. Never true for a node that mixes whitespace with real words, so
+  // filtering these out can never merge two words together.
+  return (
+    node.nodeType === Node.TEXT_NODE && /^\s*$/.test(node.textContent ?? "")
+  );
+}
+
+export { nextUntil, findAttributeValue, isSubset, isWhitespaceOnlyTextNode };

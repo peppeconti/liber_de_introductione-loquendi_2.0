@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
+import { isWhitespaceOnlyTextNode } from "../../../utils/utils";
 import { LatinTextComponent } from "./latin-text/latin-text.component";
 import { TranslationComponent } from "./translation/translation.component";
 import { SettingService } from "../../../services/settingService.service";
@@ -131,8 +132,10 @@ export class MainComponent {
   private getNotes(xml: Document): JsonNode[] {
     const noteList: NodeListOf<Element> =
       xml.querySelectorAll(`list[type=notes]`);
-    const notes = noteList[0].childNodes;
-    const notesJson: JsonNode[] = Array.from(notes).map((e) =>
+    const notes = Array.from(noteList[0].childNodes).filter(
+      (e) => !isWhitespaceOnlyTextNode(e)
+    );
+    const notesJson: JsonNode[] = notes.map((e) =>
       this.httpService.parseNode(e)
     );
     return notesJson;
@@ -142,8 +145,10 @@ export class MainComponent {
     const apparatusList: NodeListOf<Element> = xml.querySelectorAll(
       `listApp[type=apparatus]`
     );
-    const apparatus = apparatusList[0].childNodes;
-    const apparatusJson: Array<JsonNode> = Array.from(apparatus).map((e) =>
+    const apparatus = Array.from(apparatusList[0].childNodes).filter(
+      (e) => !isWhitespaceOnlyTextNode(e)
+    );
+    const apparatusJson: Array<JsonNode> = apparatus.map((e) =>
       this.httpService.parseNode(e)
     );
     return apparatusJson;

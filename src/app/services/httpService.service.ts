@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { JsonNode } from "./models";
-import { nextUntil } from "../utils/utils";
+import { nextUntil, isWhitespaceOnlyTextNode } from "../utils/utils";
 import { catchError, map, throwError } from "rxjs";
 
 const headers = new HttpHeaders({ "Content-Type": "text/mxl" }).set(
@@ -25,23 +25,12 @@ export class HttpService {
         responseType: "text",
       })
       .pipe(
-        map((res) => this.minifyXml(res)),
         map((res) => this.parseXML(res)),
         map((res) => this.createPages(res)),
         catchError(() =>
           throwError(() => new Error("Sorry, we are unable to read the XML file..."))
         )
       );
-  }
-
-  private minifyXml(xml: string): string {
-    let minified: string;
-    minified = xml
-      .split(/(?<=>)\s*(?=<)/)
-      .join("")
-      .split(/\n/)
-      .join("");
-    return minified;
   }
 
   private parseXML(res: string): Document {
@@ -117,7 +106,14 @@ export class HttpService {
     } else {
       nodeObj.childNodes = [];
       for (let n = 0; n < node.childNodes.length; n++) {
-        nodeObj.childNodes.push(this.parseNode(node.childNodes[n]));
+        const child = node.childNodes[n];
+        if (isWhitespaceOnlyTextNode(child)) {
+          // Pure indentation between tags (pretty-printing of the source
+          // XML): dropped here instead of with a pre-parse regex, so we can
+          // only ever discard a node proven to be 100% whitespace.
+          continue;
+        }
+        nodeObj.childNodes.push(this.parseNode(child));
       }
     }
     return nodeObj;
