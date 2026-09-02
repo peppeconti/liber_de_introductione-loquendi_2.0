@@ -5,11 +5,10 @@ import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-sol
 import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: "app-navigation",
-  standalone: true,
-  imports: [RouterLink, FontAwesomeModule],
-  templateUrl: "./navigation.component.html",
-  styleUrl: "./navigation.component.css",
+    selector: "app-navigation",
+    imports: [RouterLink, FontAwesomeModule],
+    templateUrl: "./navigation.component.html",
+    styleUrl: "./navigation.component.css"
 })
 export class NavigationComponent {
   navigation = input.required<NavInfos>();

@@ -27,22 +27,21 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: "app-main",
-  standalone: true,
-  imports: [
-    LatinTextComponent,
-    TranslationComponent,
-    SelectComponent,
-    NavigationComponent,
-    NoteContainerComponent,
-    ApparatusContainerComponent,
-    NotFoundComponent,
-    HeaderComponent,
-    ModalSearchComponent,
-    FontAwesomeModule
-  ],
-  templateUrl: "./main.component.html",
-  styleUrl: "./main.component.css",
+    selector: "app-main",
+    imports: [
+        LatinTextComponent,
+        TranslationComponent,
+        SelectComponent,
+        NavigationComponent,
+        NoteContainerComponent,
+        ApparatusContainerComponent,
+        NotFoundComponent,
+        HeaderComponent,
+        ModalSearchComponent,
+        FontAwesomeModule
+    ],
+    templateUrl: "./main.component.html",
+    styleUrl: "./main.component.css"
 })
 export class MainComponent {
   private settingService = inject(SettingService);

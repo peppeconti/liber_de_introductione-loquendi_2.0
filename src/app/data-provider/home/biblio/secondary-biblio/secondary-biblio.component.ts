@@ -11,18 +11,17 @@ import {
 import { isSubset } from "../../../../utils/utils";
 
 @Component({
-  selector: "app-secondary-biblio",
-  standalone: true,
-  imports: [
-    NgSwitch,
-    NgSwitchCase,
-    NgSwitchDefault,
-    NgFor,
-    NgIf,
-    NgTemplateOutlet,
-  ],
-  templateUrl: "./secondary-biblio.component.html",
-  styleUrl: "./secondary-biblio.component.css",
+    selector: "app-secondary-biblio",
+    imports: [
+        NgSwitch,
+        NgSwitchCase,
+        NgSwitchDefault,
+        NgFor,
+        NgIf,
+        NgTemplateOutlet,
+    ],
+    templateUrl: "./secondary-biblio.component.html",
+    styleUrl: "./secondary-biblio.component.css"
 })
 export class secondaryBiblioComponent {
   @Input({ required: true }) secondary_biblio: JsonNode[] | undefined | null;

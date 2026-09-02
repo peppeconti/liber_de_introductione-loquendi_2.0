@@ -5,11 +5,10 @@ import { secondaryBiblioComponent } from "./secondary-biblio/secondary-biblio.co
 import { ModalComponent } from "../shared/modal/modal.component";
 
 @Component({
-  selector: "app-biblio",
-  standalone: true,
-  imports: [PrimaryBiblioComponent, secondaryBiblioComponent, ModalComponent],
-  templateUrl: "./biblio.component.html",
-  styleUrl: "./biblio.component.css",
+    selector: "app-biblio",
+    imports: [PrimaryBiblioComponent, secondaryBiblioComponent, ModalComponent],
+    templateUrl: "./biblio.component.html",
+    styleUrl: "./biblio.component.css"
 })
 export class BiblioComponent {
   @Input({ required: true }) primary_biblio: JsonNode[] | undefined | null;

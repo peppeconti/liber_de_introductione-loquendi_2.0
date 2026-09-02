@@ -5,11 +5,10 @@ import { SettingService } from "../../../../services/settingService.service";
 import { DataService } from "../../../../services/dataService.service";
 
 @Component({
-  selector: "app-latin-text",
-  standalone: true,
-  imports: [],
-  templateUrl: "./latin-text.component.html",
-  styleUrl: "./latin-text.component.css",
+    selector: "app-latin-text",
+    imports: [],
+    templateUrl: "./latin-text.component.html",
+    styleUrl: "./latin-text.component.css"
 })
 export class LatinTextComponent {
   private dataService = inject(DataService);

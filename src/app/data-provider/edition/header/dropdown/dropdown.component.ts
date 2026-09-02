@@ -9,11 +9,10 @@ type Switch = {
 };
 
 @Component({
-  selector: "app-dropdown",
-  standalone: true,
-  imports: [],
-  templateUrl: "./dropdown.component.html",
-  styleUrl: "./dropdown.component.css",
+    selector: "app-dropdown",
+    imports: [],
+    templateUrl: "./dropdown.component.html",
+    styleUrl: "./dropdown.component.css"
 })
 export class DropdownComponent {
   private settingService = inject(SettingService);

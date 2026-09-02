@@ -5,11 +5,10 @@ import { EditionComponent } from "./edition/edition.component";
 import { HomeComponent } from "./home/home.component";
 
 @Component({
-  selector: "app-data-provider",
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: "./data-provider.component.html",
-  styleUrl: "./data-provider.component.css",
+    selector: "app-data-provider",
+    imports: [RouterOutlet],
+    templateUrl: "./data-provider.component.html",
+    styleUrl: "./data-provider.component.css"
 })
 export class DataProviderComponent implements OnInit {
   isFetching = signal<boolean>(false);

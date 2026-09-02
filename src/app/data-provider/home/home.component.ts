@@ -16,11 +16,10 @@ import { CreditsComponent } from "./credits/credits.component";
 import { DataService } from "../../services/dataService.service";
 
 @Component({
-  selector: "app-home",
-  standalone: true,
-  imports: [HomeHeaderComponent, HomeMainComponent, RouterLink, RouterOutlet],
-  templateUrl: "./home.component.html",
-  styleUrl: "./home.component.css"
+    selector: "app-home",
+    imports: [HomeHeaderComponent, HomeMainComponent, RouterLink, RouterOutlet],
+    templateUrl: "./home.component.html",
+    styleUrl: "./home.component.css"
 })
 export class HomeComponent implements OnInit {
   @Input({ required: true }) data: Document | undefined;

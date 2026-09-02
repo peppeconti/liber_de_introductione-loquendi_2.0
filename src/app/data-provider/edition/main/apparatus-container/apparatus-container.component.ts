@@ -20,11 +20,10 @@ import { ModalDirective } from "../../../../directives/modal.directive";
 declare const bootstrap: any;
 
 @Component({
-  selector: "app-apparatus-container",
-  standalone: true,
-  imports: [ApparatusTextComponent, FontAwesomeModule, ScrollDirective, ModalDirective],
-  templateUrl: "./apparatus-container.component.html",
-  styleUrl: "./apparatus-container.component.css",
+    selector: "app-apparatus-container",
+    imports: [ApparatusTextComponent, FontAwesomeModule, ScrollDirective, ModalDirective],
+    templateUrl: "./apparatus-container.component.html",
+    styleUrl: "./apparatus-container.component.css"
 })
 export class ApparatusContainerComponent {
   private dataService = inject(DataService);

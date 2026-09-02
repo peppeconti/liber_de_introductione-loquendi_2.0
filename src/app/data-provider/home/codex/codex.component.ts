@@ -5,11 +5,10 @@ import { MsInfosComponent } from "./ms-infos/ms-infos.component";
 import { ModalComponent } from "../shared/modal/modal.component";
 
 @Component({
-  selector: "app-codex",
-  standalone: true,
-  imports: [WitnessesComponent, MsInfosComponent, ModalComponent],
-  templateUrl: "./codex.component.html",
-  styleUrl: "./codex.component.css",
+    selector: "app-codex",
+    imports: [WitnessesComponent, MsInfosComponent, ModalComponent],
+    templateUrl: "./codex.component.html",
+    styleUrl: "./codex.component.css"
 })
 export class CodexComponent {
   @Input({ required: true }) witnesses: JsonNode[] | undefined | null;

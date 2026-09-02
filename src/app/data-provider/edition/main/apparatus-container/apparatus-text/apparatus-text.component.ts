@@ -10,11 +10,10 @@ import { CarouselDirective } from "../../../../../directives/carousel.directive"
 import { appNoteDirective } from "../../../../../directives/app-note.directive";
 
 @Component({
-  selector: "app-apparatus-text",
-  standalone: true,
-  imports: [FontAwesomeModule, CarouselDirective, appNoteDirective],
-  templateUrl: "./apparatus-text.component.html",
-  styleUrl: "./apparatus-text.component.css",
+    selector: "app-apparatus-text",
+    imports: [FontAwesomeModule, CarouselDirective, appNoteDirective],
+    templateUrl: "./apparatus-text.component.html",
+    styleUrl: "./apparatus-text.component.css"
 })
 export class ApparatusTextComponent {
   apparatus = input.required<JsonNode[] | undefined | null>();

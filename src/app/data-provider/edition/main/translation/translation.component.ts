@@ -3,11 +3,10 @@ import { JsonNode } from '../../../../services/models';
 import { findAttributeValue, isSubset } from '../../../../utils/utils';
 
 @Component({
-  selector: 'app-translation',
-  standalone: true,
-  imports: [],
-  templateUrl: './translation.component.html',
-  styleUrl: './translation.component.css'
+    selector: 'app-translation',
+    imports: [],
+    templateUrl: './translation.component.html',
+    styleUrl: './translation.component.css'
 })
 export class TranslationComponent {
   translation = input.required<JsonNode[] | undefined | null>();

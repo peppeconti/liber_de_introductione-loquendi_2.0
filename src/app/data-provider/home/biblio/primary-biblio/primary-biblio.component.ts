@@ -4,11 +4,10 @@ import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from "@angular/c
 import { isSubset } from "../../../../utils/utils";
 
 @Component({
-  selector: "app-primary-biblio",
-  standalone: true,
-  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, NgFor, NgIf],
-  templateUrl: "./primary-biblio.component.html",
-  styleUrl: "./primary-biblio.component.css",
+    selector: "app-primary-biblio",
+    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, NgFor, NgIf],
+    templateUrl: "./primary-biblio.component.html",
+    styleUrl: "./primary-biblio.component.css"
 })
 export class PrimaryBiblioComponent {
   @Input({ required: true }) primary_biblio: JsonNode[] | undefined | null;

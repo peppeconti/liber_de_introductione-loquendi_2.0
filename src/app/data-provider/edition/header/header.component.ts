@@ -6,11 +6,10 @@ import { DropdownComponent } from "./dropdown/dropdown.component";
 import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: "app-header",
-  standalone: true,
-  imports: [FontAwesomeModule, DropdownComponent, RouterLink],
-  templateUrl: "./header.component.html",
-  styleUrl: "./header.component.css"
+    selector: "app-header",
+    imports: [FontAwesomeModule, DropdownComponent, RouterLink],
+    templateUrl: "./header.component.html",
+    styleUrl: "./header.component.css"
 })
 export class HeaderComponent {
   folio = input<string | undefined>();

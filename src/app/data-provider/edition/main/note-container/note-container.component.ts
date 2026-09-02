@@ -9,11 +9,10 @@ import { ModalDirective } from '../../../../directives/modal.directive';
 declare const bootstrap: any;
 
 @Component({
-  selector: 'app-note-container',
-  standalone: true,
-  imports: [FontAwesomeModule, NoteTextComponent, ModalDirective],
-  templateUrl: './note-container.component.html',
-  styleUrl: './note-container.component.css'
+    selector: 'app-note-container',
+    imports: [FontAwesomeModule, NoteTextComponent, ModalDirective],
+    templateUrl: './note-container.component.html',
+    styleUrl: './note-container.component.css'
 })
 export class NoteContainerComponent implements OnInit {
   noteIdService = inject(DataService);

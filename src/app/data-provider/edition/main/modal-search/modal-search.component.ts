@@ -5,11 +5,10 @@ import { ModalDirective } from '../../../../directives/modal.directive';
 declare const bootstrap: any;
 
 @Component({
-  selector: 'app-modal-search',
-  standalone: true,
-  imports: [SearchComponent, ModalDirective],
-  templateUrl: './modal-search.component.html',
-  styleUrl: './modal-search.component.css'
+    selector: 'app-modal-search',
+    imports: [SearchComponent, ModalDirective],
+    templateUrl: './modal-search.component.html',
+    styleUrl: './modal-search.component.css'
 })
 export class ModalSearchComponent {
 

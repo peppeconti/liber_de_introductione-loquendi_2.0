@@ -3,11 +3,10 @@ import { JsonNode } from "../../../services/models";
 import { isSubset } from "../../../utils/utils";
 
 @Component({
-  selector: "app-home-main",
-  standalone: true,
-  imports: [],
-  templateUrl: "./home-main.component.html",
-  styleUrl: "./home-main.component.css",
+    selector: "app-home-main",
+    imports: [],
+    templateUrl: "./home-main.component.html",
+    styleUrl: "./home-main.component.css"
 })
 export class HomeMainComponent {
   titles = input.required<JsonNode[] | undefined | null>();

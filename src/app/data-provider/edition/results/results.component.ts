@@ -32,11 +32,10 @@ const options = {
 };
 
 @Component({
-  selector: "app-results",
-  standalone: true,
-  imports: [HeaderComponent, SearchComponent, ResultComponent],
-  templateUrl: "./results.component.html",
-  styleUrl: "./results.component.css"
+    selector: "app-results",
+    imports: [HeaderComponent, SearchComponent, ResultComponent],
+    templateUrl: "./results.component.html",
+    styleUrl: "./results.component.css"
 })
 export class ResultsComponent implements OnInit, OnChanges {
   @Input({ required: true }) data: Document | undefined;

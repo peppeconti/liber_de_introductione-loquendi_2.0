@@ -4,11 +4,10 @@ import { NotFoundComponent } from "../not-found/not-found.component";
 import { RouterOutlet } from "@angular/router";
 
 @Component({
-  selector: "app-edition",
-  standalone: true,
-  imports: [MainComponent, NotFoundComponent, RouterOutlet],
-  templateUrl: "./edition.component.html",
-  styleUrl: "./edition.component.css",
+    selector: "app-edition",
+    imports: [MainComponent, NotFoundComponent, RouterOutlet],
+    templateUrl: "./edition.component.html",
+    styleUrl: "./edition.component.css"
 })
 export class EditionComponent {
   @Input({ required: true }) data: Document | undefined;

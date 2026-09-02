@@ -7,11 +7,10 @@ import { faDownload, faLink } from "@fortawesome/free-solid-svg-icons";
 import { ModalComponent } from "../shared/modal/modal.component";
 
 @Component({
-  selector: "app-credits",
-  standalone: true,
-  imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, FontAwesomeModule, ModalComponent],
-  templateUrl: "./credits.component.html",
-  styleUrl: "./credits.component.css",
+    selector: "app-credits",
+    imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, FontAwesomeModule, ModalComponent],
+    templateUrl: "./credits.component.html",
+    styleUrl: "./credits.component.css"
 })
 export class CreditsComponent implements OnInit {
   @Input({required: true}) credits!: Credits;
