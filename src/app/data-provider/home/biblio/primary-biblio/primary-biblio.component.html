@@ -1,98 +1,107 @@
-<ng-container *ngFor="let subtext of primary_biblio" [ngSwitch]="true">
-  <ng-container *ngSwitchCase="subtext.tagName === 'biblStruct'">
-    <li class="bibl-item">
-      <app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />
-    </li>
-  </ng-container>
-  <ng-container *ngSwitchCase="subtext.tagName === 'author'">
-    <span class="author"
-      ><app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />&nbsp;
-    </span>
-  </ng-container>
-  <ng-container *ngSwitchCase="subtext.tagName === 'editor'">
-    <span class="editor"
-      >(edidit
-      <app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />):
-    </span>
-  </ng-container>
-  <ng-container
-    *ngSwitchCase="
-      subtext.tagName === 'title' &&
-      isSubset([{ name: 'type', value: 'abbr' }], subtext.attributes)
-    "
-  >
-    <span class="title"
-      ><app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />,
-    </span>
-  </ng-container>
-  <!--TITLE WITH NO ATTRIBUTES-->
-  <ng-container
-    *ngSwitchCase="subtext.tagName === 'title' && !subtext.attributes?.length"
-  >
-    <span class="title"
-      ><app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />,
-    </span>
-  </ng-container>
-  <ng-container *ngSwitchCase="subtext.tagName === 'edition'">
-    <span class="edition"
-      >&#8249;&#160;<app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />&#160;&#8250;
-    </span>
-  </ng-container>
-  <!--NO RENDER-->
-  <ng-container
-    *ngSwitchCase="
-      subtext.tagName === 'title' &&
-      isSubset([{ name: 'type', value: 'reg' }], subtext.attributes)
-    "
-  />
-  <!--NO RENDER-->
-  <ng-container *ngSwitchCase="subtext.tagName === 'publisher'">
-    <span class="publisher"
-      ><app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />,
-    </span>
-  </ng-container>
-  <ng-container *ngSwitchCase="subtext.tagName === 'pubPlace'">
-    <span class="place"
-      ><app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />&nbsp;</span
-    >
-  </ng-container>
-  <ng-container *ngSwitchCase="subtext.tagName === 'date'">
-    <span class="date"
-      ><app-primary-biblio
-        *ngIf="!subtext.isText"
-        [primary_biblio]="subtext.childNodes"
-      />
-    </span>
-  </ng-container>
-  <span *ngSwitchDefault
-    >{{ subtext.text
-    }}<app-primary-biblio
-      *ngIf="!subtext.isText"
-      [primary_biblio]="subtext.childNodes"
-    />
-  </span>
-</ng-container>
+@for (subtext of primary_biblio; track subtext) {
+  @switch (true) {
+    @case (subtext.tagName === 'biblStruct') {
+      <li class="bibl-item">
+        @if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+        }
+      </li>
+    }
+    @case (subtext.tagName === 'author') {
+      <span class="author"
+        >@if (!subtext.isText) {
+        <app-primary-biblio
+          [primary_biblio]="subtext.childNodes"
+          />
+        }&nbsp;
+      </span>
+    }
+    @case (subtext.tagName === 'editor') {
+      <span class="editor"
+        >(edidit
+        @if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+          }):
+        </span>
+      }
+      @case (
+        subtext.tagName === 'title' &&
+        isSubset([{ name: 'type', value: 'abbr' }], subtext.attributes)
+        ) {
+        <span class="title"
+          >@if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+          },
+        </span>
+      }
+      <!--TITLE WITH NO ATTRIBUTES-->
+      @case (subtext.tagName === 'title' && !subtext.attributes?.length) {
+        <span class="title"
+          >@if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+          },
+        </span>
+      }
+      @case (subtext.tagName === 'edition') {
+        <span class="edition"
+          >&#8249;&#160;@if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+          }&#160;&#8250;
+        </span>
+      }
+      <!--NO RENDER-->
+      @case (
+        subtext.tagName === 'title' &&
+        isSubset([{ name: 'type', value: 'reg' }], subtext.attributes)
+        ) {
+      }
+      <!--NO RENDER-->
+      @case (subtext.tagName === 'publisher') {
+        <span class="publisher"
+          >@if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+          },
+        </span>
+      }
+      @case (subtext.tagName === 'pubPlace') {
+        <span class="place"
+          >@if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+          }&nbsp;</span
+          >
+        }
+        @case (subtext.tagName === 'date') {
+          <span class="date"
+            >@if (!subtext.isText) {
+            <app-primary-biblio
+              [primary_biblio]="subtext.childNodes"
+              />
+          }
+        </span>
+      }
+      @default {
+        <span
+          >{{ subtext.text
+          }}@if (!subtext.isText) {
+          <app-primary-biblio
+            [primary_biblio]="subtext.childNodes"
+            />
+        }
+      </span>
+    }
+  }
+}

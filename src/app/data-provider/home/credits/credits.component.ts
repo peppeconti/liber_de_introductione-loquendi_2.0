@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Credits } from "../../../services/models";
 import { findAttributeValue, isSubset } from "../../../utils/utils";
-import { NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from "@angular/common";
+import { NgTemplateOutlet } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faDownload, faLink } from "@fortawesome/free-solid-svg-icons";
 import { ModalComponent } from "../shared/modal/modal.component";
 
 @Component({
     selector: "app-credits",
-    imports: [NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, FontAwesomeModule, ModalComponent],
+    imports: [NgTemplateOutlet, FontAwesomeModule, ModalComponent],
     templateUrl: "./credits.component.html",
     styleUrl: "./credits.component.css"
 })

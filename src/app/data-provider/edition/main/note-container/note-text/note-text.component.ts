@@ -1,11 +1,11 @@
 import { Component, input } from '@angular/core';
 import { JsonNode } from '../../../../../services/models';
 import { isSubset, findAttributeValue } from "../../../../../utils/utils";
-import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";
+
 
 @Component({
     selector: 'app-note-text',
-    imports: [NgSwitch, NgSwitchCase, CommonModule],
+    imports: [],
     templateUrl: './note-text.component.html',
     styleUrl: './note-text.component.css'
 })

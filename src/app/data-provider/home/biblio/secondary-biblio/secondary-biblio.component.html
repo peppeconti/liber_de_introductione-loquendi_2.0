@@ -1,108 +1,104 @@
 <div>
   @if (!!this.monographies()?.length) {
-  <h3>Monografie</h3>
-  <ul class="monography-list">
-    <ng-container
-      *ngTemplateOutlet="recursive; context: { items: this.monographies() }"
-    />
-  </ul>
-  }
-</div>
-<div>
-  @if (!!this.articles()?.length) {
-  <h3>Articoli</h3>
-  <ul class="article-list">
-    <ng-container
-      *ngTemplateOutlet="recursive; context: { items: this.articles() }"
-    />
-  </ul>
-  }
-</div>
+    <h3>Monografie</h3>
+    <ul class="monography-list">
+      <ng-container
+        *ngTemplateOutlet="recursive; context: { items: this.monographies() }"
+        />
+      </ul>
+    }
+  </div>
+  <div>
+    @if (!!this.articles()?.length) {
+      <h3>Articoli</h3>
+      <ul class="article-list">
+        <ng-container
+          *ngTemplateOutlet="recursive; context: { items: this.articles() }"
+          />
+        </ul>
+      }
+    </div>
 
-<!-- recursive template -->
+    <!-- recursive template -->
 
-<ng-template #recursive let-items="items">
-  <ng-container *ngFor="let subtext of items" [ngSwitch]="true">
-    <ng-container *ngSwitchCase="subtext.tagName === 'bibl'">
-      <li class="bibl-item">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}
-      </li>
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'author'">
-      <span class="author">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />:&nbsp;}</span
-      >
-    </ng-container>
-    <ng-container
-      *ngSwitchCase="
-        (subtext.tagName === 'title' && subtext.attributes.length === 0) ||
-        isSubset([{ name: 'level', value: 'monography' }], subtext.attributes)
-      "
-    >
-      <span class="title">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />,&nbsp;}</span
-      >
-    </ng-container>
-
-    <ng-container
-      *ngSwitchCase="
-        subtext.tagName === 'title' &&
-        isSubset([{ name: 'level', value: 'article' }], subtext.attributes)
-      "
-    >
-      <span class="title">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />,&nbsp;}</span
-      >
-    </ng-container>
-    <ng-container
-      *ngSwitchCase="
-        subtext.tagName === 'title' &&
-        (isSubset([{ name: 'level', value: 'review' }], subtext.attributes) ||
-          isSubset(
-            [{ name: 'level', value: 'essays_collection' }],
-            subtext.attributes
-          ))
-      "
-    >
-      <span class="review essays">
-        @if (!subtext.isText) {in:&nbsp;<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />,&nbsp;}</span
-      >
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'publisher'">
-      <span class="publisher">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />&nbsp;}</span
-      >
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'pubPlace'">
-      <span class="pubPlace">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />&nbsp;}</span
-      >
-    </ng-container>
-    <ng-container *ngSwitchCase="subtext.tagName === 'date'">
-      <span class="pubDate">
-        @if (!subtext.isText) {<ng-container
-          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-        />}</span
-      >
-    </ng-container>
-    <span *ngSwitchDefault
-      >{{ subtext.text }}@if (!subtext.isText) {<ng-container
-        *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
-      />}</span
-    ></ng-container
-  ></ng-template
->
+    <ng-template #recursive let-items="items">
+      @for (subtext of items; track subtext) {
+        @switch (true) {
+          @case (subtext.tagName === 'bibl') {
+            <li class="bibl-item">
+              @if (!subtext.isText) {<ng-container
+                *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                />}
+              </li>
+            }
+            @case (subtext.tagName === 'author') {
+              <span class="author">
+                @if (!subtext.isText) {<ng-container
+                  *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                  />:&nbsp;}</span
+                  >
+                }
+                @case (
+                  (subtext.tagName === 'title' && subtext.attributes.length === 0) ||
+                  isSubset([{ name: 'level', value: 'monography' }], subtext.attributes)
+                  ) {
+                  <span class="title">
+                    @if (!subtext.isText) {<ng-container
+                      *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                      />,&nbsp;}</span
+                      >
+                    }
+                    @case (
+                      subtext.tagName === 'title' &&
+                      isSubset([{ name: 'level', value: 'article' }], subtext.attributes)
+                      ) {
+                      <span class="title">
+                        @if (!subtext.isText) {<ng-container
+                          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                          />,&nbsp;}</span
+                          >
+                        }
+                        @case (
+                          subtext.tagName === 'title' &&
+                          (isSubset([{ name: 'level', value: 'review' }], subtext.attributes) ||
+                          isSubset(
+                          [{ name: 'level', value: 'essays_collection' }],
+                          subtext.attributes
+                          ))
+                          ) {
+                          <span class="review essays">
+                            @if (!subtext.isText) {in:&nbsp;<ng-container
+                              *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                              />,&nbsp;}</span
+                              >
+                            }
+                            @case (subtext.tagName === 'publisher') {
+                              <span class="publisher">
+                                @if (!subtext.isText) {<ng-container
+                                  *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                                  />&nbsp;}</span
+                                  >
+                                }
+                                @case (subtext.tagName === 'pubPlace') {
+                                  <span class="pubPlace">
+                                    @if (!subtext.isText) {<ng-container
+                                      *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                                      />&nbsp;}</span
+                                      >
+                                    }
+                                    @case (subtext.tagName === 'date') {
+                                      <span class="pubDate">
+                                        @if (!subtext.isText) {<ng-container
+                                          *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                                          />}</span
+                                          >
+                                        }
+                                        @default {
+                                          <span
+                                            >{{ subtext.text }}@if (!subtext.isText) {<ng-container
+                                            *ngTemplateOutlet="recursive; context: { items: subtext.childNodes }"
+                                            />}</span
+                                            >
+                                            }}
+                                            }</ng-template
+                                            >

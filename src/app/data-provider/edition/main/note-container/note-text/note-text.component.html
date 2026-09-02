@@ -1,35 +1,41 @@
-<ng-container *ngFor="let subtext of this.note()" [ngSwitch]="true">
-  <ng-container *ngSwitchCase="subtext.tagName === 'item'">
-    <p class="note" id="{{ findAttributeValue(subtext.attributes, 'xml:id') }}">
-      <app-note-text *ngIf="!subtext.isText" [note]="subtext.childNodes">
-      </app-note-text>
-    </p>
-  </ng-container>
-  <ng-container
-    *ngSwitchCase="
+@for (subtext of this.note(); track subtext) {
+  @switch (true) {
+    @case (subtext.tagName === 'item') {
+      <p class="note" id="{{ findAttributeValue(subtext.attributes, 'xml:id') }}">
+        @if (!subtext.isText) {
+          <app-note-text [note]="subtext.childNodes">
+          </app-note-text>
+        }
+      </p>
+    }
+    @case (
       subtext.tagName === 'hi' &&
       isSubset([{ name: 'rend', value: 'italic' }], subtext.attributes)
-    "
-  >
-    <i>
-      <app-note-text [note]="subtext.childNodes"> </app-note-text>
-    </i>
-  </ng-container>
-  <ng-container
-    *ngSwitchCase="
+      ) {
+      <i>
+        <app-note-text [note]="subtext.childNodes"> </app-note-text>
+      </i>
+    }
+    @case (
       subtext.tagName === 'said' &&
       isSubset([{ name: 'rend', value: 'double-chevrons' }], subtext.attributes)
-    "
-  >
-    <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
-      «<app-note-text *ngIf="!subtext.isText" [note]="subtext.childNodes">
-      </app-note-text
-      >»</span
-    >
-  </ng-container>
-  <span *ngSwitchDefault
-    >{{ subtext.text
-    }}<app-note-text *ngIf="!subtext.isText" [note]="subtext.childNodes">
-    </app-note-text>
-  </span>
-</ng-container>
+      ) {
+      <span class="{{ findAttributeValue(subtext.attributes, 'rend') }}">
+        «@if (!subtext.isText) {
+        <app-note-text [note]="subtext.childNodes">
+          </app-note-text
+          >
+          }»</span
+          >
+        }
+        @default {
+          <span
+            >{{ subtext.text
+            }}@if (!subtext.isText) {
+            <app-note-text [note]="subtext.childNodes">
+            </app-note-text>
+          }
+        </span>
+      }
+    }
+  }

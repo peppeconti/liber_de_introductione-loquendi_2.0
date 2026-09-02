@@ -1,25 +1,13 @@
 import { Component, computed, Input } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
-import {
-  NgFor,
-  NgIf,
-  NgSwitch,
-  NgSwitchCase,
-  NgSwitchDefault,
-  NgTemplateOutlet,
-} from "@angular/common";
+import { NgTemplateOutlet } from "@angular/common";
 import { isSubset } from "../../../../utils/utils";
 
 @Component({
     selector: "app-secondary-biblio",
     imports: [
-        NgSwitch,
-        NgSwitchCase,
-        NgSwitchDefault,
-        NgFor,
-        NgIf,
-        NgTemplateOutlet,
-    ],
+    NgTemplateOutlet
+],
     templateUrl: "./secondary-biblio.component.html",
     styleUrl: "./secondary-biblio.component.css"
 })

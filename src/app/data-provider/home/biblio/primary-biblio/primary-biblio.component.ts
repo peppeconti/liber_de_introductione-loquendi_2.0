@@ -1,11 +1,11 @@
 import { Component, Input } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
-import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from "@angular/common";
+
 import { isSubset } from "../../../../utils/utils";
 
 @Component({
     selector: "app-primary-biblio",
-    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, NgFor, NgIf],
+    imports: [],
     templateUrl: "./primary-biblio.component.html",
     styleUrl: "./primary-biblio.component.css"
 })
