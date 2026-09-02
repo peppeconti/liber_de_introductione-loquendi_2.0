@@ -1,10 +1,11 @@
 import { Component, inject, input, signal, ChangeDetectionStrategy } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
+import { SearchHelpComponent } from "../search-help/search-help.component";
 
 @Component({
     selector: "app-search",
-    imports: [FormsModule],
+    imports: [FormsModule, SearchHelpComponent],
     templateUrl: "./search.component.html",
     changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./search.component.css"

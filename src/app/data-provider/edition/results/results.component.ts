@@ -31,6 +31,37 @@ const options = {
   includeScore: true,
 };
 
+// Un termine/frase digitato senza operatori (', =, !, ^ come prefisso, $ come
+// suffisso) viene cercato ALLA LETTERA (operatore ' di Fuse + virgolette),
+// così digitare una parola o frase normale dà risultati precisi invece che
+// "quasi tutto" (il comportamento di default di Fuse, senza operatori, è
+// troppo permissivo su testi lunghi). L'operatore | (oppure) viene invece
+// gestito qui: ogni "ramo" separato da | viene sanificato allo stesso modo,
+// altrimenti un ramo senza operatore erediterebbe lo stesso problema.
+const OPERATOR_PREFIX = /^['=!^]/;
+
+function sanitizeBranch(branch: string): string | null {
+  const trimmed = branch.trim();
+  if (trimmed === "") {
+    return null;
+  }
+  if (OPERATOR_PREFIX.test(trimmed) || trimmed.endsWith("$")) {
+    return trimmed; // l'utente ha già usato la sintassi avanzata di Fuse
+  }
+  if (trimmed.startsWith('"') && trimmed.endsWith('"') && trimmed.length > 1) {
+    return `'${trimmed}`; // frase già tra virgolette: la rendiamo "include-match"
+  }
+  return `'"${trimmed}"`; // parola/frase semplice: cercata alla lettera
+}
+
+function toFuseQuery(search: string): string {
+  return search
+    .split("|")
+    .map(sanitizeBranch)
+    .filter((branch): branch is string => branch !== null)
+    .join(" | ");
+}
+
 @Component({
     selector: "app-results",
     imports: [HeaderComponent, SearchComponent, ResultComponent],
@@ -54,12 +85,13 @@ export class ResultsComponent implements OnInit, OnChanges {
         this.results.set([]);
         return;
       }
-      // La query viene passata a Fuse così com'è: supporta la sintassi di
-      // "extended search" (' include, = corrispondenza esatta, ! esclude,
-      // ^ / $ prefisso/suffisso, spazio = AND, | = OR), spiegata nel
-      // suggerimento mostrato sotto la barra di ricerca (SearchComponent).
+      const query = toFuseQuery(search);
+      if (!query) {
+        this.results.set([]);
+        return;
+      }
       const fuse = new Fuse(text, options);
-      const results = fuse.search(search);
+      const results = fuse.search(query);
       this.results.set(hightlight(results));
     }
   }
