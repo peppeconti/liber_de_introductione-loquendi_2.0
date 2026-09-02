@@ -18,8 +18,6 @@ import { DataService } from "../../../../services/dataService.service";
 import { ScrollDirective } from "../../../../directives/scroll.directive";
 import { ModalDirective } from "../../../../directives/modal.directive";
 
-declare const bootstrap: any;
-
 @Component({
     selector: "app-apparatus-container",
     imports: [ApparatusTextComponent, FontAwesomeModule, ScrollDirective, ModalDirective],
@@ -39,7 +37,7 @@ export class ApparatusContainerComponent {
   activeItem = computed<{ index: string; id: string }>(() =>
     this.dataService.getActiveItem()
   );
-  modal = signal<any | undefined>(undefined);
+  modal = signal<BootstrapComponentInstance | undefined>(undefined);
   private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
@@ -49,11 +47,12 @@ export class ApparatusContainerComponent {
       console.log("carouselItems cleared!");
       this.dataService.clearCarouselItems();
       console.log('modal destroyed!')
-      this.modal().dispose();
+      this.modal()!.dispose();
     })
   }
 
-  onSlide(e: any) {
+  onSlide(event: Event) {
+    const e = event as unknown as BootstrapCarouselSlideEvent;
     const index = (e.to + 1).toString();
     const id = e.relatedTarget.id.replaceAll("_", " ");
     this.dataService.setActiveItem({

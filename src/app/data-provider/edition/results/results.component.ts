@@ -11,7 +11,7 @@ import {
 } from "@angular/core";
 import { HeaderComponent } from "../header/header.component";
 import { SearchComponent } from "../shared/search/search.component";
-import hightlight from "../../../utils/highlight";
+import hightlight, { HighlightedResult } from "../../../utils/highlight";
 import Fuse from "fuse.js";
 import { ResultComponent } from "./result/result.component";
 
@@ -43,7 +43,7 @@ export class ResultsComponent implements OnInit, OnChanges {
   @Input({ required: true }) data: Document | undefined;
   s = input<string | null>();
   searchField = computed<SearchNode[]>(() => this.getSearchField(this.data!));
-  results = signal<any[] | undefined>(undefined);
+  results = signal<HighlightedResult[] | undefined>(undefined);
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {

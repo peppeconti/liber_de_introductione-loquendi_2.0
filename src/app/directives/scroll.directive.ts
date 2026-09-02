@@ -42,7 +42,7 @@ export class ScrollDirective {
       const config = { attributes: true };
       let prevClassState = container.classList.contains(this.appScroll());
 
-      const callback = (mutations: any) => {
+      const callback = (mutations: MutationRecord[]) => {
         for (const mutation of mutations) {
           if (mutation.attributeName == "class") {
             const currentClassState = (<HTMLElement>(

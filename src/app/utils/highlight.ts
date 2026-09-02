@@ -1,10 +1,24 @@
-function hightlight(results: any[]): any[] {
-  
+import type { FuseResult } from "fuse.js";
+
+interface HighlightableItem {
+  id: string | null;
+  textContent: string | null;
+}
+
+interface HighlightedResult {
+  id: string;
+  text: string;
+  matches: number[][];
+}
+
+function hightlight(results: FuseResult<HighlightableItem>[]): HighlightedResult[] {
   // RETURN AN OBJECT
   return results.map((e) => {
-    const id: string = e.item.id;
-    const text: string = e.item.textContent;
-    const matches: Array<number[]> = e.matches[0].indices.sort(compareNumbers);
+    const id: string = e.item.id!;
+    const text: string = e.item.textContent!;
+    const matches: Array<number[]> = e.matches![0].indices
+      .map((range) => [range[0], range[1]])
+      .sort(compareNumbers);
     const highlightedText = addSpan(text, matches);
     const mergedMatches: Array<number[]> = mergeMatches(matches, 100);
     const expandedMatches: Array<number[]> = expandMatches(
@@ -101,6 +115,7 @@ function addSpan(
 }
 
 export default hightlight;
+export type { HighlightedResult };
 
 
 /*function cutOverlappingLeft(array: Array<number[]>): Array<number[]> {

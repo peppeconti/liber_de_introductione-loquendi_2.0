@@ -6,8 +6,6 @@ import { DataService } from '../../../../services/dataService.service';
 import { NoteTextComponent } from "./note-text/note-text.component";
 import { ModalDirective } from '../../../../directives/modal.directive';
 
-declare const bootstrap: any;
-
 @Component({
     selector: 'app-note-container',
     imports: [FontAwesomeModule, NoteTextComponent, ModalDirective],
@@ -21,7 +19,7 @@ export class NoteContainerComponent implements OnInit {
   note = computed<JsonNode[] | undefined | null>(() => this.notes().filter(note => note.attributes![0].value === this.noteId()));
   noteId = computed<string | undefined>(() => this.noteIdService.getNoteId()?.replace('#', ''));
   penNib = faPenNib;
-  offcanvas = signal<any | undefined>(undefined);
+  offcanvas = signal<BootstrapComponentInstance | undefined>(undefined);
   private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
@@ -29,7 +27,7 @@ export class NoteContainerComponent implements OnInit {
     this.offcanvas.set(offcanvas);
     this.destroyRef.onDestroy(() => {
       console.log('offcanvas destroyed!')
-      this.offcanvas().dispose();
+      this.offcanvas()!.dispose();
     })
   }
 

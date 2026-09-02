@@ -13,11 +13,11 @@ import {
   standalone: true,
 })
 export class ModalDirective implements OnInit {
-  appModal = input.required<any | undefined>();
+  appModal = input.required<BootstrapComponentInstance | undefined>();
   hash = input.required<string>();
   private renderer = inject(Renderer2);
   private destroyRef = inject(DestroyRef);
-  listener: any;
+  listener?: () => void;
 
   ngOnInit() {
     this.listener = this.renderer.listen(
@@ -27,16 +27,16 @@ export class ModalDirective implements OnInit {
     );
     this.destroyRef.onDestroy(() => {
       console.log(this.hash() + " " + "destroyed");
-      this.listener();
+      this.listener!();
     });
   }
 
   onHashChange = () => {
     const app_modal = this.appModal();
     if (window.location.hash === this.hash()) {
-      app_modal.show();
+      app_modal!.show();
     } else {
-      app_modal.hide();
+      app_modal!.hide();
     }
   };
 }
