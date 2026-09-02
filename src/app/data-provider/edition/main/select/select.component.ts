@@ -1,4 +1,4 @@
-import { Component, input} from "@angular/core";
+import { Component, input, ChangeDetectionStrategy } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { ScrollDirective } from "../../../../directives/scroll.directive";
 
@@ -6,6 +6,7 @@ import { ScrollDirective } from "../../../../directives/scroll.directive";
     selector: "app-select",
     imports: [RouterLink, RouterLinkActive, ScrollDirective],
     templateUrl: "./select.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./select.component.css"
 })
 export class SelectComponent {

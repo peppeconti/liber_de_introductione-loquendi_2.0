@@ -1,4 +1,4 @@
-import { Component, computed, Input } from "@angular/core";
+import { Component, computed, Input, ChangeDetectionStrategy } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 import { NgTemplateOutlet } from "@angular/common";
 import { isSubset } from "../../../../utils/utils";
@@ -9,6 +9,7 @@ import { isSubset } from "../../../../utils/utils";
     NgTemplateOutlet
 ],
     templateUrl: "./secondary-biblio.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./secondary-biblio.component.css"
 })
 export class secondaryBiblioComponent {

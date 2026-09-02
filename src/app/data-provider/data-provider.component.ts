@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit, DestroyRef } from "@angular/core";
+import { Component, inject, signal, OnInit, DestroyRef, ChangeDetectionStrategy } from "@angular/core";
 import { HttpService } from "../services/httpService.service";
 import { RouterOutlet } from "@angular/router";
 import { EditionComponent } from "./edition/edition.component";
@@ -8,6 +8,7 @@ import { HomeComponent } from "./home/home.component";
     selector: "app-data-provider",
     imports: [RouterOutlet],
     templateUrl: "./data-provider.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./data-provider.component.css"
 })
 export class DataProviderComponent implements OnInit {

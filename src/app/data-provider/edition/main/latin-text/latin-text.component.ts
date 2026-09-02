@@ -1,4 +1,4 @@
-import { Component, inject, input, Renderer2 } from "@angular/core";
+import { Component, inject, input, Renderer2, ChangeDetectionStrategy } from "@angular/core";
 import { isSubset, findAttributeValue } from "../../../../utils/utils";
 import { JsonNode } from "../../../../services/models";
 import { SettingService } from "../../../../services/settingService.service";
@@ -8,6 +8,7 @@ import { DataService } from "../../../../services/dataService.service";
     selector: "app-latin-text",
     imports: [],
     templateUrl: "./latin-text.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./latin-text.component.css"
 })
 export class LatinTextComponent {

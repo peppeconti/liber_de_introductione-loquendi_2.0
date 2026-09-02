@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { JsonNode } from '../../../../../services/models';
 import { isSubset, findAttributeValue } from "../../../../../utils/utils";
 
@@ -7,6 +7,7 @@ import { isSubset, findAttributeValue } from "../../../../../utils/utils";
     selector: 'app-note-text',
     imports: [],
     templateUrl: './note-text.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './note-text.component.css'
 })
 export class NoteTextComponent {

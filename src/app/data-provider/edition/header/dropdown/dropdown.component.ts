@@ -1,4 +1,4 @@
-import { Component, inject, computed } from "@angular/core";
+import { Component, inject, computed, ChangeDetectionStrategy } from "@angular/core";
 import { Settings } from "../../../../services/models";
 import { SettingService } from "../../../../services/settingService.service";
 
@@ -12,6 +12,7 @@ type Switch = {
     selector: "app-dropdown",
     imports: [],
     templateUrl: "./dropdown.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./dropdown.component.css"
 })
 export class DropdownComponent {

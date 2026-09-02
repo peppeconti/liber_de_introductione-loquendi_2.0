@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { JsonNode } from "../../../services/models";
 import { PrimaryBiblioComponent } from "./primary-biblio/primary-biblio.component";
 import { secondaryBiblioComponent } from "./secondary-biblio/secondary-biblio.component";
@@ -8,6 +8,7 @@ import { ModalComponent } from "../shared/modal/modal.component";
     selector: "app-biblio",
     imports: [PrimaryBiblioComponent, secondaryBiblioComponent, ModalComponent],
     templateUrl: "./biblio.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./biblio.component.css"
 })
 export class BiblioComponent {

@@ -1,4 +1,4 @@
-import { Component, input } from "@angular/core";
+import { Component, input, ChangeDetectionStrategy } from "@angular/core";
 import { NavInfos } from "../../../../services/models";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,7 @@ import { RouterLink } from "@angular/router";
     selector: "app-navigation",
     imports: [RouterLink, FontAwesomeModule],
     templateUrl: "./navigation.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./navigation.component.css"
 })
 export class NavigationComponent {

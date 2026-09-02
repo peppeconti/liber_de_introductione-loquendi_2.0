@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { SearchComponent } from "../../shared/search/search.component";
 import { ModalDirective } from '../../../../directives/modal.directive';
 
@@ -8,6 +8,7 @@ declare const bootstrap: any;
     selector: 'app-modal-search',
     imports: [SearchComponent, ModalDirective],
     templateUrl: './modal-search.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './modal-search.component.css'
 })
 export class ModalSearchComponent {

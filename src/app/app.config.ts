@@ -5,11 +5,11 @@ import {
   withRouterConfig,
 } from "@angular/router";
 import { routes } from "./app.routes";
-import { provideHttpClient } from "@angular/common/http";
+import { provideHttpClient, withXhr } from "@angular/common/http";
 
 export const AppConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     provideRouter(
       routes,
       withComponentInputBinding(),

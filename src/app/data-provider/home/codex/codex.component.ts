@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { JsonNode } from "../../../services/models";
 import { WitnessesComponent } from "./witnesses/witnesses.component";
 import { MsInfosComponent } from "./ms-infos/ms-infos.component";
@@ -8,6 +8,7 @@ import { ModalComponent } from "../shared/modal/modal.component";
     selector: "app-codex",
     imports: [WitnessesComponent, MsInfosComponent, ModalComponent],
     templateUrl: "./codex.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./codex.component.css"
 })
 export class CodexComponent {

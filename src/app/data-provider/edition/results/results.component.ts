@@ -6,7 +6,8 @@ import {
   OnChanges,
   OnInit,
   signal,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { HeaderComponent } from "../header/header.component";
 import { SearchComponent } from "../shared/search/search.component";
@@ -35,6 +36,7 @@ const options = {
     selector: "app-results",
     imports: [HeaderComponent, SearchComponent, ResultComponent],
     templateUrl: "./results.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./results.component.css"
 })
 export class ResultsComponent implements OnInit, OnChanges {

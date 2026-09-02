@@ -3,7 +3,8 @@ import {
   computed,
   inject,
   Input,
-  input
+  input,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { JsonNode, NavInfos } from "../../../services/models";
 import { HttpService } from "../../../services/httpService.service";
@@ -41,6 +42,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
         FontAwesomeModule
     ],
     templateUrl: "./main.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./main.component.css"
 })
 export class MainComponent {

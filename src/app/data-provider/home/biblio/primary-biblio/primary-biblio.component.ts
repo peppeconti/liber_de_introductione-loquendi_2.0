@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 
 import { isSubset } from "../../../../utils/utils";
@@ -7,6 +7,7 @@ import { isSubset } from "../../../../utils/utils";
     selector: "app-primary-biblio",
     imports: [],
     templateUrl: "./primary-biblio.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./primary-biblio.component.css"
 })
 export class PrimaryBiblioComponent {

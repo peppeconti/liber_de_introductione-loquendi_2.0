@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Credits } from "../../../services/models";
 import { findAttributeValue, isSubset } from "../../../utils/utils";
 import { NgTemplateOutlet } from "@angular/common";
@@ -10,6 +10,7 @@ import { ModalComponent } from "../shared/modal/modal.component";
     selector: "app-credits",
     imports: [NgTemplateOutlet, FontAwesomeModule, ModalComponent],
     templateUrl: "./credits.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./credits.component.css"
 })
 export class CreditsComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, Input} from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { MainComponent } from "./main/main.component";
 import { NotFoundComponent } from "../not-found/not-found.component";
 import { RouterOutlet } from "@angular/router";
@@ -7,6 +7,7 @@ import { RouterOutlet } from "@angular/router";
     selector: "app-edition",
     imports: [MainComponent, NotFoundComponent, RouterOutlet],
     templateUrl: "./edition.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./edition.component.css"
 })
 export class EditionComponent {

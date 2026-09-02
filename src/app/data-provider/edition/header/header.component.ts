@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, input, ChangeDetectionStrategy } from "@angular/core";
 import { Location } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faGear, faGears, faBan, faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +9,7 @@ import { RouterLink } from "@angular/router";
     selector: "app-header",
     imports: [FontAwesomeModule, DropdownComponent, RouterLink],
     templateUrl: "./header.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./header.component.css"
 })
 export class HeaderComponent {

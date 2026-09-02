@@ -1,6 +1,7 @@
 import {
   Component,
   input,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { findAttributeValue, isSubset } from "../../../../../utils/utils";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
@@ -13,6 +14,7 @@ import { appNoteDirective } from "../../../../../directives/app-note.directive";
     selector: "app-apparatus-text",
     imports: [FontAwesomeModule, CarouselDirective, appNoteDirective],
     templateUrl: "./apparatus-text.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./apparatus-text.component.css"
 })
 export class ApparatusTextComponent {

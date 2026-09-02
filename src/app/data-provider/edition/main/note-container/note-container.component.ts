@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, inject, input, OnInit, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPenNib } from '@fortawesome/free-solid-svg-icons';
 import { JsonNode } from '../../../../services/models';
@@ -12,6 +12,7 @@ declare const bootstrap: any;
     selector: 'app-note-container',
     imports: [FontAwesomeModule, NoteTextComponent, ModalDirective],
     templateUrl: './note-container.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './note-container.component.css'
 })
 export class NoteContainerComponent implements OnInit {

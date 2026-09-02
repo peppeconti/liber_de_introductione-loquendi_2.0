@@ -3,7 +3,8 @@ import {
   computed,
   inject,
   Input,
-  OnInit
+  OnInit,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { HomeHeaderComponent } from "./home-header/home-header.component";
 import { HomeMainComponent } from "./home-main/home-main.component";
@@ -19,6 +20,7 @@ import { DataService } from "../../services/dataService.service";
     selector: "app-home",
     imports: [HomeHeaderComponent, HomeMainComponent, RouterLink, RouterOutlet],
     templateUrl: "./home.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./home.component.css"
 })
 export class HomeComponent implements OnInit {

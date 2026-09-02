@@ -5,6 +5,7 @@ import {
   inject,
   input,
   signal,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { JsonNode } from "../../../../services/models";
 import { ApparatusTextComponent } from "./apparatus-text/apparatus-text.component";
@@ -23,6 +24,7 @@ declare const bootstrap: any;
     selector: "app-apparatus-container",
     imports: [ApparatusTextComponent, FontAwesomeModule, ScrollDirective, ModalDirective],
     templateUrl: "./apparatus-container.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./apparatus-container.component.css"
 })
 export class ApparatusContainerComponent {

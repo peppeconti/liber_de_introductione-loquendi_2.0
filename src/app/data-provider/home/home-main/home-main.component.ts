@@ -1,4 +1,4 @@
-import { Component, input } from "@angular/core";
+import { Component, input, ChangeDetectionStrategy } from "@angular/core";
 import { JsonNode } from "../../../services/models";
 import { isSubset } from "../../../utils/utils";
 
@@ -6,6 +6,7 @@ import { isSubset } from "../../../utils/utils";
     selector: "app-home-main",
     imports: [],
     templateUrl: "./home-main.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: "./home-main.component.css"
 })
 export class HomeMainComponent {
