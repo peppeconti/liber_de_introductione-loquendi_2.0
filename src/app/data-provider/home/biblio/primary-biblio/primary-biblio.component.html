@@ -15,7 +15,7 @@
         <app-primary-biblio
           [primary_biblio]="subtext.childNodes"
           />
-        }&nbsp;
+        }{{ ' ' }}
       </span>
     }
     @case (subtext.tagName === 'editor') {
@@ -81,7 +81,7 @@
           <app-primary-biblio
             [primary_biblio]="subtext.childNodes"
             />
-          }&nbsp;</span
+          }{{ ' ' }}</span
           >
         }
         @case (subtext.tagName === 'date') {
