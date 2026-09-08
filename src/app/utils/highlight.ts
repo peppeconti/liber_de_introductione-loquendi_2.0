@@ -15,7 +15,7 @@ interface HighlightedResult {
 // attorno a ogni corrispondenza.
 const CONTEXT_DISTANCE = 100;
 
-function hightlight(
+function highlight(
   results: FuseResult<HighlightableItem>[]
 ): HighlightedResult[] {
   return results.map((e) => {
@@ -104,13 +104,23 @@ function expandToBoundary(
   return index;
 }
 
+// ESEGUE L'ESCAPING DEI CARATTERI SPECIALI HTML (&, <, >), NECESSARIO PERCHÉ
+// IL RISULTATO VIENE INSERITO NEL DOM TRAMITE [innerHTML]: SENZA ESCAPING,
+// UN "&" O UN "<" PRESENTE NEL TESTO ORIGINALE ROMPEREBBE IL MARKUP.
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 // INSERISCE UN UNICO <span class="highlight"> ATTORNO ALLA CORRISPONDENZA
 function addSpan(text: string, start: number, end: number): string {
-  const before = text.substring(0, start);
-  const match = text.substring(start, end + 1);
-  const after = text.substring(end + 1);
+  const before = escapeHtml(text.substring(0, start));
+  const match = escapeHtml(text.substring(start, end + 1));
+  const after = escapeHtml(text.substring(end + 1));
   return `${before}<span class="highlight">${match}</span>${after}`;
 }
 
-export default hightlight;
+export default highlight;
 export type { HighlightedResult };

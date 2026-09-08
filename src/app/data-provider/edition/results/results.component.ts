@@ -11,7 +11,7 @@ import {
 } from "@angular/core";
 import { HeaderComponent } from "../header/header.component";
 import { SearchComponent } from "../shared/search/search.component";
-import hightlight, { HighlightedResult } from "../../../utils/highlight";
+import highlight, { HighlightedResult } from "../../../utils/highlight";
 import Fuse from "fuse.js";
 import { ResultComponent } from "./result/result.component";
 
@@ -92,7 +92,7 @@ export class ResultsComponent implements OnInit, OnChanges {
       }
       const fuse = new Fuse(text, options);
       const results = fuse.search(query);
-      this.results.set(hightlight(results));
+      this.results.set(highlight(results));
     }
   }
 
