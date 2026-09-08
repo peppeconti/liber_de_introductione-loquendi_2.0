@@ -18,7 +18,8 @@ export class SearchComponent {
     this.searchParam.set((event.target as HTMLInputElement).value);
   }
 
-  onSubmit() {
+  onSubmit(event: Event) {
+    event.preventDefault();
     if (this.searchParam() !== "") {
       this.router.navigate(["/edition", "results"], {
         replaceUrl: true,
